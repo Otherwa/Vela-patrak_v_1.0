@@ -1,0 +1,77 @@
+:root {
+    /*===== Colores =====*/
+    --first-color: #006eff;
+    --input-color: #80868B;
+    --border-color: #DADCE0;
+    /*===== Fuente y tipografia =====*/
+    --body-font: 'Roboto', sans-serif;
+    --normal-font-size: 0.89rem;
+    --small-font-size: 0.70rem;
+}
+
+/* login form */
+.l-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 0.5rem;
+    font-family: monospace;
+    font-weight: bold;
+    padding: 5rem;
+}
+
+.form__div {
+    position: relative;
+    height: 42px;
+
+    margin-bottom: 1.5rem;
+}
+
+.form__input:focus {
+    color: rgb(0, 100, 166);
+    border: 1.5px solid var(--first-color);
+    transition: 0.5s;
+}
+
+.form__input {
+    position: absolute;
+    top: 0;
+    color: var(--input-color);
+    left: 0;
+    width: 100%;
+    height: 25%;
+    font-size: var(--normal-font-size);
+    border: 1px solid var(--border-color);
+    border-radius: 0.2rem;
+    border-color: #80868B;
+    outline: none;
+    font-family: monospace;
+    font-weight: bold;
+    padding: 1rem;
+    background: none;
+    z-index: 0;
+}
+
+.form__input:focus+.form__label {
+    top: -0.5rem;
+    left: 0.8rem;
+    color: var(--first-color);
+    font-size: var(--small-font-size);
+    font-weight: 500;
+    z-index: 0;
+}
+
+.form__label {
+    position: absolute;
+    top: -0.5rem;
+    left: 0.8rem;
+    padding: 0 0.25rem;
+    background-color: rgb(255, 255, 255);
+    color: var(--input-color);
+    font-size: var(--normal-font-size);
+    transition: .3s;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: bold;
+    z-index: 0;
+}

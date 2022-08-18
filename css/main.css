@@ -1,0 +1,58 @@
+/* font-setup */
+@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
+
+:root {
+    --orange: #F26419;
+    --yellow: #F6AE2D;
+    --gray: #86BBD8;
+    --blue: #33658A;
+    --green: #2F4858;
+}
+
+/* body */
+body {
+    margin: 0;
+}
+
+/* nav bar */
+
+.con_head {
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+}
+
+.con_head p {
+    margin: 6.9rem 0 0 6.9rem;
+    font-family: 'Recursive', sans-serif;
+    font-size: 5rem;
+    color: var(--orange);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+
+
+li a {
+    display: block;
+    color: #000;
+    padding: 0.9rem;
+    font: 1.1rem 'Recursive', sans-serif;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: var(--orange);
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
