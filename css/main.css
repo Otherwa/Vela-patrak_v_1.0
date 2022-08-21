@@ -7,6 +7,8 @@
     --gray: #86BBD8;
     --blue: #33658A;
     --green: #2F4858;
+    /* fonr size */
+    --font-size: 1.2rem;
 }
 
 /* body */
@@ -29,33 +31,6 @@ body {
     color: var(--orange);
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background-color: #f1f1f1;
-}
-
-
-
-li a {
-    display: block;
-    color: #000;
-    padding: 0.9rem;
-    font: 1.1rem 'Recursive', sans-serif;
-    text-decoration: none;
-}
-
-li a.active {
-    background-color: var(--yellow);
-    color: white;
-}
-
-li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-}
 
 /* for responsive titel */
 @media screen and (max-width: 568px) {
@@ -64,4 +39,9 @@ li a:hover:not(.active) {
         justify-content: center;
         padding-top: 5rem;
     }
+}
+
+.w3-bar-block .w3-bar-item {
+    font-family: 'Recursive', sans-serif;
+    font-size: var(--font-size);
 }
