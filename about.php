@@ -8,6 +8,7 @@
     <link type="image/png" sizes="96x96" rel="icon"
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Home</title>
 </head>
 

@@ -1,13 +1,19 @@
 :root {
     /*===== Colores =====*/
-    --first-color: #006eff;
-    --input-color: #80868B;
+    --first-color: #F6AE2D;
+    --input-color: #9fa7b7;
     --border-color: #DADCE0;
     /*===== Fuente y tipografia =====*/
     --body-font: 'Roboto', sans-serif;
     --normal-font-size: 0.89rem;
     --small-font-size: 0.70rem;
+    --orange: #F26419;
+    --yellow: #F6AE2D;
+    --gray: #86BBD8;
+    --blue: #33658A;
+    --green: #2F4858;
 }
+
 
 /* login form */
 .l-form {
@@ -18,7 +24,7 @@
     margin: 0.5rem;
     font-family: monospace;
     font-weight: bold;
-    padding: 5rem;
+    padding: 3rem;
 }
 
 .form__div {
@@ -29,7 +35,7 @@
 }
 
 .form__input:focus {
-    color: rgb(0, 100, 166);
+    color: rgb(166, 141, 0);
     border: 1.5px solid var(--first-color);
     transition: 0.5s;
 }
@@ -40,7 +46,7 @@
     color: var(--input-color);
     left: 0;
     width: 100%;
-    height: 25%;
+    height: 3rem;
     font-size: var(--normal-font-size);
     border: 1px solid var(--border-color);
     border-radius: 0.2rem;
@@ -74,4 +80,8 @@
     font-family: 'Maven Pro', sans-serif;
     font-weight: bold;
     z-index: 0;
+}
+
+.button-primary {
+    background-color: rgb(33, 209, 177) !important;
 }

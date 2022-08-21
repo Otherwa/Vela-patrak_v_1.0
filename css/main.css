@@ -48,11 +48,20 @@ li a {
 }
 
 li a.active {
-    background-color: var(--orange);
+    background-color: var(--yellow);
     color: white;
 }
 
 li a:hover:not(.active) {
     background-color: #555;
     color: white;
+}
+
+/* for responsive titel */
+@media screen and (max-width: 568px) {
+    .con_head p {
+        margin: auto;
+        justify-content: center;
+        padding-top: 5rem;
+    }
 }
