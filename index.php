@@ -28,11 +28,7 @@
     </div>
 
     <div class="con_head">
-<<<<<<< HEAD
-        <p>Vela-patrak devashishBranch 2.0</p>
-=======
         <p>Vela-patrak</p>
->>>>>>> b5ffe7b1c40cd8e49c6bd5308cfb911f9c74c2fa
     </div>
 
 
