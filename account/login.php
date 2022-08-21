@@ -9,6 +9,7 @@
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Home</title>
 </head>
 
@@ -27,22 +28,22 @@
     <br>
     <br>
     <br>
-    <div class="l-form">
-        <form method="POST" class="form" style="width:33rem">
-            <div class="form__div">
-                <input type="text" class="form__input" name="Name" id="Name" placeholder="e.g xyz" autocomplete="off">
-                <label for="" class="form__label">Name</label>
-            </div>
-            <br>
-            <div class="form__div">
-                <input type="text" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123"
-                    autocomplete="off">
-                <label for="" class="form__label">Password</label>
-            </div>
+    <div class="l-form"></div>
+    <form method="POST" class="form" style="width:33rem">
+        <div class="form__div">
+            <input type="text" class="form__input" name="Name" id="Name" placeholder="e.g xyz" autocomplete="off">
+            <label for="" class="form__label">Name</label>
+        </div>
+        <br>
+        <div class="form__div">
+            <input type="text" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123"
+                autocomplete="off">
+            <label for="" class="form__label">Password</label>
+        </div>
 
-            <br>
-            <input type="button" value="Login" style="float:right">
-        </form>
+        <br>
+        <input class="button-primary w3-button w3-border w3-hover-blue" type="submit" value="Login" style="float:right">
+    </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../js/main.js"></script>
