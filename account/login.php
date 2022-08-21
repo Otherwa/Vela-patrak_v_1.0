@@ -28,21 +28,22 @@
     <br>
     <br>
     <br>
-    <div class="l-form"></div>
-    <form method="POST" class="form" style="width:33rem">
-        <div class="form__div">
-            <input type="text" class="form__input" name="Name" id="Name" placeholder="e.g xyz" autocomplete="off">
-            <label for="" class="form__label">Name</label>
-        </div>
-        <br>
-        <div class="form__div">
-            <input type="text" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123"
-                autocomplete="off">
-            <label for="" class="form__label">Password</label>
-        </div>
-
-        <br>
-        <input class="button-primary w3-button w3-border w3-hover-blue" type="submit" value="Login" style="float:right">
+    <div class="l-form">
+        <form method="POST" class="form" style="width:33rem">
+            <div class="form__div">
+                <input type="text" class="form__input" name="Name" id="Name" placeholder="e.g xyz" autocomplete="off">
+                <label for="" class="form__label">Name</label>
+            </div>
+            <br>
+            <div class="form__div">
+                <input type="text" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123"
+                    autocomplete="off">
+                <label for="" class="form__label">Password</label>
+            </div>
+            <br>
+            <input class="button-primary w3-button w3-border w3-hover-blue" type="submit" value="Login"
+                style="float:right">
+    </div>
     </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
