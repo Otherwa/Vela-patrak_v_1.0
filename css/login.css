@@ -1,7 +1,7 @@
 :root {
     /*===== Colores =====*/
     --first-color: #F6AE2D;
-    --input-color: #9fa7b7;
+    --input-color: #999999;
     --border-color: #DADCE0;
     /*===== Fuente y tipografia =====*/
     --body-font: 'Roboto', sans-serif;
@@ -16,6 +16,10 @@
 
 
 /* login form */
+.form {
+    padding: 1.8rem;
+}
+
 .l-form {
     display: flex;
     justify-content: center;
