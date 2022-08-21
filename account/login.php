@@ -1,3 +1,10 @@
+<?php
+include("../config/connect.php");
+get_con();
+// for cheching 
+echo $status;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
