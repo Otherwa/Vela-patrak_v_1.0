@@ -22,7 +22,7 @@
         </ul>
     </div>
     <div class="con_head">
-        <p>Vela-patrak devashishBranch</p>
+        <p>Vela-patrak devashishBranch 2.0</p>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="./js/main.js"></script>
