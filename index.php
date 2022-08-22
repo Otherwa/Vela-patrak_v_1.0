@@ -29,7 +29,7 @@
     </div>
 
     <div class="con_head"></div>
-    <p>Vela-patrak Atharv Changes</p>
+    <p>Vela-patrak</p>
     </div>
 
 
