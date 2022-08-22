@@ -1,8 +1,54 @@
 <?php
+ob_start();
 include("../config/connect.php");
-get_con();
+
+$status = get_con();
+
+session_start();
+$status = session_status(); //1st measure
+if ($status == PHP_SESSION_ACTIVE) {
+    //There is  active session
+    session_destroy();
+}
+
+session_start();
+
+// login block starts here
+if (isset($_POST['login'])) {
+    $name =  $_POST['Name'];
+    $pass = $_POST['Password'];
+
+    //session variables
+    $_SESSION['name'] = $name;
+
+    $con = get_con();
+    $sql = "SELECT * FROM `members` WHERE Username = '$name' AND Password = '$pass';";
+
+    $result = mysqli_query($con, $sql);
+    $result_user_type = mysqli_fetch_array($result);
+    $row = mysqli_num_rows($result);
+
+    if ($row > 0) {
+
+        // check if user or admin and simple redirect to it
+        if ($result_user_type['Type'] == 'admin') {
+            header("Location:../users/admin_dashboard.php");
+        } else {
+            header("Location:../users/user_dashboard.php");
+        }
+        // close connection
+        mysqli_close($con);
+    } else {
+        echo "<script>alert('Wrong Password or Username');</script>";
+        // close connection
+        mysqli_close($con);
+    }
+}
+// login block ends here
+
 // for cheching 
 // echo $status;
+ob_end_flush();
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +87,7 @@ get_con();
     <br>
     <br>
     <div class="l-form">
-        <form method="POST" class="form w3-round w3-border w3-margin" style="width:33rem">
+        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:33rem">
             <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
             <br>
             <br>
@@ -51,13 +97,13 @@ get_con();
             </div>
             <br>
             <div class="form__div">
-                <input type="text" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123"
+                <input type="password" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123"
                     autocomplete="off">
                 <label for="" class="form__label">Password</label>
             </div>
             <br>
             <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Login"
-                style="float:right">
+                name="login" style="float:right">
     </div>
     </form>
     </div>
