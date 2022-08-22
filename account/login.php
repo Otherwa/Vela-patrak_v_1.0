@@ -1,8 +1,32 @@
-<?php
+<?php 
+ob_start();
 include("../config/connect.php");
-get_con();
+$status = get_con();
+if(isset($_POST['login'])) {
+    $name =  $_POST['Name'];
+    $pass = $_POST['Password'];
+    session_start();
+    //session variables
+    $_SESSION['name'] = $name;
+
+    $con = get_con();
+    $sql = "SELECT * FROM `members` WHERE Username = '$name' AND Password = '$pass'";
+    $result = mysqli_query($con, $sql);
+    $row = mysqli_num_rows($result);
+
+    if ($row > 0) {
+        header("Location:../users/dashboard.php");
+        // close connection
+        mysqli_close($con);
+    } else {
+        echo "<script>alert('Wrong Password or Username');</script>";
+        // close connection
+        mysqli_close($con);
+    }
+}
 // for cheching 
 // echo $status;
+ob_end_flush();
 ?>
 
 <!DOCTYPE html>
@@ -51,13 +75,11 @@ get_con();
             </div>
             <br>
             <div class="form__div">
-                <input type="text" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123"
-                    autocomplete="off">
+                <input type="password" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123" autocomplete="off">
                 <label for="" class="form__label">Password</label>
             </div>
             <br>
-            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Login"
-                style="float:right">
+            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Login" name="login" style="float:right">
     </div>
     </form>
     </div>
