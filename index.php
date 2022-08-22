@@ -29,7 +29,7 @@
     </div>
 
     <div class="con_head">
-        <p>Vela-patrak</p>
+        <p>Vela-patrak Pushkar Branch</p>
     </div>
 
     <br>
