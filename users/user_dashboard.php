@@ -1,4 +1,14 @@
-<?php?>
+<?php
+ob_start();
+session_start();
+
+if (!isset($_SESSION['name'])) {
+    // redirect if not set
+    header("Location:../account/login.php");
+}
+
+ob_end_flush();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,9 +29,12 @@
 
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../index.php" class="w3-bar-item w3-button">Home</a>
-        <a href="../account/login.php" class="w3-bar-item w3-button">Login</a>
-        <a href="../about.php" class="w3-bar-item w3-button">About</a>
+        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
     </div>
     <!-- Page Content -->
     <div class="">
@@ -29,7 +42,8 @@
     </div>
 
     <div class="con_head">
-        <p> Dashboard </p>
+        <p>Dashboard</p>
+        <?php echo $_SESSION['name']; ?>
     </div>
 
 
