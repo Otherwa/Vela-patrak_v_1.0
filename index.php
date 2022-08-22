@@ -29,9 +29,6 @@
     </div>
 
     <div class="con_head">
-<<<<<<< HEAD
-        <p>Vela-patrak devashishBranch 2.0</p>
-=======
         <p>Vela-patrak</p>
     </div>
 
@@ -40,7 +37,6 @@
 
     <div class="container w3-padding-large">
         Because time table matters
->>>>>>> 5adffe6634c36711098bbda2742bbee9250f785a
     </div>
 
 
