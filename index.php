@@ -28,8 +28,8 @@
         <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
     </div>
 
-    <div class="con_head">
-        <p>Vela-patrak</p>
+    <div class="con_head"></div>
+    <p>Vela-patrak Atharv Changes</p>
     </div>
 
 
