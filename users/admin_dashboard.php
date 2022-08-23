@@ -29,7 +29,7 @@ ob_end_flush();
 
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="../account/register.php" class="w3-bar-item w3-button">Registration</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
