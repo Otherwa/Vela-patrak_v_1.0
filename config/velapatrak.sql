@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2022 at 09:28 AM
+-- Generation Time: Aug 23, 2022 at 05:57 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `members` (
-  `Member_Id` int(11) NOT NULL,
-  `First_Name` varchar(15) NOT NULL,
-  `Last_Name` varchar(15) NOT NULL,
+  `MemberId` int(11) NOT NULL,
+  `FirstName` varchar(15) NOT NULL,
+  `LastName` varchar(15) NOT NULL,
   `Department` varchar(10) NOT NULL,
   `Email` varchar(25) NOT NULL,
   `Phone` varchar(14) NOT NULL,
@@ -44,8 +44,10 @@ CREATE TABLE `members` (
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`Member_Id`, `First_Name`, `Last_Name`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES
-(1, 'Atharv', 'Desai', 'BScIT', 'atharvdesai2002@gmail.com', '8828388979', 'admin', 'timetable', 'admin');
+INSERT INTO `members` (`MemberId`, `FirstName`, `LastName`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES
+(1, 'Atharv', 'Desai', 'BScIT', 'atharvdesai2002@gmail.com', '8828388979', 'admin', 'timetable', 'admin'),
+(2, 'Himasnhu', 'Chaudhari', 'BScIT', 'atharvdesai2002@gmail.com', '8828388979', 'member', 'timetable', 'member'),
+(3, 'asdad', 'asdasd', 'asdasd', 'adas@gmail.com', 'asdasd', 'asdasd', 'asdasd', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -55,7 +57,7 @@ INSERT INTO `members` (`Member_Id`, `First_Name`, `Last_Name`, `Department`, `Em
 -- Indexes for table `members`
 --
 ALTER TABLE `members`
-  ADD PRIMARY KEY (`Member_Id`);
+  ADD PRIMARY KEY (`MemberId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -65,7 +67,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `Member_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `MemberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
