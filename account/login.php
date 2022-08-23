@@ -11,6 +11,8 @@ if ($status == PHP_SESSION_ACTIVE) {
     session_destroy();
 }
 
+// if session is already running, it destroys previous session 
+// and starts a new if redirected to this page
 session_start();
 
 // login block starts here
@@ -18,8 +20,7 @@ if (isset($_POST['login'])) {
     $name =  $_POST['Name'];
     $pass = $_POST['Password'];
 
-    //session variables
-    $_SESSION['name'] = $name;
+    
 
     $con = get_con();
     $sql = "SELECT * FROM `members` WHERE Username = '$name' AND Password = '$pass';";
@@ -29,6 +30,9 @@ if (isset($_POST['login'])) {
     $row = mysqli_num_rows($result);
 
     if ($row > 0) {
+
+        //session variables
+        $_SESSION['name'] = $name;
 
         // check if user or admin and simple redirect to it
         if ($result_user_type['Type'] == 'admin') {
@@ -103,7 +107,7 @@ ob_end_flush();
             </div>
             <br>
             <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Login"
-                name="login" style="float:right">
+                name="login" style="float:right">            
     </div>
     </form>
     </div>
