@@ -29,7 +29,7 @@
     </div>
 
     <div class="con_head">
-        <p>Vela-patrak Durvesh branch</p>
+        <p>Vela-patrak Durvesh  branch</p>
     </div>
 
     <br>
