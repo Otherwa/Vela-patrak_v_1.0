@@ -38,7 +38,6 @@
 
     <div class="container w3-padding-large">
         Because time table matters
-
     </div>
 
 
