@@ -77,9 +77,12 @@ ob_end_flush();
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../index.php" class="w3-bar-item w3-button">Home</a>
-        <a href="login.php" class="w3-bar-item w3-button">Login</a>
-        <a href="../about.php" class="w3-bar-item w3-button">About</a>
+        <a href="../users/admin_dashboard.php" class="w3-bar-item w3-button">Registration</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>
     <!-- Page Content -->
 
