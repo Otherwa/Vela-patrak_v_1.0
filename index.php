@@ -28,7 +28,7 @@
     </div>
 
     <div class="con_head">
-        <p>Vela-patrak</p>
+        <p>Vela-patrak </p>
     </div>
 
     <br>
