@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2022 at 05:57 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Aug 27, 2022 at 05:22 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,8 +45,21 @@ CREATE TABLE `members` (
 
 INSERT INTO `members` (`MemberId`, `FirstName`, `LastName`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES
 (1, 'Atharv', 'Desai', 'BScIT', 'atharvdesai2002@gmail.com', '8828388979', 'admin', 'timetable', 'admin'),
-(2, 'Himasnhu', 'Chaudhari', 'BScIT', 'atharvdesai2002@gmail.com', '8828388979', 'member', 'timetable', 'member'),
-(3, 'asdad', 'asdasd', 'asdasd', 'adas@gmail.com', 'asdasd', 'asdasd', 'asdasd', 'admin');
+(3, 'Pushkar', 'Sane', 'BSc IT', 'thekingpush417@gmail.com', '8355958447', 'admin', 'timetable', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timeslot`
+--
+
+CREATE TABLE `timeslot` (
+  `TimeSlot` int(20) NOT NULL,
+  `StartTime` time NOT NULL,
+  `EndTime` time NOT NULL,
+  `MemberId` int(11) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -60,6 +72,12 @@ ALTER TABLE `members`
   ADD PRIMARY KEY (`MemberId`);
 
 --
+-- Indexes for table `timeslot`
+--
+ALTER TABLE `timeslot`
+  ADD KEY `Member_timeslot` (`MemberId`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -68,6 +86,16 @@ ALTER TABLE `members`
 --
 ALTER TABLE `members`
   MODIFY `MemberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `timeslot`
+--
+ALTER TABLE `timeslot`
+  ADD CONSTRAINT `Member_timeslot` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
