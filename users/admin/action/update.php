@@ -1,20 +1,21 @@
 <?php
+include("../../../config/connect.php");
 ob_start();
-include("../../config/connect.php");
 
-$status = get_con();
+if (isset($_GET['UpdateId'])) {
+    $id = $_GET['UpdateId'];
 
-session_start();
-
-// checks if the admin has privileges to do so
-if (!isset($_SESSION['name'])) {
-    // redirect if not set
-    header("Location:../account/login.php");
+    // get data from database
+    $con = get_con();
+    $sql = "SELECT * FROM members WHERE MemberId = $id;";
+    $result_get = $con->query($sql);
+    $result_get = $result_get->fetch_assoc();
 }
 
+if (isset($_POST['update'])) {
 
-// login block starts here
-if (isset($_POST['register'])) {
+    $con = get_con();
+
     $firstname =  $_POST['FirstName'];
     $lastname =  $_POST['LastName'];
     $department =  $_POST['Department'];
@@ -24,52 +25,19 @@ if (isset($_POST['register'])) {
     $password = $_POST['Password'];
     $type = $_POST['Type'];
 
-    $con = get_con();
-    $sql = "SELECT * FROM `members` WHERE Username = '$username' AND Password = '$password' AND Email = '$email';";
-
-    $result = mysqli_query($con, $sql);
-    $result_user_type = mysqli_fetch_array($result);
-    $row = mysqli_num_rows($result);
-
-    if ($row > 0) {
-        // check if user or admin and simple redirect to it
-        echo "<script>alert('Account already exsists');</script>";
-        // close connection
-        mysqli_close($con);
+    // Update
+    $sql = "UPDATE `members` SET `FirstName` = '" . $firstname . "', `LastName`='" . $lastname . "', `Department`='" . $department . "', `Email`='" . $email . "',`Phone`='" . $phone . "',`Username`='" . $username . "',`Password`='" . $password . "',`Type`='" . $type . "' WHERE MemberId = '" . $id . "';";
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Member Updated');</script>";
+        header("Location:../../register.php");
     } else {
-
-        // if no member then insert
-        $sql = "INSERT INTO `members` (`FirstName`, `LastName`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES ('$firstname','$lastname','$department','$email','$phone','$username','$password','$type');";
-        if ($con->query($sql) === TRUE) {
-            echo "<script>alert('Account Created Successfully');</script>";
-        } else {
-            echo "<script>alert('Something went wrong.');</script>";
-        }
-        $con->close();
-    }
-}
-// login block ends here
-
-//members list
-function member_list()
-{
-    $con = get_con();
-    $sql = "SELECT * FROM members";
-    $result = $con->query($sql);
-
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "id: " . $row["MemberId"] . " - Name: " . $row["FirstName"] . " " . $row["LastName"] . " - Email: " . $row["Email"] . " - Department: " . $row["Department"] . " - Type: " . $row["Type"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\delete.php\\?DeleteId="  . $row["MemberId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\update.php\\?UpdateId=" . $row["MemberId"] . "\">Update</a></li>";
-        }
-    } else {
-        echo "No Members";
+        echo $sql;
+        echo "<script>alert('Something went wrong.');</script>";
     }
     $con->close();
 }
 
-// for cheching 
-// echo $status;
+
 ob_end_flush();
 ?>
 
@@ -83,8 +51,8 @@ ob_end_flush();
     <link type="image/png" sizes="96x96" rel="icon"
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
 
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/register.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/register.css">
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -109,16 +77,9 @@ ob_end_flush();
     </div>
 
     <div class="con_head">
-        <p>Register</p>
+        <p>Update User <?php echo $result_get["Username"] ?></p>
     </div>
     <br>
-    <div class="list">
-        <p style="float:left">Members</p>
-        <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:66vw;">
-            <?php member_list(); ?>
-        </div>
-    </div>
-
 
     <br>
     <div class="l-form">
@@ -128,14 +89,14 @@ ob_end_flush();
             <br>
             <div class="form__div">
                 <input type="text" class="form__input" name="FirstName" id="FirstName" placeholder="e.g xyz"
-                    autocomplete="off">
+                    autocomplete="off" value="<?php echo $result_get['FirstName']; ?>">
                 <label for="" class="form__label">First Name</label>
             </div>
             <br>
 
             <div class="form__div">
                 <input type="text" class="form__input" name="LastName" id="LastName" placeholder="e.g xyz@123"
-                    autocomplete="off">
+                    autocomplete="off" value="<?php echo $result_get['LastName']; ?>">
                 <label for="" class="form__label">Last Name</label>
             </div>
             <div class="form__div">
@@ -169,26 +130,26 @@ ob_end_flush();
             <br>
             <div class="form__div">
                 <input type="text" class="form__input" name="Emailid" id="Emailid" placeholder="e.g someone@gmail.com"
-                    autocomplete="off">
+                    autocomplete="off" value="<?php echo $result_get['Email']; ?>">
                 <label for="" class="form__label">Email</label>
             </div>
             <br>
             <div class="form__div">
                 <input type="text" class="form__input" name="Phone" id="Phone" placeholder="e.g 8828*****"
-                    autocomplete="off">
+                    autocomplete="off" value="<?php echo $result_get['Phone']; ?>">
                 <label for="" class="form__label">Phone</label>
             </div>
             <br>
 
             <div class="form__div">
                 <input type="text" class="form__input" name="Username" id="Username" placeholder="e.g xyz"
-                    autocomplete="off">
+                    autocomplete="off" value="<?php echo $result_get['Username']; ?>">
                 <label for="" class="form__label">Username</label>
             </div>
             <br>
             <div class="form__div">
                 <input type="password" class="form__input" name="Password" id="Password" placeholder="e.g xyz@1234"
-                    autocomplete="off">
+                    autocomplete="off" value="<?php echo $result_get['Password']; ?>">
                 <label for="" class="form__label">Password</label>
             </div>
             <div class="form__div">
@@ -201,15 +162,14 @@ ob_end_flush();
             </div>
             <br>
             <br>
-            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Register"
-                name="register" style="float:right">
-
+            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Update"
+                name="update" style="float:right">
     </div>
     </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/login.js"></script>
+    <script src="../../../../js/main.js"></script>
+    <script src="../../../../js/login.js"></script>
 </body>
 
 </html>
