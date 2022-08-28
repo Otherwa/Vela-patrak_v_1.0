@@ -7,8 +7,8 @@
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
-SET SQL_MODE
-= "NO_AUTO_VALUE_ON_ZERO";
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone
 = "+00:00";
@@ -68,16 +68,12 @@ MemberId`,
 -- Table structure for table `timeslot`
 --
 
-CREATE TABLE `timeslot`
-(
-  `TimeSlot` int
-(20) NOT NULL,
+CREATE TABLE `timeslot` (
+  `TimeSlot` int(20) NOT NULL,
   `StartTime` time NOT NULL,
   `EndTime` time NOT NULL,
-  `MemberId` int
-(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp
-()
+  `MemberId` int(11) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -99,6 +95,12 @@ ADD KEY `Member_timeslot`
 (`MemberId`);
 
 --
+-- Indexes for table `timeslot`
+--
+ALTER TABLE `timeslot`
+  ADD KEY `Member_timeslot` (`MemberId`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -106,8 +108,8 @@ ADD KEY `Member_timeslot`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `MemberId` int
-(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `MemberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 
 --
 -- Constraints for dumped tables
@@ -117,11 +119,8 @@ ALTER TABLE `members`
 -- Constraints for table `timeslot`
 --
 ALTER TABLE `timeslot`
-ADD CONSTRAINT `Member_timeslot` FOREIGN KEY
-(`MemberId`) REFERENCES `members`
-(`MemberId`) ON
-DELETE CASCADE ON
-UPDATE CASCADE;
+  ADD CONSTRAINT `Member_timeslot` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
