@@ -1,6 +1,6 @@
 <?php
 ob_start();
-include("../config/connect.php");
+include("../../config/connect.php");
 
 $status = get_con();
 
@@ -66,8 +66,8 @@ ob_end_flush();
     <link type="image/png" sizes="96x96" rel="icon"
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
 
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/register.css">
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -77,7 +77,8 @@ ob_end_flush();
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../users/admin_dashboard.php" class="w3-bar-item w3-button">Registration</a>
+        <a href="../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
+        <a href="register.php" class="w3-bar-item w3-button w3-orange">Registration</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
@@ -160,8 +161,8 @@ ob_end_flush();
     </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/login.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/login.js"></script>
 </body>
 
 </html>

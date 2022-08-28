@@ -37,7 +37,6 @@
         Because time table matters
     </div>
 
-
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="./js/main.js"></script>
 </body>
