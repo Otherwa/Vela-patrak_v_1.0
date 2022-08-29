@@ -29,16 +29,17 @@
     </div>
 
     <div class="con_head">
+<<<<<<< HEAD
         <p>Vela-patrak Durvesh  branch</p>
+=======
+        <p>Vela-patrak </p>
+>>>>>>> 1bd28c7bd68bef0fbd1d2800aa0292fa5867f415
     </div>
-
     <br>
     <br>
-
     <div class="container w3-padding-large">
         Because time table matters
     </div>
-
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="./js/main.js"></script>
