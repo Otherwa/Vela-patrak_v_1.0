@@ -20,6 +20,7 @@ ob_end_flush();
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/timetable.css">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
