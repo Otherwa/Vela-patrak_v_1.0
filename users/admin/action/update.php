@@ -12,6 +12,7 @@ if (isset($_GET['UpdateId'])) {
     $result_get = $result_get->fetch_assoc();
 }
 
+//if user clicks on register button and  data gets updated on database
 if (isset($_POST['update'])) {
 
     $con = get_con();
