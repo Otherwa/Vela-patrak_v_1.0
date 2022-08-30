@@ -63,9 +63,9 @@ ob_end_flush();
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
+        <a href="../../../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button w3-orange">Registration</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="../../timetable.php" class="w3-bar-item w3-button">Time Table</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
