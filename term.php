@@ -251,8 +251,24 @@ ob_end_flush();
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-<script src="Js/main.js?v=1" type="text/javascript"></script>
-<script async type="text/javascript"
-    src="https://api.countapi.xyz/hit/KelkarForms.com/415a7523-bb25-4d45-a700-33a48a168a6c/?callback=counter"></script>
+<script type="text/javascript">
+// dark mode js plugin
+const options = {
+    bottom: '64px', // default: '32px'
+    right: 'unset', // default: '32px'
+    right: '32px', // default: 'unset'
+    time: '0.5s', // default: '0.3s'
+    mixColor: '#fff', // default: '#fff'
+    backgroundColor: '#fff', // default: '#fff'
+    buttonColorDark: '#100f2c', // default: '#100f2c'
+    buttonColorLight: '#fff', // default: '#fff'
+    saveInCookies: false, // default: true,
+    label: '💡', // default: ''
+    autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+</script>
 
 </html>
