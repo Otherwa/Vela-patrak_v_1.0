@@ -19,7 +19,7 @@
 
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="index.php" class="w3-bar-item w3-button">Home</a>
+        <a href="index.php" class="w3-bar-item w3-button w3-black">Home</a>
         <a href="./account/login.php" class="w3-bar-item w3-button">Login</a>
         <a href="./about.php" class="w3-bar-item w3-button">About</a>
     </div>
@@ -33,10 +33,23 @@
     </div>
     <br>
     <br>
-    <div class="container w3-padding-large">
-        Because time table matters
+    <div class="container">
+        <p>
+            Because time-table matters.
+        </p>
+    </div>
+    <div class="con">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque molestiae natus quibusdam a nostrum odit
+            adipisci ex suscipit nam voluptas tenetur asperiores amet, ullam aut doloremque impedit tempora veniam
+            reiciendis!</p>
     </div>
 
+    <div class="footer-copyright">
+        <br />
+        <p>&copy; | Copyright 2022 - ♾️ All rights reserved | <a href="term.php">Terms &
+                Conditions</a> | <a href=" contributer.php">Contributors</a>
+        </p>
+    </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="./js/main.js"></script>
 </body>

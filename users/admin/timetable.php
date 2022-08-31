@@ -32,9 +32,9 @@ ob_end_flush();
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
         <a href="../account/login.php" class="w3-bar-item w3-button">Logout</a>
-        <a href="admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
-        <a href="admin/register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="admin/timetable.php" class="w3-bar-item w3-button w3-orange">Time-Table</a>
+        <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
+        <a href="register.php" class="w3-bar-item w3-button">Registration</a>
+        <a href="timetable.php" class="w3-bar-item w3-button w3-black">Time-Table</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
@@ -46,7 +46,7 @@ ob_end_flush();
     </div>
 
     <div class="con_head">
-        <p> Dashboard </p>
+        <p> Time-Table </p>
         <?php echo $_SESSION['name']; ?>
     </div>
 
