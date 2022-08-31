@@ -68,7 +68,7 @@ function member_list()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "id: " . $row["MemberId"] . " - Name: " . $row["FirstName"] . " " . $row["LastName"] . " - Email: " . $row["Email"] . " - Department: " . $row["Department"] . " - Type: " . $row["Type"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\delete.php\\?DeleteId="  . $row["MemberId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\update.php\\?UpdateId=" . $row["MemberId"] . "\">Update</a></li>";
+            echo "<li>" . "id: " . $row["MemberId"] . " - Name: " . $row["FirstName"] . " " . $row["LastName"] . " - Email: " . $row["Email"] . " - Department: " . $row["Department"] . " - Type: " . $row["Type"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_register_delete.php\\?DeleteId="  . $row["MemberId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_register_update.php\\?UpdateId=" . $row["MemberId"] . "\">Update</a></li>";
         }
     } else {
         echo "No Members";
