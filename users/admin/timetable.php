@@ -12,7 +12,7 @@ if (!isset($_SESSION['name'])) {
 $id = $_SESSION['id'];
 
 // insert
-if (isset($_POST['register'])) {
+if (isset($_POST['save'])) {
     $timeslot =  $_POST['TimeSlot'];
     $starttime =  $_POST['StartTime'];
     $memberid =  $id; //is member id of login generated at login
@@ -145,8 +145,8 @@ ob_end_flush();
                 <label for="" class="form__label">End-Time</label>
             </div>
             <br>
-            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Register"
-                name="register" style="float:right">
+            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
+                name="save" style="float:right">
 
     </div>
     </form>
