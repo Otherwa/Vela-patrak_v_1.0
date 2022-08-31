@@ -1,6 +1,35 @@
 /* font-setup */
 @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
 
+/* navbar css*/
+
+html {
+    cursor: auto;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    width: 9px;
+}
+
+
+/* Track */
+html::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+}
+
+
+/* Handle */
+html::-webkit-scrollbar-thumb {
+    background: #000000;
+}
+
+/* Handle on hover */
+html::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.358);
+}
+
+
 :root {
     --orange: #F26419;
     --yellow: #F6AE2D;
@@ -16,6 +45,13 @@ body {
     margin: 0;
 }
 
+.container>p {
+    padding: 1rem !important;
+    margin-left: 6vw;
+    font-family: 'Recursive', sans-serif;
+    font-size: 1.4rem;
+}
+
 /* nav bar */
 
 .con_head {
@@ -28,9 +64,12 @@ body {
     margin: 6.9rem 0 0 6.9rem;
     font-family: 'Recursive', sans-serif;
     font-size: 5rem;
-    color: var(--orange);
 }
 
+.con {
+    padding: 1rem;
+    margin: 5vw;
+}
 
 /* for responsive titel */
 @media screen and (max-width: 568px) {
@@ -44,4 +83,20 @@ body {
 .w3-bar-block .w3-bar-item {
     font-family: 'Recursive', sans-serif;
     font-size: var(--font-size);
+}
+
+.footer-copyright {
+    position: relative;
+    bottom: -40vh;
+    line-height: 1.6rem;
+    text-align: center;
+    align-items: center;
+    width: 99%;
+    padding: 1rem;
+}
+
+.footer-copyright p {
+    font-family: 'Recursive', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
