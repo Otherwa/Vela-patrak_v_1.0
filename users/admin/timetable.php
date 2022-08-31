@@ -142,7 +142,7 @@ ob_end_flush();
             <div class="form__div">
                 <input type="time" class="form__input" name="EndTime" id="EndTime" placeholder="e.g someone@gmail.com"
                     autocomplete="off">
-                <label for="" class="form__label">Email</label>
+                <label for="" class="form__label">End-Time</label>
             </div>
             <br>
             <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Register"
