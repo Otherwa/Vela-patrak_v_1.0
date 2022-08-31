@@ -113,7 +113,7 @@ ob_end_flush();
         <?php echo $_SESSION['id']; ?>
     </div>
     <div class="list">
-        <p style="float:left">Members</p>
+        <p style="float:left">Time-Slots</p>
         <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:86vw;">
             <?php timeslot(); ?>
         </div>
