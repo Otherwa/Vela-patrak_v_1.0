@@ -88,14 +88,16 @@ ob_end_flush();
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Home</title>
+    <title>Register</title>
 </head>
 
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
-        <a href="register.php" class="w3-bar-item w3-button w3-orange">Registration</a>
+        <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
+        <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
+        <a href="register.php" class="w3-bar-item w3-button w3-black">Registration</a>
+        <a href="timetable.php" class="w3-bar-item w3-button">Time-Table</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
@@ -123,7 +125,10 @@ ob_end_flush();
     <br>
     <div class="l-form">
         <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:66vw">
-            <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+            <div class="context">
+                <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                <p>Register User as</p>
+            </div>
             <br>
             <br>
             <div class="form__div">
