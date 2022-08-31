@@ -39,6 +39,7 @@
     font-family: monospace;
     font-weight: bold;
     padding: 3rem;
+    flex-direction: column;
 }
 
 .form__div {

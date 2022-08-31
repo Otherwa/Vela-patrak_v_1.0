@@ -46,6 +46,7 @@ ob_end_flush();
     <div class="con_head">
         <p> Dashboard </p>
         <?php echo $_SESSION['name']; ?>
+        <?php echo $_SESSION['id']; ?>
     </div>
 
 
