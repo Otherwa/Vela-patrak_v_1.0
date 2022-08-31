@@ -88,7 +88,7 @@ ob_end_flush();
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Home</title>
+    <title>Register</title>
 </head>
 
 <body>
