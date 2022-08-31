@@ -13,3 +13,127 @@
     --blue: #33658A;
     --green: #2F4858;
 }
+
+:root {
+    /*===== Colores =====*/
+    --first-color: #000000;
+    --input-color: #000000;
+    --border-color: #DADCE0;
+    /*===== Fuente y tipografia =====*/
+    --body-font: 'Roboto', sans-serif;
+    --normal-font-size: 0.95rem;
+    --small-font-size: 0.70rem;
+    --orange: #F26419;
+    --yellow: #2d9ff6;
+    --gray: #86BBD8;
+    --blue: #33658A;
+    --green: #2F4858;
+}
+
+
+/* login form */
+
+.context {
+    margin: 1rem;
+}
+
+
+.form {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9;
+    box-shadow: 0.7rem 0.7rem 2rem #0000001f
+}
+
+
+.l-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 0.5rem;
+    font-family: monospace;
+    font-weight: bold;
+    padding: 3rem;
+    flex-direction: column;
+}
+
+.form__div {
+    position: relative;
+    height: 42px;
+    margin: 1rem;
+}
+
+.form__input:focus {
+    color: rgb(0, 0, 0);
+    border: 1.5px solid var(--first-color);
+    transition: 0.5s;
+}
+
+.form__input {
+    position: absolute;
+    top: 0;
+    color: var(--input-color);
+    left: 0;
+    width: 100%;
+    height: 2.8rem;
+    font-size: var(--normal-font-size);
+    border: 1px solid var(--border-color);
+    border-radius: 0.2rem;
+    border-color: #80868B;
+    outline: none;
+    font-family: monospace;
+    font-weight: bold;
+    padding: 1rem;
+    background: none;
+    z-index: 0;
+}
+
+.form__input:focus+.form__label {
+    top: -0.5rem;
+    left: 0.8rem;
+    color: var(--first-color);
+    font-size: var(--small-font-size);
+    font-weight: 500;
+    z-index: 0;
+}
+
+.form__label {
+    position: absolute;
+    top: -0.5rem;
+    left: 0.8rem;
+    padding: 0 0.25rem;
+    background-color: whitesmoke;
+    color: #80868B;
+    font-size: 0.89rem;
+    transition: .3s;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: bold;
+    z-index: 0;
+}
+
+.button-primary {
+    background-color: rgb(0, 0, 0) !important;
+    color: white !important;
+    transition: all 0.2s ease-in-out;
+    margin-right: 1rem;
+}
+
+#Type {
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 0.2rem !important;
+    margin-top: 0.9rem;
+    font-size: var(--normal-font-size);
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list li {
+    padding: 0.5rem;
+    font-size: var(--normal-font-size);
+}

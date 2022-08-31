@@ -150,11 +150,20 @@ ob_end_flush();
             </div>
             <div class="form__div">
                 <label for="Type" style="color:gray">Type:</label>
-                <select name="Type" id="Type">
-                    <option value="--">--</option>
-                    <option value="admin">Admin</option>
-                    <option value="member">Member</option>
-                </select>
+
+                <!-- check if super admin or not -->
+                <?php
+                if ($result_get['Type'] == "superadmin") {
+                    echo $result_get['Type'];
+                } else {
+                    echo "<select name=\"Type\" id=\"Type\">
+                            <option value=\"--\">--</option>
+                            <option value=\"admin\">Admin</option>
+                    <option value=\"member\">Member</option>
+                </select>";
+                }
+                ?>
+
             </div>
             <br>
             <br>

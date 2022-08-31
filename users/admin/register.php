@@ -24,31 +24,39 @@ if (isset($_POST['register'])) {
     $password = $_POST['Password'];
     $type = $_POST['Type'];
 
-    $con = get_con();
-    $sql = "SELECT * FROM `members` WHERE Username = '$username' AND Password = '$password' AND Email = '$email';";
-
-    $result = mysqli_query($con, $sql);
-    $result_user_type = mysqli_fetch_array($result);
-    $row = mysqli_num_rows($result);
-
-    if ($row > 0) {
-        // check if user or admin and simple redirect to it
-        echo "<script>alert('Account already exsists');</script>";
-        // close connection
-        mysqli_close($con);
+    if ($firstname == " " && $lastname == " " && $department == " " && $email == " " && $phone == " " && $username && $password == " " && $type == " ") {
+        echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
     } else {
+        $con = get_con();
+        $sql = "SELECT * FROM `members` WHERE Username = '$username' AND Password = '$password' AND Email = '$email';";
 
-        // if no member then insert
-        $sql = "INSERT INTO `members` (`FirstName`, `LastName`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES ('$firstname','$lastname','$department','$email','$phone','$username','$password','$type');";
-        if ($con->query($sql) === TRUE) {
-            echo "<script>alert('Account Created Successfully');</script>";
+        $result = mysqli_query($con, $sql);
+        $result_user_type = mysqli_fetch_array($result);
+        $row = mysqli_num_rows($result);
+
+        if ($row > 0) {
+            // check if user or admin and simple redirect to it
+            echo "<script>alert('Account already exsists');</script>";
+            // close connection
+            mysqli_close($con);
         } else {
-            echo "<script>alert('Something went wrong.');</script>";
+            register($firstname, $lastname, $department, $email, $phone, $username, $password, $type);
         }
-        $con->close();
     }
 }
+
 // login block ends here
+function register($firstname, $lastname, $department, $email, $phone, $username, $password, $type)
+{
+    $con = get_con();
+    $sql = "INSERT INTO `members` (`FirstName`, `LastName`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES ('$firstname','$lastname','$department','$email','$phone','$username','$password','$type');";
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Account Created Successfully');</script>";
+    } else {
+        echo "<script>alert('Something went wrong.');</script>";
+    }
+    $con->close();
+}
 
 //members list
 function member_list()
@@ -112,11 +120,13 @@ ob_end_flush();
 
     <div class="con_head">
         <p>Register</p>
+        <?php echo $_SESSION['name']; ?>
+        <?php echo $_SESSION['id']; ?>
     </div>
     <br>
     <div class="list">
         <p style="float:left">Members</p>
-        <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:66vw;">
+        <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:86vw;">
             <?php member_list(); ?>
         </div>
     </div>
@@ -124,7 +134,7 @@ ob_end_flush();
 
     <br>
     <div class="l-form">
-        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:66vw">
+        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:86vw">
             <div class="context">
                 <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
                 <p>Register User as</p>

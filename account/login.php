@@ -32,10 +32,11 @@ if (isset($_POST['login'])) {
     if ($row > 0) {
 
         //session variables
-        $_SESSION['name'] = $name;
+        $_SESSION['name'] = $result_user_type['Username'];
+        $_SESSION['id'] = $result_user_type['MemberId'];
 
         // check if user or admin and simple redirect to it
-        if ($result_user_type['Type'] == 'admin') {
+        if ($result_user_type['Type'] == 'admin' || $result_user_type['Type'] == 'superadmin') {
             header("Location:../users/admin_dashboard.php");
         } else {
             header("Location:../users/user_dashboard.php");
