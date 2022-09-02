@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2022 at 05:14 PM
+-- Generation Time: Sep 02, 2022 at 08:55 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -65,6 +65,24 @@ INSERT INTO `members` (`MemberId`, `FirstName`, `LastName`, `Department`, `Email
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `professor`
+--
+
+CREATE TABLE `professor` (
+  `ProfessorId` int(11) NOT NULL,
+  `ProfessorFirstName` varchar(50) NOT NULL,
+  `ProfessorLastName` varchar(50) NOT NULL,
+  `Department` varchar(50) NOT NULL,
+  `EmailId` varchar(100) NOT NULL,
+  `Phone` varchar(10) NOT NULL,
+  `MemberId` int(11) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Part` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `timeslot`
 --
 
@@ -93,6 +111,12 @@ ALTER TABLE `members`
   ADD PRIMARY KEY (`MemberId`);
 
 --
+-- Indexes for table `professor`
+--
+ALTER TABLE `professor`
+  ADD KEY `Member_professor` (`MemberId`);
+
+--
 -- Indexes for table `timeslot`
 --
 ALTER TABLE `timeslot`
@@ -117,6 +141,12 @@ ALTER TABLE `members`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `Member_course` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`);
+
+--
+-- Constraints for table `professor`
+--
+ALTER TABLE `professor`
+  ADD CONSTRAINT `Member_professor` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`);
 
 --
 -- Constraints for table `timeslot`
