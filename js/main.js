@@ -5,6 +5,7 @@ var slideUp = {
 };
 
 ScrollReveal().reveal('.con_head', slideUp);
+ScrollReveal().reveal('.container', slideUp);
 
 // hamburger menu
 function w3_open() {

@@ -57,23 +57,18 @@ ob_end_flush();
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Home</title>
+    <title>Update</title>
 </head>
 
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
-        <a href="register.php" class="w3-bar-item w3-button w3-orange">Registration</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="../../../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
+        <a href="../../register.php" class="w3-bar-item w3-button">Registration</a>
     </div>
     <!-- Page Content -->
 
-    <div class="">
+    <div>
         <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
     </div>
 
@@ -155,11 +150,20 @@ ob_end_flush();
             </div>
             <div class="form__div">
                 <label for="Type" style="color:gray">Type:</label>
-                <select name="Type" id="Type">
-                    <option value="--">--</option>
-                    <option value="admin">Admin</option>
-                    <option value="member">Member</option>
-                </select>
+
+                <!-- check if super admin or not -->
+                <?php
+                if ($result_get['Type'] == "superadmin") {
+                    echo $result_get['Type'];
+                } else {
+                    echo "<select name=\"Type\" id=\"Type\">
+                            <option value=\"--\">--</option>
+                            <option value=\"admin\">Admin</option>
+                    <option value=\"member\">Member</option>
+                </select>";
+                }
+                ?>
+
             </div>
             <br>
             <br>

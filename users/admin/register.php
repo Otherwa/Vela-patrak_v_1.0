@@ -24,31 +24,39 @@ if (isset($_POST['register'])) {
     $password = $_POST['Password'];
     $type = $_POST['Type'];
 
-    $con = get_con();
-    $sql = "SELECT * FROM `members` WHERE Username = '$username' AND Password = '$password' AND Email = '$email';";
-
-    $result = mysqli_query($con, $sql);
-    $result_user_type = mysqli_fetch_array($result);
-    $row = mysqli_num_rows($result);
-
-    if ($row > 0) {
-        // check if user or admin and simple redirect to it
-        echo "<script>alert('Account already exsists');</script>";
-        // close connection
-        mysqli_close($con);
+    if ($firstname == " " && $lastname == " " && $department == " " && $email == " " && $phone == " " && $username && $password == " " && $type == " ") {
+        echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
     } else {
+        $con = get_con();
+        $sql = "SELECT * FROM `members` WHERE Username = '$username' AND Password = '$password' AND Email = '$email';";
 
-        // if no member then insert
-        $sql = "INSERT INTO `members` (`FirstName`, `LastName`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES ('$firstname','$lastname','$department','$email','$phone','$username','$password','$type');";
-        if ($con->query($sql) === TRUE) {
-            echo "<script>alert('Account Created Successfully');</script>";
+        $result = mysqli_query($con, $sql);
+        $result_user_type = mysqli_fetch_array($result);
+        $row = mysqli_num_rows($result);
+
+        if ($row > 0) {
+            // check if user or admin and simple redirect to it
+            echo "<script>alert('Account already exsists');</script>";
+            // close connection
+            mysqli_close($con);
         } else {
-            echo "<script>alert('Something went wrong.');</script>";
+            register($firstname, $lastname, $department, $email, $phone, $username, $password, $type);
         }
-        $con->close();
     }
 }
+
 // login block ends here
+function register($firstname, $lastname, $department, $email, $phone, $username, $password, $type)
+{
+    $con = get_con();
+    $sql = "INSERT INTO `members` (`FirstName`, `LastName`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES ('$firstname','$lastname','$department','$email','$phone','$username','$password','$type');";
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Account Created Successfully');</script>";
+    } else {
+        echo "<script>alert('Something went wrong.');</script>";
+    }
+    $con->close();
+}
 
 //members list
 function member_list()
@@ -60,7 +68,7 @@ function member_list()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "id: " . $row["MemberId"] . " - Name: " . $row["FirstName"] . " " . $row["LastName"] . " - Email: " . $row["Email"] . " - Department: " . $row["Department"] . " - Type: " . $row["Type"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\delete.php\\?DeleteId="  . $row["MemberId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\update.php\\?UpdateId=" . $row["MemberId"] . "\">Update</a></li>";
+            echo "<li>" . "id: " . $row["MemberId"] . " - Name: " . $row["FirstName"] . " " . $row["LastName"] . " - Email: " . $row["Email"] . " - Department: " . $row["Department"] . " - Type: " . $row["Type"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_register_delete.php\\?DeleteId="  . $row["MemberId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_register_update.php\\?UpdateId=" . $row["MemberId"] . "\">Update</a></li>";
         }
     } else {
         echo "No Members";
@@ -88,15 +96,22 @@ ob_end_flush();
 
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Home</title>
+    <title>Register</title>
 </head>
 
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
+<<<<<<< HEAD
         <a href="../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button w3-orange">Registration</a>
+=======
+        <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
+        <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
+        <a href="register.php" class="w3-bar-item w3-button w3-black">Registration</a>
+        <a href="timetable.php" class="w3-bar-item w3-button">Time-Table</a>
+>>>>>>> 1d5c350d8fd7ad09c6af0a9698cc985f15868f52
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
@@ -111,11 +126,13 @@ ob_end_flush();
 
     <div class="con_head">
         <p>Register</p>
+        <?php echo $_SESSION['name']; ?>
+        <?php echo $_SESSION['id']; ?>
     </div>
     <br>
     <div class="list">
         <p style="float:left">Members</p>
-        <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:66vw;">
+        <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:86vw;">
             <?php member_list(); ?>
         </div>
     </div>
@@ -123,8 +140,11 @@ ob_end_flush();
 
     <br>
     <div class="l-form">
-        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:66vw">
-            <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:86vw">
+            <div class="context">
+                <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                <p>Register User as</p>
+            </div>
             <br>
             <br>
             <div class="form__div">
