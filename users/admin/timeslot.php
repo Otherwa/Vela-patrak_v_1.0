@@ -18,7 +18,7 @@ if (isset($_POST['save'])) {
     $memberid =  $id; //is member id of login generated at login
     $endtime =  $_POST['EndTime'];
 
-    if ($timeslot == " " && $starttime == " " && $endtime == " " && $memberid == " ") {
+    if ($timeslot == " " || $starttime == " " || $endtime == " " || $memberid == " ") {
         echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
     } else {
         $con = get_con();
