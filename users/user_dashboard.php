@@ -22,7 +22,7 @@ ob_end_flush();
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Home</title>
+    <title>User-Dashboard</title>
 </head>
 
 <body>
@@ -44,6 +44,7 @@ ob_end_flush();
     <div class="con_head">
         <p>Dashboard</p>
         <?php echo $_SESSION['name']; ?>
+        <?php echo $_SESSION['id']; ?>
     </div>
 
 
