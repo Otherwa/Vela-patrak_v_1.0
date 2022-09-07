@@ -117,6 +117,11 @@
     align-items: center;
 }
 
+.list .form {
+    height: 20rem;
+    overflow-y: scroll;
+}
+
 .list li {
     padding: 0.5rem;
     font-size: var(--normal-font-size);

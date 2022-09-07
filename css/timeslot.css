@@ -32,6 +32,17 @@
 
 
 /* login form */
+.container {
+    display: flex;
+    padding: 0.8rem;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
 
 .context {
     margin: 1rem;

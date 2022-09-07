@@ -74,6 +74,12 @@ body {
     margin: 5vw;
 }
 
+.txt {
+    text-align: center;
+    display: block;
+}
+
+
 /* for responsive titel */
 @media screen and (max-width: 568px) {
     .con_head p {

@@ -26,6 +26,8 @@ if (isset($_POST['register'])) {
 
     if ($firstname == " " && $lastname == " " && $department == " " && $email == " " && $phone == " " && $username && $password == " " && $type == " ") {
         echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
+    } else if (strlen($password) < 8) {
+        echo '<script>alert(\'Password too short\');</script>';
     } else {
         $con = get_con();
         $sql = "SELECT * FROM `members` WHERE Username = '$username' AND Password = '$password' AND Email = '$email';";
@@ -111,8 +113,12 @@ ob_end_flush();
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button w3-black">Registration</a>
+<<<<<<< HEAD
         <a href="timetable.php" class="w3-bar-item w3-button">Time-Table</a>
 >>>>>>> 46af3a9099084714ecfb7aa174c24fd060cda49f
+=======
+        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
+>>>>>>> c37058bf19e8edbe8244f9569ab3c5c683a09d27
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
@@ -123,10 +129,13 @@ ob_end_flush();
         <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
     </div>
 
-    <div class="con_head">
-        <p>Register</p>
+    <code class="txt">
         <?php echo $_SESSION['name']; ?>
         <?php echo $_SESSION['id']; ?>
+    </code>
+
+    <div class="con_head">
+        <p>Register</p>
     </div>
     <br>
     <div class="list">
