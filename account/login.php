@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
     $name =  $_POST['Name'];
     $pass = $_POST['Password'];
 
-    
+
 
     $con = get_con();
     $sql = "SELECT * FROM `members` WHERE Username = '$name' AND Password = '$pass';";
@@ -32,10 +32,11 @@ if (isset($_POST['login'])) {
     if ($row > 0) {
 
         //session variables
-        $_SESSION['name'] = $name;
+        $_SESSION['name'] = $result_user_type['Username'];
+        $_SESSION['id'] = $result_user_type['MemberId'];
 
         // check if user or admin and simple redirect to it
-        if ($result_user_type['Type'] == 'admin') {
+        if ($result_user_type['Type'] == 'admin' || $result_user_type['Type'] == 'superadmin') {
             header("Location:../users/admin_dashboard.php");
         } else {
             header("Location:../users/user_dashboard.php");
@@ -69,14 +70,14 @@ ob_end_flush();
     <link rel="stylesheet" href="../css/login.css">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Home</title>
+    <title>Login</title>
 </head>
 
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
         <a href="../index.php" class="w3-bar-item w3-button">Home</a>
-        <a href="login.php" class="w3-bar-item w3-button">Login</a>
+        <a href="login.php" class="w3-bar-item w3-button w3-black">Login</a>
         <a href="../about.php" class="w3-bar-item w3-button">About</a>
     </div>
     <!-- Page Content -->
@@ -91,8 +92,11 @@ ob_end_flush();
     <br>
     <br>
     <div class="l-form">
-        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:33rem">
-            <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:45rem">
+            <div class="context">
+                <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                <p>Login as</p>
+            </div>
             <br>
             <br>
             <div class="form__div">
@@ -107,7 +111,7 @@ ob_end_flush();
             </div>
             <br>
             <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Login"
-                name="login" style="float:right">            
+                name="login" style="float:right">
     </div>
     </form>
     </div>

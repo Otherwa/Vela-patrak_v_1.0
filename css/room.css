@@ -1,5 +1,21 @@
 :root {
     /*===== Colores =====*/
+    --first-color: #2dacf6;
+    --input-color: #999999;
+    --border-color: #DADCE0;
+    /*===== Fuente y tipografia =====*/
+    --body-font: 'Roboto', sans-serif;
+    --normal-font-size: 0.89rem;
+    --small-font-size: 0.70rem;
+    --orange: #F26419;
+    --yellow: #F6AE2D;
+    --gray: #86BBD8;
+    --blue: #33658A;
+    --green: #2F4858;
+}
+
+:root {
+    /*===== Colores =====*/
     --first-color: #000000;
     --input-color: #000000;
     --border-color: #DADCE0;
@@ -16,6 +32,17 @@
 
 
 /* login form */
+.container {
+    display: flex;
+    padding: 0.8rem;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
 
 .context {
     margin: 1rem;
@@ -115,11 +142,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.list .form {
-    height: 20rem;
-    overflow-y: scroll;
 }
 
 .list li {
