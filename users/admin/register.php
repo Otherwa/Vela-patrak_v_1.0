@@ -104,21 +104,10 @@ ob_end_flush();
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-<<<<<<< HEAD
-        <a href="../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
-        <a href="register.php" class="w3-bar-item w3-button w3-orange">Registration</a>
-        <a href="timetable.php" class="w3-bar-item w3-button">Time Table</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-=======
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button w3-black">Registration</a>
-<<<<<<< HEAD
-        <a href="timetable.php" class="w3-bar-item w3-button">Time-Table</a>
->>>>>>> 46af3a9099084714ecfb7aa174c24fd060cda49f
-=======
         <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
->>>>>>> c37058bf19e8edbe8244f9569ab3c5c683a09d27
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
