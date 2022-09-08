@@ -52,6 +52,8 @@ function insert_timeslot($timeslot, $starttime, $memberid, $endtime)
     $con->close();
 }
 
+
+// list the timeslot in db
 function timeslot()
 {
     $con = get_con();
@@ -158,7 +160,7 @@ ob_end_flush();
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../js/main.js"></script>
-    <script src="../../js/login.js"></script>
+    <script src="../../js/timeslot.js"></script>
 </body>
 
 </html>
