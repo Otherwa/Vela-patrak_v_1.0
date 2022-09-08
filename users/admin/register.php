@@ -141,7 +141,8 @@ ob_end_flush();
     <br>
     <div class="list">
         <p style="float:left">Members</p>
-        <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:86vw;">
+        <div id="member_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
+            style="width:auto;height:50vh;overflow-y:scroll">
             <?php member_list(); ?>
         </div>
     </div>

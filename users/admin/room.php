@@ -11,7 +11,65 @@ if (!isset($_SESSION['name'])) {
 // session passes id
 $id = $_SESSION['id'];
 
+if (isset($_POST['Save'])) {
+    $roomno = $_POST['RoomNo'];
+    $floor = $_POST['Floor'];
+    $capacity = $_POST['Capacity'];
+    $memberid = $id;
+
+    if ($roomno == " " || $floor == " " || $capacity == " ") {
+        echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
+    } else {
+        $con = get_con();
+        $sql = "SELECT * FROM `rooms` WHERE RoomNo = '$roomno';";
+        $result = mysqli_query($con, $sql);
+        $result_user_type = mysqli_fetch_array($result);
+        $row = mysqli_num_rows($result);
+
+        if ($row > 0) {
+            // check if user or admin and simple redirect to it
+            echo "<script>alert('Room Already Exists');</script>";
+            // close connection
+            mysqli_close($con);
+        } else {
+            insert_room($roomno, $floor, $capacity, $id);
+        }
+    }
+}
+
+// insert if valid
+function insert_room($roomno, $floor, $capacity, $memberid)
+{
+    $con = get_con();
+    $sql = "INSERT INTO `rooms` (`RoomNo`, `Floor`, `Capacity`, `MemberId`, `Date`) VALUES ('$roomno', '$floor', '$capacity', '$memberid',current_timestamp());";
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Room Successfully Registered');</script>";
+    } else {
+        echo "<script>alert('Something went wrong.');</script>";
+    }
+    $con->close();
+}
+
+// show all list rooms
+function rooms()
+{
+    $con = get_con();
+    $sql = "SELECT * FROM rooms";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>" . "Room-No: " . $row["RoomNo"] . " -Floor: " . $row["Floor"] . " -Capacity: " . $row["Capacity"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_room_update.php\\?UpdateId=" . $row["RoomNo"] . "\">Update</a></li> " . "<a style=\"color:red \" href=\"action\\admin_room_delete.php\\?DeleteId=" . $row["RoomNo"] . "\">Delete</a></li>";
+        }
+    } else {
+        echo "No Room";
+    }
+    $con->close();
+}
+ob_end_flush();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +81,7 @@ $id = $_SESSION['id'];
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/professor.css">
+    <link rel="stylesheet" href="../../css/room.css">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -60,13 +118,13 @@ $id = $_SESSION['id'];
     <div class="container">
         <div class="list">
             <p style="float:left">Room-Registration</p>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
-
+            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:50vh;overflow-y:scroll">
+                <?php rooms(); ?>
             </div>
         </div>
         <br>
         <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:38rem">
+            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
                 <div class="context">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">

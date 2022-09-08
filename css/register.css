@@ -126,3 +126,24 @@
     padding: 0.5rem;
     font-size: var(--normal-font-size);
 }
+
+#member_list::-webkit-scrollbar {
+    width: 9px;
+}
+
+
+/* Track */
+#member_list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+}
+
+
+/* Handle */
+#member_list::-webkit-scrollbar-thumb {
+    background: #000000;
+}
+
+/* Handle on hover */
+#member_list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.358);
+}

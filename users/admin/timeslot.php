@@ -121,13 +121,13 @@ ob_end_flush();
     <div class="container">
         <div class="list">
             <p style="float:left">Time-Slots</p>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
+            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:50vh;overflow-y:scroll">
                 <?php timeslot(); ?>
             </div>
         </div>
         <br>
         <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:38rem">
+            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
                 <div class="context">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">
