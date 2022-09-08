@@ -12,15 +12,14 @@ if (!isset($_SESSION['name'])) {
 $id = $_SESSION['id'];
 
 //add course
-if (isset($_POST["Save"])){
+if (isset($_POST["Save"])) {
     $courseid = $_POST["CourseId"];
     $coursename = $_POST["CourseName"];
     $strength = $_POST["Strength"];
     $abbreviation = $_POST["Abbreviation"];
     $memberid = $id;
 
-    if($courseid == "" && $coursename == "" && $strength == "" && $abbreviation == "")
-    {
+    if ($courseid == "" && $coursename == "" && $strength == "" && $abbreviation == "") {
         echo "<script>alert('Kindly Fill Form Correctly');</script>";
     } else {
         $con = get_con();
@@ -39,7 +38,8 @@ if (isset($_POST["Save"])){
     }
 }
 
-function insert_course($courseid, $coursename, $strength, $abbreviation, $memberid){
+function insert_course($courseid, $coursename, $strength, $abbreviation, $memberid)
+{
     $con = get_con();
 
     $sql = "INSERT INTO `course` VALUES ('$courseid', '$coursename', '$strength', '$abbreviation', '$memberid', current_timestamp());";
@@ -49,7 +49,7 @@ function insert_course($courseid, $coursename, $strength, $abbreviation, $member
     } else {
         echo "<script>alert('Something went wrong.');</script>";
     }
-    
+
     $con->close();
 }
 
@@ -124,43 +124,42 @@ ob_end_flush();
             </div>
         </div>
         <br>
-        <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:38rem">
-                <div class="context">
-                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
-                        style="height:3rem">
-                    <p>Set Course</p>
-                </div>
-                <br>
-                <br>
-                <div class="form__div">
-                    <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8"
-                        autocomplete="off">
-                    <label for="" class="form__label">Course Id</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT"
-                        autocomplete="off">
-                    <label for="" class="form__label">Course Name</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="number" class="form__input" name="Strength" id="Strength"
-                        placeholder="e.g 45" autocomplete="off">
-                    <label for="" class="form__label">Strength</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="text" class="form__input" name="Abbreviation" id="Abbreviation"
-                        placeholder="e.g BSC-IT" autocomplete="off">
-                    <label for="" class="form__label">Abbreviation</label>
-                </div>
-                <br>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
-                    name="Save" style="float:right">
-        </div>
-        </form>
+        <div class="l-form"></div>
+        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+            <div class="context">
+                <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                <p>Set Course</p>
+            </div>
+            <br>
+            <br>
+            <div class="form__div">
+                <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8"
+                    autocomplete="off">
+                <label for="" class="form__label">Course Id</label>
+            </div>
+            <br>
+            <div class="form__div">
+                <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT"
+                    autocomplete="off">
+                <label for="" class="form__label">Course Name</label>
+            </div>
+            <br>
+            <div class="form__div">
+                <input type="number" class="form__input" name="Strength" id="Strength" placeholder="e.g 45"
+                    autocomplete="off">
+                <label for="" class="form__label">Strength</label>
+            </div>
+            <br>
+            <div class="form__div">
+                <input type="text" class="form__input" name="Abbreviation" id="Abbreviation" placeholder="e.g BSC-IT"
+                    autocomplete="off">
+                <label for="" class="form__label">Abbreviation</label>
+            </div>
+            <br>
+            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
+                name="Save" style="float:right">
+    </div>
+    </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../js/main.js"></script>
