@@ -11,60 +11,58 @@ if (!isset($_SESSION['name'])) {
 // session passes id
 $id = $_SESSION['id'];
 
-// insert
-if (isset($_POST['save'])) {
-    $timeslot =  $_POST['TimeSlot'];
-    $starttime =  $_POST['StartTime'];
-    $memberid =  $id; //is member id of login generated at login
-    $endtime =  $_POST['EndTime'];
+//add course
+if (isset($_POST["Save"])){
+    $courseid = $_POST["CourseId"];
+    $coursename = $_POST["CourseName"];
+    $strength = $_POST["Strength"];
+    $abbreviation = $_POST["Abbreviation"];
+    $memberid = $id;
 
-    if ($timeslot == " " && $starttime == " " && $endtime == " " && $memberid == " ") {
-        echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
+    if($courseid == "" && $coursename == "" && $strength == "" && $abbreviation == "")
+    {
+        echo "<script>alert('Kindly Fill Form Correctly');</script>";
     } else {
         $con = get_con();
-        $sql = "SELECT * FROM `timeslot` WHERE TimeSlot = '" . $timeslot . "'";
+        $sql = "SELECT * FROM `course` WHERE CourseId = '" . $courseid . "'";
 
         $result = mysqli_query($con, $sql);
         $result_user_type = mysqli_fetch_array($result);
         $row = mysqli_num_rows($result);
 
         if ($row > 0) {
-            // check if timeslot already exists or not simple redirect to it
-            echo "<script>alert('Timeslot already exsists');</script>";
-            // close connection
+            echo "<script>alert('Course already exsists');</script>";
             mysqli_close($con);
         } else {
-            insert_timeslot($timeslot, $starttime, $endtime, $memberid);
+            insert_course($courseid, $coursename, $strength, $abbreviation, $memberid);
         }
     }
 }
 
-// insert in timeslot
-function insert_timeslot($timeslot, $starttime, $memberid, $endtime)
-{
+function insert_course($courseid, $coursename, $strength, $abbreviation, $memberid){
     $con = get_con();
-    $sql = "INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) VALUES ('$timeslot', '$starttime', '$memberid', '$endtime',current_timestamp());";
+
+    $sql = "INSERT INTO `course` VALUES ('$courseid', '$coursename', '$strength', '$abbreviation', '$memberid', current_timestamp());";
+
     if ($con->query($sql) === TRUE) {
-        echo "<script>alert('Time-Slot Successfully Registered');</script>";
+        echo "<script>alert('Course Successfully Registered');</script>";
     } else {
         echo "<script>alert('Something went wrong.');</script>";
     }
+    
     $con->close();
 }
 
-
-// list the timeslot in db
-function timeslot()
+function course()
 {
     $con = get_con();
     $con = get_con();
-    $sql = "SELECT * FROM timeslot";
+    $sql = "SELECT * FROM course";
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
-        // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "Timeslot: " . $row["TimeSlot"] . " -Start-Time: " . $row["StartTime"] . " -End-Time: " . $row["EndTime"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_timeslot_update.php\\?UpdateId=" . $row["TimeSlot"] . "\">Update</a></li>";
+            echo "<li>" . "CourseId: " . $row["CourseId"] . " -Course-Name: " . $row["CourseName"] . " -Strength: " . $row["Strength"] . " -Abbreviation: " . $row["Abbreviation"] . " -Member-Id: " . $row["MemberId"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_course_delete.php\\?DeleteId="  . $row["CourseId"] . "\">Delete</a>" . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_course_update.php\\?UpdateId=" . $row["CourseId"] . "\">Update</a></li>";
         }
     } else {
         echo "No Timeslot";
@@ -84,7 +82,7 @@ ob_end_flush();
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/timeslot.css">
+    <link rel="stylesheet" href="../../css/professor.css">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -98,10 +96,10 @@ ob_end_flush();
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="timeslot.php" class="w3-bar-item w3-button w3-black">Time-Slot</a>
+        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
         <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
         <a href="room.php" class="w3-bar-item w3-button">Room</a>
-        <a href="course.php" class="w3-bar-item w3-button">Course</a>
+        <a href="course.php" class="w3-bar-item w3-button w3-black">Course</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>
     <!-- Page Content -->
@@ -115,52 +113,58 @@ ob_end_flush();
     </code>
 
     <div class="con_head">
-        <p> Time-Slot </p>
+        <p> Course-Registration </p>
     </div>
 
     <div class="container">
         <div class="list">
-            <p style="float:left">Time-Slots</p>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:50vh;overflow-y:scroll">
-                <?php timeslot(); ?>
+            <p style="float:left">Course-Registration</p>
+            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
+                <?php course(); ?>
             </div>
         </div>
         <br>
         <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:38rem">
                 <div class="context">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">
-                    <p>Set Time-slot</p>
+                    <p>Set Course</p>
                 </div>
                 <br>
                 <br>
                 <div class="form__div">
-                    <input type="number" class="form__input" name="TimeSlot" id="TimeSlot" placeholder="e.g xyz"
+                    <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8"
                         autocomplete="off">
-                    <label for="" class="form__label">Time-Slot</label>
+                    <label for="" class="form__label">Course Id</label>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="time" class="form__input" name="StartTime" id="StartTime" placeholder="e.g xyz@123"
+                    <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT"
                         autocomplete="off">
-                    <label for="" class="form__label">Start-Time</label>
+                    <label for="" class="form__label">Course Name</label>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="time" class="form__input" name="EndTime" id="EndTime"
-                        placeholder="e.g someone@gmail.com" autocomplete="off">
-                    <label for="" class="form__label">End-Time</label>
+                    <input type="number" class="form__input" name="Strength" id="Strength"
+                        placeholder="e.g 45" autocomplete="off">
+                    <label for="" class="form__label">Strength</label>
+                </div>
+                <br>
+                <div class="form__div">
+                    <input type="text" class="form__input" name="Abbreviation" id="Abbreviation"
+                        placeholder="e.g BSC-IT" autocomplete="off">
+                    <label for="" class="form__label">Abbreviation</label>
                 </div>
                 <br>
                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
-                    name="save" style="float:right">
+                    name="Save" style="float:right">
         </div>
         </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../js/main.js"></script>
-    <script src="../../js/timeslot.js"></script>
+    <script src="../../js/course.js"></script>
 </body>
 
 </html>

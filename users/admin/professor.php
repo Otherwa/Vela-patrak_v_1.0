@@ -1,8 +1,6 @@
 <?php
 include("../../config/connect.php");
-
 ob_start();
-
 session_start();
 
 if (!isset($_SESSION['name'])) {
@@ -76,7 +74,6 @@ function professor()
 // echo $status;
 ob_end_flush();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,10 +102,10 @@ ob_end_flush();
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
-        <a href="professor.php" class="w3-bar-item w3-button w3-black">Professor</a>
+        <a href="timeslot.php" class="w3-bar-item w3-button w3-black">Time-Slot</a>
+        <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
         <a href="room.php" class="w3-bar-item w3-button">Room</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="course.php" class="w3-bar-item w3-button">Course</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>
     <!-- Page Content -->
@@ -127,6 +124,8 @@ ob_end_flush();
 
     <div class="container">
         <div class="list">
+            <p style="float:left">Profesor</p>
+            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
             <p style="float:left">Professor List</p>
             <select name="ProfList" id="ProfList" onchange="get_professor()">
                 <option value="--">--</option>
@@ -175,11 +174,11 @@ ob_end_flush();
         </div>
         <br>
         <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:38rem">
                 <div class="context">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">
-                    <p>Add Professor</p>
+                    <p>Set Professor</p>
                 </div>
                 <br>
                 <div class="form__div">
@@ -201,15 +200,15 @@ ob_end_flush();
                     autocomplete="off">
                     <label for="" class="form__label">Phone Number</label>
                 </div>
-                <br>
 
+                <br>
                 <div class="form__div">
                     <input type="text" class="form__input" name="EmailId" id="EmailId" placeholder="e.g xyz"
                     autocomplete="off">
                     <label for="" class="form__label">Email-ID</label>
+
                 </div>
                 <br>
-
                 <div class="form__div">
 
                 <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
@@ -218,11 +217,14 @@ ob_end_flush();
                     <option value="Degree">Degree</option>
                 </select>
 
+
                 </div>
                 <br>
-
                 <div class="form__div">
-
+                    <input type="time" class="form__input" name="EndTime" id="EndTime"
+                        placeholder="e.g someone@gmail.com" autocomplete="off">
+                    <label for="" class="form__label">End-Time</label>
+                <br>
                 <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
                 <select name="Department" id="Department">
                     <option value="--">--</option>
@@ -265,7 +267,6 @@ ob_end_flush();
                     <option value="BMM">BMMC</option>
                 </select>              
                 </div>
-                <br>
                 <br>
                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
                     name="save" style="float:right">
