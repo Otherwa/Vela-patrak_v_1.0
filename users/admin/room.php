@@ -37,10 +37,15 @@ $id = $_SESSION['id'];
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="timeslot.php" class="w3-bar-item w3-button w3-black">Time-Slot</a>
+        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
         <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
+<<<<<<< HEAD
         <a href="room.php" class="w3-bar-item w3-button">Room</a>
         <a href="course.php" class="w3-bar-item w3-button">Course</a>
+=======
+        <a href="room.php" class="w3-bar-item w3-button w3-black">Rooms</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+>>>>>>> be460780fd259579aaed7c98985ffa8e8cfd901c
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>
     <!-- Page Content -->
@@ -54,7 +59,7 @@ $id = $_SESSION['id'];
     </code>
 
     <div class="con_head">
-        <p> Room-Registration </p>
+        <p> Rooms </p>
     </div>
 
     <div class="container">

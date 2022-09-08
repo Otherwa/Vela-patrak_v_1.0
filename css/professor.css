@@ -1,21 +1,5 @@
 :root {
     /*===== Colores =====*/
-    --first-color: #2dacf6;
-    --input-color: #999999;
-    --border-color: #DADCE0;
-    /*===== Fuente y tipografia =====*/
-    --body-font: 'Roboto', sans-serif;
-    --normal-font-size: 0.89rem;
-    --small-font-size: 0.70rem;
-    --orange: #F26419;
-    --yellow: #F6AE2D;
-    --gray: #86BBD8;
-    --blue: #33658A;
-    --green: #2F4858;
-}
-
-:root {
-    /*===== Colores =====*/
     --first-color: #000000;
     --input-color: #000000;
     --border-color: #DADCE0;
@@ -35,7 +19,7 @@
 .container {
     display: flex;
     padding: 0.8rem;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -55,7 +39,6 @@
     background-color: #f9f9f9;
     box-shadow: 0.7rem 0.7rem 2rem #0000001f
 }
-
 
 .l-form {
     display: flex;
