@@ -14,6 +14,31 @@
     --green: #2F4858;
 }
 
+html {
+    cursor: auto;
+    scroll-behavior: smooth;
+}
+
+#prof_list::-webkit-scrollbar {
+    width: 9px;
+}
+
+
+/* Track */
+#prof_list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+}
+
+
+/* Handle */
+#prof_list::-webkit-scrollbar-thumb {
+    background: #000000;
+}
+
+/* Handle on hover */
+#prof_list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.358);
+}
 
 /* login form */
 .container {
