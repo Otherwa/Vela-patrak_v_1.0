@@ -52,6 +52,8 @@ function insert_timeslot($timeslot, $starttime, $memberid, $endtime)
     $con->close();
 }
 
+
+// list the timeslot in db
 function timeslot()
 {
     $con = get_con();
@@ -62,7 +64,7 @@ function timeslot()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "Timeslot: " . $row["TimeSlot"] . " - Start-Time: " . $row["StartTime"] . "- End-Time: " . $row["EndTime"] . " - Member-id: " . $row["MemberId"] . "  -Date: " . $row["Date"] . " &nbsp;&nbsp";
+            echo "<li>" . "Timeslot: " . $row["TimeSlot"] . " -Start-Time: " . $row["StartTime"] . " -End-Time: " . $row["EndTime"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_timeslot_update.php\\?UpdateId=" . $row["TimeSlot"] . "\">Update</a></li>";
         }
     } else {
         echo "No Timeslot";
@@ -82,7 +84,7 @@ ob_end_flush();
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/timetable.css">
+    <link rel="stylesheet" href="../../css/timeslot.css">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -96,10 +98,10 @@ ob_end_flush();
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="timetable.php" class="w3-bar-item w3-button w3-black">Time-Table</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="timeslot.php" class="w3-bar-item w3-button w3-black">Time-Slot</a>
+        <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
+        <a href="room.php" class="w3-bar-item w3-button">Room</a>
+        <a href="course.php" class="w3-bar-item w3-button">Course</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>
     <!-- Page Content -->
@@ -107,53 +109,58 @@ ob_end_flush();
         <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
     </div>
 
-    <div class="con_head">
-        <p> Time-Table </p>
+    <code class="txt">
         <?php echo $_SESSION['name']; ?>
         <?php echo $_SESSION['id']; ?>
-    </div>
-    <div class="list">
-        <p style="float:left">Time-Slots</p>
-        <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:86vw;">
-            <?php timeslot(); ?>
-        </div>
-    </div>
-    <br>
-    <div class="l-form">
-        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:86vw">
-            <div class="context">
-                <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
-                <p>Set Time-slot</p>
-            </div>
-            <br>
-            <br>
-            <div class="form__div">
-                <input type="number" class="form__input" name="TimeSlot" id="TimeSlot" placeholder="e.g xyz"
-                    autocomplete="off">
-                <label for="" class="form__label">Time-Slot</label>
-            </div>
-            <br>
-            <div class="form__div">
-                <input type="time" class="form__input" name="StartTime" id="StartTime" placeholder="e.g xyz@123"
-                    autocomplete="off">
-                <label for="" class="form__label">Start-Time</label>
-            </div>
-            <br>
-            <div class="form__div">
-                <input type="time" class="form__input" name="EndTime" id="EndTime" placeholder="e.g someone@gmail.com"
-                    autocomplete="off">
-                <label for="" class="form__label">End-Time</label>
-            </div>
-            <br>
-            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
-                name="save" style="float:right">
+    </code>
 
+    <div class="con_head">
+        <p> Time-Slot </p>
     </div>
-    </form>
+
+    <div class="container">
+        <div class="list">
+            <p style="float:left">Time-Slots</p>
+            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:50vh;overflow-y:scroll">
+                <?php timeslot(); ?>
+            </div>
+        </div>
+        <br>
+        <div class="l-form">
+            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+                <div class="context">
+                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
+                        style="height:3rem">
+                    <p>Set Time-slot</p>
+                </div>
+                <br>
+                <br>
+                <div class="form__div">
+                    <input type="number" class="form__input" name="TimeSlot" id="TimeSlot" placeholder="e.g xyz"
+                        autocomplete="off">
+                    <label for="" class="form__label">Time-Slot</label>
+                </div>
+                <br>
+                <div class="form__div">
+                    <input type="time" class="form__input" name="StartTime" id="StartTime" placeholder="e.g xyz@123"
+                        autocomplete="off">
+                    <label for="" class="form__label">Start-Time</label>
+                </div>
+                <br>
+                <div class="form__div">
+                    <input type="time" class="form__input" name="EndTime" id="EndTime"
+                        placeholder="e.g someone@gmail.com" autocomplete="off">
+                    <label for="" class="form__label">End-Time</label>
+                </div>
+                <br>
+                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
+                    name="save" style="float:right">
+        </div>
+        </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../js/main.js"></script>
-    <script src="../../js/login.js"></script>
+    <script src="../../js/timeslot.js"></script>
 </body>
 
 </html>

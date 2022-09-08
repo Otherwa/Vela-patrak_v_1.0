@@ -32,9 +32,10 @@ ob_end_flush();
         <a href="../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="admin_dashboard.php" class="w3-bar-item w3-button w3-black">Dashboard</a>
         <a href="admin/register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="admin/timetable.php" class="w3-bar-item w3-button">Time-Table</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="admin/timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
+        <a href="admin/professor.php" class="w3-bar-item w3-button">Professor</a>
+        <a href="admin/room.php" class="w3-bar-item w3-button">Room</a>
+        <a href="admin/course.php" class="w3-bar-item w3-button">Course</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>
@@ -43,12 +44,15 @@ ob_end_flush();
         <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
     </div>
 
-    <div class="con_head">
-        <p> Dashboard </p>
+
+    <code class="txt">
         <?php echo $_SESSION['name']; ?>
         <?php echo $_SESSION['id']; ?>
-    </div>
+    </code>
 
+    <div class="con_head">
+        <p>Dashboard</p>
+    </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../js/main.js"></script>

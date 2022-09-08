@@ -61,6 +61,7 @@ body {
     display: flex;
     text-align: center;
     justify-content: flex-start;
+    margin-bottom: 2.5rem;
 }
 
 .con_head p {
@@ -73,6 +74,12 @@ body {
     padding: 1rem;
     margin: 5vw;
 }
+
+.txt {
+    text-align: center;
+    display: block;
+}
+
 
 /* for responsive titel */
 @media screen and (max-width: 568px) {
