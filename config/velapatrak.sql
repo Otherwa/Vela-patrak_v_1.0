@@ -79,7 +79,12 @@ CREATE TABLE `professor` (
   `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Part` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--
+-- Dumping data for table `professor`
+--
 
+INSERT INTO `professor` (`ProfessorFirstName`, `ProfessorLastName`, `Department`, `MemberId`, `EmailId`, `Phone`, `Part`) VALUES
+(101, 'Pushkar', 'Sane', 'INFORMATION TECHNOLOGY', '1', 'thekingpush417@gmail.com', '8355958447', 'Degree'),
 -- --------------------------------------------------------
 
 --

@@ -1,6 +1,8 @@
 <?php
 include("../../config/connect.php");
+
 ob_start();
+
 session_start();
 
 if (!isset($_SESSION['name'])) {
@@ -11,7 +13,70 @@ if (!isset($_SESSION['name'])) {
 // session passes id
 $id = $_SESSION['id'];
 
+if (isset($_POST['save'])) {
+    $professorfirstname =  $_POST['ProfessorFirstName'];
+    $professorlastname =  $_POST['ProfessorLastName']; 
+    $department =  $_POST['Department'];
+    $memberid =  $id; //is member id of login generated at login
+    $emailid =  $_POST['EmailId'];
+    $phone =  $_POST['Phone'];
+    $part =  $_POST['Part'];
+
+    if ($professorfirstname == " " && $professorlastname == " " && $department == " " && $part == " " && $memberid == " ") {
+        echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
+    } else {
+        $con = get_con();
+        $sql = "SELECT * FROM `professor` WHERE ProfessorFirstName = '" . $professorfirstname . "'";
+
+        $result = mysqli_query($con, $sql);
+        $result_user_type = mysqli_fetch_array($result);
+        $row = mysqli_num_rows($result);
+
+        if ($row > 0) {
+            // check if timeslot already exists or not simple redirect to it
+            echo "<script>alert('Professor already exsists');</script>";
+            // close connection
+            mysqli_close($con);
+        } else {
+            insert_professor($professorfirstname, $professorlastname, $department, $memberid, $emailid, $phone, $part);
+        }
+    }
+}
+
+function insert_professor($professorfirstname, $professorlastname, $memberid, $department, $emailid, $phone, $part)
+{
+    $con = get_con();
+    $sql = "INSERT INTO `professor` (`ProfessorFirstName`, `ProfessorLastName`, `Department`, `MemberId`, `EmailId`, `Phone`, `Part`, `Date`) VALUES ('$professorfirstname', '$professorlastname', '$memberid', '$department', '$emailid', '$phone', '$part',current_timestamp());";
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Professor Successfully Registered');</script>";
+    } else {
+        echo "<script>alert('Something went wrong.');</script>";
+    }
+    $con->close();
+}
+
+function professor()
+{
+    $con = get_con();
+    $sql = "SELECT * FROM professor";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>" . "id: ". $row["ProfessorId"] ." -Name: " . $row["ProfessorFirstName"] . $row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] .  "</li>";
+        }
+    } else {
+        echo "No Professor";
+    }
+    $con->close();
+}
+
+// for cheching 
+// echo $status;
+ob_end_flush();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,9 +124,9 @@ $id = $_SESSION['id'];
 
     <div class="container">
         <div class="list">
-            <p style="float:left">Professor</p>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
-                
+            <p style="float:left">Professor List</p>
+            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:auto">
+                <?php professor(); ?>
             </div>
         </div>
         <br>

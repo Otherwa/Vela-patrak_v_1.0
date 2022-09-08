@@ -19,7 +19,7 @@
 .container {
     display: flex;
     padding: 0.8rem;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
