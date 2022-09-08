@@ -19,6 +19,13 @@ html {
     scroll-behavior: smooth;
 }
 
+#ProfList {
+    border-color: darkgray;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+}
+
 #prof_list::-webkit-scrollbar {
     width: 9px;
 }

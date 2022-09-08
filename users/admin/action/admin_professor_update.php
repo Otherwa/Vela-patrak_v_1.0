@@ -18,15 +18,15 @@ if (isset($_POST['update'])) {
     $con = get_con();
 
     $professorfirstname =  $_POST['ProfessorFirstName'];
-    $professorlastname =  $_POST['ProfessorLastName']; 
+    $professorlastname =  $_POST['ProfessorLastName'];
     $department =  $_POST['Department'];
     $emailid =  $_POST['EmailId'];
     $phone =  $_POST['Phone'];
     $part =  $_POST['Part'];
-    
+
 
     // Update
-    $sql = "UPDATE `professor` SET `ProfessorFirstName` = '" . $professorfirstname . "', `ProfessorLastName`='" . $professorlastname ."', `EmailId`='" . $emailid . "',`Department`='" . $department . "',`Phone`='" . $phone . "',`Part`='" . $part . "' WHERE ProfessorId  = '" . $id . "';";
+    $sql = "UPDATE `professor` SET `ProfessorFirstName` = '" . $professorfirstname . "', `ProfessorLastName`='" . $professorlastname . "', `EmailId`='" . $emailid . "',`Department`='" . $department . "',`Phone`='" . $phone . "',`Part`='" . $part . "' WHERE ProfessorId  = '" . $id . "';";
     if ($con->query($sql) === TRUE) {
         echo "<script>alert('Professor Updated');</script>";
         header("Location:../../professor.php");
@@ -63,10 +63,7 @@ ob_end_flush();
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
         <a href="../../../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
-        <a href="../../register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
-        <a href="professor.php" class="w3-bar-item w3-button w3-black">Professor</a>
-        <a href="room.php" class="w3-bar-item w3-button">Room</a>
+        <a href="../../professor.php" class="w3-bar-item w3-button">Professor</a>
     </div>
     <!-- Page Content -->
 
@@ -86,8 +83,8 @@ ob_end_flush();
             <br>
             <br>
             <div class="form__div">
-                <input type="text" class="form__input" name="ProfessorFirstName" id="ProfessorFirstName" placeholder="e.g abc"
-                    autocomplete="off" value="<?php echo $result_get['ProfessorFirstName']; ?>">
+                <input type="text" class="form__input" name="ProfessorFirstName" id="ProfessorFirstName"
+                    placeholder="e.g abc" autocomplete="off" value="<?php echo $result_get['ProfessorFirstName']; ?>">
                 <label for="" class="form__label">Professor First Name</label>
             </div>
             <br>
@@ -154,19 +151,19 @@ ob_end_flush();
                     <option value="BMS">BMS</option>
                     <option value="BMM">BMMC</option>
                 </select>
-                </div>
-                <div class="form__div">
+            </div>
+            <div class="form__div">
                 <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
                 <select name="Part" id="Part">
                     <option value="Junior">Junior</option>
                     <option value="Degree">Degree</option>
                 </select>
-                </div>
-                <br>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Update"
+            </div>
+            <br>
+            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Update"
                 name="update" style="float:right">
-                <br>
-            </div> 
+            <br>
+    </div>
     </div>
     </form>
     </div>
