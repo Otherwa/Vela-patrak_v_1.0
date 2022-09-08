@@ -15,7 +15,7 @@ $id = $_SESSION['id'];
 
 if (isset($_POST['save'])) {
     $professorfirstname =  $_POST['ProfessorFirstName'];
-    $professorlastname =  $_POST['ProfessorLastName']; 
+    $professorlastname =  $_POST['ProfessorLastName'];
     $department =  $_POST['Department'];
     $memberid =  $id; //is member id of login generated at login
     $emailid =  $_POST['EmailId'];
@@ -64,7 +64,7 @@ function professor()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "id: ". $row["ProfessorId"] ." -Name: " . $row["ProfessorFirstName"] . $row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] .  " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_professor_delete.php\\?DeleteId="  . $row["MemberId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_professor_update.php\\?UpdateId=" . $row["MemberId"] . "\">Update</a></li>";
+            echo "<li>" . "id: " . $row["ProfessorId"] . " -Name: " . $row["ProfessorFirstName"] . $row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] .  " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_professor_delete.php\\?DeleteId="  . $row["MemberId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_professor_update.php\\?UpdateId=" . $row["MemberId"] . "\">Update</a></li>";
         }
     } else {
         echo "No Professor";
@@ -125,6 +125,46 @@ ob_end_flush();
     <div class="container">
         <div class="list">
             <p style="float:left">Professor List</p>
+            <select name="ProfList" id="ProfList">
+                <option value="--">--</option>
+                <option value="PSYCHOLOGY">PSYCHOLOGY</option>
+                <option value="FRENCH">FRENCH</option>
+                <option value="SANSKRIT">SANSKRIT</option>
+                <option value="ENGLISH">ENGLISH</option>
+                <option value="MARATHI">MARATHI</option>
+                <option value="POL.SCIENCE">POL.SCIENCE</option>
+                <option value="HISTORY">HISTORY</option>
+                <option value="SOCIOLOGY">SOCIOLOGY</option>
+                <option value="ECONOMICS">ECONOMICS</option>
+                <option value="MENTORING">MENTORING</option>
+                <option value="EVS">EVS</option>
+                <option value="RC">RC</option>
+                <option value="PHY.EDN.">PHY.EDN.</option>
+                <option value="UPSC">UPSC</option>
+                <option value="HINDI">HINDI</option>
+                <option value="JR AND DEGREE">JR AND DEGREE</option>
+                <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
+                <option value="INFORMATION TECHLOGY">INFORMATION TECHOLOGY</option>
+                <option value="PHYSICS">PHYSICS</option>
+                <option value="CHEMISTRY">CHEMISTRY</option>
+                <option value="BIOLOGY">BIOLOGY</option>
+                <option value="MATHEMATICS">MATHEMATICS</option>
+                <option value="BOTANY">BOTANY</option>
+                <option value="ZOOLOGY">ZOOLOGY</option>
+                <option value="PRACTICALS">PRACTICALS</option>
+                <option value="COMMERCE">COMMERCE</option>
+                <option value="B.ECONOMICS">B. ECONOMICS</option>
+                <option value="ACCOUNTS">ACCOUNTS</option>
+                <option value="B.LAW">B.LAW</option>
+                <option value="MCOM">MCOM</option>
+                <option value="BVOC">BVOC</option>
+                <option value="M.SC.IT">M.SC.IT</option>
+                <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
+                <option value="BAF">BAF</option>
+                <option value="BBI">BBI</option>
+                <option value="BMS">BMS</option>
+                <option value="BMM">BMM</option>
+            </select>
             <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:auto">
                 <?php professor(); ?>
             </div>
@@ -139,84 +179,84 @@ ob_end_flush();
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="text" class="form__input" name="ProfessorFirstName" id="FirstName" placeholder="e.g xyz"
-                    autocomplete="off">
+                    <input type="text" class="form__input" name="ProfessorFirstName" id="FirstName"
+                        placeholder="e.g xyz" autocomplete="off">
                     <label for="" class="form__label">First Name</label>
                 </div>
                 <br>
 
                 <div class="form__div">
                     <input type="text" class="form__input" name="ProfessorLastName" id="LastName" placeholder="e.g xyz"
-                    autocomplete="off">
+                        autocomplete="off">
                     <label for="" class="form__label">Last Name</label>
                 </div>
                 <br>
 
                 <div class="form__div">
-                <input type="text" class="form__input" name="Phone" id="PhoneNumber" placeholder="e.g xyz"
-                    autocomplete="off">
+                    <input type="text" class="form__input" name="Phone" id="PhoneNumber" placeholder="e.g xyz"
+                        autocomplete="off">
                     <label for="" class="form__label">Phone Number</label>
                 </div>
                 <br>
 
                 <div class="form__div">
                     <input type="text" class="form__input" name="EmailId" id="email" placeholder="e.g xyz"
-                    autocomplete="off">
+                        autocomplete="off">
                     <label for="" class="form__label">Email-ID</label>
                 </div>
                 <br>
 
                 <div class="form__div">
-                <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
-                <select name="Part" id="Type">
-                    <option value="Junior">Junior</option>
-                    <option value="Degree">Degree</option>
-                </select>
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
+                    <select name="Part" id="Type">
+                        <option value="Junior">Junior</option>
+                        <option value="Degree">Degree</option>
+                    </select>
                 </div>
                 <br>
 
                 <div class="form__div">
-                <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
-                <select name="Department" id="Type">
-                    <option value="--">--</option>
-                    <option value="PSYCHOLOGY">PSYCHOLOGY</option>
-                    <option value="FRENCH">FRENCH</option>
-                    <option value="SANSKRIT">SANSKRIT</option>
-                    <option value="ENGLISH">ENGLISH</option>
-                    <option value="MARATHI">MARATHI</option>
-                    <option value="POL.SCIENCE">POL.SCIENCE</option>
-                    <option value="HISTORY">HISTORY</option>
-                    <option value="SOCIOLOGY">SOCIOLOGY</option>
-                    <option value="ECONOMICS">ECONOMICS</option>
-                    <option value="MENTORING">MENTORING</option>
-                    <option value="EVS">EVS</option>
-                    <option value="RC">RC</option>
-                    <option value="PHY.EDN.">PHY.EDN.</option>
-                    <option value="UPSC">UPSC</option>
-                    <option value="HINDI">HINDI</option>
-                    <option value="JR AND DEGREE">JR AND DEGREE</option>
-                    <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                    <option value="INFORMATION TECHLOGY">INFORMATION TECHOLOGY</option>
-                    <option value="PHYSICS">PHYSICS</option>
-                    <option value="CHEMISTRY">CHEMISTRY</option>
-                    <option value="BIOLOGY">BIOLOGY</option>
-                    <option value="MATHEMATICS">MATHEMATICS</option>
-                    <option value="BOTANY">BOTANY</option>
-                    <option value="ZOOLOGY">ZOOLOGY</option>
-                    <option value="PRACTICALS">PRACTICALS</option>
-                    <option value="COMMERCE">COMMERCE</option>
-                    <option value="B.ECONOMICS">B. ECONOMICS</option>
-                    <option value="ACCOUNTS">ACCOUNTS</option>
-                    <option value="B.LAW">B.LAW</option>
-                    <option value="MCOM">MCOM</option>
-                    <option value="BVOC">BVOC</option>
-                    <option value="M.SC.IT">M.SC.IT</option>
-                    <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
-                    <option value="BAF">BAF</option>
-                    <option value="BBI">BBI</option>
-                    <option value="BMS">BMS</option>
-                    <option value="BMM">BMM</option>
-                </select>
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
+                    <select name="Department" id="Type">
+                        <option value="--">--</option>
+                        <option value="PSYCHOLOGY">PSYCHOLOGY</option>
+                        <option value="FRENCH">FRENCH</option>
+                        <option value="SANSKRIT">SANSKRIT</option>
+                        <option value="ENGLISH">ENGLISH</option>
+                        <option value="MARATHI">MARATHI</option>
+                        <option value="POL.SCIENCE">POL.SCIENCE</option>
+                        <option value="HISTORY">HISTORY</option>
+                        <option value="SOCIOLOGY">SOCIOLOGY</option>
+                        <option value="ECONOMICS">ECONOMICS</option>
+                        <option value="MENTORING">MENTORING</option>
+                        <option value="EVS">EVS</option>
+                        <option value="RC">RC</option>
+                        <option value="PHY.EDN.">PHY.EDN.</option>
+                        <option value="UPSC">UPSC</option>
+                        <option value="HINDI">HINDI</option>
+                        <option value="JR AND DEGREE">JR AND DEGREE</option>
+                        <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
+                        <option value="INFORMATION TECHLOGY">INFORMATION TECHOLOGY</option>
+                        <option value="PHYSICS">PHYSICS</option>
+                        <option value="CHEMISTRY">CHEMISTRY</option>
+                        <option value="BIOLOGY">BIOLOGY</option>
+                        <option value="MATHEMATICS">MATHEMATICS</option>
+                        <option value="BOTANY">BOTANY</option>
+                        <option value="ZOOLOGY">ZOOLOGY</option>
+                        <option value="PRACTICALS">PRACTICALS</option>
+                        <option value="COMMERCE">COMMERCE</option>
+                        <option value="B.ECONOMICS">B. ECONOMICS</option>
+                        <option value="ACCOUNTS">ACCOUNTS</option>
+                        <option value="B.LAW">B.LAW</option>
+                        <option value="MCOM">MCOM</option>
+                        <option value="BVOC">BVOC</option>
+                        <option value="M.SC.IT">M.SC.IT</option>
+                        <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
+                        <option value="BAF">BAF</option>
+                        <option value="BBI">BBI</option>
+                        <option value="BMS">BMS</option>
+                        <option value="BMM">BMM</option>
+                    </select>
                 </div>
                 <br>
                 <br>
@@ -227,7 +267,7 @@ ob_end_flush();
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../js/main.js"></script>
-    <script src="../../js/login.js"></script>
+    <script src="../../js/professor.js"></script>
 </body>
 
 </html>
