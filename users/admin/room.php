@@ -98,6 +98,7 @@ ob_end_flush();
         <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
         <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
         <a href="room.php" class="w3-bar-item w3-button w3-black">Rooms</a>
+        <a href="course.php" class="w3-bar-item w3-button">Course</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>

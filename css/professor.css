@@ -54,6 +54,7 @@ html {
     display: flex;
     padding: 0.8rem;
     justify-content: space-evenly;
+    flex-direction: row;
 }
 
 @media screen and (max-width: 768px) {

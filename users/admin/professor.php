@@ -62,7 +62,7 @@ function professor()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "id: ". $row["ProfessorId"] ." -Name: " . $row["ProfessorFirstName"] . " " .$row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] . "- Phone: " . $row["Phone"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_professor_delete.php\\?DeleteId="  . $row["ProfessorId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_professor_update.php\\?UpdateId=" . $row["ProfessorId"] . "\">Update</a></li>";
+            echo "<li>" . "id: " . $row["ProfessorId"] . " -Name: " . $row["ProfessorFirstName"] . " " . $row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] . "- Phone: " . $row["Phone"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_professor_delete.php\\?DeleteId="  . $row["ProfessorId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_professor_update.php\\?UpdateId=" . $row["ProfessorId"] . "\">Update</a></li>";
         }
     } else {
         echo "No Professor";
@@ -124,9 +124,7 @@ ob_end_flush();
 
     <div class="container">
         <div class="list">
-            <p style="float:left">Profesor</p>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
-            <p style="float:left">Professor List</p>
+            <p style="float:left">Professor List</p> <br>
             <select name="ProfList" id="ProfList" onchange="get_professor()">
                 <option value="--">--</option>
                 <option value="PSYCHOLOGY">PSYCHOLOGY</option>
@@ -174,7 +172,7 @@ ob_end_flush();
         </div>
         <br>
         <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:38rem">
+            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
                 <div class="context">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">
@@ -182,90 +180,78 @@ ob_end_flush();
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="text" class="form__input" name="ProfessorFirstName" id="ProfessorFirstName" placeholder="e.g xyz"
-                    autocomplete="off">
+                    <input type="text" class="form__input" name="ProfessorFirstName" id="ProfessorFirstName"
+                        placeholder="e.g xyz" autocomplete="off">
                     <label for="" class="form__label">First Name</label>
                 </div>
                 <br>
-
                 <div class="form__div">
-                    <input type="text" class="form__input" name="ProfessorLastName" id="ProfessorLastName" placeholder="e.g xyz"
-                    autocomplete="off">
+                    <input type="text" class="form__input" name="ProfessorLastName" id="ProfessorLastName"
+                        placeholder="e.g xyz" autocomplete="off">
                     <label for="" class="form__label">Last Name</label>
                 </div>
                 <br>
-
                 <div class="form__div">
-                <input type="text" class="form__input" name="Phone" id="Phone" placeholder="e.g xyz"
-                    autocomplete="off">
+                    <input type="text" class="form__input" name="Phone" id="Phone" placeholder="e.g xyz"
+                        autocomplete="off">
                     <label for="" class="form__label">Phone Number</label>
                 </div>
-
                 <br>
                 <div class="form__div">
                     <input type="text" class="form__input" name="EmailId" id="EmailId" placeholder="e.g xyz"
-                    autocomplete="off">
+                        autocomplete="off">
                     <label for="" class="form__label">Email-ID</label>
-
                 </div>
                 <br>
                 <div class="form__div">
-
-                <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
-                <select name="Part" id="Part">
-                    <option value="Junior">Junior</option>
-                    <option value="Degree">Degree</option>
-                </select>
-
-
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
+                    <select name="Part" id="Part">
+                        <option value="Junior">Junior</option>
+                        <option value="Degree">Degree</option>
+                    </select>
                 </div>
-                <br>
                 <div class="form__div">
-                    <input type="time" class="form__input" name="EndTime" id="EndTime"
-                        placeholder="e.g someone@gmail.com" autocomplete="off">
-                    <label for="" class="form__label">End-Time</label>
-                <br>
-                <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
-                <select name="Department" id="Department">
-                    <option value="--">--</option>
-                    <option value="PSYCHOLOGY">PSYCHOLOGY</option>
-                    <option value="FRENCH">FRENCH</option>
-                    <option value="SANSKRIT">SANSKRIT</option>
-                    <option value="ENGLISH">ENGLISH</option>
-                    <option value="MARATHI">MARATHI</option>
-                    <option value="POL.SCIENCE">POL.SCIENCE</option>
-                    <option value="HISTORY">HISTORY</option>
-                    <option value="SOCIOLOGY">SOCIOLOGY</option>
-                    <option value="ECONOMICS">ECONOMICS</option>
-                    <option value="MENTORING">MENTORING</option>
-                    <option value="EVS">EVS</option>
-                    <option value="RC">RC</option>
-                    <option value="PHY.EDN.">PHY.EDN.</option>
-                    <option value="UPSC">UPSC</option>
-                    <option value="HINDI">HINDI</option>
-                    <option value="JR AND DEGREE">JR AND DEGREE</option>
-                    <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                    <option value="INFORMATION TECHLOGY">INFORMATION TECHOLOGY</option>
-                    <option value="PHYSICS">PHYSICS</option>
-                    <option value="CHEMISTRY">CHEMISTRY</option>
-                    <option value="BIOLOGY">BIOLOGY</option>
-                    <option value="MATHEMATICS">MATHEMATICS</option>
-                    <option value="BOTANY">BOTANY</option>
-                    <option value="ZOOLOGY">ZOOLOGY</option>
-                    <option value="PRACTICALS">PRACTICALS</option>
-                    <option value="COMMERCE">COMMERCE</option>
-                    <option value="B.ECONOMICS">B. ECONOMICS</option>
-                    <option value="ACCOUNTS">ACCOUNTS</option>
-                    <option value="B.LAW">B.LAW</option>
-                    <option value="MCOM">MCOM</option>
-                    <option value="BVOC">BVOC</option>
-                    <option value="M.SC.IT">M.SC.IT</option>
-                    <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
-                    <option value="BAF">BAF</option>
-                    <option value="BBI">BBI</option>
-                    <option value="BMS">BMS</option>
-                    <option value="BMM">BMMC</option>
-                </select>              
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
+                    <select name="Department" id="Department">
+                        <option value="--">--</option>
+                        <option value="PSYCHOLOGY">PSYCHOLOGY</option>
+                        <option value="FRENCH">FRENCH</option>
+                        <option value="SANSKRIT">SANSKRIT</option>
+                        <option value="ENGLISH">ENGLISH</option>
+                        <option value="MARATHI">MARATHI</option>
+                        <option value="POL.SCIENCE">POL.SCIENCE</option>
+                        <option value="HISTORY">HISTORY</option>
+                        <option value="SOCIOLOGY">SOCIOLOGY</option>
+                        <option value="ECONOMICS">ECONOMICS</option>
+                        <option value="MENTORING">MENTORING</option>
+                        <option value="EVS">EVS</option>
+                        <option value="RC">RC</option>
+                        <option value="PHY.EDN.">PHY.EDN.</option>
+                        <option value="UPSC">UPSC</option>
+                        <option value="HINDI">HINDI</option>
+                        <option value="JR AND DEGREE">JR AND DEGREE</option>
+                        <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
+                        <option value="INFORMATION TECHLOGY">INFORMATION TECHOLOGY</option>
+                        <option value="PHYSICS">PHYSICS</option>
+                        <option value="CHEMISTRY">CHEMISTRY</option>
+                        <option value="BIOLOGY">BIOLOGY</option>
+                        <option value="MATHEMATICS">MATHEMATICS</option>
+                        <option value="BOTANY">BOTANY</option>
+                        <option value="ZOOLOGY">ZOOLOGY</option>
+                        <option value="PRACTICALS">PRACTICALS</option>
+                        <option value="COMMERCE">COMMERCE</option>
+                        <option value="B.ECONOMICS">B. ECONOMICS</option>
+                        <option value="ACCOUNTS">ACCOUNTS</option>
+                        <option value="B.LAW">B.LAW</option>
+                        <option value="MCOM">MCOM</option>
+                        <option value="BVOC">BVOC</option>
+                        <option value="M.SC.IT">M.SC.IT</option>
+                        <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
+                        <option value="BAF">BAF</option>
+                        <option value="BBI">BBI</option>
+                        <option value="BMS">BMS</option>
+                        <option value="BMM">BMMC</option>
+                    </select>
                 </div>
                 <br>
                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
