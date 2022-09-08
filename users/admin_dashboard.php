@@ -33,9 +33,9 @@ ob_end_flush();
         <a href="admin_dashboard.php" class="w3-bar-item w3-button w3-black">Dashboard</a>
         <a href="admin/register.php" class="w3-bar-item w3-button">Registration</a>
         <a href="admin/timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="admin/professor.php" class="w3-bar-item w3-button">Professor</a>
+        <a href="admin/room.php" class="w3-bar-item w3-button">Room</a>
+        <a href="admin/course.php" class="w3-bar-item w3-button">Course</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>
     <!-- Page Content -->

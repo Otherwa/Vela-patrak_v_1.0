@@ -54,12 +54,12 @@ $id = $_SESSION['id'];
     </code>
 
     <div class="con_head">
-        <p> Room-Registration </p>
+        <p> Course-Registration </p>
     </div>
 
     <div class="container">
         <div class="list">
-            <p style="float:left">Room-Registration</p>
+            <p style="float:left">Course-Registration</p>
             <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
                 
             </div>
@@ -70,26 +70,32 @@ $id = $_SESSION['id'];
                 <div class="context">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">
-                    <p>Set Room-Registration</p>
+                    <p>Set Course</p>
                 </div>
                 <br>
                 <br>
                 <div class="form__div">
-                    <input type="number" class="form__input" name="RoomNo" id="RoomNo" placeholder="e.g 8"
+                    <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8"
                         autocomplete="off">
-                    <label for="" class="form__label">Room No</label>
+                    <label for="" class="form__label">Course Id</label>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="number" class="form__input" name="Floor" id="Floor" placeholder="e.g 3"
+                    <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT"
                         autocomplete="off">
-                    <label for="" class="form__label">Floor</label>
+                    <label for="" class="form__label">Course Name</label>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="number" class="form__input" name="Capacity" id="Capacity"
-                        placeholder="e.g 98" autocomplete="off">
-                    <label for="" class="form__label">Capacity</label>
+                    <input type="number" class="form__input" name="Strength" id="Strength"
+                        placeholder="e.g 45" autocomplete="off">
+                    <label for="" class="form__label">Strength</label>
+                </div>
+                <br>
+                <div class="form__div">
+                    <input type="text" class="form__input" name="Abbreviation" id="Abbreviation"
+                        placeholder="e.g BSC-IT" autocomplete="off">
+                    <label for="" class="form__label">Abbreviation</label>
                 </div>
                 <br>
                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
@@ -99,7 +105,7 @@ $id = $_SESSION['id'];
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../js/main.js"></script>
-    <script src="../../js/room.js"></script>
+    <script src="../../js/course.js"></script>
 </body>
 
 </html>
