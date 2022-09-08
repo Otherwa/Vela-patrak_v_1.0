@@ -64,7 +64,7 @@ function professor()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "id: ". $row["ProfessorId"] ." -Name: " . $row["ProfessorFirstName"] . $row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] .  " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_professor_delete.php\\?DeleteId="  . $row["MemberId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_professor_update.php\\?UpdateId=" . $row["MemberId"] . "\">Update</a></li>";
+            echo "<li>" . "id: ". $row["ProfessorId"] ." -Name: " . $row["ProfessorFirstName"] . " " .$row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] . "- Phone: " . $row["Phone"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_professor_delete.php\\?DeleteId="  . $row["ProfessorId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_professor_update.php\\?UpdateId=" . $row["ProfessorId"] . "\">Update</a></li>";
         }
     } else {
         echo "No Professor";
@@ -139,28 +139,28 @@ ob_end_flush();
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="text" class="form__input" name="ProfessorFirstName" id="FirstName" placeholder="e.g xyz"
+                    <input type="text" class="form__input" name="ProfessorFirstName" id="ProfessorFirstName" placeholder="e.g xyz"
                     autocomplete="off">
                     <label for="" class="form__label">First Name</label>
                 </div>
                 <br>
 
                 <div class="form__div">
-                    <input type="text" class="form__input" name="ProfessorLastName" id="LastName" placeholder="e.g xyz"
+                    <input type="text" class="form__input" name="ProfessorLastName" id="ProfessorLastName" placeholder="e.g xyz"
                     autocomplete="off">
                     <label for="" class="form__label">Last Name</label>
                 </div>
                 <br>
 
                 <div class="form__div">
-                <input type="text" class="form__input" name="Phone" id="PhoneNumber" placeholder="e.g xyz"
+                <input type="text" class="form__input" name="Phone" id="Phone" placeholder="e.g xyz"
                     autocomplete="off">
                     <label for="" class="form__label">Phone Number</label>
                 </div>
                 <br>
 
                 <div class="form__div">
-                    <input type="text" class="form__input" name="EmailId" id="email" placeholder="e.g xyz"
+                    <input type="text" class="form__input" name="EmailId" id="EmailId" placeholder="e.g xyz"
                     autocomplete="off">
                     <label for="" class="form__label">Email-ID</label>
                 </div>
@@ -168,7 +168,7 @@ ob_end_flush();
 
                 <div class="form__div">
                 <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
-                <select name="Part" id="Type">
+                <select name="Part" id="Part">
                     <option value="Junior">Junior</option>
                     <option value="Degree">Degree</option>
                 </select>
@@ -177,7 +177,7 @@ ob_end_flush();
 
                 <div class="form__div">
                 <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
-                <select name="Department" id="Type">
+                <select name="Department" id="Department">
                     <option value="--">--</option>
                     <option value="PSYCHOLOGY">PSYCHOLOGY</option>
                     <option value="FRENCH">FRENCH</option>
@@ -215,7 +215,7 @@ ob_end_flush();
                     <option value="BAF">BAF</option>
                     <option value="BBI">BBI</option>
                     <option value="BMS">BMS</option>
-                    <option value="BMM">BMM</option>
+                    <option value="BMM">BMMC</option>
                 </select>
                 </div>
                 <br>
