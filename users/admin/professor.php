@@ -89,7 +89,10 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/professor.css">
-
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Time-Table</title>
@@ -125,7 +128,7 @@ ob_end_flush();
     <div class="container">
         <div class="list">
             <p style="float:left">Professor List</p>
-            <select name="ProfList" id="ProfList">
+            <select name="ProfList" id="ProfList" onchange="get_professor()">
                 <option value="--">--</option>
                 <option value="PSYCHOLOGY">PSYCHOLOGY</option>
                 <option value="FRENCH">FRENCH</option>
