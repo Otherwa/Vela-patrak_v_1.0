@@ -168,7 +168,8 @@ ob_end_flush();
                 <option value="BMS">BMS</option>
                 <option value="BMM">BMM</option>
             </select>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:auto">
+            <div id="prof_list" class=" form w3-margin w3-whitesmoke w3-bar-block"
+                style="width:46vw;height:90%;overflow-y:scroll">
                 <?php professor(); ?>
             </div>
         </div>
