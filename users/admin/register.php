@@ -104,15 +104,10 @@ ob_end_flush();
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-<<<<<<< HEAD
-        <a href="../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
-        <a href="register.php" class="w3-bar-item w3-button w3-orange">Registration</a>
-        <a href="timetable.php" class="w3-bar-item w3-button">Time Table</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
-=======
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button w3-black">Registration</a>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <a href="timeslot.php" class="w3-bar-item w3-button">Time-Table</a>
 >>>>>>> 46af3a9099084714ecfb7aa174c24fd060cda49f
@@ -122,6 +117,12 @@ ob_end_flush();
         <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
         <a href="room.php" class="w3-bar-item w3-button">Room</a>
         <a href="course.php" class="w3-bar-item w3-button">Course</a>
+=======
+        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+>>>>>>> cb5ccb6046e8bff6a4173d21034e1d01b0453c73
     </div>
     <!-- Page Content -->
 
