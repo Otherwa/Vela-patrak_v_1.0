@@ -47,11 +47,13 @@ html {
     background: rgba(0, 0, 0, 0.358);
 }
 
+
+
 /* login form */
 .container {
     display: flex;
     padding: 0.8rem;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 @media screen and (max-width: 768px) {
@@ -71,6 +73,7 @@ html {
     background-color: #f9f9f9;
     box-shadow: 0.7rem 0.7rem 2rem #0000001f
 }
+
 
 .l-form {
     display: flex;
