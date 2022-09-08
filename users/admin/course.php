@@ -11,6 +11,65 @@ if (!isset($_SESSION['name'])) {
 // session passes id
 $id = $_SESSION['id'];
 
+//add course
+if (isset($_POST["Save"])){
+    $courseid = $_POST["CourseId"];
+    $coursename = $_POST["CourseName"];
+    $strength = $_POST["Strength"];
+    $abbreviation = $_POST["Abbreviation"];
+    $memberid = $id;
+
+    if($courseid == "" && $coursename == "" && $strength == "" && $abbreviation == "")
+    {
+        echo "<script>alert('Kindly Fill Form Correctly');</script>";
+    } else {
+        $con = get_con();
+        $sql = "SELECT * FROM `course` WHERE CourseId = '" . $courseid . "'";
+
+        $result = mysqli_query($con, $sql);
+        $result_user_type = mysqli_fetch_array($result);
+        $row = mysqli_num_rows($result);
+
+        if ($row > 0) {
+            echo "<script>alert('Course already exsists');</script>";
+            mysqli_close($con);
+        } else {
+            insert_course($courseid, $coursename, $strength, $abbreviation, $memberid);
+        }
+    }
+}
+
+function insert_course($courseid, $coursename, $strength, $abbreviation, $memberid){
+    $con = get_con();
+
+    $sql = "INSERT INTO `course` VALUES ('$courseid', '$coursename', '$strength', '$abbreviation', '$memberid', current_timestamp());";
+
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Course Successfully Registered');</script>";
+    } else {
+        echo "<script>alert('Something went wrong.');</script>";
+    }
+    
+    $con->close();
+}
+
+function course()
+{
+    $con = get_con();
+    $con = get_con();
+    $sql = "SELECT * FROM course";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>" . "CourseId: " . $row["CourseId"] . " -Course-Name: " . $row["CourseName"] . " -Strength: " . $row["Strength"] . " -Abbreviation: " . $row["Abbreviation"] . " -Member-Id: " . $row["MemberId"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_course_delete.php\\?DeleteId="  . $row["CourseId"] . "\">Delete</a>" . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_course_update.php\\?UpdateId=" . $row["CourseId"] . "\">Update</a></li>";
+        }
+    } else {
+        echo "No Timeslot";
+    }
+    $con->close();
+}
+ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,10 +96,10 @@ $id = $_SESSION['id'];
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="timeslot.php" class="w3-bar-item w3-button w3-black">Time-Slot</a>
+        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
         <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
         <a href="room.php" class="w3-bar-item w3-button">Room</a>
-        <a href="course.php" class="w3-bar-item w3-button">Course</a>
+        <a href="course.php" class="w3-bar-item w3-button w3-black">Course</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
     </div>
     <!-- Page Content -->
@@ -61,7 +120,7 @@ $id = $_SESSION['id'];
         <div class="list">
             <p style="float:left">Course-Registration</p>
             <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
-                
+                <?php course(); ?>
             </div>
         </div>
         <br>
