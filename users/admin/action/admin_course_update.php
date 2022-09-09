@@ -59,14 +59,8 @@ ob_end_flush();
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../../../account/login.php" class="w3-bar-item w3-button">Logout</a>
-        <a href="../../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
-        <a href="../register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="../timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
-        <a href="../professor.php" class="w3-bar-item w3-button">Professor</a>
-        <a href="../room.php" class="w3-bar-item w3-button">Room</a>
-        <a href="../course.php" class="w3-bar-item w3-button w3-black">Course</a>
-        <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
+        <a href="../../../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
+        <a href="../../course.php" class="w3-bar-item w3-button">Course</a>
     </div>
     <!-- Page Content -->
 
@@ -81,7 +75,7 @@ ob_end_flush();
 
     <br>
     <div class="l-form">
-        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:38rem">
+        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
             <div class="context">
                 <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
                 <p>Update Course</p>
@@ -89,28 +83,28 @@ ob_end_flush();
             <br>
             <br>
             <div class="form__div">
-                    <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8"
-                        autocomplete="off" disabled="disabled" value="<?php echo $result_get["CourseId"] ?>">
-                    <label for="" class="form__label">Course Id</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT"
-                        autocomplete="off" value="<?php echo $result_get["CourseName"] ?>">
-                    <label for="" class="form__label">Course Name</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="number" class="form__input" name="Strength" id="Strength"
-                        placeholder="e.g 45" autocomplete="off" value="<?php echo $result_get["Strength"] ?>">
-                    <label for="" class="form__label">Strength</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="text" class="form__input" name="Abbreviation" id="Abbreviation"
-                        placeholder="e.g BSC-IT" autocomplete="off" value="<?php echo $result_get["Abbreviation"] ?>">
-                    <label for="" class="form__label">Abbreviation</label>
-                </div>
+                <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8"
+                    autocomplete="off" disabled="disabled" value="<?php echo $result_get["CourseId"] ?>">
+                <label for="" class="form__label">Course Id</label>
+            </div>
+            <br>
+            <div class="form__div">
+                <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT"
+                    autocomplete="off" value="<?php echo $result_get["CourseName"] ?>">
+                <label for="" class="form__label">Course Name</label>
+            </div>
+            <br>
+            <div class="form__div">
+                <input type="number" class="form__input" name="Strength" id="Strength" placeholder="e.g 45"
+                    autocomplete="off" value="<?php echo $result_get["Strength"] ?>">
+                <label for="" class="form__label">Strength</label>
+            </div>
+            <br>
+            <div class="form__div">
+                <input type="text" class="form__input" name="Abbreviation" id="Abbreviation" placeholder="e.g BSC-IT"
+                    autocomplete="off" value="<?php echo $result_get["Abbreviation"] ?>">
+                <label for="" class="form__label">Abbreviation</label>
+            </div>
             <br>
             <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
                 name="Update" style="float:right">
