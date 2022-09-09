@@ -92,7 +92,7 @@ ob_end_flush();
     <br>
     <br>
     <div class="l-form">
-        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:45rem">
+        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:48rem">
             <div class="context">
                 <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
                 <p>Login as</p>

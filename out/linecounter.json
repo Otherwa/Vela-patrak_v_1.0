@@ -1,0 +1,326 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "c:\\xampp\\htdocs\\Vela-patrak_v_1.0",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2022-09-09 19:04:50",
+            "filesum": 45,
+            "codesum": 3161,
+            "commentsum": 209,
+            "blanksum": 497,
+            "statistics": {
+                ".php": {
+                    "code": 2144,
+                    "comment": 83,
+                    "blank": 286
+                },
+                ".md": {
+                    "code": 59,
+                    "comment": 15,
+                    "blank": 22
+                },
+                ".js": {
+                    "code": 39,
+                    "comment": 2,
+                    "blank": 7
+                },
+                "": {
+                    "code": 20,
+                    "comment": 1,
+                    "blank": 4
+                },
+                ".css": {
+                    "code": 790,
+                    "comment": 37,
+                    "blank": 133
+                },
+                ".sql": {
+                    "code": 65,
+                    "comment": 71,
+                    "blank": 39
+                },
+                ".yml": {
+                    "code": 44,
+                    "comment": 0,
+                    "blank": 6
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": ".github\\ISSUE_TEMPLATE\\feature_request.md"
+                },
+                {
+                    "blank": 6,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": ".github\\workflows\\pages.yml"
+                },
+                {
+                    "blank": 7,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "about.php"
+                },
+                {
+                    "blank": 20,
+                    "code": 92,
+                    "comment": 12,
+                    "filename": "account\\login.php"
+                },
+                {
+                    "blank": 10,
+                    "code": 31,
+                    "comment": 4,
+                    "filename": "CODE_OF_CONDUCT.md"
+                },
+                {
+                    "blank": 2,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": "config\\connect.php"
+                },
+                {
+                    "blank": 39,
+                    "code": 65,
+                    "comment": 71,
+                    "filename": "config\\velapatrak.sql"
+                },
+                {
+                    "blank": 9,
+                    "code": 98,
+                    "comment": 12,
+                    "filename": "contributer.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "CONTRIBUTING.md"
+                },
+                {
+                    "blank": 18,
+                    "code": 127,
+                    "comment": 5,
+                    "filename": "css\\course.css"
+                },
+                {
+                    "blank": 9,
+                    "code": 83,
+                    "comment": 3,
+                    "filename": "css\\login.css"
+                },
+                {
+                    "blank": 22,
+                    "code": 82,
+                    "comment": 9,
+                    "filename": "css\\main.css"
+                },
+                {
+                    "blank": 26,
+                    "code": 137,
+                    "comment": 6,
+                    "filename": "css\\professor.css"
+                },
+                {
+                    "blank": 23,
+                    "code": 120,
+                    "comment": 6,
+                    "filename": "css\\register.css"
+                },
+                {
+                    "blank": 17,
+                    "code": 114,
+                    "comment": 3,
+                    "filename": "css\\room.css"
+                },
+                {
+                    "blank": 18,
+                    "code": 127,
+                    "comment": 5,
+                    "filename": "css\\timeslot.css"
+                },
+                {
+                    "blank": 7,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "index.php"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "js\\course.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "js\\login.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 1,
+                    "filename": "js\\main.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 17,
+                    "comment": 1,
+                    "filename": "js\\professor.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "js\\room.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "js\\timeslot.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 20,
+                    "comment": 1,
+                    "filename": "LICENSE"
+                },
+                {
+                    "blank": 8,
+                    "code": 14,
+                    "comment": 11,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 4,
+                    "code": 169,
+                    "comment": 0,
+                    "filename": "term.php"
+                },
+                {
+                    "filename": "timetable_Data.xls",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Timetable_screenShots.docx",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 5,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "users\\admin\\action\\admin_course_delete.php"
+                },
+                {
+                    "blank": 19,
+                    "code": 105,
+                    "comment": 1,
+                    "filename": "users\\admin\\action\\admin_course_update.php"
+                },
+                {
+                    "blank": 5,
+                    "code": 27,
+                    "comment": 1,
+                    "filename": "users\\admin\\action\\admin_professor_delete.php"
+                },
+                {
+                    "blank": 22,
+                    "code": 150,
+                    "comment": 3,
+                    "filename": "users\\admin\\action\\admin_professor_update.php"
+                },
+                {
+                    "blank": 5,
+                    "code": 27,
+                    "comment": 1,
+                    "filename": "users\\admin\\action\\admin_register_delete.php"
+                },
+                {
+                    "blank": 22,
+                    "code": 151,
+                    "comment": 3,
+                    "filename": "users\\admin\\action\\admin_register_update.php"
+                },
+                {
+                    "blank": 4,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "users\\admin\\action\\admin_room_delete.php"
+                },
+                {
+                    "blank": 18,
+                    "code": 92,
+                    "comment": 4,
+                    "filename": "users\\admin\\action\\admin_room_update.php"
+                },
+                {
+                    "blank": 17,
+                    "code": 93,
+                    "comment": 4,
+                    "filename": "users\\admin\\action\\admin_timeslot_update.php"
+                },
+                {
+                    "blank": 1,
+                    "code": 34,
+                    "comment": 2,
+                    "filename": "users\\admin\\admintemp.php"
+                },
+                {
+                    "blank": 20,
+                    "code": 146,
+                    "comment": 3,
+                    "filename": "users\\admin\\course.php"
+                },
+                {
+                    "blank": 17,
+                    "code": 243,
+                    "comment": 8,
+                    "filename": "users\\admin\\professor.php"
+                },
+                {
+                    "blank": 28,
+                    "code": 197,
+                    "comment": 10,
+                    "filename": "users\\admin\\register.php"
+                },
+                {
+                    "blank": 17,
+                    "code": 140,
+                    "comment": 7,
+                    "filename": "users\\admin\\room.php"
+                },
+                {
+                    "blank": 18,
+                    "code": 140,
+                    "comment": 9,
+                    "filename": "users\\admin\\timeslot.php"
+                },
+                {
+                    "blank": 10,
+                    "code": 50,
+                    "comment": 1,
+                    "filename": "users\\admin_dashboard.php"
+                },
+                {
+                    "blank": 9,
+                    "code": 45,
+                    "comment": 1,
+                    "filename": "users\\user_dashboard.php"
+                }
+            ]
+        }
+    ]
+}

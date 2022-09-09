@@ -121,7 +121,8 @@ ob_end_flush();
     <div class="container">
         <div class="list">
             <p style="float:left">Time-Slots</p>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:50vh;overflow-y:scroll">
+            <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
+                style="width:auto;height:50vh;overflow-y:scroll">
                 <?php timeslot(); ?>
             </div>
         </div>

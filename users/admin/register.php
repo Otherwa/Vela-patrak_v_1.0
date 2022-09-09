@@ -130,7 +130,7 @@ ob_end_flush();
     <br>
     <div class="list">
         <p style="float:left">Members</p>
-        <div id="member_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
+        <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
             style="width:auto;height:50vh;overflow-y:scroll">
             <?php member_list(); ?>
         </div>
@@ -152,7 +152,6 @@ ob_end_flush();
                 <label for="" class="form__label">First Name</label>
             </div>
             <br>
-
             <div class="form__div">
                 <input type="text" class="form__input" name="LastName" id="LastName" placeholder="e.g xyz@123"
                     autocomplete="off">

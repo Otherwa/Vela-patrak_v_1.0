@@ -80,6 +80,26 @@ body {
     display: block;
 }
 
+#_list::-webkit-scrollbar {
+    width: 9px;
+}
+
+
+/* Track */
+#_list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey;
+}
+
+
+/* Handle */
+#_list::-webkit-scrollbar-thumb {
+    background: #000000;
+}
+
+/* Handle on hover */
+#_list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.358);
+}
 
 /* for responsive titel */
 @media screen and (max-width: 568px) {

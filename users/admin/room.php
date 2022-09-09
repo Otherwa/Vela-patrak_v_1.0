@@ -60,7 +60,7 @@ function rooms()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "Room-No: " . $row["RoomNo"] . " -Floor: " . $row["Floor"] . " -Capacity: " . $row["Capacity"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_room_update.php\\?UpdateId=" . $row["RoomNo"] . "\">Update</a></li> " . "<a style=\"color:red \" href=\"action\\admin_room_delete.php\\?DeleteId=" . $row["RoomNo"] . "\">Delete</a></li>";
+            echo "<li>" . "Room-No: " . $row["RoomNo"] . " -Floor: " . $row["Floor"] . " -Capacity: " . $row["Capacity"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_room_update.php\\?UpdateId=" . $row["RoomNo"] . "\">Update</a> &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_room_delete.php\\?DeleteId=" . $row["RoomNo"] . "\">Delete</a></li>";
         }
     } else {
         echo "No Room";
@@ -119,7 +119,7 @@ ob_end_flush();
     <div class="container">
         <div class="list">
             <p style="float:left">Room-Registration</p>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:46vw;height:50vh;overflow-y:scroll">
+            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:50vh;overflow-y:scroll">
                 <?php rooms(); ?>
             </div>
         </div>

@@ -102,8 +102,8 @@ ob_end_flush();
         <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="timeslot.php" class="w3-bar-item w3-button w3-black">Time-Slot</a>
-        <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
+        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
+        <a href="professor.php" class="w3-bar-item w3-button w3-black">Professor</a>
         <a href="room.php" class="w3-bar-item w3-button">Room</a>
         <a href="course.php" class="w3-bar-item w3-button">Course</a>
         <a href="#" class="w3-bar-item w3-button">Admin Feature 1</a>
@@ -125,6 +125,8 @@ ob_end_flush();
     <div class="container">
         <div class="list">
             <p style="float:left">Professor List</p> <br>
+            <label for="Professor"
+                style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Professor:</label>
             <select name="ProfList" id="ProfList" onchange="get_professor()">
                 <option value="--">--</option>
                 <option value="PSYCHOLOGY">PSYCHOLOGY</option>
@@ -165,8 +167,8 @@ ob_end_flush();
                 <option value="BMS">BMS</option>
                 <option value="BMM">BMM</option>
             </select>
-            <div id="prof_list" class=" form w3-margin w3-whitesmoke w3-bar-block"
-                style="width:46vw;height:50vh;overflow-y:scroll">
+            <div id="_list" class=" form w3-margin w3-whitesmoke w3-bar-block"
+                style="width:auto;height:50vh;overflow-y:scroll">
                 <?php professor(); ?>
             </div>
         </div>
@@ -205,13 +207,16 @@ ob_end_flush();
                 <br>
                 <div class="form__div">
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
+                    <br>
                     <select name="Part" id="Part">
                         <option value="Junior">Junior</option>
                         <option value="Degree">Degree</option>
                     </select>
                 </div>
+                <br>
                 <div class="form__div">
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
+                    <br>
                     <select name="Department" id="Department">
                         <option value="--">--</option>
                         <option value="PSYCHOLOGY">PSYCHOLOGY</option>
@@ -253,6 +258,7 @@ ob_end_flush();
                         <option value="BMM">BMMC</option>
                     </select>
                 </div>
+                <br>
                 <br>
                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
                     name="save" style="float:right">
