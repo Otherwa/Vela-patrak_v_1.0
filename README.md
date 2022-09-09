@@ -2,6 +2,79 @@
 
 ## To manage TimeTable
 
+# Insights
+
+```
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2022-09-09 19:04:50
+count workspace : c:\xampp\htdocs\Vela-patrak_v_1.0
+total files : 45
+total code lines : 3161
+total comment lines : 209
+total blank lines : 497
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |           .php|           2144|             83|            286|     68|
+   |            .md|             59|             15|             22|    1.9|
+   |            .js|             39|              2|              7|    1.2|
+   |               |             20|              1|              4|   0.63|
+   |           .css|            790|             37|            133|     25|
+   |           .sql|             65|             71|             39|    2.1|
+   |           .yml|             44|              0|              6|    1.4|
+   -------------------------------------------------------------------------
+.github\ISSUE_TEMPLATE\feature_request.md, code is 13, comment is 0, blank is 4.
+.github\workflows\pages.yml, code is 44, comment is 0, blank is 6.
+about.php, code is 32, comment is 0, blank is 7.
+account\login.php, code is 92, comment is 12, blank is 20.
+CODE_OF_CONDUCT.md, code is 31, comment is 4, blank is 10.
+config\connect.php, code is 18, comment is 1, blank is 2.
+config\velapatrak.sql, code is 65, comment is 71, blank is 39.
+contributer.php, code is 98, comment is 12, blank is 9.
+CONTRIBUTING.md, code is 1, comment is 0, blank is 0.
+css\course.css, code is 127, comment is 5, blank is 18.
+css\login.css, code is 83, comment is 3, blank is 9.
+css\main.css, code is 82, comment is 9, blank is 22.
+css\professor.css, code is 137, comment is 6, blank is 26.
+css\register.css, code is 120, comment is 6, blank is 23.
+css\room.css, code is 114, comment is 3, blank is 17.
+css\timeslot.css, code is 127, comment is 5, blank is 18.
+index.php, code is 54, comment is 0, blank is 7.
+js\course.js, code is 1, comment is 0, blank is 0.
+js\login.js, code is 6, comment is 0, blank is 1.
+js\main.js, code is 14, comment is 1, blank is 4.
+js\professor.js, code is 17, comment is 1, blank is 2.
+js\room.js, code is 1, comment is 0, blank is 0.
+js\timeslot.js, code is 0, comment is 0, blank is 0.
+LICENSE, code is 20, comment is 1, blank is 4.
+README.md, code is 14, comment is 11, blank is 8.
+term.php, code is 169, comment is 0, blank is 4.
+timetable_Data.xls, it is a binary file.
+Timetable_screenShots.docx, it is a binary file.
+users\admin\action\admin_course_delete.php, code is 22, comment is 0, blank is 5.
+users\admin\action\admin_course_update.php, code is 105, comment is 1, blank is 19.
+users\admin\action\admin_professor_delete.php, code is 27, comment is 1, blank is 5.
+users\admin\action\admin_professor_update.php, code is 150, comment is 3, blank is 22.
+users\admin\action\admin_register_delete.php, code is 27, comment is 1, blank is 5.
+users\admin\action\admin_register_update.php, code is 151, comment is 3, blank is 22.
+users\admin\action\admin_room_delete.php, code is 19, comment is 0, blank is 4.
+users\admin\action\admin_room_update.php, code is 92, comment is 4, blank is 18.
+users\admin\action\admin_timeslot_update.php, code is 93, comment is 4, blank is 17.
+users\admin\admintemp.php, code is 34, comment is 2, blank is 1.
+users\admin\course.php, code is 146, comment is 3, blank is 20.
+users\admin\professor.php, code is 243, comment is 8, blank is 17.
+users\admin\register.php, code is 197, comment is 10, blank is 28.
+users\admin\room.php, code is 140, comment is 7, blank is 17.
+users\admin\timeslot.php, code is 140, comment is 9, blank is 18.
+users\admin_dashboard.php, code is 50, comment is 1, blank is 10.
+users\user_dashboard.php, code is 45, comment is 1, blank is 9.
+===============================================================================
+
+```
 
 ## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Recent activity [![Time period](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_badge.svg)](https://repography.com)
 [![Timeline graph](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_timeline.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/commits)
