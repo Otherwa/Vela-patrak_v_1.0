@@ -133,3 +133,16 @@
     padding: 0.5rem;
     font-size: var(--normal-font-size);
 }
+
+.form__div select {
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+
+.con {
+    display: flex;
+    margin: 1rem !important;
+    flex-wrap: wrap;
+}
