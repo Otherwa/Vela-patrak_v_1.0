@@ -7,9 +7,14 @@ $status = get_con();
 session_start();
 
 // checks if the admin has privileges to do so
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     // redirect if not set
     header("Location:../account/login.php");
+} else {
+    $type = $_SESSION['type'];
+    if ($type == "member") {
+        header("Location:../account/login.php");
+    }
 }
 
 
@@ -30,7 +35,7 @@ if (isset($_POST['register'])) {
         echo '<script>alert(\'Password too short\');</script>';
     } else {
         $con = get_con();
-        $sql = "SELECT * FROM `members` WHERE Username = '$username' AND Password = '$password' AND Email = '$email';";
+        $sql = "SELECT * FROM `members` WHERE Username = '$username' AND Password = '$password' AND Email = '$email' AND Type = '$type';";
 
         $result = mysqli_query($con, $sql);
         $result_user_type = mysqli_fetch_array($result);
@@ -103,15 +108,7 @@ ob_end_flush();
 
 <body>
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
-        <a href="../admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
-        <a href="register.php" class="w3-bar-item w3-button w3-black">Registration</a>
-        <a href="timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
-        <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
-        <a href="room.php" class="w3-bar-item w3-button">Room</a>
-        <a href="course.php" class="w3-bar-item w3-button">Course</a>
-
+        <?php include('./partial/nav.php'); ?>
     </div>
     <!-- Page Content -->
 
@@ -131,7 +128,7 @@ ob_end_flush();
     <div class="list">
         <p style="float:left">Members</p>
         <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
-            style="width:auto;height:50vh;overflow-y:scroll">
+            style="width:auto;height:50vh !important;overflow-y:scroll">
             <?php member_list(); ?>
         </div>
     </div>
