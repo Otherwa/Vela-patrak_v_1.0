@@ -12,7 +12,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
         header("Location:../account/login.php");
     }
 }
-
+//durvesh
 // session passes id
 $id = $_SESSION['id'];
 
