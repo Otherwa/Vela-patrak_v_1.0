@@ -7,4 +7,5 @@
 <a href="room.php" class="w3-bar-item w3-button">Room</a>
 <a href="course.php" class="w3-bar-item w3-button">Course</a>
 <a href="subject.php" class="w3-bar-item w3-button">Subject</a>
-<a href="select_subjects.php" class="w3-bar-item w3-button">Select_Subject</a>
+<a href="select_subjects.php" class="w3-bar-item w3-button">Select-Subject</a>
+<hr style="border-top: 2px solid #eee;">
