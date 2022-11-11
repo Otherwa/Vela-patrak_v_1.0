@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 05:56 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Nov 11, 2022 at 06:06 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,6 +25,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `config`
+--
+
+CREATE TABLE `config` (
+  `AcademicYear` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `config`
+--
+
+INSERT INTO `config` (`AcademicYear`) VALUES
+('2015-2016\r\n'),
+('2016-2017'),
+('2017-2018'),
+('2018-2019'),
+('2019-2020'),
+('2020-2021'),
+('2021-2022'),
+('2022-2023'),
+('2022-2023');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `course`
 --
 
@@ -33,7 +59,7 @@ CREATE TABLE `course` (
   `Strength` int(10) NOT NULL,
   `Abbreviation` varchar(100) NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -88,7 +114,7 @@ CREATE TABLE `professor` (
   `EmailId` varchar(100) NOT NULL,
   `Phone` varchar(10) NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Part` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -98,7 +124,8 @@ CREATE TABLE `professor` (
 
 INSERT INTO `professor` (`ProfessorId`, `ProfessorFirstName`, `ProfessorLastName`, `Department`, `EmailId`, `Phone`, `MemberId`, `Date`, `Part`) VALUES
 (1, 'Kunal', 'Bhole', 'POL.SCIENCE', 'kunal@gmail.com', '8828388979', 13, '2022-09-08 08:05:18', 'Junior'),
-(3, 'Pushkar', 'Sane', 'INFORMATION TECHLOGY', 'Nice@gmail.com', '8828388978', 13, '2022-09-08 09:19:10', 'Degree');
+(3, 'Pushkar', 'Sane', 'INFORMATION TECHLOGY', 'Nice@gmail.com', '8828388978', 13, '2022-09-08 09:19:10', 'Degree'),
+(4, 'Atharv', 'Desai', 'INFORMATION TECHLOGY', 'atharvdesai2002@gmail.com', '8828388979', 13, '2022-11-11 14:59:25', 'Degree');
 
 -- --------------------------------------------------------
 
@@ -111,7 +138,7 @@ CREATE TABLE `rooms` (
   `Floor` int(5) NOT NULL,
   `Capacity` int(5) NOT NULL,
   `MemberId` int(5) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -119,7 +146,8 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`RoomNo`, `Floor`, `Capacity`, `MemberId`, `Date`) VALUES
-('214', 2, 69, 13, '2022-09-08 10:08:14');
+('214', 2, 69, 13, '2022-09-08 10:08:14'),
+('69', 69, 69, 13, '2022-11-11 12:40:11');
 
 -- --------------------------------------------------------
 
@@ -134,7 +162,7 @@ CREATE TABLE `selectsubject` (
   `Semester` text NOT NULL,
   `Subject` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -142,7 +170,8 @@ CREATE TABLE `selectsubject` (
 --
 
 INSERT INTO `selectsubject` (`ProfessorId`, `ProfessorName`, `Class`, `Semester`, `Subject`, `MemberId`, `Date`) VALUES
-(2, 'Pushkar Sane', 'IT', 'III', 'ABC', 12, '2022-11-11 16:53:23');
+(2, 'Kunal Bhole', 'TYIT', 'III', '1212', 13, '2022-11-11 14:54:59'),
+(3, 'Pushkar Sane', 'FYIT', 'I', '0', 13, '2022-11-11 17:04:47');
 
 -- --------------------------------------------------------
 
@@ -157,7 +186,7 @@ CREATE TABLE `subject` (
   `Class` text NOT NULL,
   `CourseId` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Department` text NOT NULL,
   `Part` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -167,8 +196,7 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`SubjectCode`, `SubjectName`, `Semester`, `Class`, `CourseId`, `MemberId`, `Date`, `Department`, `Part`) VALUES
-('ABC', 'Java', 'III', 'IT', '0', 12, '2022-11-11 16:46:19', '0', '0'),
-('XYZ', 'Python', 'III', 'IT', 'BSC_IT', 12, '2022-11-11 16:48:53', 'JR AND DEGREE', 'Junior');
+('XYZ1212', 'TEST Subject', 'III', 'FYIT', '0', 13, '2022-11-11 17:04:23', 'INFORMATION TECHLOGY', 'Degree');
 
 -- --------------------------------------------------------
 
@@ -181,7 +209,7 @@ CREATE TABLE `timeslot` (
   `StartTime` time NOT NULL,
   `EndTime` time NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -189,7 +217,36 @@ CREATE TABLE `timeslot` (
 --
 
 INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) VALUES
-(1, '07:48:00', '08:36:00', 13, '2022-11-11 09:23:30');
+(1, '07:48:00', '08:36:00', 13, '2022-11-11 09:23:30'),
+(2, '08:34:00', '09:15:00', 13, '2022-11-11 12:40:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetable`
+--
+
+CREATE TABLE `timetable` (
+  `AcademicYear` text NOT NULL,
+  `RoomNo` int(255) NOT NULL,
+  `TimeSlot` int(25) NOT NULL,
+  `Day` text NOT NULL,
+  `Division` varchar(5) NOT NULL,
+  `SubjectCode` int(255) NOT NULL,
+  `Department` text NOT NULL,
+  `MemberId` int(255) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Division1` varchar(5) NOT NULL,
+  `Division2` varchar(5) NOT NULL,
+  `Division3` varchar(5) NOT NULL,
+  `SubjectCode1` int(255) NOT NULL,
+  `Division11` varchar(5) NOT NULL,
+  `Division12` varchar(5) NOT NULL,
+  `Division13` varchar(5) NOT NULL,
+  `Division14` varchar(5) NOT NULL,
+  `Part` text NOT NULL,
+  `Sem` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -255,13 +312,13 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `selectsubject`
 --
 ALTER TABLE `selectsubject`
-  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -290,6 +347,18 @@ ALTER TABLE `rooms`
 --
 ALTER TABLE `selectsubject`
   ADD CONSTRAINT `members_selectsubject` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`);
+
+--
+-- Constraints for table `subject`
+--
+ALTER TABLE `subject`
+  ADD CONSTRAINT `members_subject` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`);
+
+--
+-- Constraints for table `timeslot`
+--
+ALTER TABLE `timeslot`
+  ADD CONSTRAINT `Member_timeslot` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
