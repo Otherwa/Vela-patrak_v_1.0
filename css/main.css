@@ -80,6 +80,12 @@ body {
     display: block;
 }
 
+.list #_list {
+    width: auto;
+    height: 100vh !important;
+    overflow-y: scroll
+}
+
 #_list::-webkit-scrollbar {
     width: 9px;
 }

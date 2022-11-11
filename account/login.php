@@ -34,6 +34,7 @@ if (isset($_POST['login'])) {
         //session variables
         $_SESSION['name'] = $result_user_type['Username'];
         $_SESSION['id'] = $result_user_type['MemberId'];
+        $_SESSION['type'] = $result_user_type['Type'];
 
         // check if user or admin and simple redirect to it
         if ($result_user_type['Type'] == 'admin' || $result_user_type['Type'] == 'superadmin') {

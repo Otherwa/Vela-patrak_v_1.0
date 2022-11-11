@@ -3,9 +3,14 @@ include("../../config/connect.php");
 ob_start();
 session_start();
 
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     // redirect if not set
     header("Location:../account/login.php");
+} else {
+    $type = $_SESSION['type'];
+    if ($type == "member") {
+        header("Location:../account/login.php");
+    }
 }
 
 // session passes id
@@ -64,7 +69,7 @@ function timeslot()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "Timeslot: " . $row["TimeSlot"] . " -Start-Time: " . $row["StartTime"] . " -End-Time: " . $row["EndTime"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_timeslot_update.php\\?UpdateId=" . $row["TimeSlot"] . "\">Update</a></li>";
+            echo "<li>" . "Timeslot: " . $row["TimeSlot"] . " -Start-Time: " . $row["StartTime"] . " -End-Time: " . $row["EndTime"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_timeslot_update.php\\?UpdateId=" . $row["TimeSlot"] . "\">Update</a>" . "&nbsp;<a style=\"color:red \" href=\"action\\admin_timeslot_delete.php\\?DeleteId=" . $row["TimeSlot"] . "\">Delete</a></li>";
         }
     } else {
         echo "No Timeslot";
@@ -121,8 +126,7 @@ ob_end_flush();
     <div class="container">
         <div class="list">
             <p style="float:left">Time-Slots</p>
-            <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
-                style="width:auto;height:50vh;overflow-y:scroll">
+            <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
                 <?php timeslot(); ?>
             </div>
         </div>

@@ -2,9 +2,15 @@
 ob_start();
 session_start();
 
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     // redirect if not set
     header("Location:../account/login.php");
+} else {
+    $type = $_SESSION['type'];
+    // if admin redirefct ot login ?
+    if ($type == "admin") {
+        header("Location:../account/login.php");
+    }
 }
 
 ob_end_flush();
