@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 10:20 AM
+-- Generation Time: Nov 11, 2022 at 10:41 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -148,11 +148,11 @@ CREATE TABLE `subject` (
   `SubjectName` text NOT NULL,
   `Semester` text NOT NULL,
   `Class` text NOT NULL,
-  `CourseName` int(11) NOT NULL,
-  `Part` int(11) NOT NULL,
-  `Department` int(11) NOT NULL,
+  `CourseId` int(11) NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Department` int(11) NOT NULL,
+  `Part` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -168,6 +168,13 @@ CREATE TABLE `timeslot` (
   `MemberId` int(11) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `timeslot`
+--
+
+INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) VALUES
+(1, '07:48:00', '08:36:00', 13, '2022-11-11 09:23:30');
 
 --
 -- Indexes for dumped tables
