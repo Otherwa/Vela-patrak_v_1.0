@@ -70,7 +70,7 @@ function subject()
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" ."Member-Id: " . $row["MemberId"] ." -Subject Code: " . $row["SubjectCode"] . " -Subject Name: " . $row["SubjectName"] . " -Department: " . $row["Department"] . " -Semester: " . $row["Semester"] . " -Class: " . $row["Class"] . " -Part: " . $row["Part"] . "-Course Name: " . $row["CourseId"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_subject_delete.php\\?DeleteId="  . $row["SubjectCode"] . "\">Delete </a></li>";
+            echo "<li>" . "Member-Id: " . $row["MemberId"] . " -Subject Code: " . $row["SubjectCode"] . " -Subject Name: " . $row["SubjectName"] . " -Department: " . $row["Department"] . " -Semester: " . $row["Semester"] . " -Class: " . $row["Class"] . " -Part: " . $row["Part"] . "-Course Name: " . $row["CourseId"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_subject_delete.php\\?DeleteId="  . $row["SubjectCode"] . "\">Delete </a></li>";
         }
     } else {
         echo "No Subject";
@@ -138,7 +138,7 @@ ob_end_flush();
         <div class="list">
             <p style="float:left">Subjects</p>
             <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
-            <?php subject(); ?>
+                <?php subject(); ?>
             </div>
         </div>
         <br>
@@ -152,14 +152,14 @@ ob_end_flush();
                 <br>
                 <br>
                 <div class="form__div">
-                    <input type="text" class="form__input" name="SubjectCode" id="SubjectCode"
-                        placeholder="e.g xyz" autocomplete="off">
+                    <input type="text" class="form__input" name="SubjectCode" id="SubjectCode" placeholder="e.g xyz"
+                        autocomplete="off">
                     <label for="" class="form__label">Subject Code</label>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="text" class="form__input" name="SubjectName" id="SubjectName"
-                        placeholder="e.g xyz" autocomplete="off">
+                    <input type="text" class="form__input" name="SubjectName" id="SubjectName" placeholder="e.g xyz"
+                        autocomplete="off">
                     <label for="" class="form__label">Subject Name</label>
                 </div>
                 <br>
@@ -167,7 +167,7 @@ ob_end_flush();
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Semester</label>
                     <br>
                     <select name="Semester" id="Semester">
-                    <option value="--">--</option>
+                        <option value="--">--</option>
                         <option value="I">I</option>
                         <option value="II">II</option>
                         <option value="III">III</option>
@@ -187,7 +187,7 @@ ob_end_flush();
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Course Name:</label>
                     <br>
                     <select name="CourseName" id="CourseName">
-                    <?php get_course(); ?>
+                        <?php get_course(); ?>
                     </select>
                 </div>
                 <br>
@@ -243,15 +243,16 @@ ob_end_flush();
                         <option value="BMS">BMS</option>
                         <option value="BMM">BMMC</option>
                     </select>
-
+                    <br>
+                    <br>
                     <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
-                    name="save" style="float:right">
+                        name="save" style="float:right">
                 </div>
-        </form>
-    </div>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/subject.js"></script>
+            </form>
+        </div>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/subject.js"></script>
 </body>
 
 </html>

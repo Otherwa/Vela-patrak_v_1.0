@@ -122,6 +122,14 @@
     font-size: var(--normal-font-size);
 }
 
+.form__div select {
+    width: 100%;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+
 .list {
     display: flex;
     flex-direction: column;
