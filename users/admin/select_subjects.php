@@ -18,14 +18,45 @@ $id = $_SESSION['id'];
 
 // insert
 if (isset($_POST['save'])) {
-    $timeslot =  $_POST['TimeSlot'];
-    $starttime =  $_POST['StartTime'];
+    $professorname =  $_POST['ProfessorName'];
+    $class =  $_POST['Class'];
+    $semester = $_POST['Semester'];
+    $subject = $_POST['Subject'];
     $memberid =  $id; //is member id of login generated at login
-    $endtime =  $_POST['EndTime'];
+
+    if ($professorname == " " && $class == " " && $semester == " " && $subject == " " && $memberid == " ") {
+        echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
+    } else {
+        $con = get_con();
+        $sql = "SELECT * FROM `selectsubject` WHERE ProfessorName = '" . $professorname . "'";
+
+        $result = mysqli_query($con, $sql);
+        $result_user_type = mysqli_fetch_array($result);
+        $row = mysqli_num_rows($result);
+
+        if ($row > 0) {
+            // check if timeslot already exists or not simple redirect to it
+            echo "<script>alert('Professor already exsists');</script>";
+            // close connection
+            mysqli_close($con);
+        } else {
+            insert_professor($professorname, $class, $semester, $subject, $memberid);
+        }
+    }
 }
 
 // insert in subjects
-
+function insert_professor($professorname, $class, $semester, $subject, $memberid)
+{
+    $con = get_con();
+    $sql = "INSERT INTO `selectsubject` (`ProfessorName`, `Class`, `Semester`, `Subject`, `MemberId`, `Date`) VALUES ('$professorname', '$class', '$semester', '$subject', '$memberid', current_timestamp());";
+    if ($con->query($sql) === TRUE) {
+        echo "<script>alert('Subject Selected Successfully');</script>";
+    } else {
+        echo "<script>alert('Something went wrong.');</script>";
+    }
+    $con->close();
+}
 
 
 // list the subjects in db
@@ -33,21 +64,60 @@ function subjects()
 {
 
     // boiler plate
-    // $con = get_con();
-    // $con = get_con();
-    // $sql = "SELECT * FROM timeslot";
-    // $result = $con->query($sql);
+    $con = get_con();
+    $sql = "SELECT * FROM selectsubject";
+    $result = $con->query($sql);
 
-    // if ($result->num_rows > 0) {
-    //     // output data of each row
-    //     while ($row = $result->fetch_assoc()) {
-    //         echo "<li>" . "Timeslot: " . $row["TimeSlot"] . " -Start-Time: " . $row["StartTime"] . " -End-Time: " . $row["EndTime"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_timeslot_update.php\\?UpdateId=" . $row["TimeSlot"] . "\">Update</a>" . "&nbsp;<a style=\"color:red \" href=\"action\\admin_timeslot_delete.php\\?DeleteId=" . $row["TimeSlot"] . "\">Delete</a></li>";
-    //     }
-    // } else {
-    //     echo "No Timeslot";
-    // }
-    // $con->close();
+    if ($result->num_rows > 0) {
+    // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>" . "Professor-Name: " . $row["ProfessorName"] . " -Class: " . $row["Class"] . " -Semester: " . $row["Semester"] . " -Subject: " . $row["Subject"] . " &nbsp;&nbsp";
+        }
+    } else {
+       echo "No Subject Selected";
+    }
+    $con->close();
 }
+
+// get professor names
+function getprofessornames()
+{
+    $con = get_con();
+    $sql = "SELECT * FROM professor";
+    $result = $con->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=" . $row["ProfessorFirstName"] . " " . $row["ProfessorLastName"] . "\">" . $row["ProfessorFirstName"] . " " . $row["ProfessorLastName"] . "</option>";
+    }
+    $con->close();
+}
+
+// get class
+function getclass()
+{
+    $con = get_con();
+    $sql = "SELECT DISTINCT Class FROM subject";
+    $result = $con->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=" . $row["Class"] . ">" . $row["Class"] . "</option>";
+    }
+    $con->close();
+}
+
+// get subject
+function getsubject()
+{
+    $con = get_con();
+    $sql = "SELECT SubjectCode FROM subject";
+    $result = $con->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=" . $row["SubjectCode"] . ">" . $row["SubjectCode"] . "</option>";
+    }
+    $con->close();
+}
+
 ob_end_flush();
 ?>
 <!DOCTYPE html>
@@ -91,6 +161,7 @@ ob_end_flush();
         <div class="list">
             <p style="float:left">Select Subjects</p>
             <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
+                <?php subjects(); ?>
             </div>
         </div>
         <br>
@@ -104,21 +175,44 @@ ob_end_flush();
                 <br>
                 <br>
                 <div class="form__div">
-                    <input type="number" class="form__input" name="TimeSlot" id="TimeSlot" placeholder="e.g xyz"
-                        autocomplete="off">
-                    <label for="" class="form__label">Time-Slot</label>
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Professor Name:</label>
+                    <br>
+                    <select name="ProfessorName" id="ProfessorName">
+                        <option value="--">--</option>
+                        <?php getprofessornames(); ?>
+                    </select>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="time" class="form__input" name="StartTime" id="StartTime" placeholder="e.g xyz@123"
-                        autocomplete="off">
-                    <label for="" class="form__label">Start-Time</label>
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Class:</label>
+                    <br>
+                    <select name="Class" id="Class">
+                        <option value="--">--</option>
+                        <?php getclass(); ?>
+                    </select>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="time" class="form__input" name="EndTime" id="EndTime"
-                        placeholder="e.g someone@gmail.com" autocomplete="off">
-                    <label for="" class="form__label">End-Time</label>
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Semester:</label>
+                    <br>
+                    <select name="Semester" id="Semester">
+                        <option value="--">--</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                        <option value="V">V</option>
+                        <option value="VI">VI</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form__div">
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Subject:</label>
+                    <br>
+                    <select name="Subject" id="Subject">
+                        <option value="--">--</option>
+                        <?php getsubject(); ?>
+                    </select>
                 </div>
                 <br>
                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
