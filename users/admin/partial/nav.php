@@ -9,3 +9,4 @@
 <a href="subject.php" class="w3-bar-item w3-button">Subject</a>
 <a href="select_subjects.php" class="w3-bar-item w3-button">Select-Subject</a>
 <hr style="border-top: 2px solid #eee;">
+<a href="staff_timetable.php" class="w3-bar-item w3-button">Staff-Timetable</a>
