@@ -144,7 +144,7 @@ CREATE TABLE `selectsubject` (
 --
 
 CREATE TABLE `subject` (
-  `SubjectCode` int(255) NOT NULL,
+  `SubjectCode` varchar(255) NOT NULL,
   `SubjectName` text NOT NULL,
   `Semester` text NOT NULL,
   `Class` text NOT NULL,
@@ -155,6 +155,11 @@ CREATE TABLE `subject` (
   `Part` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `subject`
+--
+INSERT INTO `subject` (`SubjectCode`, `SubjectName`, `Semester`, `Class`, `CourseId`, `MemberId`, `Date`, `Department`, `Part`) VALUES
+('11P10S1', 'Psychology', 1, 'FYJC Arts', 1, 1, '2022-11-11 09:23:30', 'PSYCHOLOGY', 'Junior');
 -- --------------------------------------------------------
 
 --
