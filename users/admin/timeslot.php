@@ -152,8 +152,8 @@ ob_end_flush();
                 <br>
                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
                     name="save" style="float:right">
+            </form>
         </div>
-        </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../js/main.js"></script>
