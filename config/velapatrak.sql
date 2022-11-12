@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 06:06 PM
+-- Generation Time: Nov 12, 2022 at 02:54 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -29,23 +29,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `config` (
-  `AcademicYear` text NOT NULL
+  `Id` int(11) NOT NULL,
+  `AcademicYear` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `config`
 --
 
-INSERT INTO `config` (`AcademicYear`) VALUES
-('2015-2016\r\n'),
-('2016-2017'),
-('2017-2018'),
-('2018-2019'),
-('2019-2020'),
-('2020-2021'),
-('2021-2022'),
-('2022-2023'),
-('2022-2023');
+INSERT INTO `config` (`Id`, `AcademicYear`) VALUES
+(1, '2015-2016\r\n'),
+(2, '2016-2017'),
+(3, '2017-2018'),
+(4, '2018-2019'),
+(5, '2019-2020'),
+(6, '2020-2021'),
+(7, '2021-2022'),
+(8, '2022-2023');
 
 -- --------------------------------------------------------
 
@@ -170,8 +170,7 @@ CREATE TABLE `selectsubject` (
 --
 
 INSERT INTO `selectsubject` (`ProfessorId`, `ProfessorName`, `Class`, `Semester`, `Subject`, `MemberId`, `Date`) VALUES
-(2, 'Kunal Bhole', 'TYIT', 'III', '1212', 13, '2022-11-11 14:54:59'),
-(3, 'Pushkar Sane', 'FYIT', 'I', '0', 13, '2022-11-11 17:04:47');
+(4, 'Pushkar Sane', 'FYIT', 'III', 'XYZ1212', 13, '2022-11-12 12:11:43');
 
 -- --------------------------------------------------------
 
@@ -181,9 +180,9 @@ INSERT INTO `selectsubject` (`ProfessorId`, `ProfessorName`, `Class`, `Semester`
 
 CREATE TABLE `subject` (
   `SubjectCode` varchar(255) NOT NULL,
-  `SubjectName` text NOT NULL,
-  `Semester` text NOT NULL,
-  `Class` text NOT NULL,
+  `SubjectName` varchar(25) NOT NULL,
+  `Semester` varchar(25) NOT NULL,
+  `Class` varchar(25) NOT NULL,
   `CourseId` text NOT NULL,
   `MemberId` int(255) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -196,6 +195,7 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`SubjectCode`, `SubjectName`, `Semester`, `Class`, `CourseId`, `MemberId`, `Date`, `Department`, `Part`) VALUES
+('adas12', 'POlitival', 'II', 'SYBA', 'BSC_IT', 13, '2022-11-12 11:58:12', 'POL.SCIENCE', 'Junior'),
 ('XYZ1212', 'TEST Subject', 'III', 'FYIT', '0', 13, '2022-11-11 17:04:23', 'INFORMATION TECHLOGY', 'Degree');
 
 -- --------------------------------------------------------
@@ -227,30 +227,45 @@ INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) 
 --
 
 CREATE TABLE `timetable` (
-  `AcademicYear` text NOT NULL,
-  `RoomNo` int(255) NOT NULL,
-  `TimeSlot` int(25) NOT NULL,
-  `Day` text NOT NULL,
+  `AcademicYear` varchar(50) NOT NULL,
+  `RoomNo` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
+  `TimeSlot` varchar(25) NOT NULL,
+  `Day` varchar(50) NOT NULL,
   `Division` varchar(5) NOT NULL,
-  `SubjectCode` int(255) NOT NULL,
+  `SubjectName` varchar(25) NOT NULL,
   `Department` text NOT NULL,
   `MemberId` int(255) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Division1` varchar(5) NOT NULL,
   `Division2` varchar(5) NOT NULL,
   `Division3` varchar(5) NOT NULL,
-  `SubjectCode1` int(255) NOT NULL,
+  `SubjectName1` varchar(25) NOT NULL,
   `Division11` varchar(5) NOT NULL,
   `Division12` varchar(5) NOT NULL,
   `Division13` varchar(5) NOT NULL,
   `Division14` varchar(5) NOT NULL,
   `Part` text NOT NULL,
-  `Sem` text NOT NULL
+  `Sem` varchar(25) NOT NULL,
+  `Class` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectName`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectName1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`) VALUES
+('2021-2022', '214', '7.48-8.36', 'MONDAY', 'A', 'POlitival', 'INFORMATION TECHLOGY', 13, '2022-11-12 13:23:22', '', '', '', '', '', '', '', '', '', 'II', 'FYIT');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `config`
+--
+ALTER TABLE `config`
+  ADD PRIMARY KEY (`Id`),
+  ADD UNIQUE KEY `AcademicYear` (`AcademicYear`);
 
 --
 -- Indexes for table `course`
@@ -275,8 +290,8 @@ ALTER TABLE `professor`
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
-  ADD KEY `members_rooms` (`MemberId`),
-  ADD KEY `RoomNo` (`RoomNo`);
+  ADD PRIMARY KEY (`RoomNo`),
+  ADD KEY `members_rooms` (`MemberId`);
 
 --
 -- Indexes for table `selectsubject`
@@ -290,7 +305,10 @@ ALTER TABLE `selectsubject`
 --
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`SubjectCode`),
-  ADD KEY `members_subject` (`MemberId`);
+  ADD KEY `members_subject` (`MemberId`),
+  ADD KEY `Semester` (`Semester`),
+  ADD KEY `Class` (`Class`),
+  ADD KEY `SubjectName` (`SubjectName`);
 
 --
 -- Indexes for table `timeslot`
@@ -299,8 +317,28 @@ ALTER TABLE `timeslot`
   ADD KEY `Member_timeslot` (`MemberId`);
 
 --
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD PRIMARY KEY (`AcademicYear`,`RoomNo`,`TimeSlot`,`Day`,`Sem`,`Class`),
+  ADD UNIQUE KEY `RoomNo` (`RoomNo`),
+  ADD UNIQUE KEY `Day` (`Day`),
+  ADD UNIQUE KEY `AcademicYear` (`AcademicYear`),
+  ADD UNIQUE KEY `TimeSlot` (`TimeSlot`),
+  ADD UNIQUE KEY `Sem` (`Sem`),
+  ADD KEY `member_timetable` (`MemberId`),
+  ADD KEY `Class` (`Class`),
+  ADD KEY `SubjectName` (`SubjectName`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `config`
+--
+ALTER TABLE `config`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `members`
@@ -318,7 +356,7 @@ ALTER TABLE `professor`
 -- AUTO_INCREMENT for table `selectsubject`
 --
 ALTER TABLE `selectsubject`
-  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -359,6 +397,17 @@ ALTER TABLE `subject`
 --
 ALTER TABLE `timeslot`
   ADD CONSTRAINT `Member_timeslot` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD CONSTRAINT `config_timetable` FOREIGN KEY (`AcademicYear`) REFERENCES `config` (`AcademicYear`),
+  ADD CONSTRAINT `member_timetable` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`),
+  ADD CONSTRAINT `rooms_timetable` FOREIGN KEY (`RoomNo`) REFERENCES `rooms` (`RoomNo`),
+  ADD CONSTRAINT `subject1_timetable` FOREIGN KEY (`Class`) REFERENCES `subject` (`Class`),
+  ADD CONSTRAINT `subject2_timetable` FOREIGN KEY (`SubjectName`) REFERENCES `subject` (`SubjectName`),
+  ADD CONSTRAINT `subject_timetable` FOREIGN KEY (`Sem`) REFERENCES `subject` (`Semester`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
