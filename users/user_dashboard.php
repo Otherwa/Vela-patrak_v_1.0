@@ -35,12 +35,11 @@ ob_end_flush();
 
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
-        <a href="#" class="w3-bar-item w3-button">User Feature 1</a>
+        <a href="../account/login.php" class="w3-bar-item w3-button">Logout</a>
+        <a href="./member/course.php" class="w3-bar-item w3-button">Course</a>
+        <a href="./member/professor.php" class="w3-bar-item w3-button">Professor</a>
+        <a href="./member/select_subjects.php" class="w3-bar-item w3-button">Select Subject</a>
+        <a href="./member/subject.php" class="w3-bar-item w3-button">Subject</a>
     </div>
     <!-- Page Content -->
     <div class="">
