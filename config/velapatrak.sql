@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2022 at 02:54 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Nov 12, 2022 at 03:55 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -59,7 +58,7 @@ CREATE TABLE `course` (
   `Strength` int(10) NOT NULL,
   `Abbreviation` varchar(100) NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -114,7 +113,7 @@ CREATE TABLE `professor` (
   `EmailId` varchar(100) NOT NULL,
   `Phone` varchar(10) NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Part` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -138,7 +137,7 @@ CREATE TABLE `rooms` (
   `Floor` int(5) NOT NULL,
   `Capacity` int(5) NOT NULL,
   `MemberId` int(5) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -162,7 +161,7 @@ CREATE TABLE `selectsubject` (
   `Semester` text NOT NULL,
   `Subject` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -185,9 +184,9 @@ CREATE TABLE `subject` (
   `Class` varchar(25) NOT NULL,
   `CourseId` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp(),
   `Department` text NOT NULL,
-  `Part` text NOT NULL
+  `Part` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -209,7 +208,7 @@ CREATE TABLE `timeslot` (
   `StartTime` time NOT NULL,
   `EndTime` time NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -235,7 +234,7 @@ CREATE TABLE `timetable` (
   `SubjectName` varchar(25) NOT NULL,
   `Department` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Division1` varchar(5) NOT NULL,
   `Division2` varchar(5) NOT NULL,
   `Division3` varchar(5) NOT NULL,
@@ -244,7 +243,7 @@ CREATE TABLE `timetable` (
   `Division12` varchar(5) NOT NULL,
   `Division13` varchar(5) NOT NULL,
   `Division14` varchar(5) NOT NULL,
-  `Part` text NOT NULL,
+  `Part` varchar(25) NOT NULL,
   `Sem` varchar(25) NOT NULL,
   `Class` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -254,7 +253,7 @@ CREATE TABLE `timetable` (
 --
 
 INSERT INTO `timetable` (`AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectName`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectName1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`) VALUES
-('2021-2022', '214', '7.48-8.36', 'MONDAY', 'A', 'POlitival', 'INFORMATION TECHLOGY', 13, '2022-11-12 13:23:22', '', '', '', '', '', '', '', '', '', 'II', 'FYIT');
+('2021-2022', '214', '7.48-8.36', 'MONDAY', 'A', 'POlitival', 'INFORMATION TECHLOGY', 13, '2022-11-12 14:54:32', '', '', '', '', '', '', '', '', 'Degree', 'II', 'FYIT');
 
 --
 -- Indexes for dumped tables
@@ -308,7 +307,8 @@ ALTER TABLE `subject`
   ADD KEY `members_subject` (`MemberId`),
   ADD KEY `Semester` (`Semester`),
   ADD KEY `Class` (`Class`),
-  ADD KEY `SubjectName` (`SubjectName`);
+  ADD KEY `SubjectName` (`SubjectName`),
+  ADD KEY `Part` (`Part`);
 
 --
 -- Indexes for table `timeslot`
@@ -328,7 +328,8 @@ ALTER TABLE `timetable`
   ADD UNIQUE KEY `Sem` (`Sem`),
   ADD KEY `member_timetable` (`MemberId`),
   ADD KEY `Class` (`Class`),
-  ADD KEY `SubjectName` (`SubjectName`);
+  ADD KEY `SubjectName` (`SubjectName`),
+  ADD KEY `Part` (`Part`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -407,6 +408,7 @@ ALTER TABLE `timetable`
   ADD CONSTRAINT `rooms_timetable` FOREIGN KEY (`RoomNo`) REFERENCES `rooms` (`RoomNo`),
   ADD CONSTRAINT `subject1_timetable` FOREIGN KEY (`Class`) REFERENCES `subject` (`Class`),
   ADD CONSTRAINT `subject2_timetable` FOREIGN KEY (`SubjectName`) REFERENCES `subject` (`SubjectName`),
+  ADD CONSTRAINT `subject3_timetable` FOREIGN KEY (`Part`) REFERENCES `subject` (`Part`),
   ADD CONSTRAINT `subject_timetable` FOREIGN KEY (`Sem`) REFERENCES `subject` (`Semester`);
 COMMIT;
 

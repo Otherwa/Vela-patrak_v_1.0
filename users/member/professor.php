@@ -8,7 +8,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     header("Location:../../account/login.php");
 } else {
     $type = $_SESSION['type'];
-    if ($type != "member") {
+    if ($type == "admin") {
         header("Location:../account/login.php");
     }
 }
@@ -67,7 +67,7 @@ function professor()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "id: " . $row["ProfessorId"] . " -Name: " . $row["ProfessorFirstName"] . " " . $row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] . "- Phone: " . $row["Phone"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_professor_delete.php\\?DeleteId="  . $row["ProfessorId"] . "\">Delete</a>" . "&nbsp;&nbsp;" . "<a style=\"color:#131352 \" href=\"action\\admin_professor_update.php\\?UpdateId=" . $row["ProfessorId"] . "\">Update</a></li>";
+            echo "<li>" . "id: " . $row["ProfessorId"] . " -Name: " . $row["ProfessorFirstName"] . " " . $row["ProfessorLastName"] . "- Email: " . $row["EmailId"] .  "- Department: " . $row["Department"] . "- Part: " . $row["Part"] . "- Phone: " . $row["Phone"] . "</li>";
         }
     } else {
         echo "No Professor";
@@ -103,7 +103,12 @@ ob_end_flush();
 <body>
 
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
+        <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
+        <a href="../account/login.php" class="w3-bar-item w3-button">Logout</a>
+        <a href="../user_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
+        <a href="./member/course.php" class="w3-bar-item w3-button">Course</a>
+        <a href="./member/select_subjects.php" class="w3-bar-item w3-button">Select Subject</a>
+        <a href="./member/subject.php" class="w3-bar-item w3-button">Subject</a>
     </div>
     <!-- Page Content -->
     <div class="">
