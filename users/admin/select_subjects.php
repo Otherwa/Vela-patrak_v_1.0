@@ -92,31 +92,8 @@ function getprofessornames()
     $con->close();
 }
 
-// get class
-function getclass()
-{
-    $con = get_con();
-    $sql = "SELECT DISTINCT Class FROM subject";
-    $result = $con->query($sql);
 
-    while ($row = $result->fetch_assoc()) {
-        echo "<option value=" . $row["Class"] . ">" . $row["Class"] . "</option>";
-    }
-    $con->close();
-}
 
-// get subject
-function getsubject()
-{
-    $con = get_con();
-    $sql = "SELECT SubjectCode FROM subject";
-    $result = $con->query($sql);
-
-    while ($row = $result->fetch_assoc()) {
-        echo "<option value=" . $row["SubjectCode"] . ">" . $row["SubjectCode"] . "</option>";
-    }
-    $con->close();
-}
 
 ob_end_flush();
 ?>
@@ -132,7 +109,9 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/select_subject.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Time-Table</title>
@@ -177,7 +156,7 @@ ob_end_flush();
                 <div class="form__div">
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Professor Name:</label>
                     <br>
-                    <select name="ProfessorName" id="ProfessorName">
+                    <select name="ProfessorName" id="ProfessorName" onchange="get_classes()">
                         <option value="--">--</option>
                         <?php getprofessornames(); ?>
                     </select>
@@ -186,16 +165,16 @@ ob_end_flush();
                 <div class="form__div">
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Class:</label>
                     <br>
+                    <!-- ajax get in -->
                     <select name="Class" id="Class">
                         <option value="--">--</option>
-                        <?php getclass(); ?>
                     </select>
                 </div>
                 <br>
                 <div class="form__div">
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Semester:</label>
                     <br>
-                    <select name="Semester" id="Semester">
+                    <select name="Semester" id="Semester" onchange="get_subject()">
                         <option value="--">--</option>
                         <option value="I">I</option>
                         <option value="II">II</option>
@@ -210,8 +189,7 @@ ob_end_flush();
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Subject:</label>
                     <br>
                     <select name="Subject" id="Subject">
-                        <option value="--">--</option>
-                        <?php getsubject(); ?>
+                        <!-- ajax get -->
                     </select>
                 </div>
                 <br>
