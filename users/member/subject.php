@@ -8,7 +8,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     header("Location:../account/login.php");
 } else {
     $type = $_SESSION['type'];
-    if ($type == "member") {
+    if ($type == "admin") {
         header("Location:../account/login.php");
     }
 }
@@ -70,7 +70,7 @@ function subject()
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "Member-Id: " . $row["MemberId"] . " -Subject Code: " . $row["SubjectCode"] . " -Subject Name: " . $row["SubjectName"] . " -Department: " . $row["Department"] . " -Semester: " . $row["Semester"] . " -Class: " . $row["Class"] . " -Part: " . $row["Part"] . "-Course Name: " . $row["CourseId"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_subject_delete.php\\?DeleteId="  . $row["SubjectCode"] . "\">Delete </a></li>";
+            echo "<li>" . "Member-Id: " . $row["MemberId"] . " -Subject Code: " . $row["SubjectCode"] . " -Subject Name: " . $row["SubjectName"] . " -Department: " . $row["Department"] . " -Semester: " . $row["Semester"] . " -Class: " . $row["Class"] . " -Part: " . $row["Part"] . "-Course Name: " . $row["CourseId"]. "</li>";
         }
     } else {
         echo "No Subject";
@@ -118,7 +118,11 @@ ob_end_flush();
 <body>
 
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
+    <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
+        <a href="../user_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
+        <a href="course.php" class="w3-bar-item w3-button">Course</a>
+        <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
+        <a href="select_subjects.php" class="w3-bar-item w3-button">Select Subject</a>
     </div>
     <!-- Page Content -->
     <div class="">
