@@ -192,6 +192,8 @@ ob_end_flush();
 
                         echo "<td>" . "" . "</td>";
 
+                        echo "<td>" . "" . "</td>";
+
                         echo "</tr>";
                     }
 
