@@ -98,7 +98,7 @@ ob_end_flush();
 
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../account/login.php" class="w3-bar-item w3-button">Logout</a>
+        <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
         <a href="../user_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
         <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
         <a href="select_subjects.php" class="w3-bar-item w3-button">Select Subject</a>
