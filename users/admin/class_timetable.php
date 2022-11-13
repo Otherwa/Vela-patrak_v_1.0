@@ -53,7 +53,21 @@ function get_classs()
     $con->close();
 }
 
+function get_room()
+{
+    $con = get_con();
+    $sql = "SELECT * FROM rooms";
+    $result = $con->query($sql);
 
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value=\"" . $row["RoomNo"] . "\">" . $row["RoomNo"] . "</option>";
+        }
+    } else {
+    }
+    $con->close();
+}
 
 ob_end_flush();
 ?>
@@ -98,8 +112,8 @@ ob_end_flush();
 
     <div class="container">
         <div class="l-form">
-            <div class="form  w3-margin w3-whitesmoke" style="width:100%;height:auto">
-                <div class="context">
+            <form class="form w3-margin w3-whitesmoke" style="height:auto">
+                <div class="context con">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">
                     <p>Class-Timetable</p>
@@ -117,30 +131,44 @@ ob_end_flush();
                     <br>
                     <div class="form__div">
                         <label for="Class">Class:</label>
-                        <select name="class" id="class">
+                        <select name="class" id="class" onchange="get_sem()">
                             <option value="--">--</option>
                             <!-- get fuction php -->
                             <?php get_classs(); ?>
                         </select>
                     </div>
                     <br>
+                    <br>
                     <div class="form__div">
-                        <label for="Semester">Semester:</label>
-                        <select name="semester" id="semester">
+                        <label for="Part">Part:</label>
+                        <select name="Part" id="part" onchange="if_junior(this.value)">
                             <option value="--">--</option>
                             <!-- get fuction php -->
-                            <option value="I">I</option>
-                            <option value="II">II</option>
-                            <option value="III">III</option>
-                            <option value="IV">IV</option>
-                            <option value="V">V</option>
-                            <option value="VI">VI</option>
+                            <option value="Degree">Degree</option>
+                            <option value="Junior">Junior</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <label for="Semester">Semester:</label>
+                        <select name="semester" id="semester" onchange="get_sub()">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <!-- ajax get -->
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <label for="Room">Room:</label>
+                        <select name="room" id="room" onchange="set_room()">
+                            <option value="--">--</option>
+                            <?php get_room(); ?>
                         </select>
                     </div>
                     <br>
                     <div class="form__div">
                         <label for="Division">Division:</label>
-                        <select name="division" id="division">
+                        <select name="division" id="division" onchange="set_subject(this.value)">
                             <option value="--">--</option>
                             <!-- get fuction php -->
                             <option value="A">A</option>
@@ -151,56 +179,77 @@ ob_end_flush();
                             <option value="F">F</option>
                         </select>
                     </div>
-                    <br>
                 </div>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Load"
-                    name="save" style="float:right">
-                <!-- onclick="get_data()" -->
-            </div>
-        </div>
-        <br>
-        <div class="list">
-            <p style="float:left">Staff-Timetable</p>
-            <div id="timetable" class="form  w3-margin w3-whitesmoke w3-bar-block">
-                <table border='1'>
-                    <tr>
-                        <th>Timming</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                    </tr>
+                <div class="msg1">Not Available in Mobile-Device</div>
+                <div class="msg"></div>
+                <div id="timetable" class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <!-- hidden timeslot -->
+                    <!-- based of Timming * 6 logic -->
+                    <!-- no .of timings x 6 days to get unique fields in timetable -->
+                    <!-- no .of timings x to get timmings -->
                     <?php
                     $con = get_con();
-                    $sql = "SELECT * FROM timeslot";
+                    $sql = "SELECT COUNT(*) AS count FROM timeslot";
                     $result = $con->query($sql);
-                    while ($row = $result->fetch_assoc()) {
-
-                        echo "<tr>";
-
-                        echo "<td>" . $row["StartTime"] . "-" . $row["EndTime"] . "</td>";
-
-                        echo "<td>" .  " " . "</td>";
-
-                        echo "<td>" . " " . "</td>";
-
-                        echo "<td>" . "" . "</td>";
-
-                        echo "<td>" . "" . "</td>";
-
-                        echo "<td>" . "" . "</td>";
-
-                        echo "<td>" . "" . "</td>";
-
-                        echo "</tr>";
-                    }
-
+                    $result = $result->fetch_assoc();
+                    $result = $result['count'];
+                    $count1 = $result;
                     ?>
-                </table>
-            </div>
+                    <input type="hidden" id="count" value="<?php echo $count1 ?>">
+                    <input type="hidden" id="memberid" value="<?php echo $_SESSION['id']; ?>">
+                    <table class="styled-table">
+                        <thread>
+                            <tr>
+                                <th>Timming</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thread>
+                        <?php
+                        $con = get_con();
+                        $sql = "SELECT * FROM timeslot";
+                        $result = $con->query($sql);
+                        // subject
+                        $i = 0;
+                        // timming
+                        $j = 0;
+                        while ($row = $result->fetch_assoc()) {
+
+                            echo "<tr>";
+
+                            echo "<td id=\"time" . $j++ . "\">" . $row["StartTime"] . "-" . $row["EndTime"] . "</td>";
+
+                            echo "<td>" . "<select class=\"subjects\" id=\"" . "mon" . $i . "\"></select>"  . "</td>";
+
+                            echo "<td>" . "<select class=\"subjects\" id=\"" . "tue" . $i . "\"></select>"  . "</td>";
+
+                            echo "<td>" . "<select class=\"subjects\" id=\"" . "wed" . $i . "\"></select>"  . "</td>";
+
+                            echo "<td>" . "<select class=\"subjects\" id=\"" . "thus" . $i . "\"></select>"  . "</td>";
+
+                            echo "<td>" . "<select class=\"subjects\" id=\"" . "fri" . $i . "\"></select>"  . "</td>";
+
+                            echo "<td>" . "<select class=\"subjects\" id=\"" . "sat" . $i . "\"></select>"  . "</td>";
+
+                            echo "</tr>";
+                            $i++;
+                        }
+
+                        ?>
+                    </table>
+                </div>
+                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="button" value="Save"
+                    name="save" id="save" style="float:right" onclick="set_data()">
+                <!-- onclick="get_data()" -->
         </div>
+    </div>
+    <br>
+    <div class="list">
+    </div>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../js/main.js"></script>
