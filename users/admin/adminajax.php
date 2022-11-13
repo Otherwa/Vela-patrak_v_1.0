@@ -109,6 +109,139 @@ if (isset($_POST['class1']) && isset($_POST['sem'])) {
     }
 }
 
+//get sem for timetable for
+if (isset($_POST['class5'])) {
+    $class1 =  $_POST['class5'];
+    $con = get_con();
+    $sql = "SELECT DISTINCT Semester FROM subject WHERE Class = '$class1'";
+    $result = $con->query($sql);
+    echo "<option value=\"--\">--</option>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=" . $row["Semester"] . ">" . $row["Semester"] . "</option>";
+    }
+    $con->close();
+}
+
+//get sub for timetable for
+if (isset($_POST['class4'])) {
+    $class1 =  $_POST['class4'];
+    $con = get_con();
+    $sql = "SELECT DISTINCT * FROM subject WHERE Semester = '$class1'";
+    $result = $con->query($sql);
+    echo "<option value=\"--\">--</option>";
+    echo "<option value=\"break\">break</option>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=" . $row["SubjectCode"] . ">" . $row["SubjectCode"] . "</option>";
+    }
+    $con->close();
+}
+
+
+// set Subjects in array format
+if (isset($_POST["time"]) && isset($_POST["mon"]) && isset($_POST["tue"]) && isset($_POST["wed"]) && isset($_POST["thu"]) && isset($_POST["fri"]) && isset($_POST["sat"])) {
+    $time = explode(",", $_POST["time"]);
+    $mon = explode(",", $_POST["mon"]);
+    $tue = explode(",", $_POST["tue"]);
+    $wed = explode(",", $_POST["wed"]);
+    $thu = explode(",", $_POST["thu"]);
+    $fri = explode(",", $_POST["fri"]);
+    $sat = explode(",", $_POST["sat"]);
+    $academic_year = $_POST["acad"];
+    $room = $_POST["room"];
+    $division = $_POST["div"];
+    $semester = $_POST["sem"];
+    $class1 = $_POST["class9"];
+    $part = $_POST["part"];
+    $member = $_POST["mem"];
+
+
+    // get department from class viw subject
+    $department = "";
+    //get sub for timetable for
+    $class1 =  $_POST['class9'];
+    $con = get_con();
+    $sql = "SELECT DISTINCT * FROM subject WHERE Class = '$class1'";
+    $result = $con->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $department = $row['Department'];
+    }
+
+
+
+    // (`AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`)
+
+
+    // echo $sql;
+
+    for ($i = 0; $i < count($time); $i++) {
+        $sql = "INSERT INTO `timetable` VALUES ('$academic_year','$room','$time[$i]','Monday','$division','$mon[$i]','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','$part','$semester','$class1');";
+        // echo $sql;
+        if ($con->query($sql) === TRUE) {
+            $flag = 1;
+        } else {
+            $flag = 0;
+        }
+    }
+
+    for ($i = 0; $i < count($time); $i++) {
+        $sql = "INSERT INTO `timetable` VALUES ('$academic_year','$room','$time[$i]','Tuesday','$division','$tue[$i]','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','$part','$semester','$class1')";
+        // echo $sql;
+        if ($con->query($sql) === TRUE) {
+            $flag = 1;
+        } else {
+            $flag = 0;
+        }
+    }
+
+    for ($i = 0; $i < count($time); $i++) {
+        $sql = "INSERT INTO `timetable` VALUES ('$academic_year','$room','$time[$i]','Wednesday','$division','$wed[$i]','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','$part','$semester','$class1')";
+        // echo $sql;
+        if ($con->query($sql) === TRUE) {
+            $flag = 1;
+        } else {
+            $flag = 0;
+        }
+    }
+
+    for ($i = 0; $i < count($time); $i++) {
+        $sql = "INSERT INTO `timetable` VALUES ('$academic_year','$room','$time[$i]','Thursday','$division','$thu[$i]','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','$part','$semester','$class1')";
+        // echo $sql;
+        if ($con->query($sql) === TRUE) {
+            $flag = 1;
+        } else {
+            $flag = 0;
+        }
+    }
+
+    for ($i = 0; $i < count($time); $i++) {
+        $sql = "INSERT INTO `timetable` VALUES ('$academic_year','$room','$time[$i]','Friday','$division','$fri[$i]','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','$part','$semester','$class1')";
+        // echo $sql;
+        if ($con->query($sql) === TRUE) {
+            $flag = 1;
+        } else {
+            $flag = 0;
+        }
+    }
+
+    for ($i = 0; $i < count($time); $i++) {
+        $sql = "INSERT INTO `timetable` VALUES ('$academic_year','$room','$time[$i]','Saturday','$division','$sat[$i]','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','$part','$semester','$class1')";
+        // echo $sql;
+        if ($con->query($sql) === TRUE) {
+            $flag = 1;
+        } else {
+            $flag = 0;
+        }
+    }
+
+    if ($flag === 1) {
+        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered');</script>";
+    } else {
+        echo "<script>alert('Something went wrong or Timetable for the Class " . $class1 . " In Room " . $room . " Already Exsists');</script>";
+    }
+
+
+    $con->close();
+}
 ob_end_flush();
 ?>
 <!DOCTYPE html>
