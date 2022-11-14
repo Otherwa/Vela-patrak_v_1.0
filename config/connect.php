@@ -5,7 +5,7 @@ function get_con()
     $host = "localhost";
     $user = "root";
     $password = "";
-    $dbname = "velapatrak";
+    $dbname = "velapatrak1";
     $connect = mysqli_connect($host, $user, $password, $dbname);
 
     if (!$connect) {
