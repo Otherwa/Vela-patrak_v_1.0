@@ -113,6 +113,8 @@ ob_end_flush();
     <div class="container">
         <div class="l-form">
             <form class="form w3-margin w3-whitesmoke" style="height:auto">
+
+
                 <div class="context con">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">
@@ -120,7 +122,17 @@ ob_end_flush();
                 </div>
                 <br>
                 <br>
-                <div class="con">
+                <div class="form__div" style="width: 15rem;margin-left: 3rem;">
+                    <label for="todo">To-Do:</label>
+                    <select id="to-do">
+                        <option value="insert">Insert</option>
+                        <option value="load">Load</option>
+                        <option value="delete">Delete</option>
+                    </select>
+                </div>
+                <br>
+                <br>
+                <div class="con" id="inpt-form" style="justify-content: start;">
                     <div class="form__div">
                         <label for="Academic Year">Academic Year:</label>
                         <select id="academic_year">
@@ -148,45 +160,61 @@ ob_end_flush();
                             <option value="Junior">Junior</option>
                         </select>
                     </div>
-                    <br>
-                    <div class="form__div">
-                        <label for="Semester">Semester:</label>
-                        <select name="semester" id="semester" onchange="get_sub()">
-                            <option value="--">--</option>
-                            <!-- get fuction php -->
-                            <!-- ajax get -->
-                        </select>
-                    </div>
-                    <br>
-                    <div class="form__div">
-                        <label for="Room">Room:</label>
-                        <select name="room" id="room" onchange="set_room()">
-                            <option value="--">--</option>
-                            <?php get_room(); ?>
-                        </select>
-                    </div>
-                    <br>
-                    <div class="form__div">
-                        <label for="Division">Division:</label>
-                        <select name="division" id="division" onchange="set_subject(this.value)">
-                            <option value="--">--</option>
-                            <!-- get fuction php -->
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>
-                            <option value="E">E</option>
-                            <option value="F">F</option>
-                        </select>
-                    </div>
                 </div>
                 <div class="msg1">Not Available in Mobile-Device</div>
                 <div class="msg"></div>
+
                 <div id="timetable" class="form  w3-margin w3-whitesmoke w3-bar-block">
                     <!-- hidden timeslot -->
                     <!-- based of Timming * 6 logic -->
                     <!-- no .of timings x 6 days to get unique fields in timetable -->
                     <!-- no .of timings x to get timmings -->
+
+                    <!-- The Modal to select subject-->
+                    <div id="modalDialog" class="modal">
+                        <div class="con1">
+                            <br>
+                            <span class="close">Close</span>
+                            <div class="form__div">
+                                <label for="Semester">Semester:</label>
+                                <select name="semester" id="semester" onchange="get_sub()">
+                                    <option value="--">--</option>
+                                    <!-- get fuction php -->
+                                    <!-- ajax get -->
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form__div">
+                                <label for="Room">Room:</label>
+                                <select name="room" id="room" onchange="set_room()">
+                                    <option value="--">--</option>
+                                    <?php get_room(); ?>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form__div">
+                                <label for="Division">Division:</label>
+                                <select name="division" id="division" onchange="set_subject(this.value)">
+                                    <option value="--">--</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form__div">
+                                <label for="Division">Subject:</label>
+                                <select id="subjects"></select>
+                            </div>
+                            <div class="form__div">
+                                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="button"
+                                    value="Save" name="save" id="save" style="float:right" onclick="set_data()">
+                            </div>
+                        </div>
+                    </div>
                     <?php
                     $con = get_con();
                     $sql = "SELECT COUNT(*) AS count FROM timeslot";
@@ -223,27 +251,59 @@ ob_end_flush();
 
                             echo "<td id=\"time" . $j++ . "\">" . $row["StartTime"] . "-" . $row["EndTime"] . "</td>";
 
-                            echo "<td>" . "<select class=\"subjects\" id=\"" . "mon" . $i . "\"></select>"  . "</td>";
+                            echo "<td>" . "<div id=\"Monday," . $i . "\"></div>" . "</td>";
 
-                            echo "<td>" . "<select class=\"subjects\" id=\"" . "tue" . $i . "\"></select>"  . "</td>";
+                            echo "<td>" . "<div id=\"Tuesday," . $i . "\"></div>" . "</td>";
 
-                            echo "<td>" . "<select class=\"subjects\" id=\"" . "wed" . $i . "\"></select>"  . "</td>";
+                            echo "<td>" . "<div id=\"Wednesday," . $i . "\"></div>" . "</td>";
 
-                            echo "<td>" . "<select class=\"subjects\" id=\"" . "thus" . $i . "\"></select>"  . "</td>";
+                            echo "<td>" . "<div id=\"Thursday," . $i . "\"></div>" . "</td>";
 
-                            echo "<td>" . "<select class=\"subjects\" id=\"" . "fri" . $i . "\"></select>"  . "</td>";
+                            echo "<td>" . "<div id=\"Friday," . $i . "\"></div>" . "</td>";
 
-                            echo "<td>" . "<select class=\"subjects\" id=\"" . "sat" . $i . "\"></select>"  . "</td>";
+                            echo "<td>" . "<div id=\"Saturday," . $i . "\"></div>" . "</td>";
 
                             echo "</tr>";
                             $i++;
                         }
-
                         ?>
                     </table>
                 </div>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="button" value="Save"
-                    name="save" id="save" style="float:right" onclick="set_data()">
+
+                <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <div class="form__div">
+                        <label for="Class">Class:</label>
+                        <select name="class" id="class" onchange="get_data_timetable(this.value)">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <?php get_classs(); ?>
+                        </select>
+                    </div>
+                    <?php
+                    $con = get_con();
+                    $sql = "SELECT COUNT(*) AS count FROM timeslot";
+                    $result = $con->query($sql);
+                    $result = $result->fetch_assoc();
+                    $result = $result['count'];
+                    $count1 = $result;
+                    ?>
+                    <table class="styled-table">
+                        <thread>
+                            <tr>
+                                <th>Timming</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thread>
+                        <tbody id="load_data">
+
+                        </tbody>
+                    </table>
+                </div>
                 <!-- onclick="get_data()" -->
         </div>
     </div>
