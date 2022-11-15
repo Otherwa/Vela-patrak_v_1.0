@@ -146,6 +146,7 @@
     margin: 1rem !important;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.007);
 }
 
 /* table */
@@ -167,7 +168,7 @@
 .styled-table th,
 .styled-table td {
     padding: 1rem;
-    width: 10rem;
+    width: 12rem;
 }
 
 .styled-table tbody tr {
@@ -194,8 +195,52 @@ select {
     display: none !important;
 }
 
+td div {
+    background-color: rgb(102, 102, 102);
+    height: 2rem;
+    border-radius: 0.2rem;
+}
+
+#load_data td div {
+    border-radius: 0.2rem;
+    background-color: #f9f9f9 !important;
+}
+
+td div p {
+    padding: 0.2rem;
+    text-align: center;
+}
+
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.con1 {
+    width: 40%;
+    display: flex;
+    margin: 1rem !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(220, 220, 220);
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+
+
 @media (max-width: 768px) {
-    #timetable {
+
+    #timetable,
+    #timetable1 {
         display: none !important;
     }
 

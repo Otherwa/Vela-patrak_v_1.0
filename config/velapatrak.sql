@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 02:37 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Host: sql101.byetcluster.com
+-- Generation Time: Nov 14, 2022 at 07:04 AM
+-- Server version: 10.3.27-MariaDB
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `velapatrak`
+-- Database: `epiz_32417587_vel`
 --
 
 -- --------------------------------------------------------
@@ -59,7 +59,7 @@ CREATE TABLE `course` (
   `Strength` int(10) NOT NULL,
   `Abbreviation` varchar(100) NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -114,7 +114,7 @@ CREATE TABLE `professor` (
   `EmailId` varchar(100) NOT NULL,
   `Phone` varchar(10) NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Part` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -138,7 +138,7 @@ CREATE TABLE `rooms` (
   `Floor` int(5) NOT NULL,
   `Capacity` int(5) NOT NULL,
   `MemberId` int(5) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -162,7 +162,7 @@ CREATE TABLE `selectsubject` (
   `Semester` text NOT NULL,
   `Subject` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -185,7 +185,7 @@ CREATE TABLE `subject` (
   `Class` varchar(25) NOT NULL,
   `CourseId` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp(),
   `Department` text NOT NULL,
   `Part` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -210,7 +210,7 @@ CREATE TABLE `timeslot` (
   `StartTime` time NOT NULL,
   `EndTime` time NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -222,7 +222,8 @@ INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) 
 (2, '08:34:00', '09:15:00', 13, '2022-11-11 12:40:40'),
 (3, '09:18:00', '22:34:00', 13, '2022-11-12 14:36:33'),
 (4, '10:43:00', '23:43:00', 13, '2022-11-12 17:13:30'),
-(5, '11:48:00', '01:49:00', 13, '2022-11-13 13:19:11');
+(5, '11:48:00', '01:49:00', 13, '2022-11-13 13:19:11'),
+(6, '14:08:00', '15:08:00', 13, '2022-11-13 14:25:36');
 
 -- --------------------------------------------------------
 
@@ -239,7 +240,7 @@ CREATE TABLE `timetable` (
   `SubjectCode` varchar(25) NOT NULL DEFAULT '--',
   `Department` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Division1` varchar(5) NOT NULL,
   `Division2` varchar(5) NOT NULL,
   `Division3` varchar(5) NOT NULL,
@@ -252,42 +253,6 @@ CREATE TABLE `timetable` (
   `Sem` varchar(25) NOT NULL,
   `Class` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `timetable`
---
-
-INSERT INTO `timetable` (`AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`) VALUES
-('2021-2022', '214', '07:48:00-08:36:00', 'Friday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '07:48:00-08:36:00', 'Monday', 'A', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '07:48:00-08:36:00', 'Saturday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '07:48:00-08:36:00', 'Thursday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '07:48:00-08:36:00', 'Tuesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '07:48:00-08:36:00', 'Wednesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '08:34:00-09:15:00', 'Friday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '08:34:00-09:15:00', 'Monday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '08:34:00-09:15:00', 'Saturday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:31', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '08:34:00-09:15:00', 'Thursday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '08:34:00-09:15:00', 'Tuesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '08:34:00-09:15:00', 'Wednesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '09:18:00-22:34:00', 'Friday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '09:18:00-22:34:00', 'Monday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '09:18:00-22:34:00', 'Saturday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:31', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '09:18:00-22:34:00', 'Thursday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '09:18:00-22:34:00', 'Tuesday', 'A', 'break', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '09:18:00-22:34:00', 'Wednesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '10:43:00-23:43:00', 'Friday', 'A', 'break', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '10:43:00-23:43:00', 'Monday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '10:43:00-23:43:00', 'Saturday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:31', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '10:43:00-23:43:00', 'Thursday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '10:43:00-23:43:00', 'Tuesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '10:43:00-23:43:00', 'Wednesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '11:48:00-01:49:00', 'Friday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '11:48:00-01:49:00', 'Monday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '11:48:00-01:49:00', 'Saturday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:31', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '11:48:00-01:49:00', 'Thursday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '11:48:00-01:49:00', 'Tuesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '11:48:00-01:49:00', 'Wednesday', 'A', '--', 'INFORMATION TECHLOGY', 13, '2022-11-13 13:35:30', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT');
 
 --
 -- Indexes for dumped tables
@@ -427,17 +392,6 @@ ALTER TABLE `subject`
 --
 ALTER TABLE `timeslot`
   ADD CONSTRAINT `Member_timeslot` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `timetable`
---
-ALTER TABLE `timetable`
-  ADD CONSTRAINT `config_timetable` FOREIGN KEY (`AcademicYear`) REFERENCES `config` (`AcademicYear`),
-  ADD CONSTRAINT `member_timetable` FOREIGN KEY (`MemberId`) REFERENCES `members` (`MemberId`),
-  ADD CONSTRAINT `rooms_timetable` FOREIGN KEY (`RoomNo`) REFERENCES `rooms` (`RoomNo`),
-  ADD CONSTRAINT `subject1_timetable` FOREIGN KEY (`Class`) REFERENCES `subject` (`Class`),
-  ADD CONSTRAINT `subject2_timetable` FOREIGN KEY (`SubjectCode`) REFERENCES `subject` (`SubjectCode`),
-  ADD CONSTRAINT `subject_timetable` FOREIGN KEY (`Sem`) REFERENCES `subject` (`Semester`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
