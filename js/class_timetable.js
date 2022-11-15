@@ -65,18 +65,14 @@ function get_sub() {
 
 // to set division
 function set_room() {
-    $('#division').val('A');
+    $('#division').val('--');
 }
 
 
 // for subject
-$('#subjects').prop('disabled', true);
+
 $('#save').prop('disabled', true);
-function set_subject(data) {
-    if (data != '--') {
-        $('#subjects').prop('disabled', false);
-    }
-}
+
 
 // check if alldetails are filled
 setInterval(function () {
@@ -86,7 +82,7 @@ setInterval(function () {
         $('#save').prop('disabled', true);
     }
 
-    if ($('#part').val() != '--' && $('#class').val() && $('#academic_year').val() != '--') {
+    if ($('#part').val() != '--' && $('#class').val() != '--' && $('#academic_year').val() != '--') {
         $('td div').css('pointer-events', 'all');
         // console.log(1212 + "adfsf");
     } else {
@@ -107,12 +103,20 @@ var day1 = "";
 var time1 = "";
 
 divtoclick.on('click', (event) => {
+    // time mapped
+    time = [];
+    for (let i = 0; i < $('#count').val(); i++) {
+        time.push($('#time' + i).html());
+    }
+
     var data = event.target.id;
     data = data.split(',');
     day1 = data[0];
     time1 = data[1];
     alert(event.target.id);
     modal.fadeIn();
+    $('#day').html(day1);
+    $('#time').html(time[time1]);
 });
 
 // close
@@ -120,6 +124,42 @@ var span = $(".close");
 span.on('click', function () {
     modal.fadeOut();
 });
+
+
+function get_sub5() {
+
+    // clear the current list
+    $('#room').val('--');
+    $('#division').val('--');
+
+    $('#subjects').html('<option value=\"--\">--</option>');
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: 'class990=' + null,
+        success: function (data) {
+            $('#subjects2').html(data);
+            // console.log(data);
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}
+
+$('.extra').hide();
+// checks if combied lecture
+$('#combined').click(function () {
+    if ($(this).is(':checked')) {
+        $('.extra').show();
+        get_sub5();
+    } else {
+        $('.extra').hide();
+    }
+});
+
+
+
 
 // sets data
 function set_data() {
@@ -134,22 +174,24 @@ function set_data() {
     let part = $('#part').val();
     let member = $('#memberid').val();
     let subject = $('#subjects').val();
+    var division4 = $('#division4').val();
+    var sub4 = $('#sub4').val();
     // timming data
 
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
-        data: "time=" + real_timming + "&day=" + day + "&acad=" + academic + "&room=" + room + "&div=" + div + "&part=" + part + "&sem=" + sem + "&class9=" + class2 + "&mem=" + member + '&sub=' + subject, //string input
+        data: "time=" + real_timming + "&day=" + day + "&acad=" + academic + "&room=" + room + "&div=" + div + "&part=" + part + "&sem=" + sem + "&class9=" + class2 + "&mem=" + member + '&sub=' + subject + "&div4=" + division4 + "sub=" + sub4, //string input
         success: function (data) {
             // alert("Success Data Entered");
             $('.msg').html(data);
-            $('#academic_year').val('--');
-            $('#part').val('--');
+            // $('#academic_year').val('--');
+            // $('#part').val('--');
+            // $('#class').val('--');
             $('#semester').val('--');
-            $('#class').val('--');
             $('#room').val('--');
             $('#division').val('--');
-            $('#subject').val('--').prop('disabled', true);
+            $('#subject').val('--');
             modal.fadeOut();
 
         },
@@ -183,15 +225,44 @@ $('#to-do').on('change', () => {
 
 })
 
+function clear_prev() {
+    $("#class1").val('--')
+    $('#semester1').val('--');
+}
+
+// filter to load data from
+function get_sem1(data) {
+
+    let class1 = data;
+    // clear the current list
+
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: 'class5=' + class1,
+        success: function (data) {
+            $('#semester1').html(data);
+            // console.log(data);
+
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}
+
 
 // get data timetable from
 function get_data_timetable(data) {
     console.log(data);
-    let class101 = data;
+    let class101 = $("#class1").val();
+    let sem = data;
+    let academic_year = $('#academic_year1').val();
+    console.log(academic_year);
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
-        data: "class101=" + class101,
+        data: "class101=" + class101 + "&sem1=" + sem + "&ad1=" + academic_year,
         success: function (data) {
             $('#load_data').html(data);
 
