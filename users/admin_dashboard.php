@@ -62,6 +62,61 @@ ob_end_flush();
         <p>Dashboard</p>
     </div>
 
+    <div class="container">
+        <div class="l-form">
+
+            <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
+                <div class="form__div">
+                    <label for="Academic Year">Academic Year:</label>
+                    <select id="academic_year1" onchange="clear_prev()">
+                        <option value="--">--</option>
+                        <?php get_academic_year(); ?>
+                    </select>
+                </div>
+                <div class="form__div">
+                    <label for="Class">Class:</label>
+                    <select name="class" id="class1" onchange="get_sem1(this.value)">
+                        <option value="--">--</option>
+                        <!-- get fuction php -->
+                        <?php get_classs(); ?>
+                    </select>
+                </div>
+                <div class="form__div">
+                    <label for="Semester">Semester:</label>
+                    <select name="semester" id="semester1" onchange="get_data_timetable(this.value)">
+                        <option value="--">--</option>
+                        <!-- get fuction php -->
+                        <!-- ajax get -->
+                    </select>
+                </div>
+                <?php
+                $con = get_con();
+                $sql = "SELECT COUNT(*) AS count FROM timeslot";
+                $result = $con->query($sql);
+                $result = $result->fetch_assoc();
+                $result = $result['count'];
+                $count1 = $result;
+                ?>
+                <table class="styled-table">
+                    <thread>
+                        <tr>
+                            <th>Timming</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                        </tr>
+                    </thread>
+                    <tbody id="load_data">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../js/main.js"></script>
 </body>
