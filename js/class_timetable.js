@@ -113,7 +113,7 @@ divtoclick.on('click', (event) => {
     data = data.split(',');
     day1 = data[0];
     time1 = data[1];
-    alert(event.target.id);
+
     modal.fadeIn();
     $('#day').html(day1);
     $('#time').html(time[time1]);
@@ -123,6 +123,8 @@ divtoclick.on('click', (event) => {
 var span = $(".close");
 span.on('click', function () {
     modal.fadeOut();
+    $('#semester').val('--');
+    $('#combined').prop('checked', false);
     $('#division4').val('--');
     $('.extra').hide();
 });
