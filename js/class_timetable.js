@@ -123,16 +123,14 @@ divtoclick.on('click', (event) => {
 var span = $(".close");
 span.on('click', function () {
     modal.fadeOut();
+    $('#division4').val('--');
+    $('.extra').hide();
 });
 
 
 function get_sub5() {
 
     // clear the current list
-    $('#room').val('--');
-    $('#division').val('--');
-
-    $('#subjects').html('<option value=\"--\">--</option>');
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
@@ -175,13 +173,13 @@ function set_data() {
     let member = $('#memberid').val();
     let subject = $('#subjects').val();
     var division4 = $('#division4').val();
-    var sub4 = $('#sub4').val();
+    var sub4 = $('#subjects2').val();
     // timming data
 
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
-        data: "time=" + real_timming + "&day=" + day + "&acad=" + academic + "&room=" + room + "&div=" + div + "&part=" + part + "&sem=" + sem + "&class9=" + class2 + "&mem=" + member + '&sub=' + subject + "&div4=" + division4 + "sub=" + sub4, //string input
+        data: "time=" + real_timming + "&day=" + day + "&acad=" + academic + "&room=" + room + "&div=" + div + "&part=" + part + "&sem=" + sem + "&class9=" + class2 + "&mem=" + member + '&sub=' + subject + "&div4=" + division4 + "&sub4=" + sub4, //string input
         success: function (data) {
             // alert("Success Data Entered");
             $('.msg').html(data);
@@ -192,6 +190,9 @@ function set_data() {
             $('#room').val('--');
             $('#division').val('--');
             $('#subject').val('--');
+            $('#combined').prop('checked', false);
+            $('#division4').val('--');
+            $('.extra').hide();
             modal.fadeOut();
 
         },
