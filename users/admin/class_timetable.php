@@ -131,6 +131,7 @@ ob_end_flush();
                     </select>
                 </div>
                 <br>
+
                 <br>
                 <div class="con" id="inpt-form" style="justify-content: start;">
                     <div class="form__div">
@@ -161,6 +162,7 @@ ob_end_flush();
                         </select>
                     </div>
                 </div>
+
                 <div class="msg1">Not Available in Mobile-Device</div>
                 <div class="msg"></div>
 
@@ -174,7 +176,12 @@ ob_end_flush();
                     <div id="modalDialog" class="modal">
                         <div class="con1">
                             <br>
-                            <span class="close">Close</span>
+                            <span class="close" style="padding-left:1rem">Close</span>
+                            <br>
+                            <label for="day" style="padding-left:1rem">Day:<p id="day" style="padding-left:1rem"></p>
+                            </label>
+                            <label for="time" style="padding-left:1rem">Time:<p id="time" style="padding-left:1rem"></p>
+                            </label>
                             <div class="form__div">
                                 <label for="Semester">Semester:</label>
                                 <select name="semester" id="semester" onchange="get_sub()">
@@ -194,7 +201,7 @@ ob_end_flush();
                             <br>
                             <div class="form__div">
                                 <label for="Division">Division:</label>
-                                <select name="division" id="division" onchange="set_subject(this.value)">
+                                <select name="division" id="division">
                                     <option value="--">--</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
@@ -206,8 +213,32 @@ ob_end_flush();
                             </div>
                             <br>
                             <div class="form__div">
-                                <label for="Division">Subject:</label>
+                                <label for="Subject">Subject:</label>
                                 <select id="subjects"></select>
+                            </div>
+                            <br>
+                            <div class="form__div">
+                                <label for="Division">Is this a Combined Lecture:</label>
+                                <input type="checkbox" id="combined" name="vehicle1" value="Yes">
+                            </div>
+                            <div class="extra">
+                                <div class="form__div">
+                                    <label for="Subject">Subject:</label>
+                                    <select id="subjects2"></select>
+                                </div>
+                                <div class="form__div">
+                                    <label for="Division">Division:</label>
+                                    <select name="division" id="division4">
+                                        <option value="--">--</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                    </select>
+                                </div>
+
                             </div>
                             <div class="form__div">
                                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="button"
@@ -272,11 +303,26 @@ ob_end_flush();
 
                 <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
                     <div class="form__div">
+                        <label for="Academic Year">Academic Year:</label>
+                        <select id="academic_year1" onchange="clear_prev()">
+                            <option value="--">--</option>
+                            <?php get_academic_year(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
                         <label for="Class">Class:</label>
-                        <select name="class" id="class" onchange="get_data_timetable(this.value)">
+                        <select name="class" id="class1" onchange="get_sem1(this.value)">
                             <option value="--">--</option>
                             <!-- get fuction php -->
                             <?php get_classs(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Semester">Semester:</label>
+                        <select name="semester" id="semester1" onchange="get_data_timetable(this.value)">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <!-- ajax get -->
                         </select>
                     </div>
                     <?php
@@ -305,6 +351,7 @@ ob_end_flush();
                     </table>
                 </div>
                 <!-- onclick="get_data()" -->
+            </form>
         </div>
     </div>
     <br>

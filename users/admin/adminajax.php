@@ -72,10 +72,6 @@ if (isset($_POST['class1']) && isset($_POST['sem'])) {
         $div = $_POST['div'];
 
 
-
-
-
-
         // get timming information
         $sql = "SELECT * FROM timeslot";
         $result = $con->query($sql);
@@ -131,11 +127,22 @@ if (isset($_POST['class4'])) {
     echo "<option value=\"--\">--</option>";
     echo "<option value=\"break\">break</option>";
     while ($row = $result->fetch_assoc()) {
-        echo "<option value=" . $row["SubjectCode"] . ">" . $row["SubjectCode"] . "</option>";
+        echo "<option value=" . $row["SubjectCode"] . ">" . $row["SubjectName"] . "</option>";
     }
     $con->close();
 }
 
+//get sub for timetable for
+if (isset($_POST['class990'])) {
+    $con = get_con();
+    $sql = "SELECT DISTINCT * FROM subject";
+    $result = $con->query($sql);
+    echo "<option value=\"--\">--</option>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=" . $row["SubjectCode"] . ">" . $row["SubjectName"] . "</option>";
+    }
+    $con->close();
+}
 
 // set Subjects in array format one field unique
 if (isset($_POST["time"])) {
@@ -163,6 +170,8 @@ if (isset($_POST["time"])) {
     $part = $_POST["part"];
     $member = $_POST["mem"];
     $sub = $_POST["sub"];
+    $div4 = $_POST["div4"];
+    $sub4 = $_POST["sub4"];
 
 
     // get department from class viw subject
@@ -191,7 +200,7 @@ if (isset($_POST["time"])) {
         echo "<script>alert('Room At that time already booked By Other Class');</script>";
     } else {
         $flag = 0;
-        $sql = "INSERT INTO `timetable` VALUES ('$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','$part','$semester','$class1');";
+        $sql = "INSERT INTO `timetable` VALUES ('$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'$div4','--','--','$sub4','--','--','--','--','$part','$semester','$class1');";
         // echo $sql;
         if ($con->query($sql) === TRUE) {
             $flag = 1;
@@ -213,6 +222,8 @@ if (isset($_POST["time"])) {
 // load time data 
 if (isset($_POST['class101'])) {
     $class1 = $_POST['class101'];
+    $year = $_POST['ad1'];
+    $semester = $_POST['sem1'];
     // echo $class1;
     $sql1 = "";
     $con = get_con();
@@ -232,10 +243,10 @@ if (isset($_POST['class101'])) {
         echo "<td id=\"time" . $j++ . "\">" . $time_slot  . "</td>";
 
         // get subject for a day in a specfic timeslot
-        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Monday'";
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `Sem` = '$semester' AND `Class` ='$class1'";
         $result1 = $con->query($sql1);
         $result1 = $result1->fetch_assoc();
-
+        // echo $result1;
         $getname = $result1["SubjectCode"];
 
         // code to name
@@ -245,7 +256,7 @@ if (isset($_POST['class101'])) {
 
         echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
 
-        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Tuesday'";
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Tuesday' AND AcademicYear = '$year' AND Sem = '$semester'";
         $result1 = $con->query($sql1);
         $result1 = $result1->fetch_assoc();
 
@@ -257,7 +268,7 @@ if (isset($_POST['class101'])) {
 
         echo "<td>" . "<div id=\"Tuesday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
 
-        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Wednesday'";
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Wednesday' AND AcademicYear = '$year' AND Sem = '$semester'";
         $result1 = $con->query($sql1);
         $result1 = $result1->fetch_assoc();
 
@@ -272,7 +283,7 @@ if (isset($_POST['class101'])) {
         echo "<td>" . "<div id=\"Wednesday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
 
 
-        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Thursday'";
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Thursday' AND AcademicYear = '$year' AND Sem = '$semester'";
         $result1 = $con->query($sql1);
         $result1 = $result1->fetch_assoc();
 
@@ -285,7 +296,7 @@ if (isset($_POST['class101'])) {
 
         echo "<td>" . "<div id=\"Thursday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
 
-        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Friday'";
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Friday' AND AcademicYear = '$year' AND Sem = '$semester'";
         $result1 = $con->query($sql1);
         $result1 = $result1->fetch_assoc();
 
@@ -298,7 +309,7 @@ if (isset($_POST['class101'])) {
 
         echo "<td>" . "<div id=\"Friday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
 
-        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Saturday'";
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Saturday' AND AcademicYear = '$year' AND Sem = '$semester'";
         $result1 = $con->query($sql1);
         $result1 = $result1->fetch_assoc();
 
