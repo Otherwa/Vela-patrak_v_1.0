@@ -44,6 +44,7 @@ function if_junior(data) {
 function get_sub() {
 
     let class1 = $('#semester').val();
+    let class2 = $('#class').val();
     // clear the current list
     $('#room').val('--');
     $('#division').val('--');
@@ -52,7 +53,7 @@ function get_sub() {
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
-        data: 'class4=' + class1,
+        data: 'class4=' + class1 + "&cal=" + class2,
         success: function (data) {
             $('#subjects').html(data);
             // console.log(data);
@@ -122,7 +123,12 @@ divtoclick.on('click', (event) => {
 // close
 var span = $(".close");
 span.on('click', function () {
+
     modal.fadeOut();
+    $('#subject').val('--');
+    $('#division').val('--');
+    $('#room').val('--');
+    $('#subject').val('--');
     $('#semester').val('--');
     $('#combined').prop('checked', false);
     $('#division4').val('--');
@@ -231,11 +237,15 @@ $('#to-do').on('change', () => {
 function clear_prev() {
     $("#class1").val('--')
     $('#semester1').val('--');
+    $('#divison14').val('--');
 }
 
+function clear_pre1() {
+    $('#divison14').val('--');
+}
 // filter to load data from
 function get_sem1(data) {
-
+    $('#divison14').val('--');
     let class1 = data;
     // clear the current list
 
@@ -259,13 +269,14 @@ function get_sem1(data) {
 function get_data_timetable(data) {
     console.log(data);
     let class101 = $("#class1").val();
-    let sem = data;
+    let sem = $("#semester1").val();
     let academic_year = $('#academic_year1').val();
+    let div = data
     console.log(academic_year);
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
-        data: "class101=" + class101 + "&sem1=" + sem + "&ad1=" + academic_year,
+        data: "class101=" + class101 + "&sem1=" + sem + "&ad1=" + academic_year + "&div=" + div,
         success: function (data) {
             $('#load_data').html(data);
 

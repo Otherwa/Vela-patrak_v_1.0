@@ -219,7 +219,7 @@ ob_end_flush();
                             <br>
                             <div class="form__div">
                                 <label for="Division">Is this a Combined Lecture:</label>
-                                <input type="checkbox" id="combined" name="vehicle1" value="Yes">
+                                <input type="checkbox" id="combined" name="combined" value="Yes">
                             </div>
                             <div class="extra">
                                 <div class="form__div">
@@ -319,10 +319,22 @@ ob_end_flush();
                     </div>
                     <div class="form__div">
                         <label for="Semester">Semester:</label>
-                        <select name="semester" id="semester1" onchange="get_data_timetable(this.value)">
+                        <select name="semester" id="semester1" onchange="clear_pre1()">
                             <option value="--">--</option>
                             <!-- get fuction php -->
                             <!-- ajax get -->
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Semester">Division:</label>
+                        <select name="division" id="divison14" onchange="get_data_timetable(this.value)">
+                            <option value="--">--</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
                         </select>
                     </div>
                     <?php

@@ -2,6 +2,8 @@
 ob_start();
 session_start();
 
+include("../config/connect.php");
+
 if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     // redirect if not set
     header("Location:../account/login.php");
@@ -11,6 +13,42 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     if ($type == "member") {
         header("Location:../account/login.php");
     }
+}
+
+function get_academic_year()
+{
+    $con = get_con();
+    $sql = "SELECT * FROM config";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value=\"" . $row["AcademicYear"] . "\">" . $row["AcademicYear"]  . "</option>";
+        }
+    } else {
+        echo "None Added";
+    }
+    $con->close();
+}
+
+// get class from subjects
+// keyword class
+function get_classs()
+{
+    $con = get_con();
+    $sql = "SELECT DISTINCT Class FROM subject";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value=\"" . $row["Class"] . "\">" . $row["Class"] . "</option>";
+        }
+    } else {
+        echo "None Added";
+    }
+    $con->close();
 }
 
 ob_end_flush();
@@ -26,6 +64,10 @@ ob_end_flush();
         href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <!-- basic html required -->
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Admin-Dashboard</title>
@@ -46,6 +88,7 @@ ob_end_flush();
         <a href="admin/select_subjects.php" class="w3-bar-item w3-button">Select-Subject</a>
         <hr style="border-top: 2px solid #eee;">
         <a href="admin/class_timetable.php" class="w3-bar-item w3-button">Class-Timetable</a>
+        <a href="admin/room_timetable.php" class="w3-bar-item w3-button">Room-Timetable</a>
     </div>
     <!-- Page Content -->
     <div class="">
@@ -68,27 +111,12 @@ ob_end_flush();
             <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
                 <div class="form__div">
                     <label for="Academic Year">Academic Year:</label>
-                    <select id="academic_year1" onchange="clear_prev()">
+                    <select id="academic_year1" onchange="get_total_data(this.value)">
                         <option value="--">--</option>
                         <?php get_academic_year(); ?>
                     </select>
                 </div>
-                <div class="form__div">
-                    <label for="Class">Class:</label>
-                    <select name="class" id="class1" onchange="get_sem1(this.value)">
-                        <option value="--">--</option>
-                        <!-- get fuction php -->
-                        <?php get_classs(); ?>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <label for="Semester">Semester:</label>
-                    <select name="semester" id="semester1" onchange="get_data_timetable(this.value)">
-                        <option value="--">--</option>
-                        <!-- get fuction php -->
-                        <!-- ajax get -->
-                    </select>
-                </div>
+
                 <?php
                 $con = get_con();
                 $sql = "SELECT COUNT(*) AS count FROM timeslot";
@@ -119,6 +147,7 @@ ob_end_flush();
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/admin_dashboard.js"></script>
 </body>
 
 </html>
