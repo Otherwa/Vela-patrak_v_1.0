@@ -242,7 +242,7 @@ if (isset($_POST['class101'])) {
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\">" . $time_slot  . "</td>";
+        echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
 
         // get subject for a day in a specfic timeslot
         $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `Sem` = '$semester' AND `Class` ='$class1' AND Division = '$div'";

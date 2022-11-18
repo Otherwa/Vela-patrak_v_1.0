@@ -86,12 +86,22 @@ ob_end_flush();
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Class Time-Table</title>
     <style>
     td div p {
         padding: 0.2rem;
         text-align: center;
+    }
+
+    td div {
+        width: max-content;
+    }
+
+    td span {
+        width: max-content;
     }
     </style>
 </head>
@@ -285,7 +295,7 @@ ob_end_flush();
 
                             echo "<tr>";
 
-                            echo "<td id=\"time" . $j++ . "\">" . $row["StartTime"] . "-" . $row["EndTime"] . "</td>";
+                            echo "<td id=\"time" . $j++ . "\"><span>" . $row["StartTime"] . " - " . $row["EndTime"] . "</span></td>";
 
                             echo "<td>" . "<div id=\"Monday," . $i . "\"></div>" . "</td>";
 
@@ -342,6 +352,9 @@ ob_end_flush();
                             <option value="F">F</option>
                         </select>
                     </div>
+                    <div class="form__div">
+                        <input type="button" id="button" value="Generate PDF">
+                    </div>
                     <?php
                     $con = get_con();
                     $sql = "SELECT COUNT(*) AS count FROM timeslot";
@@ -350,7 +363,7 @@ ob_end_flush();
                     $result = $result['count'];
                     $count1 = $result;
                     ?>
-                    <table class="styled-table">
+                    <table class="styled-table" id="styled-table">
                         <thread>
                             <tr>
                                 <th>Timming</th>
