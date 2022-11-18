@@ -217,6 +217,11 @@ $('#timetable1').hide();
 $('#to-do').on('change', () => {
     let data = $('#to-do').val();
     if (data === "insert") {
+        $("#class1").val("--");
+        $("#semester1").val("--");
+        $('#academic_year1').val("--");
+        $('#divison14').val("--");
+
         $("#timetable").show();
         $('#timetable1').hide();
         $('#inpt-form').show();
@@ -264,14 +269,15 @@ function get_sem1(data) {
     })
 }
 
+var filename;
 
 // get data timetable from
 function get_data_timetable(data) {
     console.log(data);
-    let class101 = $("#class1").val();
-    let sem = $("#semester1").val();
-    let academic_year = $('#academic_year1').val();
-    let div = data
+    var class101 = $("#class1").val();
+    var sem = $("#semester1").val();
+    var academic_year = $('#academic_year1').val();
+    var div = data
     console.log(academic_year);
     $.ajax({
         type: 'post',
@@ -285,5 +291,16 @@ function get_data_timetable(data) {
             console.log(response.status);
         },
     })
-
+    filename = academic_year + "_" + class101 + "_" + sem + "_" + div;
 }
+
+// download pdf
+
+
+
+var button = document.getElementById("button");
+var makepdf = document.getElementById("styled-table");
+
+button.addEventListener("click", function () {
+    html2pdf().from(makepdf).save(filename);
+});
