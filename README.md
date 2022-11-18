@@ -4,6 +4,16 @@
 
 # Insights
 
+
+[![CodeFactor](https://www.codefactor.io/repository/github/otherwa/vela-patrak_v_1.0/badge)](https://www.codefactor.io/repository/github/otherwa/vela-patrak_v_1.0)
+
+## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Recent activity [![Time period](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_badge.svg)](https://repography.com)
+[![Timeline graph](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_timeline.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/commits)
+[![Issue status graph](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_issues.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/issues)
+[![Pull request status graph](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_prs.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/pulls)
+[![Trending topics](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_words.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/commits)
+[![Top contributors](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_users.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/graphs/contributors)
+
 ```
 ===============================================================================
 ===============================================================================
@@ -35,13 +45,6 @@ total blank lines : 1087
 
 
 ```
-
-## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Recent activity [![Time period](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_badge.svg)](https://repography.com)
-[![Timeline graph](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_timeline.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/commits)
-[![Issue status graph](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_issues.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/issues)
-[![Pull request status graph](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_prs.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/pulls)
-[![Trending topics](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_words.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/commits)
-[![Top contributors](https://images.repography.com/25186133/Otherwa/Vela-patrak_v_1.0/recent-activity/d06225e1d09c3429be89206c3f6493af_users.svg)](https://github.com/Otherwa/Vela-patrak_v_1.0/graphs/contributors)
 
 # Features
 ![ssj1](https://user-images.githubusercontent.com/67428572/187615118-5bd8ffe6-88dc-449c-adf6-4e9266dbb985.png)
