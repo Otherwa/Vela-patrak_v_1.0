@@ -20,3 +20,13 @@ function get_data_timetable(data) {
     })
 
 }
+
+
+function clear_prev() {
+    $('#room').val('--');
+    $('#day').val('--');
+}
+
+function clear_prev1() {
+    $('#day').val('--');
+}
