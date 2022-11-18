@@ -96,10 +96,6 @@ ob_end_flush();
         text-align: center;
     }
 
-    td div {
-        width: max-content;
-    }
-
     td span {
         width: max-content;
     }
