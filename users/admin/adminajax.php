@@ -242,7 +242,7 @@ if (isset($_POST['class101'])) {
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\">" . $time_slot  . "</td>";
+        echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
 
         // get subject for a day in a specfic timeslot
         $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `Sem` = '$semester' AND `Class` ='$class1' AND Division = '$div'";
@@ -356,8 +356,21 @@ if (isset($_POST["class202"])) {
 
 
         while ($result3 = $result1->fetch_array()) {
+
+            $getname = $result3["SubjectCode"];
+
+            $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+            $result4 = $con->query($sql1);
+            $result4 = $result4->fetch_assoc();
+
+            $getname1 = $result3["SubjectCode1"];
+
+            $sql2 = "SELECT * FROM subject WHERE SubjectCode = '$getname1'";
+            $result5 = $con->query($sql2);
+            $result5 = $result5->fetch_assoc();
+
             echo "<td>" . "<div id=\"\"><p style=\"font-size:0.8rem\">";
-            echo $result3["Class"] . "<br>" . $result3["SubjectCode"] . "<br>" . $result3["Department"];
+            echo $result3["Class"] . " - " . $result3["Division"] . "/" . $result3["Division1"] . "<br>Subjects : " . $result4["SubjectName"] . " - " . $result5["SubjectName"] . "<br>-----<br>" . $result3["Department"];
             echo  "</p></div></td>";
         }
 
@@ -376,31 +389,175 @@ if (isset($_POST['ad69'])) {
     // echo $class1;
     $sql1 = "";
     $con = get_con();
-    $sql = "SELECT * FROM timeslot";
+    $sql = "SELECT * FROM rooms";
     $result = $con->query($sql);
     // timming
     $j = 0;
     while ($row = $result->fetch_assoc()) {
 
 
-        $time_slot = $row["StartTime"] . " - " . $row["EndTime"];
+        $room_no = $row["RoomNo"];
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\">" . $time_slot  . "</td>";
+        echo "<td id=\"time" . $j++ . "\">" . $room_no . "</td>";
 
         // get subject for a day in a specfic timeslot
-        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND TimeSlot = '$time_slot'";
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND RoomNo = '$room_no' AND Day = 'Monday'";
         $result1 = $con->query($sql1);
 
+        echo "<td>" . "<div id=\"none\"><p style=\"font-size:0.8rem\">";
 
         while ($result3 = $result1->fetch_array()) {
-            echo "<td>" . "<div id=\"\"><p style=\"font-size:0.8rem\">";
-            echo $result3["Class"] . "<br>" . $result3["SubjectCode"] . "<br>" . $result3["Department"];
-            echo  "</p></div></td>";
+
+
+            $getname = $result3["SubjectCode"];
+
+
+            $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+            $result4 = $con->query($sql1);
+            $result4 = $result4->fetch_assoc();
+
+            $getname1 = $result3["SubjectCode1"];
+
+            $sql2 = "SELECT * FROM subject WHERE SubjectCode = '$getname1'";
+            $result5 = $con->query($sql2);
+            $result5 = $result5->fetch_assoc();
+
+
+            echo $result3["Class"] . " - " . $result3["Division"] . " / " . $result3["Division1"] . "<br>" . $result4["SubjectName"] .  " - " . $result5["SubjectName"] . "<br>" . $result3["Department"] . "<br>--------<br>";
         }
 
 
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND RoomNo = '$room_no' AND Day = 'Tuesday'";
+        $result1 = $con->query($sql1);
+
+        echo "<td>" . "<div id=\"none\"><p style=\"font-size:0.8rem\">";
+
+        while ($result3 = $result1->fetch_array()) {
+
+
+            $getname = $result3["SubjectCode"];
+
+
+            $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+            $result4 = $con->query($sql1);
+            $result4 = $result4->fetch_assoc();
+
+            $getname1 = $result3["SubjectCode1"];
+
+            $sql2 = "SELECT * FROM subject WHERE SubjectCode = '$getname1'";
+            $result5 = $con->query($sql2);
+            $result5 = $result5->fetch_assoc();
+
+
+            echo $result3["Class"] . " - " . $result3["Division"] . " / " . $result3["Division1"] . "<br>" . $result4["SubjectName"] .  " - " . $result5["SubjectName"] . "<br>" . $result3["Department"] . "<br>--------<br>";
+        }
+
+
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND RoomNo = '$room_no' AND Day = 'Wednesday'";
+        $result1 = $con->query($sql1);
+
+        echo "<td>" . "<div id=\"none\"><p style=\"font-size:0.8rem\">";
+
+        while ($result3 = $result1->fetch_array()) {
+
+
+            $getname = $result3["SubjectCode"];
+
+
+            $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+            $result4 = $con->query($sql1);
+            $result4 = $result4->fetch_assoc();
+
+            $getname1 = $result3["SubjectCode1"];
+
+            $sql2 = "SELECT * FROM subject WHERE SubjectCode = '$getname1'";
+            $result5 = $con->query($sql2);
+            $result5 = $result5->fetch_assoc();
+
+
+            echo $result3["Class"] . " - " . $result3["Division"] . " / " . $result3["Division1"] . "<br>" . $result4["SubjectName"] .  " - " . $result5["SubjectName"] . "<br>" . $result3["Department"] . "<br>--------<br>";
+        }
+
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND RoomNo = '$room_no' AND Day = 'Thursday'";
+        $result1 = $con->query($sql1);
+
+        echo "<td>" . "<div id=\"none\"><p style=\"font-size:0.8rem\">";
+
+        while ($result3 = $result1->fetch_array()) {
+
+
+            $getname = $result3["SubjectCode"];
+
+
+            $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+            $result4 = $con->query($sql1);
+            $result4 = $result4->fetch_assoc();
+
+            $getname1 = $result3["SubjectCode1"];
+
+            $sql2 = "SELECT * FROM subject WHERE SubjectCode = '$getname1'";
+            $result5 = $con->query($sql2);
+            $result5 = $result5->fetch_assoc();
+
+
+            echo $result3["Class"] . " - " . $result3["Division"] . " / " . $result3["Division1"] . "<br>" . $result4["SubjectName"] .  " - " . $result5["SubjectName"] . "<br>" . $result3["Department"] . "<br>--------<br>";
+        }
+
+
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND RoomNo = '$room_no' AND Day = 'Friday'";
+        $result1 = $con->query($sql1);
+
+        echo "<td>" . "<div id=\"none\"><p style=\"font-size:0.8rem\">";
+
+        while ($result3 = $result1->fetch_array()) {
+
+
+            $getname = $result3["SubjectCode"];
+
+
+            $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+            $result4 = $con->query($sql1);
+            $result4 = $result4->fetch_assoc();
+
+            $getname1 = $result3["SubjectCode1"];
+
+            $sql2 = "SELECT * FROM subject WHERE SubjectCode = '$getname1'";
+            $result5 = $con->query($sql2);
+            $result5 = $result5->fetch_assoc();
+
+
+            echo $result3["Class"] . " - " . $result3["Division"] . " / " . $result3["Division1"] . "<br>" . $result4["SubjectName"] .  " - " . $result5["SubjectName"] . "<br>" . $result3["Department"] . "<br>--------<br>";
+        }
+
+
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND RoomNo = '$room_no' AND Day = 'Saturday'";
+        $result1 = $con->query($sql1);
+
+        echo "<td>" . "<div id=\"none\"><p style=\"font-size:0.8rem\">";
+
+        while ($result3 = $result1->fetch_array()) {
+
+
+            $getname = $result3["SubjectCode"];
+
+
+            $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+            $result4 = $con->query($sql1);
+            $result4 = $result4->fetch_assoc();
+
+            $getname1 = $result3["SubjectCode1"];
+
+            $sql2 = "SELECT * FROM subject WHERE SubjectCode = '$getname1'";
+            $result5 = $con->query($sql2);
+            $result5 = $result5->fetch_assoc();
+
+
+            echo $result3["Class"] . " - " . $result3["Division"] . " / " . $result3["Division1"] . "<br>" . $result4["SubjectName"] .  " - " . $result5["SubjectName"] . "<br>" . $result3["Department"] . "<br>--------<br>";
+        }
+
+        echo  "</p></div></td>";
         echo "</tr>";
     }
 }

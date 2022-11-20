@@ -38,7 +38,6 @@
     padding: 2rem;
     border-radius: 0.5rem;
     background-color: #f9f9f9;
-    box-shadow: 0.7rem 0.7rem 2rem #0000001f
 }
 
 
@@ -203,7 +202,12 @@ td div {
 
 #load_data td div {
     border-radius: 0.2rem;
-    background-color: #f9f9f9 !important;
+    background-color: #f9f9f9;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 td div p {

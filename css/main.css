@@ -80,6 +80,15 @@ body {
     display: block;
 }
 
+.darkmode-layer,
+.darkmode-toggle {
+    z-index: 500;
+}
+
+.darkmode--activated img {
+    filter: invert(1);
+}
+
 .list #_list {
     width: auto;
     height: 100vh !important;
