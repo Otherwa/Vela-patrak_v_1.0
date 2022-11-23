@@ -376,6 +376,60 @@ ob_end_flush();
                         </tbody>
                     </table>
                 </div>
+
+                <div id="timetable2" style="box-shadow:none; display:none"
+                    class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <div class="form__div">
+                        <label for="Academic Year">Academic Year:</label>
+                        <select id="academic_year2" onchange="clear_pre2()">
+                            <option value="--">--</option>
+                            <?php get_academic_year(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Class">Class:</label>
+                        <select name="class" id="class2" onchange="get_sem2(this.value)">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <?php get_classs(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Semester">Semester:</label>
+                        <select name="semester" id="semester2">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <!-- ajax get -->
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Semester">Division:</label>
+                        <select name="division" id="divison15" onchange="get_data_timetable2(this.value)">
+                            <option value="--">--</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                        </select>
+                    </div>
+                    <table class="styled-table" id="styled-table">
+                        <thread>
+                            <tr>
+                                <th>Timming</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thread>
+                        <tbody id="load_data2">
+                        </tbody>
+                    </table>
+                </div>
                 <!-- onclick="get_data()" -->
             </form>
         </div>

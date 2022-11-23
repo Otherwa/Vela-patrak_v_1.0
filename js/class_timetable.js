@@ -118,6 +118,9 @@ divtoclick.on('click', (event) => {
     modal.fadeIn();
     $('#day').html(day1);
     $('#time').html(time[time1]);
+
+    $('#subjects').val('--');
+
 });
 
 // close
@@ -128,7 +131,7 @@ span.on('click', function () {
     $('#subject').val('--');
     $('#division').val('--');
     $('#room').val('--');
-    $('#subject').val('--');
+    $('#subjects').val('--');
     $('#semester').val('--');
     $('#combined').prop('checked', false);
     $('#division4').val('--');
@@ -213,6 +216,9 @@ function set_data() {
 // to do
 // $('#timetable').hide();
 // hide con toolbar
+
+
+
 $('#timetable1').hide();
 $('#to-do').on('change', () => {
     let data = $('#to-do').val();
@@ -225,14 +231,23 @@ $('#to-do').on('change', () => {
         $("#timetable").show();
         $('#timetable1').hide();
         $('#inpt-form').show();
+        $('#timetable2').hide();
     }
     else if (data === "delete") {
+        $("#class2").val("--");
+        $("#semester2").val("--");
+        $('#academic_year2').val("--");
+        $('#divison15').val("--");
         $("#timetable").hide();
         $('#timetable1').hide();
+        $('#timetable2').show();
         $('#inpt-form').hide();
+        $('#load_data2').html("");
     } else if (data === "load") {
+        $('#load_data').html("");
         $('#timetable1 .form__div #class').val('--');
         $("#timetable").hide();
+        $("#timetable2").hide();
         $('#timetable1').show();
         $('#inpt-form').hide();
     }
@@ -243,6 +258,12 @@ function clear_prev() {
     $("#class1").val('--')
     $('#semester1').val('--');
     $('#divison14').val('--');
+}
+
+function clear_pre2() {
+    $("#class2").val('--')
+    $('#semester2').val('--');
+    $('#divison15').val('--');
 }
 
 function clear_pre1() {
@@ -268,6 +289,78 @@ function get_sem1(data) {
         },
     })
 }
+
+// filter to load data from
+function get_sem2(data) {
+    $('#divison15').val('--');
+    let class1 = data;
+    // clear the current list
+
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: 'class5=' + class1,
+        success: function (data) {
+            $('#semester2').html(data);
+            // console.log(data);
+
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}
+
+function delete_data(id) {
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: 'Idto=' + id,
+        success: function (data) {
+            console.log(data);
+            $("#" + id).hide();
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}
+
+function get_data_timetable2(data) {
+    console.log(data + "@");
+    var class101 = $("#class2").val();
+    var sem = $("#semester2").val();
+    var academic_year = $('#academic_year2').val();
+    var div = data
+    console.log(academic_year);
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: "class303=" + class101 + "&sem2=" + sem + "&ad2=" + academic_year + "&div2=" + div,
+        success: function (data) {
+            $('#load_data2').html(data);
+            $("#load_data2 tr td p").click((event) => {
+
+                var id = event.target.id;
+                let text = "Are You Sure You want to delete ?";
+                if (confirm(text) == true) {
+                    console.log(true);
+                    // ajax to delete
+                    console.log(id);
+                    delete_data(id);
+
+                } else {
+                    console.log(false)
+                }
+            });
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}
+
+
 
 var filename;
 
@@ -304,3 +397,5 @@ var makepdf = document.getElementById("styled-table");
 button.addEventListener("click", function () {
     html2pdf().from(makepdf).save(filename);
 });
+
+
