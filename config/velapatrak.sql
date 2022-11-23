@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2022 at 09:30 AM
+-- Generation Time: Nov 23, 2022 at 01:20 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -232,6 +232,7 @@ INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) 
 --
 
 CREATE TABLE `timetable` (
+  `Id` int(11) NOT NULL,
   `AcademicYear` varchar(50) NOT NULL,
   `RoomNo` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
   `TimeSlot` varchar(25) NOT NULL,
@@ -258,14 +259,8 @@ CREATE TABLE `timetable` (
 -- Dumping data for table `timetable`
 --
 
-INSERT INTO `timetable` (`AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`) VALUES
-('2015-2016', '214', '07:48:00 - 08:36:00', 'Monday', 'A', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-16 14:04:49', 'B', '--', '--', 'adas12', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2015-2016', '214', '07:48:00 - 08:36:00', 'Tuesday', 'A', 'XYZ1212', 'INFORMATION TECHLOGY', 13, '2022-11-16 14:04:13', 'D', '--', '--', 'asdasdasd', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2015-2016', '214', '08:34:00 - 09:15:00', 'Monday', 'A', 'adas12', 'POL.SCIENCE', 13, '2022-11-18 07:41:00', 'A', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'SYBA'),
-('2015-2016', '69', '07:48:00 - 08:36:00', 'Friday', 'A', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-18 07:35:00', '--', '--', '--', 'null', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2015-2016', '69', '14:08:00 - 15:08:00', 'Monday', 'A', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-18 07:20:55', '--', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '07:48:00 - 08:36:00', 'Monday', 'A', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-16 13:52:19', 'A', '--', '--', 'XYZ1212', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-('2021-2022', '214', '10:43:00 - 23:43:00', 'Tuesday', 'A', 'XYZ1212', 'INFORMATION TECHLOGY', 13, '2022-11-15 14:50:33', 'B', '--', '--', 'asdasdasd', '--', '--', '--', '--', 'Degree', 'I', 'FYIT');
+INSERT INTO `timetable` (`Id`, `AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`) VALUES
+(15, '2015-2016', '214', '07:48:00 - 08:36:00', 'Monday', 'A', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-23 12:14:50', '--', '--', '--', 'null', '--', '--', '--', '--', 'Degree', 'I', 'FYIT');
 
 --
 -- Indexes for dumped tables
@@ -332,11 +327,12 @@ ALTER TABLE `timeslot`
 -- Indexes for table `timetable`
 --
 ALTER TABLE `timetable`
-  ADD PRIMARY KEY (`AcademicYear`,`RoomNo`,`TimeSlot`,`Day`,`Sem`,`Class`),
+  ADD PRIMARY KEY (`AcademicYear`,`RoomNo`,`TimeSlot`,`Day`,`Sem`,`Class`) USING BTREE,
   ADD KEY `member_timetable` (`MemberId`),
   ADD KEY `Class` (`Class`),
   ADD KEY `RoomNo` (`RoomNo`),
-  ADD KEY `SubjectCode` (`SubjectCode`);
+  ADD KEY `SubjectCode` (`SubjectCode`),
+  ADD KEY `Id` (`Id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -365,6 +361,12 @@ ALTER TABLE `professor`
 --
 ALTER TABLE `selectsubject`
   MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables

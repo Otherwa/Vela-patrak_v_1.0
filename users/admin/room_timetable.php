@@ -119,39 +119,23 @@ ob_end_flush();
                 </div>
                 <div class="form__div">
                     <label for="Class">Room:</label>
-                    <select name="class" id="room" onchange="clear_prev1()">
+                    <select name="class" id="room" onchange="get_data_timetable(this.value)">
                         <option value="--">--</option>
                         <!-- get fuction php -->
                         <?php get_room(); ?>
                     </select>
                 </div>
-                <div class="form__div">
-                    <label for="day">Day:</label>
-                    <select name="day" id="day" onchange="get_data_timetable(this.value)">
-                        <option value="--">--</option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                        <option value="Saturday">Saturday</option>
-                        <!-- get fuction php -->
-                        <!-- ajax get -->
-                    </select>
-                </div>
-                <?php
-                $con = get_con();
-                $sql = "SELECT COUNT(*) AS count FROM timeslot";
-                $result = $con->query($sql);
-                $result = $result->fetch_assoc();
-                $result = $result['count'];
-                $count1 = $result;
-                ?>
+
                 <table class="styled-table">
                     <thread>
                         <tr>
                             <th>Timming</th>
-                            <th id="dayshow">Day</th>
+                            <th id="dayshow">Monday</th>
+                            <th id="dayshow">Tuesday</th>
+                            <th id="dayshow">Wednesday</th>
+                            <th id="dayshow">Thursday</th>
+                            <th id="dayshow">Friday</th>
+                            <th id="dayshow">Saturday</th>
                         </tr>
                     </thread>
                     <tbody id="load_data">

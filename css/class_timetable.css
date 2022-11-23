@@ -200,6 +200,7 @@ td div {
     height: 2rem;
 }
 
+#load_data2 td div,
 #load_data td div {
     border-radius: 0.2rem;
     background-color: #f9f9f9;
@@ -215,6 +216,10 @@ td div p {
     text-align: start;
 }
 
+#load_data2 td p {
+    display: flex;
+    justify-content: center;
+}
 
 .modal {
     position: fixed;
