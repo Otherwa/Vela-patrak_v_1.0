@@ -197,6 +197,7 @@ if (isset($_POST["time"])) {
     // echo $result;
 
     if ($result > 0) {
+
         if ($check == 'true') {
             // combined insert
             echo "<script>alert('Insert Combined');</script>";
@@ -232,19 +233,26 @@ if (isset($_POST["time"])) {
             echo "<script>alert('Room At that time already booked By Other Class');</script>";
         }
     } else {
-        $flag = 0;
-        $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','$part','$semester','$class1');";
-        // echo $sql;
-        if ($con->query($sql) === TRUE) {
-            $flag = 1;
+        $sql4 = "SELECT * FROM `timetable` WHERE `Class` = '$class1' AND `Sem` = '$semester' AND `SubjectCode` = '$sub'";
+        $result = $con->query($sql4);
+        $result1 = mysqli_num_rows($result);
+        if ($result1 > 0) {
+            echo "<script>alert('Classs Already Registered');</script>";
         } else {
             $flag = 0;
-        }
+            $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','$part','$semester','$class1');";
+            // echo $sql;
+            if ($con->query($sql) === TRUE) {
+                $flag = 1;
+            } else {
+                $flag = 0;
+            }
 
-        if ($flag === 1) {
-            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
-        } else {
-            echo "<script>alert('Something went wrong ');</script>";
+            if ($flag === 1) {
+                echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
+            } else {
+                echo "<script>alert('Something went wrong ');</script>";
+            }
         }
     }
     // echo $sql;
