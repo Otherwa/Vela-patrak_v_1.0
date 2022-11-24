@@ -171,8 +171,7 @@ if (isset($_POST["time"])) {
     $part = $_POST["part"];
     $member = $_POST["mem"];
     $sub = $_POST["sub"];
-    $div4 = $_POST["div4"];
-    $sub4 = $_POST["sub4"];
+    $check = $_POST["checked"];
 
 
     // get department from class viw subject
@@ -201,7 +200,7 @@ if (isset($_POST["time"])) {
         echo "<script>alert('Room At that time already booked By Other Class');</script>";
     } else {
         $flag = 0;
-        $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'$div4','--','--','$sub4','--','--','--','--','$part','$semester','$class1');";
+        $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','$part','$semester','$class1');";
         // echo $sql;
         if ($con->query($sql) === TRUE) {
             $flag = 1;
