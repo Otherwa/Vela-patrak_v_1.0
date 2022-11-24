@@ -167,8 +167,15 @@ $('#combined').click(function () {
     }
 });
 
-
-
+var checked;
+$('#combined').click(function () {
+    if ($(this).is(':checked')) {
+        checked = true;
+        get_sub5();
+    } else {
+        checked = false;
+    }
+});
 
 // sets data
 function set_data() {
@@ -183,7 +190,8 @@ function set_data() {
     let part = $('#part').val();
     let member = $('#memberid').val();
     let subject = $('#subjects').val();
-    let checked = $('#combined').val();
+
+    console.log(checked);
     // timming data
 
     $.ajax({
@@ -204,7 +212,7 @@ function set_data() {
             $('#division4').val('--');
             $('.extra').hide();
             modal.fadeOut();
-
+            checked = false;
         },
         error: function () {
             console.log(response.status);
