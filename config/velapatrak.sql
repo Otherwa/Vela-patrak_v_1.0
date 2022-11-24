@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2022 at 01:20 PM
+-- Generation Time: Nov 24, 2022 at 11:49 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -243,13 +243,7 @@ CREATE TABLE `timetable` (
   `MemberId` int(255) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Division1` varchar(5) NOT NULL,
-  `Division2` varchar(5) NOT NULL,
-  `Division3` varchar(5) NOT NULL,
   `SubjectCode1` varchar(25) NOT NULL,
-  `Division11` varchar(5) NOT NULL,
-  `Division12` varchar(5) NOT NULL,
-  `Division13` varchar(5) NOT NULL,
-  `Division14` varchar(5) NOT NULL,
   `Part` text NOT NULL,
   `Sem` varchar(25) NOT NULL,
   `Class` varchar(25) NOT NULL
@@ -259,8 +253,10 @@ CREATE TABLE `timetable` (
 -- Dumping data for table `timetable`
 --
 
-INSERT INTO `timetable` (`Id`, `AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`) VALUES
-(15, '2015-2016', '214', '07:48:00 - 08:36:00', 'Monday', 'A', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-23 12:14:50', '--', '--', '--', 'null', '--', '--', '--', '--', 'Degree', 'I', 'FYIT');
+INSERT INTO `timetable` (`Id`, `AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `SubjectCode1`, `Part`, `Sem`, `Class`) VALUES
+(41, '2022-2023', '214', '07:48:00 - 08:36:00', 'Monday', 'A', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-24 10:08:28', '--', '--', 'Degree', 'I', 'FYIT'),
+(48, '2022-2023', '69', '07:48:00 - 08:36:00', 'Monday', 'A', 'XYZ1212', 'INFORMATION TECHLOGY', 13, '2022-11-24 10:21:32', 'D', 'asdasdasd', 'Degree', 'I', 'FYIT'),
+(49, '2022-2023', '69', '07:48:00 - 08:36:00', 'Monday', 'D', 'asdasdasd', 'INFORMATION TECHLOGY', 13, '2022-11-24 10:21:32', 'A', 'XYZ1212', 'Degree', 'I', 'FYIT');
 
 --
 -- Indexes for dumped tables
@@ -327,7 +323,7 @@ ALTER TABLE `timeslot`
 -- Indexes for table `timetable`
 --
 ALTER TABLE `timetable`
-  ADD PRIMARY KEY (`AcademicYear`,`RoomNo`,`TimeSlot`,`Day`,`Sem`,`Class`) USING BTREE,
+  ADD PRIMARY KEY (`AcademicYear`,`RoomNo`,`TimeSlot`,`Day`,`Sem`,`Class`,`Division`) USING BTREE,
   ADD KEY `member_timetable` (`MemberId`),
   ADD KEY `Class` (`Class`),
   ADD KEY `RoomNo` (`RoomNo`),
@@ -366,7 +362,7 @@ ALTER TABLE `selectsubject`
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables
