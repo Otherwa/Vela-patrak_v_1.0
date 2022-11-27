@@ -177,7 +177,6 @@ if (isset($_POST["time"])) {
     $department = "";
     //get sub for timetable for
     $class1 =  $_POST['class9'];
-
     $con = get_con();
     $sql = "SELECT DISTINCT * FROM subject WHERE Class = '$class1'";
     $result = $con->query($sql);
@@ -190,7 +189,7 @@ if (isset($_POST["time"])) {
     //(`AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`)
     // 
     // check if timefor a room in Already present of a class in a an academic year
-    $sql = "SELECT * FROM `timetable` WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day'";
+    $sql = "SELECT * FROM `timetable` WHERE AcademicYear = '$academic_year' AND RoomNo = '$room' AND TimeSlot = '$time[$real_time]' AND Day = '$day'";
     $result = $con->query($sql);
     $result1 = $result->fetch_assoc();
     $result = mysqli_num_rows($result);
@@ -198,170 +197,60 @@ if (isset($_POST["time"])) {
     // echo $result;
 
     if ($result > 0) {
-        if ($result1['SubjectCode'] == '--' && $result1['Division'] == '--' && $result1['Class'] == "--") {
-            // same matches class and sem any subjectcode then respective combined entry
-            $sql4 = "UPDATE `timetable` SET `Class` = '$class1', `Division` = '$division' , `SubjectCode` = '$sub' WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day'";
-            if ($con->query($sql4) === TRUE) {
+
+        if ($check == 'true') {
+            // combined insert
+            echo "<script>alert('Insert Combined');</script>";
+            $div = $result1['Division'];
+            $sub1 = $result1['SubjectCode'];
+
+            $sql4 = "SELECT * FROM `timetable` WHERE `Class` = '$class1' AND `Division` = '$division' AND `SubjectCode` = '$sub'";
+            $result = $con->query($sql4);
+            $result1 = mysqli_num_rows($result);
+
+            if ($result1 > 0) {
+                echo "<script>alert('Classs Already Registered');</script>";
+            } else {
+
+                $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'$div','$sub1','$part','$semester','$class1');";
+                if ($con->query($sql) === TRUE) {
+                    $flag = 1;
+                } else {
+                    $flag = 0;
+                }
+
+                if ($flag === 1) {
+                    // update slotstatus
+                    echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                } else {
+                    echo "<script>alert('Something went wrong ');</script>";
+                }
+            }
+        } else {
+            echo "<script>alert('Room At that time already booked By Other Class');</script>";
+        }
+    } else {
+        $sql4 = "SELECT * FROM `timetable` WHERE `Class` = '$class1' AND `Division` = '$division' AND `SubjectCode` = '$sub'";
+        $result = $con->query($sql4);
+        $result1 = mysqli_num_rows($result);
+
+        if ($result1 > 0) {
+            echo "<script>alert('Classs Already Registered');</script>";
+        } else {
+            $flag = 0;
+            $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','$part','$semester','$class1');";
+            // echo $sql;
+            if ($con->query($sql) === TRUE) {
                 $flag = 1;
             } else {
                 $flag = 0;
             }
 
             if ($flag === 1) {
-                echo "<script>alert(' Update insert Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . " at " . $time[$real_time] . " of Department " . " .');</script>";
+                echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
             } else {
                 echo "<script>alert('Something went wrong ');</script>";
             }
-        } else {
-            if ($check == 'true') {
-                // combined insert matches firtt allocted room to
-                echo "<script>alert('Insert Combined');</script>";
-                $div = $result1['Division'];
-                $sub1 = $result1['SubjectCode'];
-                $class_match = $result1['Class'];
-                $sem_match = $result1['Sem'];
-                $department_matched = $result1['Department'];
-
-                if ($semester == '--') {
-                    // junior update add diffent class 
-                    if ($result1['Division1'] == '--' && $result1['SubjectCode1'] == '--') {
-
-                        $sql4 = "UPDATE `timetable` SET `Class1`= '$class1', `Division1` = '$division' , `SubjectCode1` = '$sub' WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day'  AND `Class` = '$class_match' AND `Division` = '$div'";
-                        if ($con->query($sql4) === TRUE) {
-                            $flag = 1;
-                            // check if class diffent
-
-                        } else {
-                            $flag = 0;
-                        }
-
-                        if ($flag === 1) {
-                            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . $div . " at " . $time[$real_time] . " of Department " . $department_matched . " .');</script>";
-                        } else {
-                            echo "<script>alert('Something went wrong ');</script>";
-                        }
-                    } elseif ($result1['Division2'] == '--' && $result1['SubjectCode2'] == '--') {
-                        $sql4 = "UPDATE `timetable` SET `Class2`= '$class1', `Division2` = '$division' , `SubjectCode2` = '$sub'  WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day' AND `Class` = '$class_match' AND `Division` = '$div'";
-                        if ($con->query($sql4) === TRUE) {
-                            $flag = 1;
-                        } else {
-                            $flag = 0;
-                        }
-
-                        if ($flag === 1) {
-                            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . $div . " at " . $time[$real_time] . " of Department " . $department_matched . " .');</script>";
-                        } else {
-                            echo "<script>alert('Something went wrong ');</script>";
-                        }
-                    } elseif ($result1['Division3'] == '--' && $result1['SubjectCode3'] == '--') {
-                        $sql4 = "UPDATE `timetable` SET `Class3`= '$class1', `Division3` = '$division' , `SubjectCode3` = '$sub'  WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day' AND `Class` = '$class_match' AND `Division` = '$div'";
-                        if ($con->query($sql4) === TRUE) {
-                            $flag = 1;
-                        } else {
-                            $flag = 0;
-                        }
-
-                        if ($flag === 1) {
-                            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . $div . " at " . $time[$real_time] . " of Department " . $department_matched . " .');</script>";
-                        } else {
-                            echo "<script>alert('Something went wrong ');</script>";
-                        }
-                    } elseif ($result1['Division4'] == '--' && $result1['SubjectCode4'] == '--') {
-                        $sql4 = "UPDATE `timetable` SET `Class4`= '$class1', `Division4` = '$division' , `SubjectCode4` = '$sub'  WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day'  AND `Class` = '$class_match' AND `Division` = '$div'";
-                        if ($con->query($sql4) === TRUE) {
-                            $flag = 1;
-                        } else {
-                            $flag = 0;
-                        }
-
-                        if ($flag === 1) {
-                            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . $div . " at " . $time[$real_time] . " of Department " . $department_matched . " .');</script>";
-                        } else {
-                            echo "<script>alert('Something went wrong ');</script>";
-                        }
-                    } else {
-                        echo "<script>alert('All SLots Filled ');</script>";
-                    }
-                } else {
-                    if ($class_match == $class1 && $semester == $sem_match) {
-                        // where to put
-                        if ($result1['Division1'] == '--' && $result1['SubjectCode1'] == '--') {
-                            $sql4 = "UPDATE `timetable` SET `Class1` = '$class1', `Division1` = '$division' , `SubjectCode1` = '$sub' WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day' AND `Sem` = '$sem_match' AND `Class` = '$class_match' AND `Division` = '$div'  AND `Department` = '$department_matched'";
-                            if ($con->query($sql4) === TRUE) {
-                                $flag = 1;
-                            } else {
-                                $flag = 0;
-                            }
-
-                            if ($flag === 1) {
-                                echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . $div . " at " . $time[$real_time] . " of Department " . $department_matched . " .');</script>";
-                            } else {
-                                echo "<script>alert('Something went wrong ');</script>";
-                            }
-                        } elseif ($result1['Division2'] == '--' && $result1['SubjectCode2'] == '--') {
-                            $sql4 = "UPDATE `timetable`  SET `Class2` = '$class1', `Division2` = '$division' , `SubjectCode2` = '$sub'  WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day' AND `Sem` = '$sem_match' AND `Class` = '$class_match' AND `Division` = '$div'  AND `Department` = '$department_matched'";
-                            if ($con->query($sql4) === TRUE) {
-                                $flag = 1;
-                            } else {
-                                $flag = 0;
-                            }
-
-                            if ($flag === 1) {
-                                echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . $div . " at " . $time[$real_time] . " of Department " . $department_matched . " .');</script>";
-                            } else {
-                                echo "<script>alert('Something went wrong ');</script>";
-                            }
-                        } elseif ($result1['Division3'] == '--' && $result1['SubjectCode3'] == '--') {
-                            $sql4 = "UPDATE `timetable` SET `Class3` = '$class1', `Division3` = '$division' , `SubjectCode3` = '$sub'  WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day' AND `Sem` = '$sem_match' AND `Class` = '$class_match' AND `Division` = '$div'  AND `Department` = '$department_matched'";
-                            if ($con->query($sql4) === TRUE) {
-                                $flag = 1;
-                            } else {
-                                $flag = 0;
-                            }
-
-                            if ($flag === 1) {
-                                echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . $div . " at " . $time[$real_time] . " of Department " . $department_matched . " .');</script>";
-                            } else {
-                                echo "<script>alert('Something went wrong ');</script>";
-                            }
-                        } elseif ($result1['Division4'] == '--' && $result1['SubjectCode4'] == '--') {
-                            $sql4 = "UPDATE `timetable` SET `Division4` = '$division' ,`Class4` = '$class1' , `SubjectCode4` = '$sub'  WHERE AcademicYear = '$academic_year' AND `RoomNo` = '$room' AND `TimeSlot` = '$time[$real_time]' AND `Day` = '$day' AND `Sem` = '$sem_match' AND `Class` = '$class_match' AND `Division` = '$div'  AND `Department` = '$department_matched'";
-                            if ($con->query($sql4) === TRUE) {
-                                $flag = 1;
-                            } else {
-                                $flag = 0;
-                            }
-
-                            if ($flag === 1) {
-                                echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined with " . $div . " at " . $time[$real_time] . " of Department " . $department_matched . " .');</script>";
-                            } else {
-                                echo "<script>alert('Something went wrong ');</script>";
-                            }
-                        } else {
-                            echo "<script>alert('All SLots Filled ');</script>";
-                        }
-                    } else {
-                        echo "<script>alert('Not possible');</script>";
-                    }
-                }
-            } else {
-                echo "<script>alert('Room At that time already booked By Other Class');</script>";
-            }
-        }
-    } else {
-        $flag = 0;
-        $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','--','--','--','--','--','$part','$semester','$class1');";
-        // echo $sql;
-        if ($con->query($sql) === TRUE) {
-            $flag = 1;
-        } else {
-            $flag = 0;
-        }
-
-        if ($flag === 1) {
-            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
-        } else {
-            echo "<script>alert('Something went wrong ');</script>";
         }
     }
     // echo $sql;
@@ -393,28 +282,85 @@ if (isset($_POST['class101'])) {
 
         echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
 
-        $Day = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+        // get subject for a day in a specfic timeslot
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `Sem` = '$semester' AND `Class` ='$class1' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+        // echo $result1;
+        $getname = $result1["SubjectCode"];
 
-        foreach ($Day as $day) {
-            // get subject for a day in a specfic timeslot
-            $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1' AND `Division` = '$div' ";
-            $result1 = $con->query($sql1);
-            $result1 = $result1->fetch_assoc();
-            // echo $result1;
+        // code to name
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
 
-            $getname = $result1["SubjectCode"];
+        echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
 
-            // code to name
-            $sql11 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-            $result11 = $con->query($sql11);
-            $result11 = $result11->fetch_assoc();
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Tuesday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+
+        $getname = $result1["SubjectCode"];
+
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+
+        echo "<td>" . "<div id=\"Tuesday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Wednesday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
 
 
+        $getname = $result1["SubjectCode"];
 
-            echo "<td>" . "<div id=\"" . $day . "\"><p>" . $result11["SubjectName"] . "</p></div>" . "</td>";
-        }
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
 
 
+        echo "<td>" . "<div id=\"Wednesday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+
+
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Thursday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+
+        $getname = $result1["SubjectCode"];
+
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+
+
+        echo "<td>" . "<div id=\"Thursday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Friday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+
+        $getname = $result1["SubjectCode"];
+
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+
+
+        echo "<td>" . "<div id=\"Friday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Saturday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+
+        $getname = $result1["SubjectCode"];
+
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+
+
+        echo "<td>" . "<div id=\"Saturday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
 
         echo "</tr>";
         $i++;
@@ -425,20 +371,10 @@ if (isset($_POST['class101'])) {
 if (isset($_POST['Idto'])) {
     $con = get_con();
     $id = $_POST['Idto'];
-    $data = explode('_', $id);
-    $academic_year = $data[0];
-    $time = $data[1];
-    $day = $data[2];
-    $sem = $data[3];
-    $class1 = $data[4];
-    $div = $data[5];
-    $subcode = $data[6];
-
-
-    $sql = "UPDATE `timetable` SET `Class` = '--', `Division` ='--', `SubjectCode` = '--'  WHERE `AcademicYear` = '$academic_year' AND `TimeSlot` = '$time' AND `Day` = '$day' AND `Sem` = '$sem' AND `Division` = '$div' AND `Class`='$class1'";
+    $sql = "DELETE FROM `timetable` WHERE Id = '$id'";
     $result = $con->query($sql);
     if ($con->query($sql) === TRUE) {
-        echo "<script>alert('Deleted');</script>";
+        echo "<script>alert('$id" . "Deleted" . "');</script>";
     } else {
         echo "<script>alert('Something went wrong ');</script>";
     }
@@ -470,175 +406,85 @@ if (isset($_POST['class303'])) {
 
         echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
 
-        if ($semester == '--') {
+        // get subject for a day in a specfic timeslot
+        $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `Sem` = '$semester' AND `Class` ='$class1' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
+        // echo $result1;
+        $getname = $result1["SubjectCode"];
 
-            $Day = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+        // code to name
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result2 = $con->query($sql1);
+        $result2 = $result2->fetch_assoc();
 
-            foreach ($Day as $day) {
+        echo "<td >" . "<p id=\"" . $result1["Id"] . "\">" . $result2["SubjectName"] . "</p>" . "</td>";
 
-                // get subject for a day in a specfic timeslot
-                $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1'  AND `Division` = '$div'";
-                $result1 = $con->query($sql1);
-                $result_num_rows1 = mysqli_num_rows($result1);
-                $result11 = $result1->fetch_assoc();
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Tuesday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
 
-                $sql2 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class1` ='$class1' AND `Division1` = '$div'";
-                $result2 = $con->query($sql2);
-                $result_num_rows2 = mysqli_num_rows($result2);
-                $result2 = $result2->fetch_assoc();
+        $getname = $result1["SubjectCode"];
 
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result2 = $con->query($sql1);
+        $result2 = $result2->fetch_assoc();
 
-                $sql3 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class2` ='$class1'  AND `Division2` = '$div'";
-                $result3 = $con->query($sql3);
-                $result_num_rows3 = mysqli_num_rows($result3);
-                $result3 = $result3->fetch_assoc();
+        echo "<td >" . "<p id=\"" . $result1["Id"] . "\">" . $result2["SubjectName"] . "</p>" . "</td>";
 
-                $sql4 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND  `Class3` ='$class1'  AND `Division3` = '$div'";
-                $result4 = $con->query($sql4);
-                $result_num_rows4 = mysqli_num_rows($result4);
-                $result4 = $result4->fetch_assoc();
-
-                $sql5 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND  `Class4` ='$class1'  AND `Division4` = '$div'";
-                $result5 = $con->query($sql5);
-                $result_num_rows5 = mysqli_num_rows($result5);
-                $result1 = $result5->fetch_assoc();
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Wednesday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
 
 
-                // echo $result1;
+        $getname = $result1["SubjectCode"];
 
-                if ($result_num_rows1 > 0) {
-                    $getname = $result11["SubjectCode"];
-
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-                    // `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1'  AND `Division` = '$div'";
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                } elseif ($result_num_rows2 > 0) {
-                    $getname = $result2["SubjectCode1"];
-
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname  . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                } elseif ($result_num_rows3 > 0) {
-                    $getname = $result3["SubjectCode2"];
-
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname  . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";;
-                } elseif ($result_num_rows4 > 0) {
-                    $getname = $result4["SubjectCode3"];
-
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                } elseif ($result_num_rows5 > 0) {
-                    $getname = $result5["SubjectCode4"];
-
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                }
-            }
-        } else {
-
-            $Day = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-
-            foreach ($Day as $day) {
-                // get subject for a day in a specfic timeslot
-                $sql1 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1' AND `Division` = '$div'";
-                $result1 = $con->query($sql1);
-                $result_num_rows1 = mysqli_num_rows($result1);
-                $result11 = $result1->fetch_assoc();
-
-                $sql2 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1' AND `Division1` = '$div'";
-                $result2 = $con->query($sql2);
-                $result_num_rows2 = mysqli_num_rows($result2);
-                $result2 = $result2->fetch_assoc();
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result2 = $con->query($sql1);
+        $result2 = $result2->fetch_assoc();
 
 
-                $sql3 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1' AND `Division2` = '$div'";
-                $result3 = $con->query($sql3);
-                $result_num_rows3 = mysqli_num_rows($result3);
-                $result3 = $result3->fetch_assoc();
+        echo "<td >" . "<p id=\"" . $result1["Id"] . "\">" . $result2["SubjectName"] . "</p>" . "</td>";
 
-                $sql4 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1' AND `Division3` = '$div'";
-                $result4 = $con->query($sql4);
-                $result_num_rows4 = mysqli_num_rows($result4);
-                $result4 = $result4->fetch_assoc();
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Thursday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
 
-                $sql5 = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1' AND `Division4` = '$div'";
-                $result5 = $con->query($sql5);
-                $result_num_rows5 = mysqli_num_rows($result5);
-                $result1 = $result5->fetch_assoc();
+        $getname = $result1["SubjectCode"];
+
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result2 = $con->query($sql1);
+        $result2 = $result2->fetch_assoc();
 
 
-                // echo $result1;
+        echo "<td >" . "<p id=\"" . $result1["Id"] . "\">" . $result2["SubjectName"] . "</p>" . "</td>";
 
-                if ($result_num_rows1 > 0) {
-                    $getname = $result11["SubjectCode"];
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Friday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
 
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-                    // `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = '$day' AND `Sem` = '$semester' AND `Class` ='$class1'  AND `Division` = '$div'";
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                } elseif ($result_num_rows2 > 0) {
-                    $getname = $result2["SubjectCode1"];
+        $getname = $result1["SubjectCode"];
 
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname  . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                } elseif ($result_num_rows3 > 0) {
-                    $getname = $result3["SubjectCode2"];
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result2 = $con->query($sql1);
+        $result2 = $result2->fetch_assoc();
 
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname  . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";;
-                } elseif ($result_num_rows4 > 0) {
-                    $getname = $result4["SubjectCode3"];
 
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                } elseif ($result_num_rows5 > 0) {
-                    $getname = $result5["SubjectCode4"];
+        echo "<td >" . "<p id=\"" . $result1["Id"] . "\">" . $result2["SubjectName"] . "</p>" . "</td>";
 
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
+        $sql1 = "SELECT * FROM timetable WHERE Class = '$class1' AND TimeSlot = '$time_slot' AND Day = 'Saturday' AND AcademicYear = '$year' AND Sem = '$semester' AND Division = '$div'";
+        $result1 = $con->query($sql1);
+        $result1 = $result1->fetch_assoc();
 
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $getname . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                } elseif ($result_num_rows5 > 0) {
-                    $getname = $result5["SubjectCode4"];
+        $getname = $result1["SubjectCode"];
 
-                    // code to name
-                    $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
-                    $result1 = $con->query($sql1);
-                    $result1 = $result1->fetch_assoc();
+        $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+        $result2 = $con->query($sql1);
+        $result2 = $result2->fetch_assoc();
 
-                    echo "<td>" . "<span id=\"\"><p id=\"" . $year . "_" . $time_slot . "_" . $day . "_" . $semester . "_" . $class1 . "_" . $div . "_" . $result5["SubjectName"] . "\">" . $result1["SubjectName"] . "</p></span>" . "</td>";
-                }
-            }
-        }
+
+        echo "<td >" . "<p id=\"" . $result1["Id"] . "\">" . $result2["SubjectName"] . "</p>" . "</td>";
+
         echo "</tr>";
         $i++;
     }
@@ -830,30 +676,13 @@ if (isset($_POST['ad69'])) {
             $result2 = $result2->fetch_assoc();
 
             $getname1 = $result1["SubjectCode1"];
+
             $sql2 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname1'";
-            $result13 = $con->query($sql2);
-            $result13 = $result13->fetch_assoc();
-
-            $getname2 = $result1["SubjectCode2"];
-            $sql2 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname2'";
-            $result113 = $con->query($sql2);
-            $result113 = $result113->fetch_assoc();
+            $result3 = $con->query($sql2);
+            $result3 = $result3->fetch_assoc();
 
 
-            $getname3 = $result1["SubjectCode3"];
-            $sql2 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname3'";
-            $result1113 = $con->query($sql2);
-            $result1113 = $result1113->fetch_assoc();
-
-            $getname4 = $result1["SubjectCode4"];
-            $sql2 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname4'";
-            $result11113 = $con->query($sql2);
-            $result11113 = $result11113->fetch_assoc();
-
-
-
-
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . " / " . $result1["Division4"]  . "<br>" . $result2["SubjectName"] .  " - " . $result13["SubjectName"] .  " - " . $result113["SubjectName"] .  " - " . $result1113["SubjectName"] .  " - " . $result11113["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
