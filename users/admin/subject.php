@@ -166,6 +166,7 @@ ob_end_flush();
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Semester</label>
                     <br>
                     <select name="Semester" id="Semester">
+                        <option value="--">--</option>
                         <option value="I">I</option>
                         <option value="II">II</option>
                         <option value="III">III</option>

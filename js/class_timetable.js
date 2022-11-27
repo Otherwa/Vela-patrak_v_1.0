@@ -33,7 +33,7 @@ function if_junior(data) {
     $('#semester').val('--');
 
 
-    if (data == "Junior" || data == "--") {
+    if (data == "--") {
         $('#semester').val('--');
         $('#semester').prop('disabled', true);
     } else {
@@ -319,6 +319,8 @@ function get_sem2(data) {
 }
 
 function delete_data(id) {
+    // var data = id.split('_');
+    console.log(id)
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
