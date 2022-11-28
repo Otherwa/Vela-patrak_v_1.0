@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2022 at 03:34 AM
+-- Generation Time: Nov 28, 2022 at 02:30 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -69,7 +69,10 @@ CREATE TABLE `course` (
 INSERT INTO `course` (`CourseId`, `CourseName`, `Strength`, `Abbreviation`, `MemberId`, `Date`) VALUES
 (1, 'BSC_IT', 45, 'bscit', 13, '2022-09-08 11:30:34'),
 (0, 'BMS', 56, '12', 13, '2022-09-08 11:41:09'),
-(213, 'adf', 132, 'sdf', 13, '2022-09-08 11:42:17');
+(213, 'adf', 132, 'sdf', 13, '2022-09-08 11:42:17'),
+(445, 'Science', 80, 'SCIENCE', 13, '2022-11-27 10:56:07'),
+(232, 'ARts', 180, 'ARTS', 13, '2022-11-27 10:55:49'),
+(7887, 'COMMERCE', 80, 'COMMERCE', 13, '2022-11-27 11:09:47');
 
 -- --------------------------------------------------------
 
@@ -195,10 +198,15 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`SubjectCode`, `SubjectName`, `Semester`, `Class`, `CourseId`, `MemberId`, `Date`, `Department`, `Part`) VALUES
+('123123as', 'ARTS_TEST23', '--', 'FYARTS', 'ARts', 13, '2022-11-27 10:56:37', 'JR AND DEGREE', 'Junior'),
 ('12345', 'TESTSYBA2', 'II', 'SY-BMS', 'BMS', 13, '2022-11-24 11:51:03', 'ECONOMICS', 'Degree'),
-('adas12', 'POlitival', 'I', 'SYBA', 'BSC_IT', 13, '2022-11-12 11:58:12', 'POL.SCIENCE', 'Junior'),
+('123456789', 'SYIT_SUB', 'III', 'SYIT', 'BSC_IT', 13, '2022-11-27 10:03:45', 'INFORMATION TECHLOGY', 'Degree'),
+('5667', 'FYIT TEST $#', 'I', 'FYIT', 'BSC_IT', 13, '2022-11-27 11:07:45', 'INFORMATION TECHLOGY', 'Degree'),
+('adas12', 'TESTSUBJECTSY', 'II', 'FYIT', 'BSC_IT', 13, '2022-11-12 11:58:12', 'POL.SCIENCE', 'Junior'),
 ('asdasdasd', 'TEST 12', 'I', 'FYIT', 'BSC_IT', 13, '2022-11-13 12:40:53', 'INFORMATION TECHLOGY', 'Degree'),
-('TEST SYBA', '', 'I', 'FYBMS', 'BMS', 13, '2022-11-24 11:49:27', 'ECONOMICS', 'Degree');
+('Commwre', 'Commercce', '--', 'FYCOM', 'COMMERCE', 13, '2022-11-27 11:10:22', 'JR AND DEGREE', 'Junior'),
+('Scidgf1', 'Physcis', '--', 'FY SCinece', 'Science', 13, '2022-11-27 10:45:49', 'JR AND DEGREE', 'Junior'),
+('TEST SYBA', 'Test', 'I', 'FYBMS', 'BMS', 13, '2022-11-24 11:49:27', 'ECONOMICS', 'Degree');
 
 -- --------------------------------------------------------
 
@@ -244,11 +252,23 @@ CREATE TABLE `timetable` (
   `MemberId` int(255) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Division1` varchar(5) NOT NULL,
+  `Division2` varchar(25) NOT NULL,
+  `Division3` varchar(25) NOT NULL,
   `SubjectCode1` varchar(25) NOT NULL,
+  `Division4` varchar(25) NOT NULL,
+  `Division5` varchar(25) NOT NULL,
+  `Division6` varchar(25) NOT NULL,
   `Part` text NOT NULL,
   `Sem` varchar(25) NOT NULL,
   `Class` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`Id`, `AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division4`, `Division5`, `Division6`, `Part`, `Sem`, `Class`) VALUES
+(32, '2015-2016', '214', '07:48:00 - 08:36:00', 'Monday', 'A', '5667', 'INFORMATION TECHLOGY', 13, '2022-11-28 01:28:09', 'B', '--', '--', 'TEST', 'D', '--', '--', 'Degree', 'I', 'FYIT');
 
 --
 -- Indexes for dumped tables
@@ -354,7 +374,7 @@ ALTER TABLE `selectsubject`
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables
