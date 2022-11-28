@@ -203,54 +203,74 @@ if (isset($_POST["time"])) {
             echo "<script>alert('Insert Combined');</script>";
             $div = $result1['Division'];
             $sub1 = $result1['SubjectCode'];
+            $class11 = $result1['Class'];
 
-            $sql4 = "SELECT * FROM `timetable` WHERE `Class` = '$class1' AND `Division` = '$division' AND `SubjectCode` = '$sub'";
-            $result = $con->query($sql4);
-            $result1 = mysqli_num_rows($result);
-
-            if ($result1 > 0) {
-                echo "<script>alert('Classs Already Registered');</script>";
-            } else {
-
-                $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'$div','$sub1','$part','$semester','$class1');";
-                if ($con->query($sql) === TRUE) {
-                    $flag = 1;
-                } else {
-                    $flag = 0;
+            if ($class11 != $class1) {
+                echo "<script>alert('Class Diffrent');</script>";
+                if ($result1['Division4'] == '--' && $result1['SubjectCode'] != $sub) {
+                    $sql =  "UPDATE `timetable` SET `Division4` = '$division', `SubjectCode1` = '$sub' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
+                    if ($con->query($sql) === TRUE) {
+                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                    } else {
+                        echo "<script>alert('Something went wrong ');</script>";
+                    }
+                } elseif ($result1['Division5'] == '--' && $result1['SubjectCode1'] == $sub) {
+                    $sql = "UPDATE `timetable` SET `Division5` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
+                    if ($con->query($sql) === TRUE) {
+                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                    } else {
+                        echo "<script>alert('Something went wrong ');</script>";
+                    }
+                } elseif ($result1['Division6'] == '--' && $result1['SubjectCode1'] == $sub) {
+                    $sql = "UPDATE `timetable` SET `Division6` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
+                    if ($con->query($sql) === TRUE) {
+                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                    } else {
+                        echo "<script>alert('Something went wrong ');</script>";
+                    }
                 }
-
-                if ($flag === 1) {
-                    // update slotstatus
-                    echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+            } else {
+                if ($result1['Division1'] == '--') {
+                    $sql = "UPDATE `timetable` SET `Division1` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `Division` = '$div' AND `Class` = '$class11'";
+                    if ($con->query($sql) === TRUE) {
+                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                    } else {
+                        echo "<script>alert('Something went wrong dibdf');</script>";
+                    }
+                } elseif ($result['Division2'] == '--') {
+                    $sql = "UPDATE `timetable` SET `Division2` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
+                    if ($con->query($sql) === TRUE) {
+                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                    } else {
+                        echo "<script>alert('Something went wrong ');</script>";
+                    }
+                } elseif ($result['Division2'] == '--') {
+                    $sql = "UPDATE `timetable` SET `Division3` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
+                    if ($con->query($sql) === TRUE) {
+                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                    } else {
+                        echo "<script>alert('Something went wrong ');</script>";
+                    }
                 } else {
-                    echo "<script>alert('Something went wrong ');</script>";
+                    echo "<script>alert('Slot Filled');</script>";
                 }
             }
         } else {
             echo "<script>alert('Room At that time already booked By Other Class');</script>";
         }
     } else {
-        $sql4 = "SELECT * FROM `timetable` WHERE `Class` = '$class1' AND `Division` = '$division' AND `SubjectCode` = '$sub'";
-        $result = $con->query($sql4);
-        $result1 = mysqli_num_rows($result);
-
-        if ($result1 > 0) {
-            echo "<script>alert('Classs Already Registered');</script>";
+        $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','$part','$semester','$class1');";
+        // echo $sql;
+        if ($con->query($sql) === TRUE) {
+            $flag = 1;
         } else {
             $flag = 0;
-            $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','$part','$semester','$class1');";
-            // echo $sql;
-            if ($con->query($sql) === TRUE) {
-                $flag = 1;
-            } else {
-                $flag = 0;
-            }
+        }
 
-            if ($flag === 1) {
-                echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
-            } else {
-                echo "<script>alert('Something went wrong ');</script>";
-            }
+        if ($flag === 1) {
+            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
+        } else {
+            echo "<script>alert('Something went wrong  sfsd');</script>";
         }
     }
     // echo $sql;
