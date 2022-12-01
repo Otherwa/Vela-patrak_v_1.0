@@ -38,7 +38,6 @@
     padding: 2rem;
     border-radius: 0.5rem;
     background-color: #f9f9f9;
-    box-shadow: 0.7rem 0.7rem 2rem #0000001f
 }
 
 
@@ -197,20 +196,30 @@ select {
 
 td div {
     background-color: rgb(102, 102, 102);
-    height: 2rem;
     border-radius: 0.2rem;
+    height: 2rem;
 }
 
+#load_data2 td div,
 #load_data td div {
     border-radius: 0.2rem;
-    background-color: #f9f9f9 !important;
+    background-color: #f9f9f9;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 td div p {
     padding: 0.2rem;
-    text-align: center;
+    text-align: start;
 }
 
+#load_data2 td p {
+    display: flex;
+    justify-content: center;
+}
 
 .modal {
     position: fixed;
@@ -229,7 +238,7 @@ td div p {
     margin: 1rem !important;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(239, 239, 239);
     flex-direction: column;
     padding: 1rem;
     border-radius: 1rem;

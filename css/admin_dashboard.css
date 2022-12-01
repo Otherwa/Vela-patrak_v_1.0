@@ -20,6 +20,7 @@
     display: flex;
     padding: 0.8rem;
     justify-content: space-evenly;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 768px) {
@@ -113,14 +114,6 @@
     margin-right: 1rem;
 }
 
-.form__div select {
-    width: 100%;
-    padding: 0.2rem;
-    border-radius: 0.3rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: normal;
-}
-
 #Type {
     padding: 0.5rem;
     width: 100%;
@@ -138,4 +131,122 @@
 .list li {
     padding: 0.5rem;
     font-size: var(--normal-font-size);
+}
+
+.form__div select {
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+
+.con {
+    display: flex;
+    margin: 1rem !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.007);
+}
+
+/* table */
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    border-radius: 0.2rem;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 1rem;
+    width: 12rem;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+select {
+    width: 100%;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+
+#timetable {
+    box-shadow: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.msg1 {
+    display: none !important;
+}
+
+td div {
+    background-color: rgb(102, 102, 102);
+    border-radius: 0.2rem;
+    height: 2rem;
+}
+
+#load_data td div {
+    border-radius: 0.2rem;
+    background-color: #f9f9f9 !important;
+}
+
+td div p {
+    padding: 0.2rem;
+    text-align: start;
+}
+
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.con1 {
+    width: 40%;
+    display: flex;
+    margin: 1rem !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(239, 239, 239);
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+
+
+@media (max-width: 768px) {
+
+    #timetable,
+    #timetable1 {
+        display: none !important;
+    }
+
+    .msg1 {
+        display: inline-block !important;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
 }

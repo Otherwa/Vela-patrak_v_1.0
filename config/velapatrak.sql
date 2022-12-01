@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: sql101.byetcluster.com
--- Generation Time: Nov 14, 2022 at 07:04 AM
--- Server version: 10.3.27-MariaDB
--- PHP Version: 7.2.22
+-- Host: 127.0.0.1
+-- Generation Time: Nov 28, 2022 at 02:30 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `epiz_32417587_vel`
+-- Database: `velapatrak1`
 --
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`Id`, `AcademicYear`) VALUES
-(1, '2015-2016\r\n'),
+(1, '2015-2016'),
 (2, '2016-2017'),
 (3, '2017-2018'),
 (4, '2018-2019'),
@@ -59,7 +59,7 @@ CREATE TABLE `course` (
   `Strength` int(10) NOT NULL,
   `Abbreviation` varchar(100) NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -69,7 +69,10 @@ CREATE TABLE `course` (
 INSERT INTO `course` (`CourseId`, `CourseName`, `Strength`, `Abbreviation`, `MemberId`, `Date`) VALUES
 (1, 'BSC_IT', 45, 'bscit', 13, '2022-09-08 11:30:34'),
 (0, 'BMS', 56, '12', 13, '2022-09-08 11:41:09'),
-(213, 'adf', 132, 'sdf', 13, '2022-09-08 11:42:17');
+(213, 'adf', 132, 'sdf', 13, '2022-09-08 11:42:17'),
+(445, 'Science', 80, 'SCIENCE', 13, '2022-11-27 10:56:07'),
+(232, 'ARts', 180, 'ARTS', 13, '2022-11-27 10:55:49'),
+(7887, 'COMMERCE', 80, 'COMMERCE', 13, '2022-11-27 11:09:47');
 
 -- --------------------------------------------------------
 
@@ -114,7 +117,7 @@ CREATE TABLE `professor` (
   `EmailId` varchar(100) NOT NULL,
   `Phone` varchar(10) NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Part` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -138,7 +141,7 @@ CREATE TABLE `rooms` (
   `Floor` int(5) NOT NULL,
   `Capacity` int(5) NOT NULL,
   `MemberId` int(5) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -162,7 +165,7 @@ CREATE TABLE `selectsubject` (
   `Semester` text NOT NULL,
   `Subject` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -185,7 +188,7 @@ CREATE TABLE `subject` (
   `Class` varchar(25) NOT NULL,
   `CourseId` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Department` text NOT NULL,
   `Part` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -195,9 +198,15 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`SubjectCode`, `SubjectName`, `Semester`, `Class`, `CourseId`, `MemberId`, `Date`, `Department`, `Part`) VALUES
-('adas12', 'POlitival', 'II', 'SYBA', 'BSC_IT', 13, '2022-11-12 11:58:12', 'POL.SCIENCE', 'Junior'),
+('123123as', 'ARTS_TEST23', '--', 'FYARTS', 'ARts', 13, '2022-11-27 10:56:37', 'JR AND DEGREE', 'Junior'),
+('12345', 'TESTSYBA2', 'II', 'SY-BMS', 'BMS', 13, '2022-11-24 11:51:03', 'ECONOMICS', 'Degree'),
+('123456789', 'SYIT_SUB', 'III', 'SYIT', 'BSC_IT', 13, '2022-11-27 10:03:45', 'INFORMATION TECHLOGY', 'Degree'),
+('5667', 'FYIT TEST $#', 'I', 'FYIT', 'BSC_IT', 13, '2022-11-27 11:07:45', 'INFORMATION TECHLOGY', 'Degree'),
+('adas12', 'TESTSUBJECTSY', 'II', 'FYIT', 'BSC_IT', 13, '2022-11-12 11:58:12', 'POL.SCIENCE', 'Junior'),
 ('asdasdasd', 'TEST 12', 'I', 'FYIT', 'BSC_IT', 13, '2022-11-13 12:40:53', 'INFORMATION TECHLOGY', 'Degree'),
-('XYZ1212', 'TEST Subject', 'I', 'FYIT', '0', 13, '2022-11-11 17:04:23', 'INFORMATION TECHLOGY', 'Degree');
+('Commwre', 'Commercce', '--', 'FYCOM', 'COMMERCE', 13, '2022-11-27 11:10:22', 'JR AND DEGREE', 'Junior'),
+('Scidgf1', 'Physcis', '--', 'FY SCinece', 'Science', 13, '2022-11-27 10:45:49', 'JR AND DEGREE', 'Junior'),
+('TEST SYBA', 'Test', 'I', 'FYBMS', 'BMS', 13, '2022-11-24 11:49:27', 'ECONOMICS', 'Degree');
 
 -- --------------------------------------------------------
 
@@ -210,7 +219,7 @@ CREATE TABLE `timeslot` (
   `StartTime` time NOT NULL,
   `EndTime` time NOT NULL,
   `MemberId` int(11) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp()
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -232,6 +241,7 @@ INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) 
 --
 
 CREATE TABLE `timetable` (
+  `Id` int(11) NOT NULL,
   `AcademicYear` varchar(50) NOT NULL,
   `RoomNo` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
   `TimeSlot` varchar(25) NOT NULL,
@@ -240,19 +250,25 @@ CREATE TABLE `timetable` (
   `SubjectCode` varchar(25) NOT NULL DEFAULT '--',
   `Department` text NOT NULL,
   `MemberId` int(255) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Division1` varchar(5) NOT NULL,
-  `Division2` varchar(5) NOT NULL,
-  `Division3` varchar(5) NOT NULL,
+  `Division2` varchar(25) NOT NULL,
+  `Division3` varchar(25) NOT NULL,
   `SubjectCode1` varchar(25) NOT NULL,
-  `Division11` varchar(5) NOT NULL,
-  `Division12` varchar(5) NOT NULL,
-  `Division13` varchar(5) NOT NULL,
-  `Division14` varchar(5) NOT NULL,
+  `Division4` varchar(25) NOT NULL,
+  `Division5` varchar(25) NOT NULL,
+  `Division6` varchar(25) NOT NULL,
   `Part` text NOT NULL,
   `Sem` varchar(25) NOT NULL,
   `Class` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`Id`, `AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division4`, `Division5`, `Division6`, `Part`, `Sem`, `Class`) VALUES
+(32, '2015-2016', '214', '07:48:00 - 08:36:00', 'Monday', 'A', '5667', 'INFORMATION TECHLOGY', 13, '2022-11-28 01:28:09', 'B', '--', '--', 'TEST', 'D', '--', '--', 'Degree', 'I', 'FYIT');
 
 --
 -- Indexes for dumped tables
@@ -319,11 +335,12 @@ ALTER TABLE `timeslot`
 -- Indexes for table `timetable`
 --
 ALTER TABLE `timetable`
-  ADD PRIMARY KEY (`AcademicYear`,`RoomNo`,`TimeSlot`,`Day`,`Sem`,`Class`),
+  ADD PRIMARY KEY (`AcademicYear`,`RoomNo`,`TimeSlot`,`Day`,`Sem`,`Class`,`Division`) USING BTREE,
   ADD KEY `member_timetable` (`MemberId`),
   ADD KEY `Class` (`Class`),
   ADD KEY `RoomNo` (`RoomNo`),
-  ADD KEY `SubjectCode` (`SubjectCode`);
+  ADD KEY `SubjectCode` (`SubjectCode`),
+  ADD KEY `Id` (`Id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -333,7 +350,7 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `config`
 --
 ALTER TABLE `config`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `members`
@@ -352,6 +369,12 @@ ALTER TABLE `professor`
 --
 ALTER TABLE `selectsubject`
   MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables

@@ -6,10 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/png" sizes="96x96" rel="icon"
-        href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
+    <link type="image/png" sizes="96x96" rel="icon" href="https://vazecollege.net/PATS/imgs/1611814068005.jpg">
     <!-- basic html required -->
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel=" stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -43,18 +42,32 @@
         </p>
     </div>
     <div class="con">
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque molestiae natus quibusdam a nostrum odit
-            adipisci ex suscipit nam voluptas tenetur asperiores amet, ullam aut doloremque impedit tempora veniam
-            reiciendis!</p>
+        <p style="margin-left: 0.7rem;">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta aliquam aut nobis laborum, suscipit
+            eligendi. Tempore reprehenderit autem quas ea repellendus necessitatibus, delectus, ad corporis eos incidunt
+            unde nemo repellat?
+            <br>
+            <br>
+            <cite>
+                For Any Inconvience contact the Adminsitrator.
+            </cite>
+        </p>
+        <br>
+
     </div>
 
     <div class="footer-copyright">
+        <div class="conn" style="display: flex;flex-direction: column;align-items: center;">
+            <img id="foot" alt="pc" src="https://bang-phinf.pstatic.net/a/32ehga/0_8g9Ud018bng1q157yzwrfmle_wzcvar.gif"
+                style="max-width: 15rem; height: auto; display: inline-block; position: relative;">
+        </div>
         <br />
         <p>&copy; | Copyright 2022 - ♾️ All rights reserved | <a href="term.php">Terms &
                 Conditions</a> | <a href=" contributer.php">Contributors</a>
         </p>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
 

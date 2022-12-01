@@ -78,8 +78,7 @@ ob_end_flush();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/png" sizes="96x96" rel="icon"
-        href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
+    <link type="image/png" sizes="96x96" rel="icon" href="https://vazecollege.net/PATS/imgs/1611814068005.jpg">
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/class_timetable.css">
@@ -87,8 +86,20 @@ ob_end_flush();
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Time-Table</title>
+    <title>Class Time-Table</title>
+    <style>
+    td div p {
+        padding: 0.2rem;
+        text-align: center;
+    }
+
+    td span {
+        width: max-content;
+    }
+    </style>
 </head>
 
 <body>
@@ -131,6 +142,7 @@ ob_end_flush();
                     </select>
                 </div>
                 <br>
+
                 <br>
                 <div class="con" id="inpt-form" style="justify-content: start;">
                     <div class="form__div">
@@ -161,6 +173,7 @@ ob_end_flush();
                         </select>
                     </div>
                 </div>
+
                 <div class="msg1">Not Available in Mobile-Device</div>
                 <div class="msg"></div>
 
@@ -174,7 +187,12 @@ ob_end_flush();
                     <div id="modalDialog" class="modal">
                         <div class="con1">
                             <br>
-                            <span class="close">Close</span>
+                            <span class="close" style="padding-left:1rem">Close</span>
+                            <br>
+                            <label for="day" style="padding-left:1rem">Day:<p id="day" style="padding-left:1rem"></p>
+                            </label>
+                            <label for="time" style="padding-left:1rem">Time:<p id="time" style="padding-left:1rem"></p>
+                            </label>
                             <div class="form__div">
                                 <label for="Semester">Semester:</label>
                                 <select name="semester" id="semester" onchange="get_sub()">
@@ -194,7 +212,7 @@ ob_end_flush();
                             <br>
                             <div class="form__div">
                                 <label for="Division">Division:</label>
-                                <select name="division" id="division" onchange="set_subject(this.value)">
+                                <select name="division" id="division">
                                     <option value="--">--</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
@@ -206,8 +224,13 @@ ob_end_flush();
                             </div>
                             <br>
                             <div class="form__div">
-                                <label for="Division">Subject:</label>
+                                <label for="Subject">Subject:</label>
                                 <select id="subjects"></select>
+                            </div>
+                            <br>
+                            <div class="form__div">
+                                <label for="Division">Is this a Combined Lecture:</label>
+                                <input type="checkbox" id="combined" name="combined" value="Yes">
                             </div>
                             <div class="form__div">
                                 <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="button"
@@ -249,7 +272,7 @@ ob_end_flush();
 
                             echo "<tr>";
 
-                            echo "<td id=\"time" . $j++ . "\">" . $row["StartTime"] . "-" . $row["EndTime"] . "</td>";
+                            echo "<td id=\"time" . $j++ . "\"><span>" . $row["StartTime"] . " - " . $row["EndTime"] . "</span></td>";
 
                             echo "<td>" . "<div id=\"Monday," . $i . "\"></div>" . "</td>";
 
@@ -272,12 +295,42 @@ ob_end_flush();
 
                 <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
                     <div class="form__div">
+                        <label for="Academic Year">Academic Year:</label>
+                        <select id="academic_year1" onchange="clear_prev()">
+                            <option value="--">--</option>
+                            <?php get_academic_year(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
                         <label for="Class">Class:</label>
-                        <select name="class" id="class" onchange="get_data_timetable(this.value)">
+                        <select name="class" id="class1" onchange="get_sem1(this.value)">
                             <option value="--">--</option>
                             <!-- get fuction php -->
                             <?php get_classs(); ?>
                         </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Semester">Semester:</label>
+                        <select name="semester" id="semester1" onchange="clear_pre1()">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <!-- ajax get -->
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Semester">Division:</label>
+                        <select name="division" id="divison14" onchange="get_data_timetable(this.value)">
+                            <option value="--">--</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <input type="button" id="button" value="Generate PDF">
                     </div>
                     <?php
                     $con = get_con();
@@ -287,7 +340,7 @@ ob_end_flush();
                     $result = $result['count'];
                     $count1 = $result;
                     ?>
-                    <table class="styled-table">
+                    <table class="styled-table" id="styled-table">
                         <thread>
                             <tr>
                                 <th>Timming</th>
@@ -304,7 +357,62 @@ ob_end_flush();
                         </tbody>
                     </table>
                 </div>
+
+                <div id="timetable2" style="box-shadow:none; display:none"
+                    class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <div class="form__div">
+                        <label for="Academic Year">Academic Year:</label>
+                        <select id="academic_year2" onchange="clear_pre2()">
+                            <option value="--">--</option>
+                            <?php get_academic_year(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Class">Class:</label>
+                        <select name="class" id="class2" onchange="get_sem2(this.value)">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <?php get_classs(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Semester">Semester:</label>
+                        <select name="semester" id="semester2">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <!-- ajax get -->
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Semester">Division:</label>
+                        <select name="division" id="divison15" onchange="get_data_timetable2(this.value)">
+                            <option value="--">--</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                        </select>
+                    </div>
+                    <table class="styled-table" id="styled-table">
+                        <thread>
+                            <tr>
+                                <th>Timming</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thread>
+                        <tbody id="load_data2">
+                        </tbody>
+                    </table>
+                </div>
                 <!-- onclick="get_data()" -->
+            </form>
         </div>
     </div>
     <br>
@@ -312,6 +420,7 @@ ob_end_flush();
     </div>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script src="../../js/main.js"></script>
     <script src="../../js/class_timetable.js"></script>
 </body>

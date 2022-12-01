@@ -17,9 +17,7 @@ ob_end_flush();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet" />
     <!-- icon -->
-    <link type="image/png" sizes="96x96" rel="icon"
-        href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
-
+    <link type="image/png" sizes="96x96" rel="icon" href="https://vazecollege.net/PATS/imgs/1611814068005.jpg">
     <meta http-equiv='cache-control' content='no-cache'>
     <meta http-equiv='expires' content='0'>
     <meta http-equiv='pragma' content='no-cache'>
@@ -90,8 +88,8 @@ ob_end_flush();
                 </p>
             </li>
             <li>
-                <p><strong>Website</strong> refers to Forms, accessible from <a href="form123.epizy.com"
-                        rel="external nofollow noopener" target="_blank">form123.epizy.com</a></p>
+                <p><strong>Website</strong> refers to Forms, accessible from <a href="http://velapatrak.epizy.com"
+                        rel="external nofollow noopener" target="_blank">Velapatrak</a></p>
             </li>
             <li>
                 <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other
@@ -242,10 +240,10 @@ ob_end_flush();
         <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
         <ul>
             <li>
-                <p>By email: (Input)</p>
+                <p>By email: vazeoffice@rediffmail.com</p>
             </li>
             <li>
-                <p>By phone number: (Input)</p>
+                <p>By phone number: 8928020865</p>
             </li>
         </ul>
     </div>
