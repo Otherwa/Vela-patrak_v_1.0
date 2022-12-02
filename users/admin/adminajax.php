@@ -347,6 +347,8 @@ if (isset($_POST['class101'])) {
             $result1 = $result1->fetch_assoc();
 
             echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+        } else {
+            echo "<td>" . "<div id=\"null\"><p>" . " " . "</p></div>" . "</td>";
         }
         // /-----------------------------------------/ 
 
@@ -387,35 +389,37 @@ if (isset($_POST['class101'])) {
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"T\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"T\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"T\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result1111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"T\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"T\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+        } else {
+            echo "<td>" . "<div id=\"null\"><p>" . " " . "</p></div>" . "</td>";
         }
         // /-----------------------------------------/ 
 
@@ -455,28 +459,28 @@ if (isset($_POST['class101'])) {
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"W\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"W\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"W\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result1111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"W\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
@@ -484,6 +488,8 @@ if (isset($_POST['class101'])) {
             $result1 = $result1->fetch_assoc();
 
             echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+        } else {
+            echo "<td>" . "<div id=\"null\"><p>" . " " . "</p></div>" . "</td>";
         }
         // /-----------------------------------------/ 
         // ----------------------------------------------
@@ -531,28 +537,30 @@ if (isset($_POST['class101'])) {
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"TH\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"TH\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result1111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"TH\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"TH\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+        } else {
+            echo "<td>" . "<div id=\"null\"><p>" . " " . "</p></div>" . "</td>";
         }
         // /-----------------------------------------/ 
         // ----------------------------------------------
@@ -593,35 +601,37 @@ if (isset($_POST['class101'])) {
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"F\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"F\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"F\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result1111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"F\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"F\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+        } else {
+            echo "<td>" . "<div id=\"null\"><p>" . " " . "</p></div>" . "</td>";
         }
         // /-----------------------------------------/ 
         // ----------------------------------------------
@@ -662,35 +672,37 @@ if (isset($_POST['class101'])) {
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"S\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"S\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"S\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result1111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"S\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
         } elseif ($result11111_num > 0) {
             $getname = $result11["SubjectCode"];
             $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<td>" . "<div id=\"Monday\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+            echo "<td>" . "<div id=\"S\"><p>" . $result1["SubjectName"] . "</p></div>" . "</td>";
+        } else {
+            echo "<td>" . "<div id=\"null\"><p>" . " " . "</p></div>" . "</td>";
         }
         // /-----------------------------------------/ 
         echo "</tr>";
