@@ -84,6 +84,14 @@ setInterval(function () {
     }
 
     if ($('#part').val() != '--' && $('#class').val() != '--' && $('#academic_year').val() != '--') {
+        $('.styled-table td div').css('pointer-events', 'all');
+        // console.log(1212 + "adfsf");
+    } else {
+        $('td div').css('pointer-events', 'none');
+        // console.log(1212);
+    }
+
+    if ($('#semester2').val() != '--' && $('#class2').val() != '--' && $('#academic_year2').val() != '--') {
         $('td div').css('pointer-events', 'all');
         // console.log(1212 + "adfsf");
     } else {
@@ -319,13 +327,16 @@ function get_sem2(data) {
 }
 
 function delete_data(id) {
+    var academic_year2 = $("#academic_year2").val();
+    var class1 = $("#class2").val();
+    var sem = $("#semester2").val();
+    var div = $("#divison15").val();
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
-        data: 'Idto=' + id,
+        data: 'Idto=' + id + '&acad=' + academic_year2 + '&class1=' + class1 + '&sem=' + sem + '&div=' + div,
         success: function (data) {
             console.log(data);
-            $("#" + id).hide();
         },
         error: function () {
             console.log(response.status);
@@ -349,6 +360,8 @@ function get_data_timetable2(data) {
             $("#load_data2 tr td p").click((event) => {
 
                 var id = event.target.id;
+                console.log(this)
+                $(event.target).css("color", "red");
                 let text = "Are You Sure You want to delete ?";
                 if (confirm(text) == true) {
                     console.log(true);
@@ -379,18 +392,22 @@ function get_data_timetable(data) {
     var academic_year = $('#academic_year1').val();
     var div = data
     console.log(academic_year);
-    $.ajax({
-        type: 'post',
-        url: 'adminajax.php',
-        data: "class101=" + class101 + "&sem1=" + sem + "&ad1=" + academic_year + "&div=" + div,
-        success: function (data) {
-            $('#load_data').html(data);
+    if (data != '--') {
+        $.ajax({
+            type: 'post',
+            url: 'adminajax.php',
+            data: "class101=" + class101 + "&sem1=" + sem + "&ad1=" + academic_year + "&div=" + div,
+            success: function (data) {
+                $('#load_data').html(data);
 
-        },
-        error: function () {
-            console.log(response.status);
-        },
-    })
+            },
+            error: function () {
+                console.log(response.status);
+            },
+        })
+    } else {
+        $('#load_data').html('');
+    }
     filename = academic_year + "_" + class101 + "_" + sem + "_" + div;
 }
 
