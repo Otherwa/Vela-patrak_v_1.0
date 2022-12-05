@@ -6,6 +6,7 @@ $('#subjects').html('<option value=\"--\">--</option>');
 function get_sem() {
 
     let class1 = $('#class').val();
+
     // clear the current list
     $('#part').val('--');
     $('#semester').val('--');
@@ -35,7 +36,7 @@ function if_junior(data) {
 
     if (data == "Junior" || data == "--") {
         $('#semester').val('--');
-        $('#semester').prop('disabled', true);
+        // $('#semester').prop('disabled', true);
     } else {
         $('#semester').prop('disabled', false);
     }
