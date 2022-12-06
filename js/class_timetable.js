@@ -6,6 +6,7 @@ $('#subjects').html('<option value=\"--\">--</option>');
 function get_sem() {
 
     let class1 = $('#class').val();
+
     // clear the current list
     $('#part').val('--');
     $('#semester').val('--');
@@ -35,7 +36,7 @@ function if_junior(data) {
 
     if (data == "Junior" || data == "--") {
         $('#semester').val('--');
-        $('#semester').prop('disabled', true);
+        // $('#semester').prop('disabled', true);
     } else {
         $('#semester').prop('disabled', false);
     }
@@ -84,18 +85,10 @@ setInterval(function () {
     }
 
     if ($('#part').val() != '--' && $('#class').val() != '--' && $('#academic_year').val() != '--') {
-        $('.styled-table td div').css('pointer-events', 'all');
+        $('#first td div').css('pointer-events', 'all');
         // console.log(1212 + "adfsf");
     } else {
-        $('td div').css('pointer-events', 'none');
-        // console.log(1212);
-    }
-
-    if ($('#semester2').val() != '--' && $('#class2').val() != '--' && $('#academic_year2').val() != '--') {
-        $('td div').css('pointer-events', 'all');
-        // console.log(1212 + "adfsf");
-    } else {
-        $('td div').css('pointer-events', 'none');
+        $('#first td div').css('pointer-events', 'none');
         // console.log(1212);
     }
 }, 900)
@@ -351,33 +344,37 @@ function get_data_timetable2(data) {
     var academic_year = $('#academic_year2').val();
     var div = data
     console.log(academic_year);
-    $.ajax({
-        type: 'post',
-        url: 'adminajax.php',
-        data: "class303=" + class101 + "&sem2=" + sem + "&ad2=" + academic_year + "&div2=" + div,
-        success: function (data) {
-            $('#load_data2').html(data);
-            $("#load_data2 tr td p").click((event) => {
+    if (div != '--') {
+        $.ajax({
+            type: 'post',
+            url: 'adminajax.php',
+            data: "class303=" + class101 + "&sem2=" + sem + "&ad2=" + academic_year + "&div2=" + div,
+            success: function (data) {
+                $('#load_data2').html(data);
+                $("#load_data2 tr td p").click((event) => {
 
-                var id = event.target.id;
-                console.log(this)
-                $(event.target).css("color", "red");
-                let text = "Are You Sure You want to delete ?";
-                if (confirm(text) == true) {
-                    console.log(true);
-                    // ajax to delete
-                    console.log(id);
-                    delete_data(id);
+                    var id = event.target.id;
+                    console.log(this)
+                    $(event.target).css("color", "white");
+                    let text = "Are You Sure You want to delete ?";
+                    if (confirm(text) == true) {
+                        console.log(true);
+                        // ajax to delete
+                        console.log(id);
+                        delete_data(id);
 
-                } else {
-                    console.log(false)
-                }
-            });
-        },
-        error: function () {
-            console.log(response.status);
-        },
-    })
+                    } else {
+                        console.log(false)
+                    }
+                });
+            },
+            error: function () {
+                console.log(response.status);
+            },
+        })
+    } else {
+        $('#load_data2').html('');
+    }
 }
 
 

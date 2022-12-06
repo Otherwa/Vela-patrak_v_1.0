@@ -5,11 +5,11 @@ session_start();
 
 if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     // redirect if not set
-    header("Location:../account/login.php");
+    header("Location:../../account/login.php");
 } else {
     $type = $_SESSION['type'];
     if ($type == "member") {
-        header("Location:../account/login.php");
+        header("Location:../../account/login.php");
     }
 }
 
@@ -248,7 +248,7 @@ ob_end_flush();
                     ?>
                     <input type="hidden" id="count" value="<?php echo $count1 ?>">
                     <input type="hidden" id="memberid" value="<?php echo $_SESSION['id']; ?>">
-                    <table class="styled-table">
+                    <table class="styled-table" id="first">
                         <thread>
                             <tr>
                                 <th>Timming</th>
