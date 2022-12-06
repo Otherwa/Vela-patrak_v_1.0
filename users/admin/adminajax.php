@@ -677,6 +677,9 @@ if (isset($_POST['Idto'])) {
     $sql1 = "UPDATE `timetable` SET `$text_div` = '--' WHERE `TimeSlot`= '$time' AND `Day` = '$day' AND `SubjectCode`= '$subjectcode'";
     $result1 = $con->query($sql1);
 
+    $sql2 = "DELETE FROM `timetable` WHERE Division = '--' AND Division1= '--' AND Division2= '--' AND Division3= '--'";
+    $result2 = $con->query($sql2);
+
     // database check and event delete
 }
 
