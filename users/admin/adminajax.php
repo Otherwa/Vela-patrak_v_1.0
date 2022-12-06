@@ -1105,6 +1105,7 @@ if (isset($_POST['class303'])) {
 if (isset($_POST["class202"])) {
     $year = $_POST['ad6'];
     $room = $_POST['room'];
+    $sem = $_POST['sem'];
     // echo $class1;
     $sql1 = "";
     $con = get_con();
@@ -1122,7 +1123,7 @@ if (isset($_POST["class202"])) {
         echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
 
         // get subject for a day in a specfic timeslot
-        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `RoomNo` = '$room'";
+        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `RoomNo` = '$room' AND `Sem` = '$sem'";
 
         $result1 = $con->query($sql);
         $result1 = $result1->fetch_assoc();
@@ -1140,30 +1141,9 @@ if (isset($_POST["class202"])) {
         $result3 = $result3->fetch_assoc();
 
 
-        echo "<td>" . "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
+        echo "<td>" . "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . " / " . $result1["Division4"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
 
-        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Tuesday' AND `RoomNo` = '$room'";
-
-        $result1 = $con->query($sql);
-        $result1 = $result1->fetch_assoc();
-        // echo $result1;
-        $getname = $result1["SubjectCode"];
-
-        $sql1 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname'";
-        $result2 = $con->query($sql1);
-        $result2 = $result2->fetch_assoc();
-
-        $getname1 = $result1["SubjectCode1"];
-
-        $sql2 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname1'";
-        $result3 = $con->query($sql2);
-        $result3 = $result3->fetch_assoc();
-
-
-        echo "<td>" . "<div id=\"Tuesday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
-
-
-        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Wednesday' AND `RoomNo` = '$room'";
+        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Tuesday' AND `RoomNo` = '$room' AND `Sem` = '$sem'";
 
         $result1 = $con->query($sql);
         $result1 = $result1->fetch_assoc();
@@ -1181,31 +1161,9 @@ if (isset($_POST["class202"])) {
         $result3 = $result3->fetch_assoc();
 
 
-        echo "<td>" . "<div id=\"Wednesday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
+        echo "<td>" . "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . " / " . $result1["Division4"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
 
-
-        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Thursday' AND `RoomNo` = '$room'";
-
-        $result1 = $con->query($sql);
-        $result1 = $result1->fetch_assoc();
-        // echo $result1;
-        $getname = $result1["SubjectCode"];
-
-        $sql1 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname'";
-        $result2 = $con->query($sql1);
-        $result2 = $result2->fetch_assoc();
-
-        $getname1 = $result1["SubjectCode1"];
-
-        $sql2 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname1'";
-        $result3 = $con->query($sql2);
-        $result3 = $result3->fetch_assoc();
-
-
-        echo "<td>" . "<div id=\"Thursday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
-
-
-        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Friday' AND `RoomNo` = '$room'";
+        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Wednesday' AND `RoomNo` = '$room' AND `Sem` = '$sem'";
 
         $result1 = $con->query($sql);
         $result1 = $result1->fetch_assoc();
@@ -1223,10 +1181,9 @@ if (isset($_POST["class202"])) {
         $result3 = $result3->fetch_assoc();
 
 
-        echo "<td>" . "<div id=\"Friday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
+        echo "<td>" . "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . " / " . $result1["Division4"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
 
-
-        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Saturday' AND `RoomNo` = '$room'";
+        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Thursday' AND `RoomNo` = '$room' AND `Sem` = '$sem'";
 
         $result1 = $con->query($sql);
         $result1 = $result1->fetch_assoc();
@@ -1244,7 +1201,49 @@ if (isset($_POST["class202"])) {
         $result3 = $result3->fetch_assoc();
 
 
-        echo "<td>" . "<div id=\"Saturday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
+        echo "<td>" . "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . " / " . $result1["Division4"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
+
+
+        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Friday' AND `RoomNo` = '$room' AND `Sem` = '$sem'";
+
+        $result1 = $con->query($sql);
+        $result1 = $result1->fetch_assoc();
+        // echo $result1;
+        $getname = $result1["SubjectCode"];
+
+        $sql1 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname'";
+        $result2 = $con->query($sql1);
+        $result2 = $result2->fetch_assoc();
+
+        $getname1 = $result1["SubjectCode1"];
+
+        $sql2 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname1'";
+        $result3 = $con->query($sql2);
+        $result3 = $result3->fetch_assoc();
+
+
+        echo "<td>" . "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . " / " . $result1["Division4"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
+
+
+        $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Saturday' AND `RoomNo` = '$room' AND `Sem` = '$sem'";
+
+        $result1 = $con->query($sql);
+        $result1 = $result1->fetch_assoc();
+        // echo $result1;
+        $getname = $result1["SubjectCode"];
+
+        $sql1 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname'";
+        $result2 = $con->query($sql1);
+        $result2 = $result2->fetch_assoc();
+
+        $getname1 = $result1["SubjectCode1"];
+
+        $sql2 = "SELECT * FROM subject WHERE `SubjectCode` = '$getname1'";
+        $result3 = $con->query($sql2);
+        $result3 = $result3->fetch_assoc();
+
+
+        echo "<td>" . "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . " / " . $result1["Division4"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"]  . "</p></div>" . "</td>";
 
         echo "</tr>";
     }
@@ -1293,7 +1292,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1316,7 +1315,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1339,7 +1338,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1362,7 +1361,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1385,7 +1384,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1408,7 +1407,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
         echo "</td>";

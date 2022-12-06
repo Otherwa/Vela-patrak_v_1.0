@@ -67,6 +67,8 @@ ob_end_flush();
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Room Time-Table</title>
     <!-- style -->
@@ -119,14 +121,28 @@ ob_end_flush();
                 </div>
                 <div class="form__div">
                     <label for="Class">Room:</label>
-                    <select name="class" id="room" onchange="get_data_timetable(this.value)">
+                    <select name="class" id="room">
                         <option value="--">--</option>
                         <!-- get fuction php -->
                         <?php get_room(); ?>
                     </select>
                 </div>
-
-                <table class="styled-table">
+                <div class="form__div">
+                    <label for="Class">Semester:</label>
+                    <select name="class" id="room" onchange="get_data_timetable(this.value)">
+                        <option value="--">--</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                        <option value="V">V</option>
+                        <option value="VI">VI</option>
+                    </select>
+                </div>
+                <div class="form__div">
+                    <input type="button" id="button" value="Generate PDF">
+                </div>
+                <table class="styled-table" id="styled-table">
                     <thread>
                         <tr>
                             <th>Timming</th>
