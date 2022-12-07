@@ -1418,7 +1418,7 @@ if (isset($_POST['ad69'])) {
 // 
 if (isset($_POST['getempty'])) {
     $year = $_POST['acad'];
-
+    $num_rooms = 0;
     $con = get_con();
 
     $sql = "SELECT * FROM rooms";
@@ -1451,6 +1451,7 @@ if (isset($_POST['getempty'])) {
 
 
                 if ($result123["Count"] <= 0) {
+                    $num_rooms = $num_rooms + 1;
                     echo "<td style=\"border-style:solid;border-width:1px;\">";
                     // echo $row["RoomNo"] . "-" . $result123["Count"] . "-" . $day . "-" . $year . "-" . $time;
                     echo $row["RoomNo"] . "-" . $day . "-" . $year . "-" . $time;
@@ -1461,6 +1462,7 @@ if (isset($_POST['getempty'])) {
 
         echo "</tr>";
     }
+    echo "<input type=\"hidden\" id=\"count\" value=\"" . $num_rooms . "\">";
 }
 
 mysqli_close($con);
