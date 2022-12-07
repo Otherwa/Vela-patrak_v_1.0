@@ -28,7 +28,7 @@ function get_sem() {
     })
 }
 
-$('#semester').prop('disabled', true);
+// $('#semester').prop('disabled', true);
 // set sem or not for junior
 function if_junior(data) {
     $('#semester').val('--');

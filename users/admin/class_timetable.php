@@ -187,7 +187,7 @@ ob_end_flush();
                     <div id="modalDialog" class="modal">
                         <div class="con1">
                             <br>
-                            <span class="close" style="padding-left:1rem">Close</span>
+                            <input type="button" class="close" value="Close">
                             <br>
                             <label for="day" style="padding-left:1rem">Day:<p id="day" style="padding-left:1rem"></p>
                             </label>
