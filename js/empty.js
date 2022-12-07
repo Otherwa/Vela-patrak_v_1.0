@@ -8,8 +8,11 @@ $('#get_empty').on('click', () => {
         data: "getempty=" + true + '&acad=' + acad,
         success: function (data) {
             $('.data').html(data);
-            console.log(data);
+            // console.log(data);
 
+            var num = $("#count").val();
+            console.log(num);
+            $('#num').html(num + " Empty Rooms At Specific Time.")
         },
         error: function () {
             console.log(response.status);

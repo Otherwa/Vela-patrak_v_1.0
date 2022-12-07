@@ -75,7 +75,7 @@ ob_end_flush();
 
     <div class="container">
         <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:auto;height:auto">
+            <div class="form  w3-margin w3-whitesmoke" style="width:auto;height:auto">
                 <div class="context">
                     <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
                         style="height:3rem">
@@ -83,8 +83,12 @@ ob_end_flush();
                 </div>
                 <br>
                 <div class="form__div">
+                    <p id="num"></p>
+                </div>
+                <br>
+                <div class="form__div">
                     <label for="Academic Year">Academic Year:</label>
-                    <select id="acad" onchange="get_total_data(this.value)">
+                    <select id="acad">
                         <option value="--">--</option>
                         <?php get_academic_year(); ?>
                     </select>
@@ -93,11 +97,12 @@ ob_end_flush();
                     name="Get Slots" style="float:right" id="get_empty">
                 <br>
                 <br>
-                <table class="data">
-
-                </table>
+                <div class="test" style="overflow:scroll; height:40rem; width:79vw">
+                    <table class="data">
+                    </table>
+                </div>
+            </div>
         </div>
-        </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
