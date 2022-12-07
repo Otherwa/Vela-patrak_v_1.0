@@ -1456,9 +1456,11 @@ if (isset($_POST['getempty'])) {
 
                 if ($result123["Count"] <= 0) {
                     $num_rooms = $num_rooms + 1;
-                    echo "<td style=\"border-style:solid;border-width:1px;width:20rem\">";
+                    echo "<td style=\"border-style:solid;border-width:1px;\">";
+                    echo "<div style=\"width:10rem\">";
                     // echo $row["RoomNo"] . "-" . $result123["Count"] . "-" . $day . "-" . $year . "-" . $time;
                     echo $row["RoomNo"] . "-" . $day . "-" . $year . "-" . $time;
+                    echo "</div>";
                     echo "</td>";
                 }
             }
