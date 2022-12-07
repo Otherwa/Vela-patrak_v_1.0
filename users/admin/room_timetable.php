@@ -131,12 +131,9 @@ ob_end_flush();
                     <label for="Class">Semester:</label>
                     <select name="class" id="room" onchange="get_data_timetable(this.value)">
                         <option value="--">--</option>
-                        <option value="I">I</option>
-                        <option value="II">II</option>
-                        <option value="III">III</option>
-                        <option value="IV">IV</option>
-                        <option value="V">V</option>
-                        <option value="VI">VI</option>
+                        <option value="--_--_--">Jr</option>
+                        <option value="I_III_V">Odd</option>
+                        <option value="II_IV_VI">Even</option>
                     </select>
                 </div>
                 <div class="form__div">
