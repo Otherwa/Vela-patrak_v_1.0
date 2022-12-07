@@ -11,3 +11,4 @@
 <hr style="border-top: 2px solid #eee;">
 <a href="class_timetable.php" class="w3-bar-item w3-button">Class-Timetable</a>
 <a href="room_timetable.php" class="w3-bar-item w3-button">Room-Timetable</a>
+<a href="empty.php" class="w3-bar-item w3-button">Empty-Rooms<span style="color:green"> (Beta)</span></a>

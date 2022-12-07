@@ -16,6 +16,7 @@ function get_con()
     return $connect;
 }
 $status = "online";
+
 ob_end_flush();
 ?>
 <!DOCTYPE html>
