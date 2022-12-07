@@ -12,7 +12,7 @@ $('#get_empty').on('click', () => {
 
             var num = $("#count").val();
             console.log(num);
-            $('#num').html(num + "Empty Rooms At Specific Time.")
+            $('#num').html(num + " Empty Rooms At Specific Time.")
         },
         error: function () {
             console.log(response.status);
