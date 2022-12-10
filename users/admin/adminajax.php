@@ -1423,6 +1423,8 @@ if (isset($_POST['ad69'])) {
 if (isset($_POST['getempty'])) {
     $year = $_POST['acad'];
     $num_rooms = 0;
+    $classes = $_POST['classex'];
+    $classes = explode('_', $classes);
     $con = get_con();
 
     $sql = "SELECT * FROM rooms";
@@ -1458,7 +1460,7 @@ if (isset($_POST['getempty'])) {
                 $time = $row1["StartTime"] . " - " . $row1["EndTime"];
 
                 $room = $row["RoomNo"];
-                $sql1 = "SELECT COUNT(*) as `Count` FROM timetable WHERE `TimeSlot` = '$time' AND `Day` = '$day' AND `AcademicYear` = '$year' AND `RoomNo` = '$room' ORDER BY `RoomNo` ";
+                $sql1 = "SELECT COUNT(*) as `Count` FROM timetable WHERE `TimeSlot` = '$time' AND `Day` = '$day' AND `AcademicYear` = '$year' AND `RoomNo` = '$room' AND `Sem` IN ('$classes[0]','$classes[1]','classes[2]')ORDER BY `RoomNo` ";
 
                 $result11 = $con->query($sql1);
                 $result123 = $result11->fetch_array();

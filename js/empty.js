@@ -1,5 +1,5 @@
 var filename = ""
-$('#acad').on('change', () => {
+$('#class').on('change', () => {
     console.log("mySidebar")
     var acad = $("#acad").val()
     if (acad === "--") {
@@ -10,7 +10,7 @@ $('#acad').on('change', () => {
         $.ajax({
             type: 'post',
             url: 'adminajax.php',
-            data: "getempty=" + true + '&acad=' + acad,
+            data: "getempty=" + true + '&acad=' + acad + "&classex=" + $('#class').val(),
             success: function (data) {
                 $('.data').html(data);
                 // console.log(data);
