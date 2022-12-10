@@ -115,7 +115,8 @@ ob_end_flush();
     <div class="container">
         <div class="list">
             <p style="float:left">Course-Registration</p>
-            <div class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem">
+            <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
+                style="width:auto;height:38rem;overflow-y:scroll">
                 <?php course(); ?>
             </div>
         </div>
