@@ -98,7 +98,7 @@ ob_end_flush();
                     <label for="Academic Year">Class:</label>
                     <select id="class">
                         <option value="--">--</option>
-                        <option value="--">Jr</option>
+                        <option value="--_--_--">Jr</option>
                         <option value="I_III_V">Odd</option>
                         <option value="II_IV_VI">Even</option>
                     </select>
