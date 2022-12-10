@@ -1,5 +1,5 @@
 var filename = ""
-$('#get_empty').on('click', () => {
+$('#acad').on('change', () => {
     console.log("mySidebar")
     var acad = $("#acad").val()
     if (acad === "--") {
@@ -13,6 +13,7 @@ $('#get_empty').on('click', () => {
             success: function (data) {
                 $('.data').html(data);
                 // console.log(data);
+                $('#water').show();
 
                 var num = $("#count").val();
                 console.log(num);
@@ -31,5 +32,9 @@ var button = document.getElementById("button");
 var makepdf = document.getElementById("data");
 
 button.addEventListener("click", function () {
-    html2pdf().from(makepdf).save(filename);
+    html2pdf().set({
+        jsPDF: {
+            format: 'a3'
+        }
+    }).from(makepdf).save(filename);
 });

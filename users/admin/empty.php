@@ -97,12 +97,13 @@ ob_end_flush();
                 <div class="form__div">
                     <input type="button" id="button" value="Generate PDF">
                 </div>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="button" value="Get"
-                    name="Get Slots" style="float:right" id="get_empty">
                 <br>
-                <br>
-                <div class="test" style="overflow:scroll; height:40rem; width:79vw">
-                    <table class="data" id="data">
+                <div class="test" id="data" style="overflow:scroll; height:40rem; width:79vw">
+                    <div class="div" style="display:flex;flex-direction:column;align-items:center">
+                        <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                    </div>
+                    <br>
+                    <table class="data">
                     </table>
                 </div>
             </div>

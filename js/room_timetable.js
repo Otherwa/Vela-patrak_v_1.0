@@ -14,6 +14,7 @@ function get_data_timetable(data) {
         data: "class202=" + class1 + "&ad6=" + academic_year + "&room=" + room + "&sem=" + sem,
         success: function (data) {
             $('#load_data').html(data);
+            $('#water').show();
 
         },
         error: function () {

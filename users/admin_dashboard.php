@@ -131,22 +131,25 @@ ob_end_flush();
                 $result = $result['count'];
                 $count1 = $result;
                 ?>
-                <table class="styled-table">
-                    <thread>
-                        <tr>
-                            <th>TimeSlot</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
-                        </tr>
-                    </thread>
-                    <tbody id="load_data">
+                <div class="div" style="display:flex;flex-direction:column;align-items:center">
+                    <img src="../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                    <table class="styled-table">
+                        <thread>
+                            <tr>
+                                <th>TimeSlot</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thread>
+                        <tbody id="load_data">
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
