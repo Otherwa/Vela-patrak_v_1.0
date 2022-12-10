@@ -4,6 +4,7 @@ $('#acad').on('change', () => {
     var acad = $("#acad").val()
     if (acad === "--") {
         console.log("none")
+        $('.data').html('');
     } else {
         console.log(acad);
         $.ajax({
