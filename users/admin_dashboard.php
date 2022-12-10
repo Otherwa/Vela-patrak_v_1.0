@@ -94,6 +94,7 @@ ob_end_flush();
         <hr style="border-top: 2px solid #eee;">
         <a href="admin/class_timetable.php" class="w3-bar-item w3-button">Class-Timetable</a>
         <a href="admin/room_timetable.php" class="w3-bar-item w3-button">Room-Timetable</a>
+        <a href="admin/empty.php" class="w3-bar-item w3-button">Empty-Rooms<span style="color:green"> (Beta)</span></a>
     </div>
     <!-- Page Content -->
     <div class="">
@@ -133,7 +134,7 @@ ob_end_flush();
                 <table class="styled-table">
                     <thread>
                         <tr>
-                            <th>Room</th>
+                            <th>TimeSlot</th>
                             <th>Monday</th>
                             <th>Tuesday</th>
                             <th>Wednesday</th>

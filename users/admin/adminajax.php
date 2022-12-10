@@ -1430,18 +1430,29 @@ if (isset($_POST['getempty'])) {
 
     $temp_array = array();
 
+    echo "<tr>";
+    echo "<td>RoomNo</td>";
+    echo "<td>Monday</td>";
+    echo "<td>Tuesday</td>";
+    echo "<td>Wednesday</td>";
+    echo "<td>Thursday</td>";
+    echo "<td>Friday</td>";
+    echo "<td>Saturday</td>";
+    echo "</td>";
+
     while ($row = $result12->fetch_array()) {
         // rooms
 
         $days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 
         echo "<tr>";
-
+        echo "<td>" . $row["RoomNo"] . "</td>";
         foreach ($days as $day) {
 
             $sql = "SELECT * FROM timeslot";
             $result = $con->query($sql);
 
+            echo "<td style=\"border-style:solid;border-width:1px;\">";
             while ($row1 = $result->fetch_array()) {
 
                 $time = $row1["StartTime"] . " - " . $row1["EndTime"];
@@ -1456,14 +1467,13 @@ if (isset($_POST['getempty'])) {
 
                 if ($result123["Count"] <= 0) {
                     $num_rooms = $num_rooms + 1;
-                    echo "<td style=\"border-style:solid;border-width:1px;\">";
-                    echo "<div style=\"width:10rem\">";
+                    echo "<div style=\"width:max-content;padding:0.1rem\">";
                     // echo $row["RoomNo"] . "-" . $result123["Count"] . "-" . $day . "-" . $year . "-" . $time;
-                    echo $row["RoomNo"] . "-" . $day . "-" . $year . "-" . $time;
+                    echo "Slot :- " . $time . "<br>";
                     echo "</div>";
-                    echo "</td>";
                 }
             }
+            echo "</td>";
         }
 
         echo "</tr>";
