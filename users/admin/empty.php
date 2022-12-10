@@ -51,6 +51,7 @@ ob_end_flush();
     <link rel="stylesheet" href="../../css/empty.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     <title>Rooms</title>
 </head>
 
@@ -93,11 +94,15 @@ ob_end_flush();
                         <?php get_academic_year(); ?>
                     </select>
                 </div>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="button" value="Get"
-                    name="Get Slots" style="float:right" id="get_empty">
+                <div class="form__div">
+                    <input type="button" id="button" value="Generate PDF">
+                </div>
                 <br>
-                <br>
-                <div class="test" style="overflow:scroll; height:40rem; width:79vw">
+                <div class="test" id="data" style="overflow:scroll; height:40rem; width:79vw">
+                    <div class="div" style="display:flex;flex-direction:column;align-items:center">
+                        <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                    </div>
+                    <br>
                     <table class="data">
                     </table>
                 </div>

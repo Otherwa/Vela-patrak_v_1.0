@@ -94,6 +94,7 @@ ob_end_flush();
         <hr style="border-top: 2px solid #eee;">
         <a href="admin/class_timetable.php" class="w3-bar-item w3-button">Class-Timetable</a>
         <a href="admin/room_timetable.php" class="w3-bar-item w3-button">Room-Timetable</a>
+        <a href="admin/empty.php" class="w3-bar-item w3-button">Empty-Rooms<span style="color:green"> (Beta)</span></a>
     </div>
     <!-- Page Content -->
     <div class="">
@@ -130,22 +131,25 @@ ob_end_flush();
                 $result = $result['count'];
                 $count1 = $result;
                 ?>
-                <table class="styled-table">
-                    <thread>
-                        <tr>
-                            <th>Room</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
-                        </tr>
-                    </thread>
-                    <tbody id="load_data">
+                <div class="div" style="display:flex;flex-direction:column;align-items:center">
+                    <img src="../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                    <table class="styled-table">
+                        <thread>
+                            <tr>
+                                <th>TimeSlot</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thread>
+                        <tbody id="load_data">
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

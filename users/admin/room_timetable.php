@@ -139,22 +139,25 @@ ob_end_flush();
                 <div class="form__div">
                     <input type="button" id="button" value="Generate PDF">
                 </div>
-                <table class="styled-table" id="styled-table">
-                    <thread>
-                        <tr>
-                            <th>Timming</th>
-                            <th id="dayshow">Monday</th>
-                            <th id="dayshow">Tuesday</th>
-                            <th id="dayshow">Wednesday</th>
-                            <th id="dayshow">Thursday</th>
-                            <th id="dayshow">Friday</th>
-                            <th id="dayshow">Saturday</th>
-                        </tr>
-                    </thread>
-                    <tbody id="load_data">
+                <div class="div" id="styled-table" style="display:flex;flex-direction:column;align-items:center">
+                    <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                    <table class="styled-table">
+                        <thread>
+                            <tr>
+                                <th>Timming</th>
+                                <th id="dayshow">Monday</th>
+                                <th id="dayshow">Tuesday</th>
+                                <th id="dayshow">Wednesday</th>
+                                <th id="dayshow">Thursday</th>
+                                <th id="dayshow">Friday</th>
+                                <th id="dayshow">Saturday</th>
+                            </tr>
+                        </thread>
+                        <tbody id="load_data">
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

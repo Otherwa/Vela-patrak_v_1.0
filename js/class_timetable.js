@@ -396,6 +396,7 @@ function get_data_timetable(data) {
             data: "class101=" + class101 + "&sem1=" + sem + "&ad1=" + academic_year + "&div=" + div,
             success: function (data) {
                 $('#load_data').html(data);
+                $('#water').show();
 
             },
             error: function () {
