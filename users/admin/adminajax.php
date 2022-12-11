@@ -240,7 +240,7 @@ if (isset($_POST["time"])) {
                 // combined insert
                 echo "<script>alert('Insert Combined');</script>";
             } else {
-                echo "<script>alert('Not Possible');</script>";
+                echo "<script>alert('Not Possible Due to Difrrenet class or sem or subject as Room At that time already booked By " . $class11 . " of Division " . $div . " For Subject " . $result1["SubjectName"] .  "');</script>";
             }
         } else {
             $getname = $sub1;;
