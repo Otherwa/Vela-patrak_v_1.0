@@ -94,15 +94,15 @@ ob_end_flush();
                         <?php get_academic_year(); ?>
                     </select>
                 </div>
-                <!-- <div class="form__div">
+                <div class="form__div">
                     <label for="Academic Year">Class:</label>
-                    <select id="class">
+                    <select id="classes">
                         <option value="--">--</option>
                         <option value="--_--_--">Jr</option>
                         <option value="I_III_V">Odd</option>
                         <option value="II_IV_VI">Even</option>
                     </select>
-                </div> -->
+                </div>
                 <div class="form__div">
                     <input type="button" id="button" value="Generate PDF">
                 </div>

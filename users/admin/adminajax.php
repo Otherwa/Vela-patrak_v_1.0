@@ -196,6 +196,7 @@ if (isset($_POST["time"])) {
     $sql = "SELECT * FROM `timetable` WHERE AcademicYear = '$academic_year' AND RoomNo = '$room' AND TimeSlot = '$time[$real_time]' AND Day = '$day' AND `Class` = '$class1' AND `Sem` = '$semester'";
     $result = $con->query($sql);
     $result1 = $result->fetch_assoc();
+    $result_copy = $result1;
     $result = mysqli_num_rows($result);
     // echo $sql;
     // echo $result;
@@ -267,7 +268,8 @@ if (isset($_POST["time"])) {
         if ($flag === 1) {
             echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
         } else {
-            echo "<script>alert('Something went wrong  sfsd');</script>";
+
+            echo "<script>alert('Room already booked by Some Other Class');</script>";
         }
     }
     // echo $sql;
@@ -1302,7 +1304,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1325,7 +1327,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"]  . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1348,7 +1350,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1371,7 +1373,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1394,7 +1396,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1417,7 +1419,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
         echo "</td>";
@@ -1428,8 +1430,8 @@ if (isset($_POST['ad69'])) {
 if (isset($_POST['getempty'])) {
     $year = $_POST['acad'];
     $num_rooms = 0;
-    // $classes = $_POST['classex'];
-    // $classes = explode('_', $classes);
+    $classes = $_POST['classes'];
+    $classes = explode('_', $classes);
     $con = get_con();
 
     $sql = "SELECT * FROM rooms";
@@ -1465,7 +1467,7 @@ if (isset($_POST['getempty'])) {
                 $time = $row1["StartTime"] . " - " . $row1["EndTime"];
 
                 $room = $row["RoomNo"];
-                $sql1 = "SELECT COUNT(*) as `Count` FROM timetable WHERE `TimeSlot` = '$time' AND `Day` = '$day' AND `AcademicYear` = '$year' AND `RoomNo` = '$room' ORDER BY `RoomNo` ";
+                $sql1 = "SELECT COUNT(*) as `Count` FROM timetable WHERE `TimeSlot` = '$time' AND `Day` = '$day' AND `AcademicYear` = '$year' AND `Sem` IN ('$classes[0]','$classes[1]','$classes[2]') AND `RoomNo` = '$room' ORDER BY `RoomNo` ";
 
                 $result11 = $con->query($sql1);
                 $result123 = $result11->fetch_array();
@@ -1476,7 +1478,7 @@ if (isset($_POST['getempty'])) {
                     $num_rooms = $num_rooms + 1;
                     echo "<div style=\"width:max-content;padding:0.1rem\">";
                     // echo $row["RoomNo"] . "-" . $result123["Count"] . "-" . $day . "-" . $year . "-" . $time;
-                    echo "Slot :- " . preg_replace('/:00/', '', $time) . "<br>";
+                    echo "Slot:-" . preg_replace('/:00/', '', $time) . "<br>";
                     echo "</div>";
                 }
             }
