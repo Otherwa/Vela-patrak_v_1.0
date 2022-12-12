@@ -96,7 +96,7 @@ ob_end_flush();
                 </div>
                 <div class="form__div">
                     <label for="Academic Year">Class:</label>
-                    <select id="class">
+                    <select id="classes">
                         <option value="--">--</option>
                         <option value="--_--_--">Jr</option>
                         <option value="I_III_V">Odd</option>

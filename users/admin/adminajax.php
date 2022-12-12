@@ -193,9 +193,10 @@ if (isset($_POST["time"])) {
     //(`AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`)
     // 
     // check if timefor a room in Already present of a class in a an academic year
-    $sql = "SELECT * FROM `timetable` WHERE AcademicYear = '$academic_year' AND RoomNo = '$room' AND TimeSlot = '$time[$real_time]' AND Day = '$day'";
+    $sql = "SELECT * FROM `timetable` WHERE AcademicYear = '$academic_year' AND RoomNo = '$room' AND TimeSlot = '$time[$real_time]' AND Day = '$day' AND `Class` = '$class1' AND `Sem` = '$semester'";
     $result = $con->query($sql);
     $result1 = $result->fetch_assoc();
+    $result_copy = $result1;
     $result = mysqli_num_rows($result);
     // echo $sql;
     // echo $result;
@@ -213,7 +214,7 @@ if (isset($_POST["time"])) {
         if ($check == 'true') {
 
 
-            // check if diva already added or not multiple
+            // check if div and class and sem for a specific timeslot exisit  already added or not multiple
             if ($class11 == $class1 && $sem == $semester && $sub1 == $sub && $div != $division && $div1 != $division && $div2 != $division && $div3 != $division) {
                 if ($result1['Division1'] == '--') {
                     $sql =  "UPDATE timetable SET `Division1` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
@@ -240,7 +241,12 @@ if (isset($_POST["time"])) {
                 // combined insert
                 echo "<script>alert('Insert Combined');</script>";
             } else {
-                echo "<script>alert('Not Possible');</script>";
+                $getname = $sub1;;
+                $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+                $result1 = $con->query($sql1);
+                $result1 = $result1->fetch_assoc();
+
+                echo "<script>alert('Not Possible Due to Difrrenet class or sem or subject as Room At that time already booked By " . $class11 . " of Division " . $div . " For Subject " . $result1["SubjectName"] .  "');</script>";
             }
         } else {
             $getname = $sub1;;
@@ -248,7 +254,7 @@ if (isset($_POST["time"])) {
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<script>alert('Room At that time already booked By " . $class11 . " of Division " . $div . " For Subject " . $result1["SubjectName"] .  "');</script>";
+            echo "<script>alert('Room At that time already booked By " . $class11 . " of Division " . $div . " For Subject " . " For Sem " . $semester . "--" . $result1["SubjectName"] .  "');</script>";
         }
     } else {
         $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','$part','$semester','$class1');";
@@ -260,9 +266,10 @@ if (isset($_POST["time"])) {
         }
 
         if ($flag === 1) {
-            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
+            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " For Sem " . $semester . " Successfully Registered at " . $time[$real_time] . "');</script>";
         } else {
-            echo "<script>alert('Something went wrong  sfsd');</script>";
+
+            echo "<script>alert('Room already booked by Some Other Class');</script>";
         }
     }
     // echo $sql;
@@ -1297,7 +1304,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1320,7 +1327,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"]  . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1343,7 +1350,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1366,7 +1373,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1389,7 +1396,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
 
@@ -1412,7 +1419,7 @@ if (isset($_POST['ad69'])) {
             $result3 = $result3->fetch_assoc();
 
 
-            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
+            echo  "<div id=\"Monday\"><p>" . $result1["Class"] . " - " . $result1["Sem"] . " - " . $result1["Division"] . " / " . $result1["Division1"] . " / " . $result1["Division2"] . " / " . $result1["Division3"] . "<br>" . $result2["SubjectName"] .  " - " . $result3["SubjectName"] . "<br>" . $result1["Department"] . "<br>Room:" . $result1["RoomNo"] . "</p></div>";
         }
 
         echo "</td>";
@@ -1423,7 +1430,7 @@ if (isset($_POST['ad69'])) {
 if (isset($_POST['getempty'])) {
     $year = $_POST['acad'];
     $num_rooms = 0;
-    $classes = $_POST['classex'];
+    $classes = $_POST['classes'];
     $classes = explode('_', $classes);
     $con = get_con();
 
@@ -1460,7 +1467,7 @@ if (isset($_POST['getempty'])) {
                 $time = $row1["StartTime"] . " - " . $row1["EndTime"];
 
                 $room = $row["RoomNo"];
-                $sql1 = "SELECT COUNT(*) as `Count` FROM timetable WHERE `TimeSlot` = '$time' AND `Day` = '$day' AND `AcademicYear` = '$year' AND `RoomNo` = '$room' AND `Sem` IN ('$classes[0]','$classes[1]','classes[2]')ORDER BY `RoomNo` ";
+                $sql1 = "SELECT COUNT(*) as `Count` FROM timetable WHERE `TimeSlot` = '$time' AND `Day` = '$day' AND `AcademicYear` = '$year' AND `Sem` IN ('$classes[0]','$classes[1]','$classes[2]') AND `RoomNo` = '$room' ORDER BY `RoomNo` ";
 
                 $result11 = $con->query($sql1);
                 $result123 = $result11->fetch_array();
@@ -1471,7 +1478,7 @@ if (isset($_POST['getempty'])) {
                     $num_rooms = $num_rooms + 1;
                     echo "<div style=\"width:max-content;padding:0.1rem\">";
                     // echo $row["RoomNo"] . "-" . $result123["Count"] . "-" . $day . "-" . $year . "-" . $time;
-                    echo "Slot :- " . $time . "<br>";
+                    echo "Slot:-" . preg_replace('/:00/', '', $time) . "<br>";
                     echo "</div>";
                 }
             }
