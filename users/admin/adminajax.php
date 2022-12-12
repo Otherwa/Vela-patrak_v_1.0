@@ -254,7 +254,7 @@ if (isset($_POST["time"])) {
             $result1 = $con->query($sql1);
             $result1 = $result1->fetch_assoc();
 
-            echo "<script>alert('Room At that time already booked By " . $class11 . " of Division " . $div . " For Subject " . $result1["SubjectName"] .  "');</script>";
+            echo "<script>alert('Room At that time already booked By " . $class11 . " of Division " . $div . " For Subject " . " For Sem " . $semester . "--" . $result1["SubjectName"] .  "');</script>";
         }
     } else {
         $sql = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time[$real_time]','$day','$division','$sub','$department','$member',current_timestamp(),'--','--','--','--','--','--','--','$part','$semester','$class1');";
@@ -266,7 +266,7 @@ if (isset($_POST["time"])) {
         }
 
         if ($flag === 1) {
-            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Registered at " . $time[$real_time] . "');</script>";
+            echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " For Sem " . $semester . " Successfully Registered at " . $time[$real_time] . "');</script>";
         } else {
 
             echo "<script>alert('Room already booked by Some Other Class');</script>";
