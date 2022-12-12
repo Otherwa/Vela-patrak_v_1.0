@@ -193,7 +193,7 @@ if (isset($_POST["time"])) {
     //(`AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division11`, `Division12`, `Division13`, `Division14`, `Part`, `Sem`, `Class`)
     // 
     // check if timefor a room in Already present of a class in a an academic year
-    $sql = "SELECT * FROM `timetable` WHERE AcademicYear = '$academic_year' AND RoomNo = '$room' AND TimeSlot = '$time[$real_time]' AND Day = '$day'";
+    $sql = "SELECT * FROM `timetable` WHERE AcademicYear = '$academic_year' AND RoomNo = '$room' AND TimeSlot = '$time[$real_time]' AND Day = '$day' AND `Class` = '$class1' AND `Sem` = '$semester'";
     $result = $con->query($sql);
     $result1 = $result->fetch_assoc();
     $result = mysqli_num_rows($result);
@@ -240,6 +240,11 @@ if (isset($_POST["time"])) {
                 // combined insert
                 echo "<script>alert('Insert Combined');</script>";
             } else {
+                $getname = $sub1;;
+                $sql1 = "SELECT * FROM subject WHERE SubjectCode = '$getname'";
+                $result1 = $con->query($sql1);
+                $result1 = $result1->fetch_assoc();
+
                 echo "<script>alert('Not Possible Due to Difrrenet class or sem or subject as Room At that time already booked By " . $class11 . " of Division " . $div . " For Subject " . $result1["SubjectName"] .  "');</script>";
             }
         } else {
