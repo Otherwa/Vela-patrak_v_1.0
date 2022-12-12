@@ -213,7 +213,7 @@ if (isset($_POST["time"])) {
         if ($check == 'true') {
 
 
-            // check if diva already added or not multiple
+            // check if div and class and sem for a specific timeslot exisit  already added or not multiple
             if ($class11 == $class1 && $sem == $semester && $sub1 == $sub && $div != $division && $div1 != $division && $div2 != $division && $div3 != $division) {
                 if ($result1['Division1'] == '--') {
                     $sql =  "UPDATE timetable SET `Division1` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
