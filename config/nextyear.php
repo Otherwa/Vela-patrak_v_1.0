@@ -8,11 +8,20 @@ if (isset($_GET['Next'])) {
     if ($_GET['Next'] == "TEST") {
         $con = get_con();
         $sql = "SELECT * FROM timetable";
+        $year = date("Y");
+        $year1 = $year + 1;
+        $valid_year = $year . "-" . $year1;
+
+        $sql1 = "INSERT INTO config (AcademicYear) VALUES ('$valid_year')";
+        $res = $con->query($sql1);
+        if ($res === FALSE) {
+            echo "Error inserting";
+        }
 
         $result = $con->query($sql);
 
         while ($row = $result->fetch_assoc()) {
-            $academic_year = "2022-2023";
+            $academic_year = $valid_year;
             $room = $row['RoomNo'];
             $time = $row['TimeSlot'];
             $day = $row['Day'];
@@ -31,9 +40,13 @@ if (isset($_GET['Next'])) {
             $semester = $row['Sem'];
             $class1 = $row['Class'];
             $sql1 = "INSERT INTO `timetable` VALUES (DEFAULT,'$academic_year','$room','$time','$day','$division','$sub','$department','$member',current_timestamp(),'$div1','$div2','$div3','$sub1','$div4','$div5','$div6','$part','$semester','$class1');";
-            $con->query($sql1);
+            $resu = $con->query($sql1);
         }
-        echo "Next year Done";
+        if ($resu === FALSE) {
+            echo "Error or ISSUE";
+        } else {
+            echo "Next year Done";
+        }
     } else {
         echo "Issue";
     }
