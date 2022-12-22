@@ -30,6 +30,38 @@ $('#classes').on('change', () => {
 })
 
 
+function get_professors() {
+    var department = $('#department').val()
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: "department=" + department,
+        success: function (data) {
+            $('#professor').html(data);
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}
+
+function get_professor_time() {
+    var prof = $('#professor').val()
+    console.log(prof)
+    console.log($('#year').val())
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: "ad69420=" + prof + '&acadyear=' + $('#year').val(),
+        success: function (data) {
+            $('.data').html(data);
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}
+
 var button = document.getElementById("button");
 var makepdf = document.getElementById("data");
 

@@ -14,6 +14,10 @@
     --green: #2F4858;
 }
 
+td {
+    padding: 1rem;
+    border: solid;
+}
 
 /* login form */
 .container {

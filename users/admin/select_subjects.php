@@ -113,7 +113,7 @@ ob_end_flush();
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Select Subject</title>
+    <title>Set Professor Subject</title>
 </head>
 
 <body>
@@ -132,7 +132,7 @@ ob_end_flush();
     </code>
 
     <div class="con_head">
-        <p> Select Subjects </p>
+        <p> Set Profession Subjects </p>
     </div>
 
     <div class="container">
@@ -175,6 +175,7 @@ ob_end_flush();
                     <br>
                     <select name="Semester" id="Semester" onchange="get_subject()">
                         <option value="--">--</option>
+                        <option value="--">Jr</option>
                         <option value="I">I</option>
                         <option value="II">II</option>
                         <option value="III">III</option>
