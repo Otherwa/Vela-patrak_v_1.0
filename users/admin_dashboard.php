@@ -90,9 +90,9 @@ ob_end_flush();
         <a href="admin/room.php" class="w3-bar-item w3-button">Room</a>
         <a href="admin/course.php" class="w3-bar-item w3-button">Course</a>
         <a href="admin/subject.php" class="w3-bar-item w3-button">Subject</a>
-        <a href="admin/select_subjects.php" class="w3-bar-item w3-button">Select-Subject</a>
+        <a href="admin/select_subjects.php" class="w3-bar-item w3-button">Set Professor Subject</a>
         <hr style="border-top: 2px solid #eee;">
-        <a href="admin/class_timetable.php" class="w3-bar-item w3-button">Class-Timetable</a>
+        <a href="admin/professor_timetable.php" class="w3-bar-item w3-button">Professor TimeTable</a>
         <a href="admin/room_timetable.php" class="w3-bar-item w3-button">Room-Timetable</a>
         <a href="admin/empty.php" class="w3-bar-item w3-button">Empty-Rooms<span style="color:green"> (Beta)</span></a>
     </div>
