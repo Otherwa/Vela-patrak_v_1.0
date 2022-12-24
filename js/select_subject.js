@@ -1,5 +1,28 @@
 console.log("select subject");
 
+function get_professor() {
+
+    let profname = $('#Department').val();
+    console.log(profname);
+
+    // clear the current list
+    $('#Class').html('<option value=\"--\">--</option>');
+    $('#Subject').html('<option value=\"--\">--</option>');
+
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: 'dep=' + profname,
+        success: function (data) {
+            $('#ProfessorName').html(data);
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}
+
+
 function get_classes() {
 
     let profname = $('#ProfessorName').val();
