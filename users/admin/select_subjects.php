@@ -64,7 +64,7 @@ function insert_professor($professorname, $class, $semester, $subject, $memberid
 function get_department()
 {
     $con = get_con();
-    $sql = "SELECT DISTINCT Departmanet FROM subject";
+    $sql = "SELECT DISTINCT Department FROM subject";
     $result = $con->query($sql);
 
     // output data of each row
