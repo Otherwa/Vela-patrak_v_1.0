@@ -19,7 +19,7 @@ $id = $_SESSION['id'];
 function get_department()
 {
     $con = get_con();
-    $sql = "SELECT DISTINCT * FROM subject";
+    $sql = "SELECT DISTINCT Department FROM subject";
     $result = $con->query($sql);
 
     // output data of each row
@@ -68,6 +68,18 @@ ob_end_flush();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     <title>Rooms</title>
+    <style>
+    select {
+        width: 100%;
+        padding: 0.2rem;
+        margin: 0.1rem;
+        border-radius: 0.3rem;
+    }
+
+    td {
+        width: auto;
+    }
+    </style>
 </head>
 
 <body>

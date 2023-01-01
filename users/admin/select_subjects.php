@@ -28,7 +28,7 @@ if (isset($_POST['save'])) {
         echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
     } else {
         $con = get_con();
-        $sql = "SELECT * FROM `selectsubject` WHERE ProfessorName = '" . $professorname . "'";
+        $sql = "SELECT * FROM `selectsubject` WHERE `ProfessorName` = '$professorname' AND `Subject` = '$subject'";
 
         $result = mysqli_query($con, $sql);
         $result_user_type = mysqli_fetch_array($result);
@@ -36,7 +36,7 @@ if (isset($_POST['save'])) {
 
         if ($row > 0) {
             // check if timeslot already exists or not simple redirect to it
-            echo "<script>alert('Professor already exsists');</script>";
+            echo "<script>alert('Professor already exsists for the Subject');</script>";
             // close connection
             mysqli_close($con);
         } else {
@@ -59,6 +59,22 @@ function insert_professor($professorname, $class, $semester, $subject, $memberid
 }
 
 
+
+// get departments
+function get_department()
+{
+    $con = get_con();
+    $sql = "SELECT DISTINCT Department FROM subject";
+    $result = $con->query($sql);
+
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        echo "<option value=\"" . $row["Department"] . "\">" . $row["Department"]  . "</option>";
+    }
+
+    $con->close();
+}
+
 // list the subjects in db
 function subjects()
 {
@@ -79,18 +95,8 @@ function subjects()
     $con->close();
 }
 
-// get professor names
-function getprofessornames()
-{
-    $con = get_con();
-    $sql = "SELECT * FROM professor";
-    $result = $con->query($sql);
 
-    while ($row = $result->fetch_assoc()) {
-        echo "<option value=\"" . $row["ProfessorFirstName"] . " " . $row["ProfessorLastName"] . "\">" . $row["ProfessorFirstName"] . " " . $row["ProfessorLastName"] . "</option>";
-    }
-    $con->close();
-}
+
 
 
 
@@ -151,13 +157,20 @@ ob_end_flush();
                     <p>Select Subjects</p>
                 </div>
                 <br>
+                <div class="form__div">
+                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
+                    <br>
+                    <select name="Department" id="Department" onchange="get_professor()">
+                        <option value="--">--</option>
+                        <?php get_department(); ?>
+                    </select>
+                </div>
                 <br>
                 <div class="form__div">
                     <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Professor Name:</label>
                     <br>
                     <select name="ProfessorName" id="ProfessorName" onchange="get_classes()">
                         <option value="--">--</option>
-                        <?php getprofessornames(); ?>
                     </select>
                 </div>
                 <br>

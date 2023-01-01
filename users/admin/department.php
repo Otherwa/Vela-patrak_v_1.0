@@ -2,7 +2,7 @@
 ob_start();
 session_start();
 
-include("../config/connect.php");
+include("../../config/connect.php");
 
 if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     // redirect if not set
@@ -31,6 +31,24 @@ function get_academic_year()
     }
     $con->close();
 }
+
+function get_department()
+{
+    $con = get_con();
+    $sql = "SELECT DISTINCT Department FROM timetable";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value=\"" . $row["Department"] . "\">" . $row["Department"]  . "</option>";
+        }
+    } else {
+        echo "None Added";
+    }
+    $con->close();
+}
+
 
 // get class from subjects
 // keyword class
@@ -62,8 +80,8 @@ ob_end_flush();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="image/png" sizes="96x96" rel="icon" href="https://vazecollege.net/PATS/imgs/1611814068005.jpg">
     <!-- basic html required -->
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/admin_dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -114,7 +132,7 @@ ob_end_flush();
     </code>
 
     <div class="con_head">
-        <p>Dashboard</p>
+        <p>Department-Timetable</p>
     </div>
 
     <div class="container">
@@ -123,9 +141,16 @@ ob_end_flush();
             <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
                 <div class="form__div">
                     <label for="Academic Year">Academic Year:</label>
-                    <select id="academic_year1" onchange="get_total_data(this.value)">
+                    <select id="academic_year1">
                         <option value="--">--</option>
                         <?php get_academic_year(); ?>
+                    </select>
+                </div>
+                <div class="form__div">
+                    <label for="Academic Year">Department:</label>
+                    <select id="department" onchange="get_total_data(this.value)">
+                        <option value="--">--</option>
+                        <?php get_department(); ?>
                     </select>
                 </div>
 
@@ -138,7 +163,7 @@ ob_end_flush();
                 $count1 = $result;
                 ?>
                 <div class="div" style="display:flex;flex-direction:column;align-items:center">
-                    <img src="../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                    <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
                     <table class="styled-table">
                         <thread>
                             <tr>
@@ -162,8 +187,8 @@ ob_end_flush();
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/admin_dashboard.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/department_dashboard.js"></script>
 </body>
 
 </html>
