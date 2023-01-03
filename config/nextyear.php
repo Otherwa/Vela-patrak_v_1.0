@@ -7,11 +7,12 @@ if (isset($_GET['Next'])) {
     // your key config
     if ($_GET['Next'] == "TEST") {
         $con = get_con();
-        $sql = "SELECT * FROM timetable";
+        
         $year = date("Y");
         $year1 = $year + 1;
         $valid_year = $year . "-" . $year1;
-
+        $pre_year = $year - 1 . "-" . $year;
+        $sql = "SELECT * FROM timetable WHERE AcademicYear = '$pre_year'";
         $sql1 = "INSERT INTO config (AcademicYear) VALUES ('$valid_year')";
         $res = $con->query($sql1);
         if ($res === FALSE) {
