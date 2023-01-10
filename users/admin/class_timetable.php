@@ -39,7 +39,7 @@ function get_academic_year()
 function get_classs()
 {
     $con = get_con();
-    $sql = "SELECT DISTINCT Class FROM subject";
+    $sql = "SELECT DISTINCT Class FROM subject ORDER BY Class ASC";
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
