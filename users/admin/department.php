@@ -99,26 +99,7 @@ ob_end_flush();
 <body>
 
     <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../account/login.php" class="w3-bar-item w3-button">Logout</a>
-        <a href="admin_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
-        <a href="admin/timeslot.php" class="w3-bar-item w3-button">Time-Slot</a>
-        <a href="admin/register.php" class="w3-bar-item w3-button">Registration</a>
-        <a href="admin/professor.php" class="w3-bar-item w3-button">Professor</a>
-        <a href="admin/room.php" class="w3-bar-item w3-button">Room</a>
-        <a href="admin/course.php" class="w3-bar-item w3-button">Course</a>
-        <a href="admin/subject.php" class="w3-bar-item w3-button">Subject</a>
-        <a href="admin/select_subjects.php" class="w3-bar-item w3-button">Set Professor Subject</a>
-        <hr style="border-top: 2px solid #eee;">
-        <a href="admin/professor_timetable.php" class="w3-bar-item w3-button">Professor TimeTable
-            <span style="color:green">
-                (Beta)</span>
-        </a>
-        <a href="admin/class_timetable.php" class="w3-bar-item w3-button">Class-Timetable</a>
-        <a href="admin/room_timetable.php" class="w3-bar-item w3-button">Room-Timetable</a>
-        <a href="admin/empty.php" class="w3-bar-item w3-button">Empty-Rooms<span style="color:green"> (Beta)</span></a>
-        <a href="admin/department.php" class="w3-bar-item w3-button">Department Timetable<span style="color:green">
-                (Beta)</span></a>
+        <?php include('./partial/nav.php'); ?>
     </div>
     <!-- Page Content -->
     <div class="">
