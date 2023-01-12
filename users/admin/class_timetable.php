@@ -272,7 +272,7 @@ ob_end_flush();
 
                             echo "<tr>";
 
-                            echo "<td id=\"time" . $j++ . "\"><span>" . $row["StartTime"] . " - " . $row["EndTime"] . "</span></td>";
+                            echo "<td id=\"time" . $j++ . "\"><span>" . date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"])) . "</span></td>";
 
                             echo "<td>" . "<div id=\"Monday," . $i . "\"></div>" . "</td>";
 

@@ -81,7 +81,7 @@ if (isset($_POST['class1']) && isset($_POST['sem'])) {
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                $temp = $row["StartTime"] . "-" . $row["EndTime"];
+                $temp = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
                 array_push($timming, $temp);
             }
         } else {
@@ -174,7 +174,7 @@ if (isset($_POST["time"])) {
     $sql = "SELECT DISTINCT * FROM timeslot";
     $result = $con->query($sql);
     while ($row = $result->fetch_assoc()) {
-        $data = $row['StartTime'] . " - " . $row["EndTime"];
+        $data = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
         array_push($time, $data);
     }
 
@@ -308,7 +308,7 @@ if (isset($_POST['class101'])) {
     while ($row = $result->fetch_assoc()) {
 
 
-        $time_slot = $row["StartTime"] . " - " . $row["EndTime"];
+        $time_slot = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
 
         echo "<tr>";
 
@@ -727,7 +727,7 @@ if (isset($_POST['class303'])) {
     while ($row = $result->fetch_assoc()) {
 
 
-        $time_slot = $row["StartTime"] . " - " . $row["EndTime"];
+        $time_slot = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
 
         echo "<tr>";
 
@@ -1141,7 +1141,7 @@ if (isset($_POST["class202"])) {
     while ($row = $result->fetch_assoc()) {
 
 
-        $time_slot = $row["StartTime"] . " - " . $row["EndTime"];
+        $time_slot = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
 
         echo "<tr>";
 
@@ -1292,7 +1292,7 @@ if (isset($_POST['ad619']) && isset($_POST['dep'])) {
 
     while ($row = $result->fetch_array()) {
 
-        $time_slot = $row["StartTime"] . " - " . $row["EndTime"];
+        $time_slot = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
 
         echo "<tr>";
 
@@ -1454,7 +1454,7 @@ if (isset($_POST['ad69'])) {
 
     while ($row = $result->fetch_array()) {
 
-        $time_slot = $row["StartTime"] . " - " . $row["EndTime"];
+        $time_slot = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
 
         echo "<tr>";
 
@@ -1626,7 +1626,7 @@ if (isset($_POST['ad69420'])) {
 
 
 
-        $time_slot = $row["StartTime"] . " - " . $row["EndTime"];
+        $time_slot = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
 
         echo "<tr>";
 
@@ -1826,8 +1826,7 @@ if (isset($_POST['getempty'])) {
             echo "<td style=\"border-style:solid;border-width:1px;\">";
             while ($row1 = $result->fetch_array()) {
 
-                $time = $row1["StartTime"] . " - " . $row1["EndTime"];
-
+                $time_slot = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
                 $room = $row["RoomNo"];
                 $sql1 = "SELECT COUNT(*) as `Count` FROM timetable WHERE `TimeSlot` = '$time' AND `Day` = '$day' AND `AcademicYear` = '$year' AND `Sem` IN ('$classes[0]','$classes[1]','$classes[2]') AND `RoomNo` = '$room' ORDER BY `RoomNo` ";
 
