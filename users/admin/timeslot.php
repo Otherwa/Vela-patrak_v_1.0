@@ -69,7 +69,7 @@ function timeslot()
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<li>" . "Timeslot: " . $row["TimeSlot"] . " -Start-Time: " . $row["StartTime"] . " -End-Time: " . $row["EndTime"] . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_timeslot_update.php\\?UpdateId=" . $row["TimeSlot"] . "\">Update</a>" . "&nbsp;<a style=\"color:red \" href=\"action\\admin_timeslot_delete.php\\?DeleteId=" . $row["TimeSlot"] . "\">Delete</a></li>";
+            echo "<li>" . "Timeslot: " . $row["TimeSlot"] . " -Start-Time: " . date("g:i A", strtotime($row["StartTime"])) . " -End-Time: " . date("g:i A", strtotime($row["EndTime"])) . " -Member-id: " . $row["MemberId"] . " &nbsp;&nbsp" . "<a style=\"color:#131352 \" href=\"action\\admin_timeslot_update.php\\?UpdateId=" . $row["TimeSlot"] . "\">Update</a>" . "&nbsp;<a style=\"color:red \" href=\"action\\admin_timeslot_delete.php\\?DeleteId=" . $row["TimeSlot"] . "\">Delete</a></li>";
         }
     } else {
         echo "No Timeslot";
