@@ -1826,7 +1826,7 @@ if (isset($_POST['getempty'])) {
             echo "<td style=\"border-style:solid;border-width:1px;\">";
             while ($row1 = $result->fetch_array()) {
 
-                $time_slot = date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"]));
+                $time = date("g:i A", strtotime($row1["StartTime"])) . " - " . date("g:i A", strtotime($row1["EndTime"]));
                 $room = $row["RoomNo"];
                 $sql1 = "SELECT COUNT(*) as `Count` FROM timetable WHERE `TimeSlot` = '$time' AND `Day` = '$day' AND `AcademicYear` = '$year' AND `Sem` IN ('$classes[0]','$classes[1]','$classes[2]') AND `RoomNo` = '$room' ORDER BY `RoomNo` ";
 
