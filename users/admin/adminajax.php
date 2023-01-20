@@ -2,9 +2,9 @@
 ob_start();
 include("../../config/connect.php");
 
-if (isset($_POST['department'])) {
+if (isset($_POST['departmentast'])) {
     $con = get_con();
-    $id = $_POST['department'];
+    $id = $_POST['departmentast'];
     if ($id == "--") {
         $con = get_con();
         $sql = "SELECT * FROM professor";
@@ -31,6 +31,26 @@ if (isset($_POST['department'])) {
         }
         $con->close();
     }
+}
+
+
+if (isset($_POST['subject'])) {
+    $con = get_con();
+    $id =  $_POST['subject'];
+    $sql = "SELECT * FROM subject WHERE `Department` = '$id';";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $sql3 = "SELECT * FROM course WHERE `CourseId` = '" . $row['CourseId'] . "';";
+            $result3 = $con->query($sql3);
+            $result3 = $result3->fetch_assoc();
+            echo "<li>" . "Member-Id: " . $row["MemberId"] . " -Subject Code: " . $row["SubjectCode"] . " -Subject Name: " . $row["SubjectName"] . " -Department: " . $row["Department"] . " -Semester: " . $row["Semester"] . " -Class: " . $row["Class"] . " -Part: " . $row["Part"] . "&nbsp;Course Name: " . $result3["CourseName"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_subject_delete.php\\?DeleteId="  . $row["SubjectCode"] . "\">Delete </a>" .  "&nbsp;<a style=\"color:blue \" href=\"action\\admin_subject_update.php\\?UpdateId="  . $row["SubjectCode"] . "\">Update </a>" . "</li>";
+        }
+    } else {
+        echo "No Subject";
+    }
+    $con->close();
 }
 
 

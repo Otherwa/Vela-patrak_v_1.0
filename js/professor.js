@@ -8,7 +8,7 @@ function get_professor() {
     $.ajax({
         type: 'post',
         url: 'adminajax.php',
-        data: 'department=' + department,
+        data: 'departmentast=' + department,
         success: function (data) {
             $('#_list').html(data);
         },

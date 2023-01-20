@@ -122,7 +122,7 @@ ob_end_flush();
         <div class="list">
             <p style="float:left">Professor List</p> <br>
             <label for="Professor"
-                style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Professor:</label>
+                style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Department:</label>
             <select name="ProfList" id="ProfList" onchange="get_professor()">
                 <option value="--">--</option>
                 <option value="PSYCHOLOGY">PSYCHOLOGY</option>
@@ -142,7 +142,7 @@ ob_end_flush();
                 <option value="HINDI">HINDI</option>
                 <option value="JR AND DEGREE">JR AND DEGREE</option>
                 <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                <option value="INFORMATION TECHLOGY">INFORMATION TECHNOLOGY</option>
+                <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
                 <option value="PHYSICS">PHYSICS</option>
                 <option value="CHEMISTRY">CHEMISTRY</option>
                 <option value="BIOLOGY">BIOLOGY</option>
@@ -232,7 +232,7 @@ ob_end_flush();
                         <option value="HINDI">HINDI</option>
                         <option value="JR AND DEGREE">JR AND DEGREE</option>
                         <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                        <option value="INFORMATION TECHLOGY">INFORMATION TECHNOLOGY</option>
+                        <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
                         <option value="PHYSICS">PHYSICS</option>
                         <option value="CHEMISTRY">CHEMISTRY</option>
                         <option value="BIOLOGY">BIOLOGY</option>
