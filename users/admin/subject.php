@@ -73,7 +73,7 @@ function subject()
             $sql3 = "SELECT * FROM course WHERE `CourseId` = '" . $row['CourseId'] . "';";
             $result3 = $con->query($sql3);
             $result3 = $result3->fetch_assoc();
-            echo "<li>" . "Member-Id: " . $row["MemberId"] . " -Subject Code: " . $row["SubjectCode"] . " -Subject Name: " . $row["SubjectName"] . " -Department: " . $row["Department"] . " -Semester: " . $row["Semester"] . " -Class: " . $row["Class"] . " -Part: " . $row["Part"] . "&nbsp;Course Name: " . $result3["CourseName"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_subject_delete.php\\?DeleteId="  . $row["SubjectCode"] . "\">Delete </a>" .  "&nbsp;<a style=\"color:blue \" href=\"action\\admin_subject_update.php\\?UpdateId="  . $row["SubjectCode"] . "\">Update </a>" . "</li>";
+            echo "<li>" . "Member-Id: " . $row["MemberId"] . " -Subject Code: " . $row["SubjectCode"] . " -Subject Name: " . $row["SubjectName"] . " -Department: " . $row["Department"] . " -Semester: " . $row["Semester"] . " -Class: " . $row["Class"] . " -Part: " . $row["Part"] . "&nbsp;Course Name: " . $result3["CourseName"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_subject_delete.php\\?DeleteId="  . $row["SubjectCode"] . "\">Delete </a>" .  "&nbsp;<a style=\"color:blue \" href=\"action\\admin_sub_update.php\\?UpdateId="  . $row["SubjectCode"] . "\">Update </a>" . "</li>";
         }
     } else {
         echo "No Subject";
