@@ -47,3 +47,8 @@ button.addEventListener("click", function () {
         jsPDF: jsPDFOpts,
     }).from(makepdf).save(filename);
 });
+
+function downpdf() {
+    // file save name
+    window.print();
+}
