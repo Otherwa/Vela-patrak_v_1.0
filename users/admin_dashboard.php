@@ -132,6 +132,7 @@ ob_end_flush();
                 </div>
                 <div class="form__div">
                     <input type="button" id="button" value="Generate PDF">
+                    <input type="button" id="button" value="Mega Print" onclick="downpdf()">
                 </div>
 
                 <?php
