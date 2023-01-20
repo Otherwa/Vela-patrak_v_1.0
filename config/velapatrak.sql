@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql101.epizy.com
--- Generation Time: Jan 10, 2023 at 05:48 AM
+-- Generation Time: Jan 19, 2023 at 03:51 AM
 -- Server version: 10.3.27-MariaDB
 -- PHP Version: 7.2.22
 
@@ -64,7 +64,9 @@ CREATE TABLE `course` (
 INSERT INTO `course` (`CourseId`, `CourseName`, `Strength`, `Abbreviation`, `MemberId`, `Date`) VALUES
 (1, 'Bsc-IT', 120, 'BSc-IT', 17, '2023-01-10 10:17:27'),
 (2, 'BCom', 120, 'BCom', 17, '2023-01-10 10:17:54'),
-(3, 'BMS', 120, 'BMS', 17, '2023-01-10 10:18:39');
+(3, 'BMS', 120, 'BMS', 17, '2023-01-10 10:18:39'),
+(4, 'BSc-BT', 120, 'BSc-BT', 17, '2023-01-12 03:54:55'),
+(5, 'BA', 120, 'BA', 17, '2023-01-17 07:26:12');
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,8 @@ CREATE TABLE `members` (
 INSERT INTO `members` (`MemberId`, `FirstName`, `LastName`, `Department`, `Email`, `Phone`, `Username`, `Password`, `Type`) VALUES
 (12, 'Pushkar', 'Sane', 'BSc IT', 'puskhar2gmail.com', '12345', 'pushkar', '12345', 'superadmin'),
 (13, 'Atharvv', 'Desai', '--', 'atharvdesai2002gmail.com', '8828388979', 'Otherwa', 'admin', 'member'),
-(17, 'Mohini', 'Bhole', 'BSc IT', 'bhole.mohini@gmail.com', '9324581700', 'Mohini', '12345678', 'admin');
+(17, 'Mohini', 'Bhole', 'BSc IT', 'bhole.mohini@gmail.com', '9324581700', 'Mohini', '12345678', 'admin'),
+(19, 'Sandeep', 'Kamble', 'Science', 'absc@gmail.com', '5642156521258', 'Sandeep', '12345678', 'admin');
 
 -- --------------------------------------------------------
 
@@ -116,7 +119,7 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`ProfessorId`, `ProfessorFirstName`, `ProfessorLastName`, `Department`, `EmailId`, `Phone`, `MemberId`, `Date`, `Part`) VALUES
-(5, 'Mohini', 'Bhole', 'INFORMATION TECHNOLOGY', 'bhole.mohini@gmail.com', '9324581700', 17, '2023-01-10 10:23:35', 'Degree');
+(5, 'Mohini', 'Bhole', 'INFORMATION TECHLOGY', 'bhole.mohini@gmail.com', '9324581700', 17, '2023-01-15 14:24:59', 'Degree');
 
 -- --------------------------------------------------------
 
@@ -137,8 +140,9 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`RoomNo`, `Floor`, `Capacity`, `MemberId`, `Date`) VALUES
-('214', 2, 69, 13, '2022-09-08 10:08:14'),
-('69', 1, 69, 13, '2022-11-11 12:40:11');
+('111', 0, 90, 17, '2023-01-12 03:46:06'),
+('309', 2, 120, 17, '2023-01-12 04:28:16'),
+('409', 3, 120, 17, '2023-01-12 04:28:07');
 
 -- --------------------------------------------------------
 
@@ -161,7 +165,7 @@ CREATE TABLE `selectsubject` (
 --
 
 INSERT INTO `selectsubject` (`ProfessorId`, `ProfessorName`, `Class`, `Semester`, `Subject`, `MemberId`, `Date`) VALUES
-(13, 'Mohini Bhole', 'FYIT', 'I', 'SIT102', 17, '2023-01-10 10:23:13');
+(15, 'Mohini Bhole', 'SYIT', 'II', 'SIT202', 17, '2023-01-15 14:26:08');
 
 -- --------------------------------------------------------
 
@@ -171,7 +175,7 @@ INSERT INTO `selectsubject` (`ProfessorId`, `ProfessorName`, `Class`, `Semester`
 
 CREATE TABLE `subject` (
   `SubjectCode` varchar(255) NOT NULL,
-  `SubjectName` varchar(25) NOT NULL,
+  `SubjectName` varchar(125) NOT NULL,
   `Semester` varchar(25) NOT NULL,
   `Class` varchar(25) NOT NULL,
   `CourseId` text NOT NULL,
@@ -187,8 +191,25 @@ CREATE TABLE `subject` (
 
 INSERT INTO `subject` (`SubjectCode`, `SubjectName`, `Semester`, `Class`, `CourseId`, `MemberId`, `Date`, `Department`, `Part`) VALUES
 ('MSFHS101', 'Foundation of Human Skill', 'I', 'FYBMS', 'BMS', 17, '2023-01-10 10:26:46', 'BMS', 'Degree'),
+('SBT101', 'Basic Chemistry-I ', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:21:04', 'BIOTECHONOLOGY', 'Degree'),
+('SBT102', 'Basic Chemistry-II ', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:22:12', 'BIOTECHONOLOGY', 'Degree'),
+('SBT103', 'Basic Life Sciences-I : B', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:22:53', 'BIOTECHONOLOGY', 'Degree'),
+('SBT104', 'Basic Life Sciences-II: M', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:23:21', 'BIOTECHONOLOGY', 'Degree'),
+('SBT105', 'Basic Biotechnology-I: In', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:24:19', 'BIOTECHONOLOGY', 'Degree'),
+('SBT106', ' Basic Biotechnology-II :', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:24:52', 'BIOTECHONOLOGY', 'Degree'),
+('SBT107', 'Societal Awareness', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:25:51', 'BIOTECHONOLOGY', 'Degree'),
+('SBTP101', 'Practical of Basic Chemis', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:27:29', 'BIOTECHONOLOGY', 'Degree'),
+('SBTP102', 'Practical of Basic Chemis', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:29:01', 'BIOTECHONOLOGY', 'Degree'),
+('SBTP103', 'Practical of Basic Life S', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:29:48', 'BIOTECHONOLOGY', 'Degree'),
+('SBTP104', 'Practical of Basic Life S', 'I', 'FYBT', 'Bsc-IT', 17, '2023-01-12 04:30:27', 'BIOTECHONOLOGY', 'Degree'),
+('SBTP105', 'Practical of Basic Biotec', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:31:27', 'BIOTECHONOLOGY', 'Degree'),
+('SBTP106', 'Practical of Basic Biotec', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:32:14', 'BIOTECHONOLOGY', 'Degree'),
 ('SIT101', 'Imperative Programming', 'I', 'FYIT', 'Bsc-IT', 17, '2023-01-10 10:20:29', 'INFORMATION TECHLOGY', 'Degree'),
-('SIT102', 'Digital Electronics', 'I', 'FYIT', 'Bsc-IT', 17, '2023-01-10 10:21:11', 'INFORMATION TECHLOGY', 'Degree');
+('SIT102', 'Digital Electronics', 'I', 'FYIT', 'Bsc-IT', 17, '2023-01-10 10:21:11', 'INFORMATION TECHLOGY', 'Degree'),
+('SIT201', 'Object oriented Programmi', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:39:28', 'INFORMATION TECHLOGY', 'Degree'),
+('SIT202', 'Database Management Syste', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:40:04', 'INFORMATION TECHLOGY', 'Degree'),
+('SIT203', 'Web Programming', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:41:27', 'INFORMATION TECHLOGY', 'Degree'),
+('SIT204', 'Numerical and Statistical', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:41:58', 'INFORMATION TECHLOGY', 'Degree');
 
 -- --------------------------------------------------------
 
@@ -209,8 +230,24 @@ CREATE TABLE `timeslot` (
 --
 
 INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) VALUES
-(1, '07:48:00', '08:36:00', 13, '2022-11-11 09:23:30'),
-(2, '08:34:00', '09:15:00', 13, '2022-11-11 12:40:40');
+(0, '07:00:00', '07:48:00', 17, '2023-01-11 04:45:51'),
+(2, '07:48:00', '08:36:00', 17, '2023-01-11 04:46:25'),
+(3, '09:00:00', '09:48:00', 17, '2023-01-11 04:47:21'),
+(4, '09:48:00', '10:36:00', 17, '2023-01-11 04:47:47'),
+(5, '10:36:00', '11:24:00', 17, '2023-01-12 03:43:46'),
+(6, '11:24:00', '12:10:00', 17, '2023-01-12 03:45:10'),
+(7, '11:30:00', '12:10:00', 17, '2023-01-12 03:49:35'),
+(8, '12:30:00', '13:18:00', 17, '2023-01-12 04:04:28'),
+(9, '12:10:00', '12:50:00', 17, '2023-01-12 04:04:38'),
+(10, '13:18:00', '14:06:00', 17, '2023-01-12 04:05:13'),
+(11, '12:50:00', '13:30:00', 17, '2023-01-12 04:06:30'),
+(12, '14:06:00', '14:54:00', 17, '2023-01-12 04:07:13'),
+(13, '13:30:00', '14:10:00', 17, '2023-01-12 04:07:39'),
+(14, '14:40:00', '15:20:00', 17, '2023-01-12 04:09:41'),
+(15, '15:20:00', '16:00:00', 17, '2023-01-12 04:09:55'),
+(16, '16:00:00', '16:40:00', 17, '2023-01-12 04:10:09'),
+(17, '16:40:00', '17:20:00', 17, '2023-01-12 04:10:19'),
+(18, '17:20:00', '18:00:00', 17, '2023-01-12 04:10:40');
 
 -- --------------------------------------------------------
 
@@ -246,8 +283,14 @@ CREATE TABLE `timetable` (
 --
 
 INSERT INTO `timetable` (`Id`, `AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division4`, `Division5`, `Division6`, `Part`, `Sem`, `Class`) VALUES
-(1, '2022-2023', '214', '07:48:00 - 08:36:00', 'Wednesday', 'A', 'SIT102', 'INFORMATION TECHLOGY', 17, '2023-01-10 10:24:43', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
-(7, '2022-2023', '69', '07:48:00 - 08:36:00', 'Wednesday', 'B', 'MSFHS101', 'BMS', 17, '2023-01-10 10:28:19', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYBMS');
+(21, '2021-2022', '409', '11:24 AM - 12:10 PM', 'Monday', 'A', 'SBT101', 'BIOTECHONOLOGY', 17, '2023-01-15 07:41:47', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYBT'),
+(16, '2022-2023', '111', '10:36 AM - 11:24 AM', 'Monday', 'A', 'SIT202', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:42:58', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(17, '2022-2023', '111', '11:24 AM - 12:10 PM', 'Monday', 'A', 'SIT202', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:42:03', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(19, '2022-2023', '111', '12:30 AM - 1:18 PM', 'Monday', 'A', 'SIT205', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:41:09', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(14, '2022-2023', '111', '9:00 AM - 9:48 AM', 'Monday', 'A', 'SIT201', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:41:38', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(15, '2022-2023', '111', '9:48 AM - 10:36 AM', 'Monday', 'A', 'SIT201', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:41:23', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(1, '2022-2023', '214', '7:48 AM - 8:36 AM', 'Wednesday', 'A', 'SIT102', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:40:05', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
+(7, '2022-2023', '69', '7:48 AM - 8:36 AM', 'Wednesday', 'B', 'MSFHS101', 'BMS', 17, '2023-01-15 07:40:01', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYBMS');
 
 --
 -- Indexes for dumped tables
@@ -335,25 +378,25 @@ ALTER TABLE `config`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `MemberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `MemberId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `selectsubject`
 --
 ALTER TABLE `selectsubject`
-  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ProfessorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

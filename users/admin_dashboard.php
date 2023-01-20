@@ -64,6 +64,8 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -128,6 +130,9 @@ ob_end_flush();
                         <?php get_academic_year(); ?>
                     </select>
                 </div>
+                <div class="form__div">
+                    <input type="button" id="button" value="Generate PDF">
+                </div>
 
                 <?php
                 $con = get_con();
@@ -139,7 +144,7 @@ ob_end_flush();
                 ?>
                 <div class="div" style="display:flex;flex-direction:column;align-items:center">
                     <img src="../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
-                    <table class="styled-table">
+                    <table class="styled-table" id="data">
                         <thread>
                             <tr>
                                 <th>TimeSlot</th>
@@ -163,6 +168,7 @@ ob_end_flush();
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script src="../js/main.js"></script>
+
     <script src="../js/admin_dashboard.js"></script>
 </body>
 
