@@ -208,6 +208,7 @@ td div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: max-content;
     justify-content: center;
 }
 
