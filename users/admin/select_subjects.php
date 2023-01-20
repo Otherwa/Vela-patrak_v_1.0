@@ -95,7 +95,22 @@ function subjects()
     $con->close();
 }
 
+function subject()
+{
 
+    // boiler plate
+    $con = get_con();
+    $sql = "SELECT DISTINCT Class FROM selectsubject";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value=\"" . $row["Class"] . "\">" . $row["Class"]  . "</option>";
+        }
+    }
+    $con->close();
+}
 
 
 
@@ -143,6 +158,12 @@ ob_end_flush();
 
     <div class="container">
         <div class="list">
+            <label for="Professor"
+                style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Department:</label>
+            <select name="ProfList" id="ProfList" onchange="get_subjectselected()">
+                <option value="--">--</option>
+                <?php subject(); ?>
+            </select>
             <p style="float:left">Select Subjects</p>
             <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
                 <?php subjects(); ?>
