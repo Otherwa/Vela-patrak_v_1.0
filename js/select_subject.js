@@ -61,3 +61,21 @@ function get_subject() {
         },
     })
 }
+
+function get_subjectselected() {
+    let department = $('#ProfList').val();
+    console.log(department);
+    // clear the current list
+    $('#_list').html('');
+    $.ajax({
+        type: 'post',
+        url: 'adminajax.php',
+        data: 'departmentast111=' + department,
+        success: function (data) {
+            $('#_list').html(data);
+        },
+        error: function () {
+            console.log(response.status);
+        },
+    })
+}

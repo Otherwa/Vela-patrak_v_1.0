@@ -54,6 +54,23 @@ if (isset($_POST['subject'])) {
 }
 
 
+if (isset($_POST['departmentast111'])) {
+    $con = get_con();
+    $id =  $_POST['departmentast111'];
+    $sql = "SELECT * FROM selectsubject WHERE `Class` = '$id';";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>" . "Professor-Name: " . $row["ProfessorName"] . " Class: " . $row["Class"] . " Semester: " . $row["Semester"] . " Subject: " . $row["Subject"] . " &nbsp;&nbsp<a style=\"color:red\" href=\"action\\admin_select_subjects_delete.php\\?DeletedId=" . $row["ProfessorId"] . "\">Delete</a>";
+        }
+    } else {
+        echo "No Subject Selected";
+    }
+    $con->close();
+}
+
 // get subjects in selectsubject
 if (isset($_POST['prof'])) {
     $prof = $_POST['prof'];
