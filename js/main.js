@@ -17,6 +17,8 @@ function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
 }
 
+document.body.style.zoom = "80%";
+
 const options = {
     bottom: '64px', // default: '32px'
     right: '82px', // default: '32px'
