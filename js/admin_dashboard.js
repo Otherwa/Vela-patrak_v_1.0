@@ -14,6 +14,7 @@ function get_total_data(data) {
             $('#load_data').html(data);
             $('#water').show();
             filename = academic_year + "_Master";
+            $('#say1').html('' + academic_year + '')
         },
         error: function () {
             console.log(response.status);

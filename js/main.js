@@ -19,6 +19,9 @@ function w3_close() {
 
 document.body.style.zoom = "80%";
 
+var w = $(window), d = $(document), b = $('body');
+window.resizeBy(0, ((b.height() - w.height()) || d.height() - w.height()));
+
 const options = {
     bottom: '64px', // default: '32px'
     right: '82px', // default: '32px'
