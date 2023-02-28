@@ -130,6 +130,7 @@ ob_end_flush();
                         <?php get_academic_year(); ?>
                     </select>
                 </div>
+                <p style="margin-left:1rem" id="say1"></p>
                 <div class="form__div">
                     <input type="button" id="button" value="Generate PDF">
                     <input type="button" id="button" value="Mega Print" onclick="downpdf()">
