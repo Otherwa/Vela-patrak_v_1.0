@@ -126,7 +126,7 @@ ob_end_flush();
                         <option value="HINDI">HINDI</option>
                         <option value="JR AND DEGREE">JR AND DEGREE</option>
                         <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                        <option value="INFORMATION TECHLOGY">INFORMATION TECHOLOGY</option>
+                        <option value="INFORMATION TECHNOLOGY">INFORMATION TECHOLOGY</option>
                         <option value="PHYSICS">PHYSICS</option>
                         <option value="CHEMISTRY">CHEMISTRY</option>
                         <option value="BIOLOGY">BIOLOGY</option>

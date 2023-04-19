@@ -58,7 +58,9 @@ ob_end_flush();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="image/png" sizes="96x96" rel="icon" href="https://vazecollege.net/PATS/imgs/1611814068005.jpg">
     <!-- basic html required -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="../../css/main.css">
     <!-- <link rel="stylesheet" href="../../css/admin_dashboard.css"> -->
     <link rel="stylesheet" href="../../css/empty.css">
@@ -67,18 +69,18 @@ ob_end_flush();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     <title>Rooms</title>
     <style>
-        select {
-            width: 100%;
-            padding: 0.2rem;
-            margin: 0.1rem;
-            border-radius: 0.3rem;
-        }
+    select {
+        width: 100%;
+        padding: 0.2rem;
+        margin: 0.1rem;
+        border-radius: 0.3rem;
+    }
 
-        td {
-            padding: 1rem;
-            border-width: 0.2rem;
-            border-style: dotted;
-        }
+    td {
+        padding: 1rem;
+        border-width: 0.2rem;
+        border-style: dotted;
+    }
     </style>
 </head>
 
@@ -106,7 +108,8 @@ ob_end_flush();
             <div class="l-form">
                 <div class="form  w3-margin w3-whitesmoke" style="width:auto;height:auto">
                     <div class="context">
-                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
+                            style="height:3rem">
                         <p>Professors</p>
                     </div>
                     <br>
@@ -139,9 +142,10 @@ ob_end_flush();
                         <input type="button" id="button" value="Generate PDF">
                     </div>
                     <br>
-                    <div class="test" id="data" style="overflow:scroll; height:fit-content; width:79vw">
+                    <div class="test" id="data" style="height:fit-content; width:79vw">
                         <div class="div" style="display:flex;flex-direction:column;align-items:center">
-                            <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                            <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none"
+                                alt="img">
                         </div>
                         <br>
                         <table style="width: 100%;">

@@ -111,7 +111,9 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/subject.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Subject</title>
@@ -140,8 +142,9 @@ ob_end_flush();
         <div class="container">
             <div class="list">
                 <p style="float:left">Subjects</p> <br>
-                <label for="Sub" style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Department:</label>
-                <select name="SubList" id="SubList" onchange="get_subjects()">
+                <label for="Sub"
+                    style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Department:</label>
+                <select name="SubList" id="SubList" onchange="get_subjects()" style="width: 50%;">
                     <option value="--">--</option>
                     <option value="PSYCHOLOGY">PSYCHOLOGY</option>
                     <option value="FRENCH">FRENCH</option>
@@ -189,18 +192,21 @@ ob_end_flush();
             <div class="l-form">
                 <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
                     <div class="context">
-                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
+                            style="height:3rem">
                         <p>Set Subject</p>
                     </div>
                     <br>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="SubjectCode" id="SubjectCode" placeholder="e.g xyz" autocomplete="off">
+                        <input type="text" class="form__input" name="SubjectCode" id="SubjectCode" placeholder="e.g xyz"
+                            autocomplete="off">
                         <label for="" class="form__label">Subject Code</label>
                     </div>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="SubjectName" id="SubjectName" placeholder="e.g xyz" autocomplete="off">
+                        <input type="text" class="form__input" name="SubjectName" id="SubjectName" placeholder="e.g xyz"
+                            autocomplete="off">
                         <label for="" class="form__label">Subject Name</label>
                     </div>
                     <br>
@@ -218,7 +224,8 @@ ob_end_flush();
                     </div>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="Class" id="Class" placeholder="e.g xyz" autocomplete="off">
+                        <input type="text" class="form__input" name="Class" id="Class" placeholder="e.g xyz"
+                            autocomplete="off">
                         <label for="" class="form__label">Class</label>
                     </div>
                     <br>
@@ -284,7 +291,8 @@ ob_end_flush();
                         </select>
                         <br>
                         <br>
-                        <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save" name="save" style="float:right">
+                        <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit"
+                            value="Save" name="save" style="float:right">
                     </div>
                 </form>
             </div>

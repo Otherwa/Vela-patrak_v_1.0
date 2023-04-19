@@ -104,7 +104,9 @@ ob_end_flush();
     <div>
 
         <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-            <?php include('./partial/nav.php'); ?>
+            <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
+            <a href="../../../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
+            <a href="../../subject.php" class="w3-bar-item w3-button">Subject</a>
         </div>
         <!-- Page Content -->
         <div class="">
@@ -200,7 +202,7 @@ ob_end_flush();
                             <option value="HINDI">HINDI</option>
                             <option value="JR AND DEGREE">JR AND DEGREE</option>
                             <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                            <option value="INFORMATION TECHLOGY">INFORMATION TECHNOLOGY</option>
+                            <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
                             <option value="PHYSICS">PHYSICS</option>
                             <option value="CHEMISTRY">CHEMISTRY</option>
                             <option value="BIOLOGY">BIOLOGY</option>

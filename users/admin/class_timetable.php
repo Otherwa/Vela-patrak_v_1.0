@@ -276,9 +276,11 @@ ob_end_flush();
                             while ($row = $result->fetch_assoc()) {
 
                                 echo "<tr>";
-
-                                echo "<td id=\"time" . $j++ . "\"><span>" . date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"])) . "</span></td>";
-
+                                if ($row['DJ'] == "D") {
+                                    echo "<td style=\"background-color:gray\" id=\"time" . $j++ . "\"><span>" . date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"])) . "</span></td>";
+                                } else {
+                                    echo "<td id=\"time" . $j++ . "\"><span>" . date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"])) . "</span></td>";
+                                }
                                 echo "<td>" . "<div id=\"Monday," . $i . "\"></div>" . "</td>";
 
                                 echo "<td>" . "<div id=\"Tuesday," . $i . "\"></div>" . "</td>";

@@ -5,7 +5,8 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="description" content="Velapatrak is a timetable management site for college students, helping them organize their schedules and keep track of classes.">
+    <meta name="description"
+        content="Velapatrak is a timetable management site for college students, helping them organize their schedules and keep track of classes.">
     <meta name="keywords" content="Velapatrak, timetable, management, college, students, schedule, classes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,12 +48,6 @@
         </div>
         <div class="con">
             <p style="margin-left: 0.7rem;">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta aliquam aut nobis laborum, suscipit
-                eligendi. Tempore reprehenderit autem quas ea repellendus necessitatibus, delectus, ad corporis eos
-                incidunt
-                unde nemo repellat?
-                <br>
-                <br>
                 <cite>
                     For Any Inconvience contact the Adminsitrator.
                 </cite>
@@ -63,7 +58,9 @@
 
         <div class="footer-copyright">
             <div class="conn" style="display: flex;flex-direction: column;align-items: center;">
-                <img id="foot" alt="pc" src="https://bang-phinf.pstatic.net/a/32ehga/0_8g9Ud018bng1q157yzwrfmle_wzcvar.gif" style="max-width: 15rem; height: auto; display: inline-block; position: relative;">
+                <img id="foot" alt="pc"
+                    src="https://bang-phinf.pstatic.net/a/32ehga/0_8g9Ud018bng1q157yzwrfmle_wzcvar.gif"
+                    style="max-width: 15rem; height: auto; display: inline-block; position: relative;">
             </div>
             <br />
             <p>&copy; | Copyright 2022 - ♾️ All rights reserved | <a href="term.php">Terms &

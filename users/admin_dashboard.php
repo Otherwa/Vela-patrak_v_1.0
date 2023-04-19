@@ -66,15 +66,17 @@ ob_end_flush();
     <link rel="stylesheet" href="../css/admin_dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Admin-Dashboard</title>
     <style>
-        td div {
-            height: max-content;
-            width: max-content;
-        }
+    td div {
+        height: max-content;
+        width: max-content;
+    }
     </style>
 </head>
 
@@ -99,7 +101,8 @@ ob_end_flush();
             </a>
             <a href="admin/class_timetable.php" class="w3-bar-item w3-button">Class-Timetable</a>
             <a href="admin/room_timetable.php" class="w3-bar-item w3-button">Room-Timetable</a>
-            <a href="admin/empty.php" class="w3-bar-item w3-button">Empty-Rooms<span style="color:green"> (Beta)</span></a>
+            <a href="admin/empty.php" class="w3-bar-item w3-button">Empty-Rooms<span style="color:green">
+                    (Beta)</span></a>
             <a href="admin/department.php" class="w3-bar-item w3-button">Department Timetable<span style="color:green">
                     (Beta)</span></a>
         </div>
@@ -130,7 +133,7 @@ ob_end_flush();
                         </select>
                     </div>
                     <p style="margin-left:1rem" id="say1"></p>
-                    <div class="form__div">
+                    <div class="form__divs" style="margin-left:0.5rem">
                         <input type="button" id="button" value="Generate PDF">
                         <input type="button" id="button" value="Mega Print" onclick="downpdf()">
                     </div>
