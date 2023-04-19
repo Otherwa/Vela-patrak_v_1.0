@@ -119,7 +119,7 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`ProfessorId`, `ProfessorFirstName`, `ProfessorLastName`, `Department`, `EmailId`, `Phone`, `MemberId`, `Date`, `Part`) VALUES
-(5, 'Mohini', 'Bhole', 'INFORMATION TECHLOGY', 'bhole.mohini@gmail.com', '9324581700', 17, '2023-01-15 14:24:59', 'Degree');
+(5, 'Mohini', 'Bhole', 'INFORMATION TECHNOLOGY', 'bhole.mohini@gmail.com', '9324581700', 17, '2023-01-15 14:24:59', 'Degree');
 
 -- --------------------------------------------------------
 
@@ -204,12 +204,12 @@ INSERT INTO `subject` (`SubjectCode`, `SubjectName`, `Semester`, `Class`, `Cours
 ('SBTP104', 'Practical of Basic Life S', 'I', 'FYBT', 'Bsc-IT', 17, '2023-01-12 04:30:27', 'BIOTECHONOLOGY', 'Degree'),
 ('SBTP105', 'Practical of Basic Biotec', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:31:27', 'BIOTECHONOLOGY', 'Degree'),
 ('SBTP106', 'Practical of Basic Biotec', 'I', 'FYBT', 'BSc-BT', 17, '2023-01-12 04:32:14', 'BIOTECHONOLOGY', 'Degree'),
-('SIT101', 'Imperative Programming', 'I', 'FYIT', 'Bsc-IT', 17, '2023-01-10 10:20:29', 'INFORMATION TECHLOGY', 'Degree'),
-('SIT102', 'Digital Electronics', 'I', 'FYIT', 'Bsc-IT', 17, '2023-01-10 10:21:11', 'INFORMATION TECHLOGY', 'Degree'),
-('SIT201', 'Object oriented Programmi', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:39:28', 'INFORMATION TECHLOGY', 'Degree'),
-('SIT202', 'Database Management Syste', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:40:04', 'INFORMATION TECHLOGY', 'Degree'),
-('SIT203', 'Web Programming', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:41:27', 'INFORMATION TECHLOGY', 'Degree'),
-('SIT204', 'Numerical and Statistical', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:41:58', 'INFORMATION TECHLOGY', 'Degree');
+('SIT101', 'Imperative Programming', 'I', 'FYIT', 'Bsc-IT', 17, '2023-01-10 10:20:29', 'INFORMATION TECHNOLOGY', 'Degree'),
+('SIT102', 'Digital Electronics', 'I', 'FYIT', 'Bsc-IT', 17, '2023-01-10 10:21:11', 'INFORMATION TECHNOLOGY', 'Degree'),
+('SIT201', 'Object oriented Programmi', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:39:28', 'INFORMATION TECHNOLOGY', 'Degree'),
+('SIT202', 'Database Management Syste', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:40:04', 'INFORMATION TECHNOLOGY', 'Degree'),
+('SIT203', 'Web Programming', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:41:27', 'INFORMATION TECHNOLOGY', 'Degree'),
+('SIT204', 'Numerical and Statistical', 'II', 'SYIT', 'Bsc-IT', 17, '2023-01-12 03:41:58', 'INFORMATION TECHNOLOGY', 'Degree');
 
 -- --------------------------------------------------------
 
@@ -284,12 +284,12 @@ CREATE TABLE `timetable` (
 
 INSERT INTO `timetable` (`Id`, `AcademicYear`, `RoomNo`, `TimeSlot`, `Day`, `Division`, `SubjectCode`, `Department`, `MemberId`, `Date`, `Division1`, `Division2`, `Division3`, `SubjectCode1`, `Division4`, `Division5`, `Division6`, `Part`, `Sem`, `Class`) VALUES
 (21, '2021-2022', '409', '11:24 AM - 12:10 PM', 'Monday', 'A', 'SBT101', 'BIOTECHONOLOGY', 17, '2023-01-15 07:41:47', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYBT'),
-(16, '2022-2023', '111', '10:36 AM - 11:24 AM', 'Monday', 'A', 'SIT202', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:42:58', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
-(17, '2022-2023', '111', '11:24 AM - 12:10 PM', 'Monday', 'A', 'SIT202', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:42:03', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
-(19, '2022-2023', '111', '12:30 AM - 1:18 PM', 'Monday', 'A', 'SIT205', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:41:09', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
-(14, '2022-2023', '111', '9:00 AM - 9:48 AM', 'Monday', 'A', 'SIT201', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:41:38', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
-(15, '2022-2023', '111', '9:48 AM - 10:36 AM', 'Monday', 'A', 'SIT201', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:41:23', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
-(1, '2022-2023', '214', '7:48 AM - 8:36 AM', 'Wednesday', 'A', 'SIT102', 'INFORMATION TECHLOGY', 17, '2023-01-15 07:40:05', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
+(16, '2022-2023', '111', '10:36 AM - 11:24 AM', 'Monday', 'A', 'SIT202', 'INFORMATION TECHNOLOGY', 17, '2023-01-15 07:42:58', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(17, '2022-2023', '111', '11:24 AM - 12:10 PM', 'Monday', 'A', 'SIT202', 'INFORMATION TECHNOLOGY', 17, '2023-01-15 07:42:03', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(19, '2022-2023', '111', '12:30 AM - 1:18 PM', 'Monday', 'A', 'SIT205', 'INFORMATION TECHNOLOGY', 17, '2023-01-15 07:41:09', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(14, '2022-2023', '111', '9:00 AM - 9:48 AM', 'Monday', 'A', 'SIT201', 'INFORMATION TECHNOLOGY', 17, '2023-01-15 07:41:38', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(15, '2022-2023', '111', '9:48 AM - 10:36 AM', 'Monday', 'A', 'SIT201', 'INFORMATION TECHNOLOGY', 17, '2023-01-15 07:41:23', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'II', 'SYIT'),
+(1, '2022-2023', '214', '7:48 AM - 8:36 AM', 'Wednesday', 'A', 'SIT102', 'INFORMATION TECHNOLOGY', 17, '2023-01-15 07:40:05', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYIT'),
 (7, '2022-2023', '69', '7:48 AM - 8:36 AM', 'Wednesday', 'B', 'MSFHS101', 'BMS', 17, '2023-01-15 07:40:01', '--', '--', '--', '--', '--', '--', '--', 'Degree', 'I', 'FYBMS');
 
 --

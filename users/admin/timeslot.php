@@ -14,7 +14,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
 }
 
 // session passes id
-$id = $_SESSION['id'];
+$id = $_COOKIE["Id"];;
 
 // insert
 if (isset($_POST['save'])) {
@@ -22,8 +22,9 @@ if (isset($_POST['save'])) {
     $starttime =  $_POST['StartTime'];
     $memberid =  $id; //is member id of login generated at login
     $endtime =  $_POST['EndTime'];
+    $DJ = $_POST['DJ'];
 
-    if ($timeslot == " " && $starttime == " " && $endtime == " " && $memberid == " ") {
+    if ($timeslot == "" || $starttime == "" || $endtime == "" || $memberid == "") {
         echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
     } else {
         $con = get_con();
@@ -39,16 +40,16 @@ if (isset($_POST['save'])) {
             // close connection
             mysqli_close($con);
         } else {
-            insert_timeslot($timeslot, $starttime, $endtime, $memberid);
+            insert_timeslot($timeslot, $starttime, $endtime, $memberid, $DJ);
         }
     }
 }
 
 // insert in timeslot
-function insert_timeslot($timeslot, $starttime, $memberid, $endtime)
+function insert_timeslot($timeslot, $starttime, $memberid, $endtime, $DJ)
 {
     $con = get_con();
-    $sql = "INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`) VALUES ('$timeslot', '$starttime', '$memberid', '$endtime',current_timestamp());";
+    $sql = "INSERT INTO `timeslot` (`TimeSlot`, `StartTime`, `EndTime`, `MemberId`, `Date`,`DJ`) VALUES ('$timeslot', '$starttime', '$memberid', '$endtime',current_timestamp(),'$DJ');";
     if ($con->query($sql) === TRUE) {
         echo "<script>alert('Time-Slot Successfully Registered');</script>";
     } else {
@@ -96,68 +97,72 @@ ob_end_flush();
 </head>
 
 <body>
+    <div>
 
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
-    </div>
-    <!-- Page Content -->
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <?php include('./partial/nav.php'); ?>
+        </div>
+        <!-- Page Content -->
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
 
-    <code class="txt">
-        <?php echo $_SESSION['name']; ?>
-        <?php echo $_SESSION['id']; ?>
-    </code>
+        <code class="txt">
+            <?php echo $_SESSION['name']; ?>
+            <?php echo $_SESSION['id']; ?>
+        </code>
 
-    <div class="con_head">
-        <p> Time-Slot </p>
-    </div>
+        <div class="con_head">
+            <p> Time-Slot </p>
+        </div>
 
-    <div class="container">
-        <div class="list">
-            <p style="float:left">Time-Slots</p>
-            <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
-                <?php timeslot(); ?>
+        <div class="container">
+            <div class="list">
+                <p style="float:left">Time-Slots</p>
+                <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <?php timeslot(); ?>
+                </div>
+            </div>
+            <br>
+            <div class="l-form">
+                <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+                    <div class="context">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                        <p>Set Time-slot</p>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form__div">
+                        <input type="number" class="form__input" name="TimeSlot" id="TimeSlot" placeholder="e.g xyz" autocomplete="off">
+                        <label for="" class="form__label">Time-Slot</label>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <input type="time" class="form__input" name="StartTime" id="StartTime" placeholder="e.g xyz@123" autocomplete="off">
+                        <label for="" class="form__label">Start-Time</label>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <input type="time" class="form__input" name="EndTime" id="EndTime" placeholder="e.g someone@gmail.com" autocomplete="off">
+                        <label for="" class="form__label">End-Time</label>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <select name="DJ" id="DJ">
+                            <option value="D">Degree</option>
+                            <option value="J">Junior</option>
+                        </select>
+                    </div>
+                    <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save" name="save" style="float:right">
+                </form>
             </div>
         </div>
-        <br>
-        <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
-                <div class="context">
-                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
-                        style="height:3rem">
-                    <p>Set Time-slot</p>
-                </div>
-                <br>
-                <br>
-                <div class="form__div">
-                    <input type="number" class="form__input" name="TimeSlot" id="TimeSlot" placeholder="e.g xyz"
-                        autocomplete="off">
-                    <label for="" class="form__label">Time-Slot</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="time" class="form__input" name="StartTime" id="StartTime" placeholder="e.g xyz@123"
-                        autocomplete="off">
-                    <label for="" class="form__label">Start-Time</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="time" class="form__input" name="EndTime" id="EndTime"
-                        placeholder="e.g someone@gmail.com" autocomplete="off">
-                    <label for="" class="form__label">End-Time</label>
-                </div>
-                <br>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
-                    name="save" style="float:right">
-            </form>
-        </div>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+        <script src="../../js/butter.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/timeslot.js"></script>
     </div>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/timeslot.js"></script>
 </body>
 
 </html>

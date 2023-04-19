@@ -24,6 +24,7 @@ html {
 #Part {
     border-color: darkgray;
     padding: 0.2rem;
+    width: fit-content;
     border-radius: 0.3rem;
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
@@ -146,6 +147,10 @@ html {
 }
 
 .list li {
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: var(--normal-font-size);
+    border-style: solid;
+    margin: 1rem;
+    border-width: 0.1rem;
+    border-radius: 0.5rem;
 }

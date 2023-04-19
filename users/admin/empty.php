@@ -14,7 +14,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
 }
 
 // session passes id
-$id = $_SESSION['id'];
+$id = $_COOKIE["Id"];;
 
 function get_academic_year()
 {
@@ -56,72 +56,76 @@ ob_end_flush();
 </head>
 
 <body>
+    <div>
 
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
-    </div>
-    <!-- Page Content -->
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <?php include('./partial/nav.php'); ?>
+        </div>
+        <!-- Page Content -->
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
 
-    <code class="txt">
-        <?php echo $_SESSION['name']; ?>
-        <?php echo $_SESSION['id']; ?>
-    </code>
+        <code class="txt">
+            <?php echo $_SESSION['name']; ?>
+            <?php echo $_SESSION['id']; ?>
+        </code>
 
-    <div class="con_head">
-        <p>Empty Rooms </p>
-    </div>
+        <div class="con_head">
+            <p>Empty Rooms </p>
+        </div>
 
-    <div class="container">
-        <div class="l-form">
-            <div class="form  w3-margin w3-whitesmoke" style="width:auto;height:auto">
-                <div class="context">
-                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
-                        style="height:3rem">
-                    <p>Empty Rooms</p>
-                </div>
-                <br>
-                <div class="form__div">
-                    <p id="num"></p>
-                </div>
-                <br>
-                <div class="form__div">
-                    <label for="Academic Year">Academic Year:</label>
-                    <select id="acad">
-                        <option value="--">--</option>
-                        <?php get_academic_year(); ?>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <label for="Academic Year">Class:</label>
-                    <select id="classes">
-                        <option value="--">--</option>
-                        <option value="--_--_--">Jr</option>
-                        <option value="I_III_V">Odd</option>
-                        <option value="II_IV_VI">Even</option>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <input type="button" id="button" value="Generate PDF">
-                </div>
-                <br>
-                <div class="test" id="data" style="overflow:scroll; height:40rem; width:79vw">
-                    <div class="div" style="display:flex;flex-direction:column;align-items:center">
-                        <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+        <div class="container">
+            <div class="l-form">
+                <div class="form  w3-margin w3-whitesmoke" style="width:auto;height:auto">
+                    <div class="context">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
+                            style="height:3rem">
+                        <p>Empty Rooms</p>
                     </div>
                     <br>
-                    <table class="data">
-                    </table>
+                    <div class="form__div">
+                        <p id="num"></p>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <label for="Academic Year">Academic Year:</label>
+                        <select id="acad">
+                            <option value="--">--</option>
+                            <?php get_academic_year(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Academic Year">Class:</label>
+                        <select id="classes">
+                            <option value="--">--</option>
+                            <option value="--_--_--">Jr</option>
+                            <option value="I_III_V">Odd</option>
+                            <option value="II_IV_VI">Even</option>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <input type="button" id="button" value="Generate PDF">
+                    </div>
+                    <br>
+                    <div class="test" id="data" style="height:fit-content; width:fit-content">
+                        <div class="div" style="display:flex;flex-direction:column;align-items:center">
+                            <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none"
+                                alt="img">
+                        </div>
+                        <br>
+                        <table class="data">
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+        <script src="../../js/butter.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/empty.js"></script>
     </div>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/empty.js"></script>
 </body>
 
 </html>

@@ -1,21 +1,34 @@
 <?php
-include("../../config/connect.php");
+include("../../../config/connect.php");
 ob_start();
 session_start();
 
 if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
     // redirect if not set
-    header("Location:../account/login.php");
+    header("Location:../../account/login.php");
 } else {
     $type = $_SESSION['type'];
     if ($type == "member") {
-        header("Location:../account/login.php");
+        header("Location:../../account/login.php");
     }
 }
 
-// session passes id
-$id = $_COOKIE["Id"];;
 
+// update get
+$Subject = $_GET['UpdateId'];
+
+$id = $_SESSION['id'];
+
+$con = get_con();
+$sql = "SELECT * FROM `Subject` Where `SubjectCode` = '$Subject'";
+$result = $con->query($sql);
+$update = $result->fetch_assoc();
+
+$sql3 = "SELECT * FROM course WHERE `CourseId` = '" . $update['CourseId'] . "';";
+$result3 = $con->query($sql3);
+$result3 = $result3->fetch_assoc();
+
+$con->close();
 // insert
 if (isset($_POST['save'])) {
     $subjectcode =  $_POST['SubjectCode'];
@@ -30,31 +43,18 @@ if (isset($_POST['save'])) {
     if ($subjectcode == " " && $subjectname == " " && $semester == " " && $class == " " && $department == " " && $part == " " && $course == " " && $memberid == " ") {
         echo '<script>alert(\'Kindly Fill the Form Correctly\');</script>';
     } else {
-        $con = get_con();
-        $sql = "SELECT * FROM `subject` WHERE SubjectName = '" . $subjectname . "'";
-
-        $result = mysqli_query($con, $sql);
-        $result_user_type = mysqli_fetch_array($result);
-        $row = mysqli_num_rows($result);
-
-        if ($row > 0) {
-            // check if timeslot already exists or not simple redirect to it
-            echo "<script>alert('Subject already exsists');</script>";
-            // close connection
-            mysqli_close($con);
-        } else {
-            insert_subject($subjectcode, $subjectname, $department, $memberid, $semester, $class, $course, $part);
-        }
+        update_subject($subjectcode, $subjectname, $department, $memberid, $semester, $class, $course, $part, $Subject);
     }
 }
 
 // insert in subjects
-function insert_subject($subjectcode, $subjectname, $department, $memberid, $semester, $class, $course, $part)
+function update_subject($subjectcode, $subjectname, $department, $memberid, $semester, $class, $course, $part, $Subject)
 {
     $con = get_con();
-    $sql = "INSERT INTO `subject` (`SubjectCode`, `SubjectName`, `Department`, `MemberId`, `Semester`, `Class`, `CourseId`, `Date`, `Part`) VALUES ('$subjectcode', '$subjectname', '$department', '$memberid', '$semester', '$class', '$course', current_timestamp(), '$part');";
+    $sql = "UPDATE `subject` Set `SubjectCode` = '$subjectcode' ,`SubjectName` = '$subjectname', `Department` = '$department', `MemberId` = '$memberid', `Semester` = '$semester' , `Class` = '$class', `CourseId` = '$course', `Date` = current_timestamp() , `Part` = '$part' WHERE `SubjectCode` = '$Subject'";
     if ($con->query($sql) === TRUE) {
-        echo "<script>alert('Subject Successfully Registered');</script>";
+        echo "<script>alert('Subject Successfully Updated');</script>";
+        header("Location:../../subject.php");
     } else {
         echo "<script>alert('Something went wrong.');</script>";
     }
@@ -62,35 +62,18 @@ function insert_subject($subjectcode, $subjectname, $department, $memberid, $sem
 }
 
 // list the subjects in db
-function subject()
-{
-    $con = get_con();
-    $sql = "SELECT DISTINCT * FROM subject";
-    $result = $con->query($sql);
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $sql3 = "SELECT * FROM course WHERE `CourseId` = '" . $row['CourseId'] . "';";
-            $result3 = $con->query($sql3);
-            $result3 = $result3->fetch_assoc();
-            echo "<li>" . "Member-Id: " . $row["MemberId"] . " -Subject Code: " . $row["SubjectCode"] . " -Subject Name: " . $row["SubjectName"] . " -Department: " . $row["Department"] . " -Semester: " . $row["Semester"] . " -Class: " . $row["Class"] . " -Part: " . $row["Part"] . "&nbsp;Course Name: " . $result3["CourseName"] . " &nbsp;&nbsp;" . "<a style=\"color:red \" href=\"action\\admin_subject_delete.php\\?DeleteId="  . $row["SubjectCode"] . "\">Delete </a>" .  "&nbsp;<a style=\"color:blue \" href=\"action\\admin_sub_update.php\\?UpdateId="  . $row["SubjectCode"] . "\">Update </a>" . "</li>";
-        }
-    } else {
-        echo "No Subject";
-    }
-    $con->close();
-}
 
 function get_course()
 {
     $con = get_con();
-    $sql = "SELECT DISTINCT CourseName FROM course";
+    $sql = "SELECT DISTINCT * FROM course";
     $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            echo "<option value=\"" . $row["CourseName"] . "\">" . $row["CourseName"] . "</option>";
+            echo "<option value=\"" . $row["CourseId"] . "\">" . $row["CourseName"] . "</option>";
         }
     } else {
         echo "None Added";
@@ -109,11 +92,9 @@ ob_end_flush();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="image/png" sizes="96x96" rel="icon" href="https://vazecollege.net/PATS/imgs/1611814068005.jpg">
     <!-- basic html required -->
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/subject.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/subject.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Subject</title>
@@ -123,7 +104,9 @@ ob_end_flush();
     <div>
 
         <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-            <?php include('./partial/nav.php'); ?>
+            <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
+            <a href="../../../admin_dashboard.php" class="w3-bar-item w3-button ">Dashboard</a>
+            <a href="../../subject.php" class="w3-bar-item w3-button">Subject</a>
         </div>
         <!-- Page Content -->
         <div class="">
@@ -136,81 +119,30 @@ ob_end_flush();
         </code>
 
         <div class="con_head">
-            <p> Subject Registration </p>
+            <p>Update Subject <?php echo ""; ?> </p>
         </div>
 
         <div class="container">
-            <div class="list">
-                <p style="float:left">Subjects</p> <br>
-                <label for="Sub"
-                    style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Department:</label>
-                <select name="SubList" id="SubList" onchange="get_subjects()" style="width: 50%;">
-                    <option value="--">--</option>
-                    <option value="PSYCHOLOGY">PSYCHOLOGY</option>
-                    <option value="FRENCH">FRENCH</option>
-                    <option value="SANSKRIT">SANSKRIT</option>
-                    <option value="ENGLISH">ENGLISH</option>
-                    <option value="MARATHI">MARATHI</option>
-                    <option value="POL.SCIENCE">POL.SCIENCE</option>
-                    <option value="HISTORY">HISTORY</option>
-                    <option value="SOCIOLOGY">SOCIOLOGY</option>
-                    <option value="ECONOMICS">ECONOMICS</option>
-                    <option value="MENTORING">MENTORING</option>
-                    <option value="EVS">EVS</option>
-                    <option value="RC">RC</option>
-                    <option value="PHY.EDN.">PHY.EDN.</option>
-                    <option value="UPSC">UPSC</option>
-                    <option value="HINDI">HINDI</option>
-                    <option value="JR AND DEGREE">JR AND DEGREE</option>
-                    <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                    <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
-                    <option value="PHYSICS">PHYSICS</option>
-                    <option value="CHEMISTRY">CHEMISTRY</option>
-                    <option value="BIOLOGY">BIOLOGY</option>
-                    <option value="MATHEMATICS">MATHEMATICS</option>
-                    <option value="BOTANY">BOTANY</option>
-                    <option value="ZOOLOGY">ZOOLOGY</option>
-                    <option value="PRACTICALS">PRACTICALS</option>
-                    <option value="COMMERCE">COMMERCE</option>
-                    <option value="B.ECONOMICS">B. ECONOMICS</option>
-                    <option value="ACCOUNTS">ACCOUNTS</option>
-                    <option value="B.LAW">B.LAW</option>
-                    <option value="MCOM">MCOM</option>
-                    <option value="BVOC">BVOC</option>
-                    <option value="M.SC.IT">M.SC.IT</option>
-                    <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
-                    <option value="BAF">BAF</option>
-                    <option value="BBI">BBI</option>
-                    <option value="BMS">BMS</option>
-                    <option value="BMM">BMM</option>
-                </select>
-                <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
-                    <?php subject(); ?>
-                </div>
-            </div>
-            <br>
-            <div class="l-form">
-                <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+            <div class="form" style="width: 78%;">
+                <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:100%;height:auto">
                     <div class="context">
-                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
-                            style="height:3rem">
-                        <p>Set Subject</p>
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                        <p>Update Subject</p>
                     </div>
                     <br>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="SubjectCode" id="SubjectCode" placeholder="e.g xyz"
-                            autocomplete="off">
+                        <input type="text" class="form__input" name="SubjectCode" id="SubjectCode" placeholder="e.g xyz" autocomplete="off" value="<?php echo $update['SubjectCode']; ?>">
                         <label for="" class="form__label">Subject Code</label>
                     </div>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="SubjectName" id="SubjectName" placeholder="e.g xyz"
-                            autocomplete="off">
+                        <input type="text" class="form__input" name="SubjectName" id="SubjectName" placeholder="e.g xyz" autocomplete="off" value="<?php echo $update['SubjectName']; ?>">
                         <label for="" class="form__label">Subject Name</label>
                     </div>
                     <br>
                     <div class="form__div">
+                        <input type="hidden" id="sem" value="<?php echo $update['Semester']; ?>">
                         <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Semester</label>
                         <br>
                         <select name="Semester" id="Semester">
@@ -224,12 +156,12 @@ ob_end_flush();
                     </div>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="Class" id="Class" placeholder="e.g xyz"
-                            autocomplete="off">
+                        <input type="text" class="form__input" name="Class" id="Class" placeholder="e.g xyz" autocomplete="off" value="<?php echo $update['Class']; ?>">
                         <label for="" class="form__label">Class</label>
                     </div>
                     <br>
                     <div class="form__div">
+                        <input type="hidden" id="course" value="<?php echo $result3['CourseId']; ?>">
                         <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Course Name:</label>
                         <br>
                         <select name="CourseName" id="CourseName">
@@ -237,7 +169,8 @@ ob_end_flush();
                         </select>
                     </div>
                     <br>
-                    <div class="form__div">
+                    <div class=" form__div">
+                        <input type="hidden" id="part" value="<?php echo $update['Part']; ?>">
                         <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
                         <br>
                         <select name="Part" id="Part">
@@ -247,6 +180,7 @@ ob_end_flush();
                     </div>
                     <br>
                     <div class="form__div">
+                        <input type="hidden" id="dep" value="<?php echo $update['Department']; ?>">
                         <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department</label>
                         <br>
                         <select name="Department" id="Department">
@@ -291,16 +225,14 @@ ob_end_flush();
                         </select>
                         <br>
                         <br>
-                        <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit"
-                            value="Save" name="save" style="float:right">
+                        <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save" name="save" style="float:right">
                     </div>
                 </form>
             </div>
             <script src="https://unpkg.com/scrollreveal"></script>
             <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-            <script src="../../js/butter.js"></script>
-            <script src="../../js/main.js"></script>
-            <script src="../../js/subject.js"></script>
+            <script src="../../../../js/main.js"></script>
+            <script src="../../../../js/upsubject.js"></script>
         </div>
 </body>
 

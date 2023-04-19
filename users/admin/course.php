@@ -14,7 +14,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
 }
 
 // session passes id
-$id = $_SESSION['id'];
+$id = $_COOKIE["Id"];;
 
 //add course
 if (isset($_POST["Save"])) {
@@ -94,74 +94,71 @@ ob_end_flush();
 </head>
 
 <body>
+    <div>
 
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
-    </div>
-    <!-- Page Content -->
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
-
-    <code class="txt">
-        <?php echo $_SESSION['name']; ?>
-        <?php echo $_SESSION['id']; ?>
-    </code>
-
-    <div class="con_head">
-        <p> Course-Registration </p>
-    </div>
-
-    <div class="container">
-        <div class="list">
-            <p style="float:left">Course-Registration</p>
-            <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
-                style="width:auto;height:38rem;overflow-y:scroll">
-                <?php course(); ?>
-            </div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <?php include('./partial/nav.php'); ?>
         </div>
-        <br>
-        <div class="l-form"></div>
-        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
-            <div class="context">
-                <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
-                <p>Set Course</p>
+        <!-- Page Content -->
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
+
+        <code class="txt">
+            <?php echo $_SESSION['name']; ?>
+            <?php echo $_SESSION['id']; ?>
+        </code>
+
+        <div class="con_head">
+            <p> Course-Registration </p>
+        </div>
+
+        <div class="container">
+            <div class="list">
+                <p style="float:left">Course-Registration</p>
+                <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:38rem;overflow-y:scroll">
+                    <?php course(); ?>
+                </div>
             </div>
             <br>
-            <br>
-            <div class="form__div">
-                <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8"
-                    autocomplete="off">
-                <label for="" class="form__label">Course Id</label>
-            </div>
-            <br>
-            <div class="form__div">
-                <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT"
-                    autocomplete="off">
-                <label for="" class="form__label">Course Name</label>
-            </div>
-            <br>
-            <div class="form__div">
-                <input type="number" class="form__input" name="Strength" id="Strength" placeholder="e.g 45"
-                    autocomplete="off">
-                <label for="" class="form__label">Strength</label>
-            </div>
-            <br>
-            <div class="form__div">
-                <input type="text" class="form__input" name="Abbreviation" id="Abbreviation" placeholder="e.g BSC-IT"
-                    autocomplete="off">
-                <label for="" class="form__label">Abbreviation</label>
-            </div>
-            <br>
-            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
-                name="Save" style="float:right">
-    </div>
-    </form>
+            <div class="l-form"></div>
+            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+                <div class="context">
+                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                    <p>Set Course</p>
+                </div>
+                <br>
+                <br>
+                <div class="form__div">
+                    <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8" autocomplete="off">
+                    <label for="" class="form__label">Course Id</label>
+                </div>
+                <br>
+                <div class="form__div">
+                    <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT" autocomplete="off">
+                    <label for="" class="form__label">Course Name</label>
+                </div>
+                <br>
+                <div class="form__div">
+                    <input type="number" class="form__input" name="Strength" id="Strength" placeholder="e.g 45" autocomplete="off">
+                    <label for="" class="form__label">Strength</label>
+                </div>
+                <br>
+                <div class="form__div">
+                    <input type="text" class="form__input" name="Abbreviation" id="Abbreviation" placeholder="e.g BSC-IT" autocomplete="off">
+                    <label for="" class="form__label">Abbreviation</label>
+                </div>
+                <br>
+                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save" name="Save" style="float:right">
+        </div>
+        </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script src="../../js/butter.js"></script>
     <script src="../../js/main.js"></script>
     <script src="../../js/course.js"></script>
+    </div>
 </body>
 
 </html>

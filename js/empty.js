@@ -66,9 +66,5 @@ var button = document.getElementById("button");
 var makepdf = document.getElementById("data");
 
 button.addEventListener("click", function () {
-    html2pdf().set({
-        jsPDF: {
-            format: 'a3'
-        }
-    }).from(makepdf).save(filename);
+    window.print();
 });

@@ -14,7 +14,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
 }
 
 // session passes id
-$id = $_SESSION['id'];
+$id = $_COOKIE["Id"];;
 
 function get_department()
 {
@@ -77,96 +77,103 @@ ob_end_flush();
     }
 
     td {
-        width: auto;
+        padding: 1rem;
+        border-width: 0.2rem;
+        border-style: dotted;
     }
     </style>
 </head>
 
 <body>
+    <div>
 
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
-    </div>
-    <!-- Page Content -->
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <?php include('./partial/nav.php'); ?>
+        </div>
+        <!-- Page Content -->
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
 
-    <code class="txt">
-        <?php echo $_SESSION['name']; ?>
-        <?php echo $_SESSION['id']; ?>
-    </code>
+        <code class="txt">
+            <?php echo $_SESSION['name']; ?>
+            <?php echo $_SESSION['id']; ?>
+        </code>
 
-    <div class="con_head">
-        <p>Professor TimeTable</p>
-    </div>
+        <div class="con_head">
+            <p>Professor TimeTable</p>
+        </div>
 
-    <div class="container">
-        <div class="l-form">
-            <div class="form  w3-margin w3-whitesmoke" style="width:auto;height:auto">
-                <div class="context">
-                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
-                        style="height:3rem">
-                    <p>Professors</p>
-                </div>
-                <br>
-                <div class="form__div">
-                    <p id="num"></p>
-                </div>
-                <br>
-                <div class="form__div">
-                    <label for="Department">Year:</label>
-                    <select id="year">
-                        <option value="--">--</option>
-                        <?php get_year(); ?>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <label for="Department">Department:</label>
-                    <select id="department" onchange="get_professors()">
-                        <option value="--">--</option>
-                        <?php get_department(); ?>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <label for="Professor">Professor:</label>
-                    <select id="professor" onchange="get_professor_time()">
-                        <option value="--">--</option>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <input type="button" id="button" value="Generate PDF">
-                </div>
-                <br>
-                <div class="test" id="data" style="overflow:scroll; height:40rem; width:79vw">
-                    <div class="div" style="display:flex;flex-direction:column;align-items:center">
-                        <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+        <div class="container">
+            <div class="l-form">
+                <div class="form  w3-margin w3-whitesmoke" style="width:auto;height:auto">
+                    <div class="context">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
+                            style="height:3rem">
+                        <p>Professors</p>
                     </div>
                     <br>
-                    <table>
-                        <thread>
-                            <tr>
-                                <th>TimeSlot</th>
-                                <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
-                                <th>Saturday</th>
-                            </tr>
-                        </thread>
-                        <tbody class="data">
+                    <div class="form__div">
+                        <p id="num"></p>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <label for="Department">Year:</label>
+                        <select id="year">
+                            <option value="--">--</option>
+                            <?php get_year(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Department">Department:</label>
+                        <select id="department" onchange="get_professors()">
+                            <option value="--">--</option>
+                            <?php get_department(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Professor">Professor:</label>
+                        <select id="professor" onchange="get_professor_time()">
+                            <option value="--">--</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <input type="button" id="button" value="Generate PDF">
+                    </div>
+                    <br>
+                    <div class="test" id="data" style="height:fit-content; width:79vw">
+                        <div class="div" style="display:flex;flex-direction:column;align-items:center">
+                            <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none"
+                                alt="img">
+                        </div>
+                        <br>
+                        <table style="width: 100%;">
+                            <thread>
+                                <tr>
+                                    <th>TimeSlot</th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                </tr>
+                            </thread>
+                            <tbody class="data">
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+        <script src="../../js/butter.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/empty.js"></script>
     </div>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/empty.js"></script>
 </body>
 
 </html>

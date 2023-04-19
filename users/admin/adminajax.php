@@ -283,7 +283,7 @@ if (isset($_POST["time"])) {
                 } elseif ($result1['Division3'] == '--') {
                     $sql = "UPDATE timetable SET `Division3` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
                     if ($con->query($sql) === TRUE) {
-                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . " Division " . " Subject " . $time[$real_time] . "');</script>";
                     } else {
                         echo "<script>alert('Something went wrong ');</script>";
                     }
@@ -349,7 +349,11 @@ if (isset($_POST['class101'])) {
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        if ($row['DJ'] == 'D') {
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
+        } else {
+            echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        }
 
         // ----------------------------------------------
         // get subject for a day in a specfic timeslot
@@ -768,7 +772,11 @@ if (isset($_POST['class303'])) {
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        if ($row['DJ'] == 'D') {
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
+        } else {
+            echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        }
 
         // ----------------------------------------------
         // get subject for a day in a specfic timeslot
@@ -1182,7 +1190,11 @@ if (isset($_POST["class202"])) {
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        if ($row['DJ'] == 'D') {
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
+        } else {
+            echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        }
 
         // get subject for a day in a specfic timeslot
         $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `RoomNo` = '$room' AND `Sem` IN ('$sem[0]','$sem[1]','$sem[2]','--')";
@@ -1333,7 +1345,11 @@ if (isset($_POST['ad619']) && isset($_POST['dep'])) {
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        if ($row['DJ'] == 'D') {
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
+        } else {
+            echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        }
 
         // get subject for a day in a specfic timeslot
         $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `Department` = '$dep' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday'";
@@ -1495,7 +1511,11 @@ if (isset($_POST['ad69'])) {
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        if ($row['DJ'] == 'D') {
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
+        } else {
+            echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        }
 
         // get subject for a day in a specfic timeslot
         $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday'";
@@ -1667,7 +1687,11 @@ if (isset($_POST['ad69420'])) {
 
         echo "<tr>";
 
-        echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        if ($row['DJ'] == 'D') {
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
+        } else {
+            echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
+        }
 
         // get subject for a day in a specfic timeslot
         $sql = "SELECT * FROM timetable  WHERE `AcademicYear` = '$year' AND `TimeSlot` = '$time_slot' AND `Day` = 'Monday' AND `SubjectCode` IN ('" . implode("','", $subcode) . "')";

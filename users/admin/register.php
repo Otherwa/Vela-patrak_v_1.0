@@ -95,6 +95,7 @@ ob_end_flush();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link type="image/png" sizes="96x96" rel="icon" href="https://vazecollege.net/PATS/imgs/1611814068005.jpg">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/register.css">
@@ -125,8 +126,7 @@ ob_end_flush();
     <br>
     <div class="list">
         <p style="float:left">Members</p>
-        <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
-            style="width:auto;height:50vh !important;overflow-y:scroll">
+        <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:50vh !important;overflow-y:scroll">
             <?php member_list(); ?>
         </div>
     </div>
@@ -142,19 +142,17 @@ ob_end_flush();
             <br>
             <br>
             <div class="form__div">
-                <input type="text" class="form__input" name="FirstName" id="FirstName" placeholder="e.g xyz"
-                    autocomplete="off">
+                <input type="text" class="form__input" name="FirstName" id="FirstName" placeholder="e.g xyz" autocomplete="off">
                 <label for="" class="form__label">First Name</label>
             </div>
             <br>
             <div class="form__div">
-                <input type="text" class="form__input" name="LastName" id="LastName" placeholder="e.g xyz@123"
-                    autocomplete="off">
+                <input type="text" class="form__input" name="LastName" id="LastName" placeholder="e.g xyz@123" autocomplete="off">
                 <label for="" class="form__label">Last Name</label>
             </div>
             <div class="form__div">
                 <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department:</label>
-                <select name="Department" id="Type">
+                <select name="Department" id="Department">
                     <option value="--">--</option>
                     <option value="BSc IT">BSc IT</option>
                     <option value="BAF">BAF</option>
@@ -182,27 +180,23 @@ ob_end_flush();
             <br>
             <br>
             <div class="form__div">
-                <input type="text" class="form__input" name="Emailid" id="Emailid" placeholder="e.g someone@gmail.com"
-                    autocomplete="off">
+                <input type="text" class="form__input" name="Emailid" id="Emailid" placeholder="e.g someone@gmail.com" autocomplete="off">
                 <label for="" class="form__label">Email</label>
             </div>
             <br>
             <div class="form__div">
-                <input type="text" class="form__input" name="Phone" id="Phone" placeholder="e.g 8828*****"
-                    autocomplete="off">
+                <input type="text" class="form__input" name="Phone" id="Phone" placeholder="e.g 8828*****" autocomplete="off">
                 <label for="" class="form__label">Phone</label>
             </div>
             <br>
 
             <div class="form__div">
-                <input type="text" class="form__input" name="Username" id="Username" placeholder="e.g xyz"
-                    autocomplete="off">
+                <input type="text" class="form__input" name="Username" id="Username" placeholder="e.g xyz" autocomplete="off">
                 <label for="" class="form__label">Username</label>
             </div>
             <br>
             <div class="form__div">
-                <input type="password" class="form__input" name="Password" id="Password" placeholder="e.g xyz@1234"
-                    autocomplete="off">
+                <input type="password" class="form__input" name="Password" id="Password" placeholder="e.g xyz@1234" autocomplete="off">
                 <label for="" class="form__label">Password</label>
             </div>
             <div class="form__div">
@@ -215,16 +209,15 @@ ob_end_flush();
             </div>
             <br>
             <br>
-            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Register"
-                name="register" style="float:right">
-
+            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Register" name="register" style="float:right">
     </div>
     </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script src="../../js/butter.js"></script>
     <script src="../../js/main.js"></script>
-    <script src="../../js/login.js"></script>
+    <script src="../../js/register.js"></script>
 </body>
 
 </html>
