@@ -350,7 +350,7 @@ if (isset($_POST['class101'])) {
         echo "<tr>";
 
         if ($row['DJ'] == 'D') {
-            echo "<td id=\"time" . $j++ . "\" style=\"background-color:gray\"><span>" . $time_slot  . "</span></td>";
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
         } else {
             echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
         }
@@ -773,7 +773,7 @@ if (isset($_POST['class303'])) {
         echo "<tr>";
 
         if ($row['DJ'] == 'D') {
-            echo "<td id=\"time" . $j++ . "\" style=\"background-color:gray\"><span>" . $time_slot  . "</span></td>";
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
         } else {
             echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
         }
@@ -1191,7 +1191,7 @@ if (isset($_POST["class202"])) {
         echo "<tr>";
 
         if ($row['DJ'] == 'D') {
-            echo "<td id=\"time" . $j++ . "\" style=\"background-color:gray\"><span>" . $time_slot  . "</span></td>";
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
         } else {
             echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
         }
@@ -1346,7 +1346,7 @@ if (isset($_POST['ad619']) && isset($_POST['dep'])) {
         echo "<tr>";
 
         if ($row['DJ'] == 'D') {
-            echo "<td id=\"time" . $j++ . "\" style=\"background-color:gray\"><span>" . $time_slot  . "</span></td>";
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
         } else {
             echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
         }
@@ -1512,7 +1512,7 @@ if (isset($_POST['ad69'])) {
         echo "<tr>";
 
         if ($row['DJ'] == 'D') {
-            echo "<td id=\"time" . $j++ . "\" style=\"background-color:gray\"><span>" . $time_slot  . "</span></td>";
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
         } else {
             echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
         }
@@ -1688,7 +1688,7 @@ if (isset($_POST['ad69420'])) {
         echo "<tr>";
 
         if ($row['DJ'] == 'D') {
-            echo "<td id=\"time" . $j++ . "\" style=\"background-color:gray\"><span>" . $time_slot  . "</span></td>";
+            echo "<td id=\"time" . $j++ . "\" style=\"background-color:#D3D3D3\"><span>" . $time_slot  . "</span></td>";
         } else {
             echo "<td id=\"time" . $j++ . "\"><span>" . $time_slot  . "</span></td>";
         }

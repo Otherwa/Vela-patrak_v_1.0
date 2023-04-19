@@ -82,23 +82,21 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/class_timetable.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Class Time-Table</title>
     <style>
-    td div p {
-        padding: 0.2rem;
-        text-align: center;
-    }
+        td div p {
+            padding: 0.2rem;
+            text-align: center;
+        }
 
-    td span {
-        width: max-content;
-    }
+        td span {
+            width: max-content;
+        }
     </style>
 </head>
 
@@ -128,8 +126,7 @@ ob_end_flush();
 
 
                     <div class="context con">
-                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
-                            style="height:3rem">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
                         <p>Class-Timetable</p>
                     </div>
                     <br>
@@ -236,9 +233,7 @@ ob_end_flush();
                                     <input type="checkbox" id="combined" name="combined" value="Yes">
                                 </div>
                                 <div class="form__div">
-                                    <input class="button-primary w3-button w3-border w3-hover-blue w3-round"
-                                        type="button" value="Save" name="save" id="save" style="float:right"
-                                        onclick="set_data()">
+                                    <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="button" value="Save" name="save" id="save" style="float:right" onclick="set_data()">
                                 </div>
                                 <br>
                             </div>
@@ -277,7 +272,7 @@ ob_end_flush();
 
                                 echo "<tr>";
                                 if ($row['DJ'] == "D") {
-                                    echo "<td style=\"background-color:gray\" id=\"time" . $j++ . "\"><span>" . date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"])) . "</span></td>";
+                                    echo "<td style=\"background-color:#D3D3D3\" id=\"time" . $j++ . "\"><span>" . date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"])) . "</span></td>";
                                 } else {
                                     echo "<td id=\"time" . $j++ . "\"><span>" . date("g:i A", strtotime($row["StartTime"])) . " - " . date("g:i A", strtotime($row["EndTime"])) . "</span></td>";
                                 }
@@ -347,10 +342,8 @@ ob_end_flush();
                         $result = $result['count'];
                         $count1 = $result;
                         ?>
-                        <div class="div" id="styled-table"
-                            style="display:flex;flex-direction:column;align-items:center">
-                            <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none"
-                                alt="img">
+                        <div class="div" id="styled-table" style="display:flex;flex-direction:column;align-items:center">
+                            <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
                             <table class="styled-table">
                                 <thread>
                                     <tr>
@@ -370,8 +363,7 @@ ob_end_flush();
                         </div>
                     </div>
 
-                    <div id="timetable2" style="box-shadow:none; display:none"
-                        class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <div id="timetable2" style="box-shadow:none; display:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
                         <div class="form__div">
                             <label for="Academic Year">Academic Year:</label>
                             <select id="academic_year2" onchange="clear_pre2()">
