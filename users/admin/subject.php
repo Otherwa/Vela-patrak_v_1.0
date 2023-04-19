@@ -14,7 +14,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
 }
 
 // session passes id
-$id = $_SESSION['id'];
+$id = $_COOKIE["Id"];;
 
 // insert
 if (isset($_POST['save'])) {
@@ -111,194 +111,189 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/subject.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Subject</title>
 </head>
 
 <body>
+    <div>
 
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
-    </div>
-    <!-- Page Content -->
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <?php include('./partial/nav.php'); ?>
+        </div>
+        <!-- Page Content -->
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
 
-    <code class="txt">
-        <?php echo $_SESSION['name']; ?>
-        <?php echo $_SESSION['id']; ?>
-    </code>
+        <code class="txt">
+            <?php echo $_SESSION['name']; ?>
+            <?php echo $_SESSION['id']; ?>
+        </code>
 
-    <div class="con_head">
-        <p> Subject Registration </p>
-    </div>
+        <div class="con_head">
+            <p> Subject Registration </p>
+        </div>
 
-    <div class="container">
-        <div class="list">
-            <p style="float:left">Subjects</p> <br>
-            <label for="Sub"
-                style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Department:</label>
-            <select name="SubList" id="SubList" onchange="get_subjects()">
-                <option value="--">--</option>
-                <option value="PSYCHOLOGY">PSYCHOLOGY</option>
-                <option value="FRENCH">FRENCH</option>
-                <option value="SANSKRIT">SANSKRIT</option>
-                <option value="ENGLISH">ENGLISH</option>
-                <option value="MARATHI">MARATHI</option>
-                <option value="POL.SCIENCE">POL.SCIENCE</option>
-                <option value="HISTORY">HISTORY</option>
-                <option value="SOCIOLOGY">SOCIOLOGY</option>
-                <option value="ECONOMICS">ECONOMICS</option>
-                <option value="MENTORING">MENTORING</option>
-                <option value="EVS">EVS</option>
-                <option value="RC">RC</option>
-                <option value="PHY.EDN.">PHY.EDN.</option>
-                <option value="UPSC">UPSC</option>
-                <option value="HINDI">HINDI</option>
-                <option value="JR AND DEGREE">JR AND DEGREE</option>
-                <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
-                <option value="PHYSICS">PHYSICS</option>
-                <option value="CHEMISTRY">CHEMISTRY</option>
-                <option value="BIOLOGY">BIOLOGY</option>
-                <option value="MATHEMATICS">MATHEMATICS</option>
-                <option value="BOTANY">BOTANY</option>
-                <option value="ZOOLOGY">ZOOLOGY</option>
-                <option value="PRACTICALS">PRACTICALS</option>
-                <option value="COMMERCE">COMMERCE</option>
-                <option value="B.ECONOMICS">B. ECONOMICS</option>
-                <option value="ACCOUNTS">ACCOUNTS</option>
-                <option value="B.LAW">B.LAW</option>
-                <option value="MCOM">MCOM</option>
-                <option value="BVOC">BVOC</option>
-                <option value="M.SC.IT">M.SC.IT</option>
-                <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
-                <option value="BAF">BAF</option>
-                <option value="BBI">BBI</option>
-                <option value="BMS">BMS</option>
-                <option value="BMM">BMM</option>
-            </select>
-            <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
-                <?php subject(); ?>
+        <div class="container">
+            <div class="list">
+                <p style="float:left">Subjects</p> <br>
+                <label for="Sub" style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Department:</label>
+                <select name="SubList" id="SubList" onchange="get_subjects()">
+                    <option value="--">--</option>
+                    <option value="PSYCHOLOGY">PSYCHOLOGY</option>
+                    <option value="FRENCH">FRENCH</option>
+                    <option value="SANSKRIT">SANSKRIT</option>
+                    <option value="ENGLISH">ENGLISH</option>
+                    <option value="MARATHI">MARATHI</option>
+                    <option value="POL.SCIENCE">POL.SCIENCE</option>
+                    <option value="HISTORY">HISTORY</option>
+                    <option value="SOCIOLOGY">SOCIOLOGY</option>
+                    <option value="ECONOMICS">ECONOMICS</option>
+                    <option value="MENTORING">MENTORING</option>
+                    <option value="EVS">EVS</option>
+                    <option value="RC">RC</option>
+                    <option value="PHY.EDN.">PHY.EDN.</option>
+                    <option value="UPSC">UPSC</option>
+                    <option value="HINDI">HINDI</option>
+                    <option value="JR AND DEGREE">JR AND DEGREE</option>
+                    <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
+                    <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
+                    <option value="PHYSICS">PHYSICS</option>
+                    <option value="CHEMISTRY">CHEMISTRY</option>
+                    <option value="BIOLOGY">BIOLOGY</option>
+                    <option value="MATHEMATICS">MATHEMATICS</option>
+                    <option value="BOTANY">BOTANY</option>
+                    <option value="ZOOLOGY">ZOOLOGY</option>
+                    <option value="PRACTICALS">PRACTICALS</option>
+                    <option value="COMMERCE">COMMERCE</option>
+                    <option value="B.ECONOMICS">B. ECONOMICS</option>
+                    <option value="ACCOUNTS">ACCOUNTS</option>
+                    <option value="B.LAW">B.LAW</option>
+                    <option value="MCOM">MCOM</option>
+                    <option value="BVOC">BVOC</option>
+                    <option value="M.SC.IT">M.SC.IT</option>
+                    <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
+                    <option value="BAF">BAF</option>
+                    <option value="BBI">BBI</option>
+                    <option value="BMS">BMS</option>
+                    <option value="BMM">BMM</option>
+                </select>
+                <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <?php subject(); ?>
+                </div>
             </div>
+            <br>
+            <div class="l-form">
+                <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+                    <div class="context">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                        <p>Set Subject</p>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form__div">
+                        <input type="text" class="form__input" name="SubjectCode" id="SubjectCode" placeholder="e.g xyz" autocomplete="off">
+                        <label for="" class="form__label">Subject Code</label>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <input type="text" class="form__input" name="SubjectName" id="SubjectName" placeholder="e.g xyz" autocomplete="off">
+                        <label for="" class="form__label">Subject Name</label>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Semester</label>
+                        <br>
+                        <select name="Semester" id="Semester">
+                            <option value="I">I</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                            <option value="V">V</option>
+                            <option value="VI">VI</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <input type="text" class="form__input" name="Class" id="Class" placeholder="e.g xyz" autocomplete="off">
+                        <label for="" class="form__label">Class</label>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Course Name:</label>
+                        <br>
+                        <select name="CourseName" id="CourseName">
+                            <?php get_course(); ?>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
+                        <br>
+                        <select name="Part" id="Part">
+                            <option value="Junior">Junior</option>
+                            <option value="Degree">Degree</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department</label>
+                        <br>
+                        <select name="Department" id="Department">
+                            <option value="--">--</option>
+                            <option value="PSYCHOLOGY">PSYCHOLOGY</option>
+                            <option value="FRENCH">FRENCH</option>
+                            <option value="SANSKRIT">SANSKRIT</option>
+                            <option value="ENGLISH">ENGLISH</option>
+                            <option value="MARATHI">MARATHI</option>
+                            <option value="POL.SCIENCE">POL.SCIENCE</option>
+                            <option value="HISTORY">HISTORY</option>
+                            <option value="SOCIOLOGY">SOCIOLOGY</option>
+                            <option value="ECONOMICS">ECONOMICS</option>
+                            <option value="MENTORING">MENTORING</option>
+                            <option value="EVS">EVS</option>
+                            <option value="RC">RC</option>
+                            <option value="PHY.EDN.">PHY.EDN.</option>
+                            <option value="UPSC">UPSC</option>
+                            <option value="HINDI">HINDI</option>
+                            <option value="JR AND DEGREE">JR AND DEGREE</option>
+                            <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
+                            <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
+                            <option value="PHYSICS">PHYSICS</option>
+                            <option value="CHEMISTRY">CHEMISTRY</option>
+                            <option value="BIOLOGY">BIOLOGY</option>
+                            <option value="MATHEMATICS">MATHEMATICS</option>
+                            <option value="BOTANY">BOTANY</option>
+                            <option value="ZOOLOGY">ZOOLOGY</option>
+                            <option value="PRACTICALS">PRACTICALS</option>
+                            <option value="COMMERCE">COMMERCE</option>
+                            <option value="B.ECONOMICS">B. ECONOMICS</option>
+                            <option value="ACCOUNTS">ACCOUNTS</option>
+                            <option value="B.LAW">B.LAW</option>
+                            <option value="MCOM">MCOM</option>
+                            <option value="BVOC">BVOC</option>
+                            <option value="M.SC.IT">M.SC.IT</option>
+                            <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
+                            <option value="BAF">BAF</option>
+                            <option value="BBI">BBI</option>
+                            <option value="BMS">BMS</option>
+                            <option value="BMM">BMMC</option>
+                        </select>
+                        <br>
+                        <br>
+                        <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save" name="save" style="float:right">
+                    </div>
+                </form>
+            </div>
+            <script src="https://unpkg.com/scrollreveal"></script>
+            <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+            <script src="../../js/butter.js"></script>
+            <script src="../../js/main.js"></script>
+            <script src="../../js/subject.js"></script>
         </div>
-        <br>
-        <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
-                <div class="context">
-                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
-                        style="height:3rem">
-                    <p>Set Subject</p>
-                </div>
-                <br>
-                <br>
-                <div class="form__div">
-                    <input type="text" class="form__input" name="SubjectCode" id="SubjectCode" placeholder="e.g xyz"
-                        autocomplete="off">
-                    <label for="" class="form__label">Subject Code</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="text" class="form__input" name="SubjectName" id="SubjectName" placeholder="e.g xyz"
-                        autocomplete="off">
-                    <label for="" class="form__label">Subject Name</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Semester</label>
-                    <br>
-                    <select name="Semester" id="Semester">
-                        <option value="I">I</option>
-                        <option value="II">II</option>
-                        <option value="III">III</option>
-                        <option value="IV">IV</option>
-                        <option value="V">V</option>
-                        <option value="VI">VI</option>
-                    </select>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="text" class="form__input" name="Class" id="Class" placeholder="e.g xyz"
-                        autocomplete="off">
-                    <label for="" class="form__label">Class</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Course Name:</label>
-                    <br>
-                    <select name="CourseName" id="CourseName">
-                        <?php get_course(); ?>
-                    </select>
-                </div>
-                <br>
-                <div class="form__div">
-                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Part:</label>
-                    <br>
-                    <select name="Part" id="Part">
-                        <option value="Junior">Junior</option>
-                        <option value="Degree">Degree</option>
-                    </select>
-                </div>
-                <br>
-                <div class="form__div">
-                    <label for="Type" style="color:gray" style="margin-bottom: 2rem;">Department</label>
-                    <br>
-                    <select name="Department" id="Department">
-                        <option value="--">--</option>
-                        <option value="PSYCHOLOGY">PSYCHOLOGY</option>
-                        <option value="FRENCH">FRENCH</option>
-                        <option value="SANSKRIT">SANSKRIT</option>
-                        <option value="ENGLISH">ENGLISH</option>
-                        <option value="MARATHI">MARATHI</option>
-                        <option value="POL.SCIENCE">POL.SCIENCE</option>
-                        <option value="HISTORY">HISTORY</option>
-                        <option value="SOCIOLOGY">SOCIOLOGY</option>
-                        <option value="ECONOMICS">ECONOMICS</option>
-                        <option value="MENTORING">MENTORING</option>
-                        <option value="EVS">EVS</option>
-                        <option value="RC">RC</option>
-                        <option value="PHY.EDN.">PHY.EDN.</option>
-                        <option value="UPSC">UPSC</option>
-                        <option value="HINDI">HINDI</option>
-                        <option value="JR AND DEGREE">JR AND DEGREE</option>
-                        <option value="FOUNDATION COURSE">FOUNDATION COURSE</option>
-                        <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
-                        <option value="PHYSICS">PHYSICS</option>
-                        <option value="CHEMISTRY">CHEMISTRY</option>
-                        <option value="BIOLOGY">BIOLOGY</option>
-                        <option value="MATHEMATICS">MATHEMATICS</option>
-                        <option value="BOTANY">BOTANY</option>
-                        <option value="ZOOLOGY">ZOOLOGY</option>
-                        <option value="PRACTICALS">PRACTICALS</option>
-                        <option value="COMMERCE">COMMERCE</option>
-                        <option value="B.ECONOMICS">B. ECONOMICS</option>
-                        <option value="ACCOUNTS">ACCOUNTS</option>
-                        <option value="B.LAW">B.LAW</option>
-                        <option value="MCOM">MCOM</option>
-                        <option value="BVOC">BVOC</option>
-                        <option value="M.SC.IT">M.SC.IT</option>
-                        <option value="BIOTECHONOLOGY">BIOTECHONOLOGY</option>
-                        <option value="BAF">BAF</option>
-                        <option value="BBI">BBI</option>
-                        <option value="BMS">BMS</option>
-                        <option value="BMM">BMMC</option>
-                    </select>
-                    <br>
-                    <br>
-                    <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
-                        name="save" style="float:right">
-                </div>
-            </form>
-        </div>
-        <script src="https://unpkg.com/scrollreveal"></script>
-        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-        <script src="../../js/main.js"></script>
-        <script src="../../js/subject.js"></script>
 </body>
 
 </html>

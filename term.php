@@ -22,15 +22,15 @@ ob_end_flush();
     <meta http-equiv='expires' content='0'>
     <meta http-equiv='pragma' content='no-cache'>
     <style>
-    .myfont {
-        font-family: "Bungee", cursive;
-    }
+        .myfont {
+            font-family: "Bungee", cursive;
+        }
 
-    .container {
-        padding: 3rem;
-        line-height: 1.7rem;
-        font-family: monospace;
-    }
+        .container {
+            padding: 3rem;
+            line-height: 1.7rem;
+            font-family: monospace;
+        }
     </style>
 </head>
 
@@ -75,8 +75,7 @@ ob_end_flush();
                     <strong>Terms and Conditions</strong> (also referred as &quot;Terms&quot;) mean these Terms and
                     Conditions that form the entire agreement between You and the Company regarding the use of the
                     Service. This Terms and Conditions agreement
-                    has been created with the help of the <a
-                        href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank">Terms and
+                    has been created with the help of the <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank">Terms and
                         Conditions Generator</a>.
                 </p>
             </li>
@@ -88,8 +87,7 @@ ob_end_flush();
                 </p>
             </li>
             <li>
-                <p><strong>Website</strong> refers to Forms, accessible from <a href="http://velapatrak.epizy.com"
-                        rel="external nofollow noopener" target="_blank">Velapatrak</a></p>
+                <p><strong>Website</strong> refers to Forms, accessible from <a href="http://velapatrak.epizy.com" rel="external nofollow noopener" target="_blank">Velapatrak</a></p>
             </li>
             <li>
                 <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other
@@ -247,26 +245,27 @@ ob_end_flush();
             </li>
         </ul>
     </div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 <script type="text/javascript">
-// dark mode js plugin
-const options = {
-    bottom: '64px', // default: '32px'
-    right: 'unset', // default: '32px'
-    right: '32px', // default: 'unset'
-    time: '0.5s', // default: '0.3s'
-    mixColor: '#fff', // default: '#fff'
-    backgroundColor: '#fff', // default: '#fff'
-    buttonColorDark: '#100f2c', // default: '#100f2c'
-    buttonColorLight: '#fff', // default: '#fff'
-    saveInCookies: false, // default: true,
-    label: '💡', // default: ''
-    autoMatchOsTheme: true // default: true
-}
+    // dark mode js plugin
+    const options = {
+        bottom: '64px', // default: '32px'
+        right: 'unset', // default: '32px'
+        right: '32px', // default: 'unset'
+        time: '0.5s', // default: '0.3s'
+        mixColor: '#fff', // default: '#fff'
+        backgroundColor: '#fff', // default: '#fff'
+        buttonColorDark: '#100f2c', // default: '#100f2c'
+        buttonColorLight: '#fff', // default: '#fff'
+        saveInCookies: false, // default: true,
+        label: '💡', // default: ''
+        autoMatchOsTheme: true // default: true
+    }
 
-const darkmode = new Darkmode(options);
-darkmode.showWidget();
+    const darkmode = new Darkmode(options);
+    darkmode.showWidget();
 </script>
 
 </html>

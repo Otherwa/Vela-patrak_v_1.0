@@ -129,8 +129,12 @@
 }
 
 .list li {
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: var(--normal-font-size);
+    border-style: solid;
+    margin: 1rem;
+    border-width: 0.1rem;
+    border-radius: 0.5rem;
 }
 
 .form__div select {
@@ -233,10 +237,17 @@ td div p {
     align-items: center;
 }
 
+.close {
+    background-color: red !important;
+}
+
 .con1 {
+    border-style: solid;
+    border-width: 0.1rem !important;
+    box-shadow: 5px 5px;
     width: 40%;
     display: flex;
-    margin: 1rem !important;
+    margin: 1.5rem !important;
     flex-wrap: wrap;
     justify-content: center;
     background-color: rgb(239, 239, 239);

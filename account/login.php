@@ -8,6 +8,7 @@ session_start();
 $status = session_status(); //1st measure
 if ($status == PHP_SESSION_ACTIVE) {
     //There is  active session
+    // setcookie("Id", "", time() - 3600);
     session_destroy();
 }
 
@@ -35,6 +36,10 @@ if (isset($_POST['login'])) {
         $_SESSION['name'] = $result_user_type['Username'];
         $_SESSION['id'] = $result_user_type['MemberId'];
         $_SESSION['type'] = $result_user_type['Type'];
+
+        // cookie set
+        setcookie("Id", $result_user_type['MemberId'], time() + (86400 * 30), "/");
+
 
         // check if user or admin and simple redirect to it
         if ($result_user_type['Type'] == 'admin' || $result_user_type['Type'] == 'superadmin') {
@@ -73,51 +78,52 @@ ob_end_flush();
 </head>
 
 <body>
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
-        <a href="../index.php" class="w3-bar-item w3-button">Home</a>
-        <a href="login.php" class="w3-bar-item w3-button w3-black">Login</a>
-        <a href="../about.php" class="w3-bar-item w3-button">About</a>
-    </div>
-    <!-- Page Content -->
+    <div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
+            <a href="../index.php" class="w3-bar-item w3-button">Home</a>
+            <a href="login.php" class="w3-bar-item w3-button w3-black">Login</a>
+            <a href="../about.php" class="w3-bar-item w3-button">About</a>
+        </div>
+        <!-- Page Content -->
 
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
 
-    <div class="con_head">
-        <p>Login</p>
-    </div>
-    <br>
-    <br>
-    <div class="l-form">
-        <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:48rem">
-            <div class="context">
-                <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
-                <p>Login as</p>
-            </div>
-            <br>
-            <br>
-            <div class="form__div">
-                <input type="text" class="form__input" name="Name" id="Name" placeholder="e.g xyz" autocomplete="off">
-                <label for="" class="form__label">Name</label>
-            </div>
-            <br>
-            <div class="form__div">
-                <input type="password" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123"
-                    autocomplete="off">
-                <label for="" class="form__label">Password</label>
-            </div>
-            <br>
-            <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Login"
-                name="login" style="float:right">
-    </div>
-    </form>
+        <div class="con_head">
+            <p>Login</p>
+        </div>
+        <br>
+        <br>
+        <div class="l-form">
+            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:48rem">
+                <div class="context">
+                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                    <p>Login as</p>
+                </div>
+                <br>
+                <br>
+                <div class="form__div">
+                    <input type="text" class="form__input" name="Name" id="Name" placeholder="e.g xyz" autocomplete="off">
+                    <label for="" class="form__label">Name</label>
+                </div>
+                <br>
+                <div class="form__div">
+                    <input type="password" class="form__input" name="Password" id="Password" placeholder="e.g xyz@123" autocomplete="off">
+                    <label for="" class="form__label">Password</label>
+                </div>
+                <br>
+                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Login" id="login" name="login" style="float:right">
+        </div>
+        </form>
     </div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script src="../js/butter.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/login.js"></script>
+    </div>
 </body>
 
 </html>

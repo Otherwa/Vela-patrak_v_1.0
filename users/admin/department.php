@@ -82,94 +82,94 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/admin_dashboard.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Admin-Dashboard</title>
     <style>
-    td div {
-        height: max-content;
-        width: max-content;
-    }
+        td div {
+            height: max-content;
+            width: max-content;
+        }
     </style>
 </head>
 
 <body>
+    <div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <?php include('./partial/nav.php'); ?>
+        </div>
+        <!-- Page Content -->
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
 
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
-    </div>
-    <!-- Page Content -->
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
 
+        <code class="txt">
+            <?php echo $_SESSION['name']; ?>
+            <?php echo $_SESSION['id']; ?>
+        </code>
 
-    <code class="txt">
-        <?php echo $_SESSION['name']; ?>
-        <?php echo $_SESSION['id']; ?>
-    </code>
+        <div class="con_head">
+            <p>Department-Timetable</p>
+        </div>
 
-    <div class="con_head">
-        <p>Department-Timetable</p>
-    </div>
+        <div class="container">
+            <div class="l-form">
 
-    <div class="container">
-        <div class="l-form">
+                <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <div class="form__div">
+                        <label for="Academic Year">Academic Year:</label>
+                        <select id="academic_year1">
+                            <option value="--">--</option>
+                            <?php get_academic_year(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Academic Year">Department:</label>
+                        <select id="department" onchange="get_total_data(this.value)">
+                            <option value="--">--</option>
+                            <?php get_department(); ?>
+                        </select>
+                    </div>
 
-            <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
-                <div class="form__div">
-                    <label for="Academic Year">Academic Year:</label>
-                    <select id="academic_year1">
-                        <option value="--">--</option>
-                        <?php get_academic_year(); ?>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <label for="Academic Year">Department:</label>
-                    <select id="department" onchange="get_total_data(this.value)">
-                        <option value="--">--</option>
-                        <?php get_department(); ?>
-                    </select>
-                </div>
+                    <?php
+                    $con = get_con();
+                    $sql = "SELECT COUNT(*) AS count FROM timeslot";
+                    $result = $con->query($sql);
+                    $result = $result->fetch_assoc();
+                    $result = $result['count'];
+                    $count1 = $result;
+                    ?>
+                    <div class="div" style="display:flex;flex-direction:column;align-items:center">
+                        <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                        <table class="styled-table">
+                            <thread>
+                                <tr>
+                                    <th>TimeSlot</th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                </tr>
+                            </thread>
+                            <tbody id="load_data">
 
-                <?php
-                $con = get_con();
-                $sql = "SELECT COUNT(*) AS count FROM timeslot";
-                $result = $con->query($sql);
-                $result = $result->fetch_assoc();
-                $result = $result['count'];
-                $count1 = $result;
-                ?>
-                <div class="div" style="display:flex;flex-direction:column;align-items:center">
-                    <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
-                    <table class="styled-table">
-                        <thread>
-                            <tr>
-                                <th>TimeSlot</th>
-                                <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
-                                <th>Saturday</th>
-                            </tr>
-                        </thread>
-                        <tbody id="load_data">
-
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/department_dashboard.js"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+        <script src="../../js/butter.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/department_dashboard.js"></script>
+    </div>
 </body>
 
 </html>

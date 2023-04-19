@@ -136,6 +136,10 @@
 }
 
 .list li {
-    padding: 0.5rem;
+    padding: 1rem;
     font-size: var(--normal-font-size);
+    border-style: solid;
+    margin: 1rem;
+    border-width: 0.1rem;
+    border-radius: 0.5rem;
 }

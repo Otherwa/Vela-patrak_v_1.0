@@ -283,7 +283,7 @@ if (isset($_POST["time"])) {
                 } elseif ($result1['Division3'] == '--') {
                     $sql = "UPDATE timetable SET `Division3` = '$division' WHERE `AcademicYear` = '$academic_year' AND `RoomNo` = '$room' AND `Day` = '$day' AND `TimeSlot` = '$time[$real_time]' AND `Division` = '$div' AND `Class` = '$class11';";
                     if ($con->query($sql) === TRUE) {
-                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . "Division" . "Subject" . $time[$real_time] . "');</script>";
+                        echo "<script>alert('Class Timetable for Class " . $class1 . " In Room " . $room . " Successfully Combined at " . $div . " Division " . " Subject " . $time[$real_time] . "');</script>";
                     } else {
                         echo "<script>alert('Something went wrong ');</script>";
                     }

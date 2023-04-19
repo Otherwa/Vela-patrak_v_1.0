@@ -14,7 +14,7 @@ if (!isset($_SESSION['name']) && !isset($_SESSION['type'])) {
 }
 
 // session passes id
-$id = $_SESSION['id'];
+$id = $_COOKIE["Id"];;
 
 if (isset($_POST['Save'])) {
     $roomno = $_POST['RoomNo'];
@@ -86,75 +86,73 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/room.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Rooms</title>
 </head>
 
 <body>
+    <div>
 
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
-    </div>
-    <!-- Page Content -->
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <?php include('./partial/nav.php'); ?>
+        </div>
+        <!-- Page Content -->
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
 
-    <code class="txt">
-        <?php echo $_SESSION['name']; ?>
-        <?php echo $_SESSION['id']; ?>
-    </code>
+        <code class="txt">
+            <?php echo $_SESSION['name']; ?>
+            <?php echo $_SESSION['id']; ?>
+        </code>
 
-    <div class="con_head">
-        <p> Rooms </p>
-    </div>
+        <div class="con_head">
+            <p> Rooms </p>
+        </div>
 
-    <div class="container">
-        <div class="list">
-            <p style="float:left">Room-Registration</p>
-            <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block"
-                style="width:auto;height:60vh !important;overflow-y:scroll">
-                <?php rooms(); ?>
+        <div class="container">
+            <div class="list">
+                <p style="float:left">Room-Registration</p>
+                <div id="_list" class="form  w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:60vh !important;overflow-y:scroll">
+                    <?php rooms(); ?>
+                </div>
             </div>
+            <br>
+            <div class="l-form">
+                <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
+                    <div class="context">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                        <p>Set Room-Registration</p>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form__div">
+                        <input type="number" class="form__input" name="RoomNo" id="RoomNo" placeholder="e.g 8" autocomplete="off">
+                        <label for="" class="form__label">Room No</label>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <input type="number" class="form__input" name="Floor" id="Floor" placeholder="e.g 3" autocomplete="off">
+                        <label for="" class="form__label">Floor</label>
+                    </div>
+                    <br>
+                    <div class="form__div">
+                        <input type="number" class="form__input" name="Capacity" id="Capacity" placeholder="e.g 98" autocomplete="off">
+                        <label for="" class="form__label">Capacity</label>
+                    </div>
+                    <br>
+                    <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save" name="Save" style="float:right">
+            </div>
+            </form>
         </div>
-        <br>
-        <div class="l-form">
-            <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
-                <div class="context">
-                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
-                        style="height:3rem">
-                    <p>Set Room-Registration</p>
-                </div>
-                <br>
-                <br>
-                <div class="form__div">
-                    <input type="number" class="form__input" name="RoomNo" id="RoomNo" placeholder="e.g 8"
-                        autocomplete="off">
-                    <label for="" class="form__label">Room No</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="number" class="form__input" name="Floor" id="Floor" placeholder="e.g 3"
-                        autocomplete="off">
-                    <label for="" class="form__label">Floor</label>
-                </div>
-                <br>
-                <div class="form__div">
-                    <input type="number" class="form__input" name="Capacity" id="Capacity" placeholder="e.g 98"
-                        autocomplete="off">
-                    <label for="" class="form__label">Capacity</label>
-                </div>
-                <br>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
-                    name="Save" style="float:right">
-        </div>
-        </form>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+        <script src="../../js/butter.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/room.js"></script>
     </div>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/room.js"></script>
 </body>
 
 </html>

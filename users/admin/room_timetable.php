@@ -49,7 +49,7 @@ function get_room()
 }
 
 // session passes id
-$id = $_SESSION['id'];
+$id = $_COOKIE["Id"];;
 ob_end_flush();
 ?>
 <!DOCTYPE html>
@@ -63,9 +63,7 @@ ob_end_flush();
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/class_timetable.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
     </script>
@@ -73,99 +71,102 @@ ob_end_flush();
     <title>Room Time-Table</title>
     <!-- style -->
     <style>
-    .styled-table th,
-    .styled-table td {
-        height: 9rem;
-    }
+        .styled-table th,
+        .styled-table td {
+            height: 9rem;
+        }
 
-    td div {
-        height: auto;
-        width: max-content;
-    }
+        td div {
+            height: auto;
+            width: max-content;
+        }
 
-    .form {
-        width: 80vw;
-    }
+        .form {
+            width: 80vw;
+        }
     </style>
 </head>
 
 <body>
+    <div>
 
-    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
-        <?php include('./partial/nav.php'); ?>
-    </div>
-    <!-- Page Content -->
-    <div class="">
-        <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
-    </div>
+        <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+            <?php include('./partial/nav.php'); ?>
+        </div>
+        <!-- Page Content -->
+        <div class="">
+            <button class="w3-button w3-xlarge" onclick="w3_open()">☰</button>
+        </div>
 
-    <code class="txt">
-        <?php echo $_SESSION['name']; ?>
-        <?php echo $_SESSION['id']; ?>
-    </code>
+        <code class="txt">
+            <?php echo $_SESSION['name']; ?>
+            <?php echo $_SESSION['id']; ?>
+        </code>
 
-    <div class="con_head">
-        <p> Room-Timetable </p>
-        <br>
-    </div>
-    <div class="container">
-        <div class="l-form">
+        <div class="con_head">
+            <p> Room-Timetable </p>
+            <br>
+        </div>
+        <div class="container">
+            <div class="l-form">
 
-            <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
-                <div class="form__div">
-                    <label for="Academic Year">Academic Year:</label>
-                    <select id="academic_year" onchange="clear_prev()">
-                        <option value="--">--</option>
-                        <?php get_academic_year(); ?>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <label for="Class">Room:</label>
-                    <select name="class" id="room">
-                        <option value="--">--</option>
-                        <!-- get fuction php -->
-                        <?php get_room(); ?>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <label for="Class">Semester:</label>
-                    <select name="class" id="room" onchange="get_data_timetable(this.value)">
-                        <option value="--">--</option>
-                        <option value="--_--_--">Jr</option>
-                        <option value="I_III_V">Odd</option>
-                        <option value="II_IV_VI">Even</option>
-                    </select>
-                </div>
-                <div class="form__div">
-                    <input type="button" id="button" value="Generate PDF">
-                </div>
-                <div class="div" id="styled-table" style="display:flex;flex-direction:column;align-items:center">
-                    <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
-                    <table class="styled-table">
-                        <thread>
-                            <tr>
-                                <th>Timming</th>
-                                <th id="dayshow">Monday</th>
-                                <th id="dayshow">Tuesday</th>
-                                <th id="dayshow">Wednesday</th>
-                                <th id="dayshow">Thursday</th>
-                                <th id="dayshow">Friday</th>
-                                <th id="dayshow">Saturday</th>
-                            </tr>
-                        </thread>
-                        <tbody id="load_data">
+                <div id="timetable1" style="box-shadow:none" class="form  w3-margin w3-whitesmoke w3-bar-block">
+                    <div class="form__div">
+                        <label for="Academic Year">Academic Year:</label>
+                        <select id="academic_year" onchange="clear_prev()">
+                            <option value="--">--</option>
+                            <?php get_academic_year(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Class">Room:</label>
+                        <select name="class" id="room">
+                            <option value="--">--</option>
+                            <!-- get fuction php -->
+                            <?php get_room(); ?>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <label for="Class">Semester:</label>
+                        <select name="class" id="room" onchange="get_data_timetable(this.value)">
+                            <option value="--">--</option>
+                            <option value="--_--_--">Jr</option>
+                            <option value="I_III_V">Odd</option>
+                            <option value="II_IV_VI">Even</option>
+                        </select>
+                    </div>
+                    <div class="form__div">
+                        <input type="button" id="button" value="Generate PDF">
+                    </div>
+                    <div class="div" id="styled-table" style="display:flex;flex-direction:column;align-items:center">
+                        <img src="../../out/realwatermark.png" id="water" style="width:30rem;display:none" alt="img">
+                        <table class="styled-table">
+                            <thread>
+                                <tr>
+                                    <th>Timming</th>
+                                    <th id="dayshow">Monday</th>
+                                    <th id="dayshow">Tuesday</th>
+                                    <th id="dayshow">Wednesday</th>
+                                    <th id="dayshow">Thursday</th>
+                                    <th id="dayshow">Friday</th>
+                                    <th id="dayshow">Saturday</th>
+                                </tr>
+                            </thread>
+                            <tbody id="load_data">
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/room_timetable.js"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+        <script src="../../js/butter.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/room_timetable.js"></script>
+    </div>
 </body>
 
 </html>
