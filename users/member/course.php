@@ -83,7 +83,8 @@ ob_end_flush();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/png" sizes="96x96" rel="icon" href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
+    <link type="image/png" sizes="96x96" rel="icon"
+        href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/professor.css">
@@ -101,8 +102,10 @@ ob_end_flush();
             <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
             <a href="../user_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
             <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
+            <a href="course.php" class="w3-bar-item w3-button">Course</a>
             <a href="select_subjects.php" class="w3-bar-item w3-button">Select Subject</a>
             <a href="subject.php" class="w3-bar-item w3-button">Subject</a>
+            <a href="class_timetable.php" class="w3-bar-item w3-button">Class-TimeTable</a>
         </div>
         <!-- Page Content -->
         <div class="">
@@ -129,32 +132,38 @@ ob_end_flush();
             <div class="l-form"></div>
             <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
                 <div class="context">
-                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                    <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
+                        style="height:3rem">
                     <p>Set Course</p>
                 </div>
                 <br>
                 <br>
                 <div class="form__div">
-                    <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8" autocomplete="off">
+                    <input type="number" class="form__input" name="CourseId" id="CourseId" placeholder="e.g 8"
+                        autocomplete="off">
                     <label for="" class="form__label">Course Id</label>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT" autocomplete="off">
+                    <input type="text" class="form__input" name="CourseName" id="CourseName" placeholder="e.g BSC-IT"
+                        autocomplete="off">
                     <label for="" class="form__label">Course Name</label>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="number" class="form__input" name="Strength" id="Strength" placeholder="e.g 45" autocomplete="off">
+                    <input type="number" class="form__input" name="Strength" id="Strength" placeholder="e.g 45"
+                        autocomplete="off">
                     <label for="" class="form__label">Strength</label>
                 </div>
                 <br>
                 <div class="form__div">
-                    <input type="text" class="form__input" name="Abbreviation" id="Abbreviation" placeholder="e.g BSC-IT" autocomplete="off">
+                    <input type="text" class="form__input" name="Abbreviation" id="Abbreviation"
+                        placeholder="e.g BSC-IT" autocomplete="off">
                     <label for="" class="form__label">Abbreviation</label>
                 </div>
                 <br>
-                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save" name="Save" style="float:right">
+                <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
+                    name="Save" style="float:right">
         </div>
         </form>
     </div>

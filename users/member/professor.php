@@ -86,12 +86,15 @@ ob_end_flush();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/png" sizes="96x96" rel="icon" href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
+    <link type="image/png" sizes="96x96" rel="icon"
+        href="https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-appointment-online-services-soft-fill-soft-fill-juicy-fish.png">
     <!-- basic html required -->
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/professor.css">
     <!-- jquery cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Time-Table</title>
@@ -104,9 +107,11 @@ ob_end_flush();
             <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">&times;</button>
             <a href="../../account/login.php" class="w3-bar-item w3-button">Logout</a>
             <a href="../user_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
-            <a href="./member/course.php" class="w3-bar-item w3-button">Course</a>
-            <a href="./member/select_subjects.php" class="w3-bar-item w3-button">Select Subject</a>
-            <a href="./member/subject.php" class="w3-bar-item w3-button">Subject</a>
+            <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
+            <a href="course.php" class="w3-bar-item w3-button">Course</a>
+            <a href="select_subjects.php" class="w3-bar-item w3-button">Select Subject</a>
+            <a href="subject.php" class="w3-bar-item w3-button">Subject</a>
+            <a href="class_timetable.php" class="w3-bar-item w3-button">Class-TimeTable</a>
         </div>
         <!-- Page Content -->
         <div class="">
@@ -125,7 +130,8 @@ ob_end_flush();
         <div class="container">
             <div class="list">
                 <p style="float:left">Professor List</p> <br>
-                <label for="Professor" style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Professor:</label>
+                <label for="Professor"
+                    style="color:gray;left: -5rem;color: gray;position: relative;bottom: 0.5rem;">Professor:</label>
                 <select name="ProfList" id="ProfList" onchange="get_professor()">
                     <option value="--">--</option>
                     <option value="PSYCHOLOGY">PSYCHOLOGY</option>
@@ -166,7 +172,8 @@ ob_end_flush();
                     <option value="BMS">BMS</option>
                     <option value="BMM">BMM</option>
                 </select>
-                <div id="_list" class=" form w3-margin w3-whitesmoke w3-bar-block" style="width:auto;height:50vh;overflow-y:scroll">
+                <div id="_list" class=" form w3-margin w3-whitesmoke w3-bar-block"
+                    style="width:auto;height:50vh;overflow-y:scroll">
                     <?php professor(); ?>
                 </div>
             </div>
@@ -174,27 +181,32 @@ ob_end_flush();
             <div class="l-form">
                 <form method="POST" class="form  w3-margin w3-whitesmoke" style="width:24rem;height:auto">
                     <div class="context">
-                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo" style="height:3rem">
+                        <img src="https://github.githubassets.com/images/mona-loading-dark.gif" alt="octo"
+                            style="height:3rem">
                         <p>Set Professor</p>
                     </div>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="ProfessorFirstName" id="ProfessorFirstName" placeholder="e.g xyz" autocomplete="off">
+                        <input type="text" class="form__input" name="ProfessorFirstName" id="ProfessorFirstName"
+                            placeholder="e.g xyz" autocomplete="off">
                         <label for="" class="form__label">First Name</label>
                     </div>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="ProfessorLastName" id="ProfessorLastName" placeholder="e.g xyz" autocomplete="off">
+                        <input type="text" class="form__input" name="ProfessorLastName" id="ProfessorLastName"
+                            placeholder="e.g xyz" autocomplete="off">
                         <label for="" class="form__label">Last Name</label>
                     </div>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="Phone" id="Phone" placeholder="e.g xyz" autocomplete="off">
+                        <input type="text" class="form__input" name="Phone" id="Phone" placeholder="e.g xyz"
+                            autocomplete="off">
                         <label for="" class="form__label">Phone Number</label>
                     </div>
                     <br>
                     <div class="form__div">
-                        <input type="text" class="form__input" name="EmailId" id="EmailId" placeholder="e.g xyz" autocomplete="off">
+                        <input type="text" class="form__input" name="EmailId" id="EmailId" placeholder="e.g xyz"
+                            autocomplete="off">
                         <label for="" class="form__label">Email-ID</label>
                     </div>
                     <br>
@@ -253,7 +265,8 @@ ob_end_flush();
                     </div>
                     <br>
                     <br>
-                    <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save" name="save" style="float:right">
+                    <input class="button-primary w3-button w3-border w3-hover-blue w3-round" type="submit" value="Save"
+                        name="save" style="float:right">
             </div>
             </form>
         </div>
