@@ -123,7 +123,9 @@ ob_end_flush();
             <a href="../user_dashboard.php" class="w3-bar-item w3-button">Dashboard</a>
             <a href="course.php" class="w3-bar-item w3-button">Course</a>
             <a href="professor.php" class="w3-bar-item w3-button">Professor</a>
+            <a href="select_subjects.php" class="w3-bar-item w3-button">Select Subject</a>
             <a href="subject.php" class="w3-bar-item w3-button">Subject</a>
+            <a href="class_timetable.php" class="w3-bar-item w3-button">Class-TimeTable</a>
         </div>
         <!-- Page Content -->
         <div class="">
